@@ -49,7 +49,7 @@ allow empty index types.
 The Mizar source is copied from
 [`MizarSystem/MML`](https://github.com/MizarSystem/MML.git)
 (`mml/yellow17.miz`) and is licensed GPL-3.0-or-later or
-CC-BY-SA-3.0-or-later by the Association of Mizar Users. Pin and
+CC-BY-SA-3.0 by the Association of Mizar Users. Pin and
 copy date: `mml/FROZEN.txt`. This repository uses the same dual
 license.
 

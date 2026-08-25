@@ -14,11 +14,12 @@ at revision `047822c4d814630b28eec8ca6b455e9eb912d5ff` (commit date
 
 The article is Bartłomiej Skorulski, *The Tichonov Theorem*, received
 23 May 2000, Formalized Mathematics 9(2), 2001. Copyright Association
-of Mizar Users. License: GPL-3.0-or-later or CC-BY-SA-3.0-or-later
+of Mizar Users. License: GPL-3.0-or-later or CC-BY-SA-3.0
 (`doc/COPYING.*`).
 
-This repository does not vendor the rest of MML and does not run the
-Mizar checker. Only `YELLOW_17` is copied.
+The full Mizar 7.13.01 library is now vendored at `vendor/MML`.
+This repository does not run the Mizar checker. The 1–1 Lean queue
+is `mizarccl_translation_order.yaml`.
 
 ## Lean translation
 

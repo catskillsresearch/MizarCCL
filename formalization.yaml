@@ -10,7 +10,7 @@ project:
     cylinder, and subbasis lemmas. Account: view.pdf.
   authors:
     - "Lars Warren Ericson"
-  license: "GPL-3.0-or-later OR CC-BY-SA-3.0-or-later"
+  license: "GPL-3.0-or-later OR CC-BY-SA-3.0"
   responsible_maintainers:
     - "Lars Warren Ericson"
 
@@ -89,7 +89,7 @@ sources:
     note: >-
       The article being translated. Copied into this repository as
       yellow17.miz and mml/yellow17.miz (pin: mml/FROZEN.txt). Licensed
-      GPL-3.0-or-later OR CC-BY-SA-3.0-or-later by the Association of
+      GPL-3.0-or-later OR CC-BY-SA-3.0 by the Association of
       Mizar Users. This package is a Lean 4 translation, not a Mizar
       checker run.
 

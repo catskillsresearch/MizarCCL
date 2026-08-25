@@ -1,0 +1,3 @@
+[submodule "vendor/MML"]
+	path = vendor/MML
+	url = https://github.com/MizarSystem/MML.git

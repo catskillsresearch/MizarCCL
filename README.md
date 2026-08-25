@@ -1,45 +1,42 @@
-# yellow17
+# MizarCCL
 
-Lean 4 translation of Bartłomiej Skorulski, *The Tichonov Theorem*
-(Mizar article `YELLOW_17`), packaged for Palomar.
+1–1 Lean 4 translation of the Mizar articles needed for the YELLOW* /
+WAYBEL* family (continuous lattices / Way-below / Tychonoff), with the
+full Mizar 7.13.01 library vendored.
 
-The Mizar source is copied from the
-[Mizar Mathematical Library](https://github.com/MizarSystem/MML.git)
-file [`mml/yellow17.miz`](https://github.com/MizarSystem/MML/blob/047822c4d814630b28eec8ca6b455e9eb912d5ff/mml/yellow17.miz)
-at revision `047822c4d814630b28eec8ca6b455e9eb912d5ff`. See
-`mml/FROZEN.txt` and `PROVENANCE.md`.
+This is **not** the earlier idiomatic Mathlib paraphrase of `YELLOW_17`.
+That Palomar extract is abandoned: a faithful translation needs the
+`environ` graph, not a headline file in isolation.
 
-The **Palomar statement of record** is every theorem and definition in
-`Yellow17.lean` (headline: `yellow17_tychonoff` /
-`yellow17_tychonoff_sets`). Tychonoff’s theorem itself is prior; this
-package is the translation, not a first proof.
+## Repository
 
-The paper of record is `view.pdf` (source `arxiv.md`).
+- GitHub: https://github.com/catskillsresearch/MizarCCL
+- Mizar pin: `vendor/MML` @ `047822c4d814630b28eec8ca6b455e9eb912d5ff`
+  (Mizar 7.13.01 / MML 4.181.1147). See `vendor/README.md`.
+- Translation queue: `mizarccl_translation_order.yaml`
+  (368 used articles, least-dependent first; 58 YELLOW*/WAYBEL* seeds).
+- Family-only graph: `waybel_yellow_dependencies.yaml`
 
-## Build
+Palomar plan: one key theorem per YELLOW*/WAYBEL* article, after that
+article’s used prefix is translated.
+
+## Setup
 
 ```bash
+git submodule update --init --recursive
 lake exe cache get
-lake build
 ```
 
-`lake build` typechecks `Yellow17`, `Challenge`, and `Solution`.
-`Challenge.lean` imports only Mathlib and leaves the compared
-declarations as `sorry`. `Solution.lean` re-exports the sorry-free
-`Yellow17.lean` proofs.
+Rebuild the used-module queue:
 
 ```bash
-bash scripts/palomar_preflight.sh
-bash scripts/build_arxiv_pdf.sh
+python3 scripts/mizarccl_translation_order.py
 ```
-
-Narrative inventory: `arxiv.md`. Palomar metadata: `comparator.json`,
-`formalization.yaml`. Session resume: `HANDOFF.md`.
 
 ## License
 
-The Mizar article is © 2000–2012 Association of Mizar Users and is
-distributed under **GPL-3.0-or-later** or **CC-BY-SA-3.0-or-later**.
+The Mizar sources are © 1990–2012 Association of Mizar Users and are
+distributed under **GPL-3.0-or-later** or **CC-BY-SA-3.0**.
 This Lean translation is a derivative work under the same dual
 license. Full texts: `doc/COPYING.GPL`, `doc/COPYING.CC-BY-SA`,
 `doc/COPYING.interpretation`.
