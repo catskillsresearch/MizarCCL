@@ -7,7 +7,7 @@
 This note is the write-up of a Lean 4 translation of Bartłomiej
 Skorulski, *The Tichonov Theorem* (Mizar article `YELLOW_17`, received
 23 May 2000; Formalized Mathematics 9(2), 373–376). The source file is
-`mml/yellow17.miz` from the [Mizar Mathematical
+`vendor/MML/mml/yellow17.miz` from the [Mizar Mathematical
 Library](https://github.com/MizarSystem/MML.git) at revision
 `047822c4d814630b28eec8ca6b455e9eb912d5ff`. The headline result is
 Tychonoff’s theorem: a dependent product of compact spaces is compact.
@@ -46,12 +46,12 @@ nonetheless stated and proved. Lean is slightly more general: Mizar
 assumes a nonempty index set and nonempty factors; the Lean statements
 allow empty index types.
 
-The Mizar source is copied from
+The Mizar source is vendored from
 [`MizarSystem/MML`](https://github.com/MizarSystem/MML.git)
-(`mml/yellow17.miz`) and is licensed GPL-3.0-or-later or
-CC-BY-SA-3.0 by the Association of Mizar Users. Pin and
-copy date: `mml/FROZEN.txt`. This repository uses the same dual
-license.
+as `vendor/MML/mml/yellow17.miz` and is licensed GPL-3.0-or-later or
+CC-BY-SA-3.0 by the Association of Mizar Users. Pin:
+`vendor/MML` @ `047822c4d814630b28eec8ca6b455e9eb912d5ff`. This
+repository uses the same dual license.
 
 ## 2. Relation to the Compendium
 
@@ -173,7 +173,8 @@ bash scripts/build_arxiv_pdf.sh
 
 `lake build` typechecks `Yellow17`, `Challenge`, and `Solution`.
 Narrative inventory: this file. Metadata: `comparator.json`,
-`formalization.yaml`. MML pin: `mml/FROZEN.txt`.
+`formalization.yaml`. MML pin: `vendor/MML` @
+`047822c4d814630b28eec8ca6b455e9eb912d5ff`.
 
 ## References
 

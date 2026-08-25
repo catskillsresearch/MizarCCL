@@ -30,7 +30,8 @@ is abandoned. Do not submit that kit.
   index 362. Last: `WAYBEL35`. Same closure is in
   `waybel_yellow_dependencies.yaml` (10280 direct environ edges).
 - No 1–1 Lean translation has started. Abandon the Palomar
-  `yellow17` submission.
+  `yellow17` submission. Top-level `mml/` copy is gone; use
+  `vendor/MML`.
 
 ## On finishing a work item
 
@@ -135,3 +136,10 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   least-dependent → most-dependent (`TARSKI` first, then `mml.lar`),
   10280 direct edges, 0 forward edges. Unreached MML articles are
   omitted. Same used-set as `mizarccl_translation_order.yaml`.
+
+### 2026-08-25 — Drop leftover top-level `mml/`
+
+- Removed Palomar-era `mml/yellow17.miz` and `mml/FROZEN.txt`. The
+  library lives only at `vendor/MML`. Retargeted `PROVENANCE.md`,
+  `formalization.yaml`, `arxiv.md`, and `scripts/palomar_preflight.sh`
+  to the submodule pin.

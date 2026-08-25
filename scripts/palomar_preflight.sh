@@ -28,16 +28,19 @@ print(f"OK: {len(cfg['theorem_names'])} theorem targets and "
       f"{len(cfg['definition_names'])} definition targets.")
 PY
 
-step "Match formalization.yaml MML revision to mml/FROZEN.txt"
+step "Match formalization.yaml MML revision to vendor/MML"
 python3 - <<'PY'
-import re
+import subprocess
 
-frozen = open("mml/FROZEN.txt", encoding="utf-8").read()
+rev = subprocess.check_output(
+    ["git", "-C", "vendor/MML", "rev-parse", "HEAD"], text=True
+).strip()
+readme = open("vendor/README.md", encoding="utf-8").read()
 yaml = open("formalization.yaml", encoding="utf-8").read()
-m = re.search(r"rev:\s+(\S+)", frozen)
-if not m:
-    raise SystemExit("Could not parse MML revision from mml/FROZEN.txt")
-rev = m.group(1)
+if rev not in readme:
+    raise SystemExit(
+        f"vendor/README.md is missing submodule HEAD {rev}"
+    )
 if f"/tree/{rev}" not in yaml and rev not in yaml:
     raise SystemExit(
         f"formalization.yaml is missing MML revision {rev}"
