@@ -1,0 +1,35 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Yellow17.eval_singleton_inter_mem",
+    "Yellow17.update_mem_univ_pi",
+    "Yellow17.range_eval_eq_univ",
+    "Yellow17.preimage_eval_univ",
+    "Yellow17.update_mem_eval_singleton",
+    "Yellow17.eval_apply",
+    "Yellow17.mem_preimage_eval_update_iff",
+    "Yellow17.eval_singleton_subset_eval_same",
+    "Yellow17.eval_singleton_not_subset_eval_of_ne",
+    "Yellow17.eval_singleton_subset_eval_iff",
+    "Yellow17.elProductEx_spec",
+    "Yellow17.mem_cylinderSubbasis_iff",
+    "Yellow17.pi_eq_generateFrom_cylinderSubbasis",
+    "Yellow17.cylinder_of_singleton_subset",
+    "Yellow17.univ_subset_iUnion_preimage_eval",
+    "Yellow17.isCompact_iff_finite_open_subcover",
+    "Yellow17.isCompact_of_subbasis_finite_subcover",
+    "Yellow17.univ_subset_sUnion_of_fiber_cover_no_strict",
+    "Yellow17.exists_cylinder_containing_fiber_of_finite",
+    "Yellow17.exists_proper_open_cylinder_of_fiber_cover",
+    "Yellow17.exists_point_fiber_not_finitely_covered",
+    "Yellow17.yellow17_tychonoff_sets",
+    "Yellow17.yellow17_tychonoff",
+    "Yellow17.yellow17_tychonoff'"
+  ],
+  "definition_names": [
+    "Yellow17.elProductEx",
+    "Yellow17.cylinderSubbasis"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

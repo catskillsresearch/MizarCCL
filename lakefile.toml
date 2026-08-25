@@ -1,0 +1,26 @@
+name = "yellow17"
+version = "0.1.0"
+keywords = ["tychonoff", "topology", "mizar", "lean4"]
+defaultTargets = ["Yellow17", "Challenge", "Solution"]
+
+# Yellow17 is the proof library. Challenge / Solution are the Palomar
+# Comparator pair. Challenge restates every Yellow17 declaration with
+# sorry; Solution re-exports the sorry-free proofs.
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.0"
+
+[[lean_lib]]
+name = "Yellow17"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"

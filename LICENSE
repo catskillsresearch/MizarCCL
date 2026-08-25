@@ -1,0 +1,22 @@
+This repository is a Lean 4 translation of Mizar article YELLOW_17
+(Bartłomiej Skorulski, The Tichonov Theorem).
+
+Copyright (c) 2000-2012 Association of Mizar Users
+  (Stowarzyszenie Uzytkownikow Mizara, Bialystok, Poland).
+Copyright (c) 2026 Lars Warren Ericson.
+
+The Mizar source (yellow17.miz / mml/yellow17.miz) and this translation
+may be distributed under either:
+
+  * the GNU General Public License version 3.0 or later, or
+  * the Creative Commons Attribution-ShareAlike License version 3.0 or later,
+
+subject to the binding interpretation in doc/COPYING.interpretation.
+
+See:
+  doc/COPYING.GPL
+  doc/COPYING.CC-BY-SA
+  the copyright notices in yellow17.miz
+
+Upstream copy: https://github.com/MizarSystem/MML.git
+  mml/yellow17.miz at 047822c4d814630b28eec8ca6b455e9eb912d5ff

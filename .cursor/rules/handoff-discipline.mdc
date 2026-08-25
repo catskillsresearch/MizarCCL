@@ -1,0 +1,32 @@
+---
+description: Resume and HANDOFF discipline for the YELLOW_17 Palomar package
+alwaysApply: true
+---
+
+# Resume & HANDOFF discipline
+
+Durable state lives in files, not chat memory. Treat `HANDOFF.md` as the
+source of truth.
+
+## On starting a session
+- Read `HANDOFF.md` first (it has a Resume Protocol listing what else to read).
+- This repo’s `arxiv.md` is **this article** — keep it in sync when closing
+  theorems.
+- **Never** read, grep, or search `arxiv_with_code.md`. That file is
+  auto-generated for the PDF pipeline.
+
+## On finishing a work item
+After the item builds green, do all of the following before ending the turn:
+1. `lake build` is green and Solution sources have zero `sorry`; run an
+   axiom audit (`#print axioms <name>`) and confirm
+   `⊆ {propext, Classical.choice, Quot.sound}` unless a new axiom is
+   unavoidable (document it).
+2. Challenge/Solution types match
+   (`bash scripts/compare_challenge_solution_types.sh`).
+3. Append a dated checkpoint to `HANDOFF.md` and update status lines.
+4. Update the corresponding section / catalog row in `arxiv.md`.
+   In Markdown tables, **escape literal `|` as `\|`**.
+
+## Context-cost hygiene
+- Filter shell output (`| grep -vE 'LEAN_PATH|trace:' | tail`).
+- Prefer appending to the end of `HANDOFF.md` over rewriting its middle.

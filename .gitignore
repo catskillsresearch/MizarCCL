@@ -1,0 +1,29 @@
+# cache and other artifacts produced by Lean's Lake build tool
+.lake/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Scratch / local junk
+.tmp/
+
+# Generated from arxiv.md by scripts/build_arxiv_tex.sh (do not commit)
+arxiv_with_code.md
+arxiv.tex
+
+lean-listings/
+figures/
+dist/
+00README.json
+
+# LaTeX build artifacts (`arxiv.pdf` is committed as the readable deliverable)
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.toc
+*.lof
+*.synctex.gz
+texput.log

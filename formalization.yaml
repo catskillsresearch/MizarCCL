@@ -1,0 +1,276 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "The Tychonoff theorem (Mizar YELLOW_17)"
+  description: >-
+    Idiomatic Lean 4 translation of Bartłomiej Skorulski, The Tichonov
+    Theorem (Mizar article YELLOW_17): compactness of an arbitrary
+    dependent product of compact spaces, with the article’s projection,
+    cylinder, and subbasis lemmas. Account: view.pdf.
+  authors:
+    - "Lars Warren Ericson"
+  license: "GPL-3.0-or-later OR CC-BY-SA-3.0-or-later"
+  responsible_maintainers:
+    - "Lars Warren Ericson"
+
+repository:
+  role: substantive-development
+
+classification:
+  arxiv: [math.GN, cs.LO]
+  msc2020: ["54B10", "54D30"]
+
+status:
+  scope: >-
+    Complete for the compared family. Every theorem and definition in
+    Yellow17.lean is restated in Challenge.lean and listed in
+    comparator.json. The headline results are yellow17_tychonoff_sets,
+    yellow17_tychonoff, and yellow17_tychonoff'. Nothing in the compared
+    statements is imported from a prior Palomar entry.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Yellow17.yellow17_tychonoff_sets"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Yellow17.yellow17_tychonoff"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "Yellow17.yellow17_tychonoff'"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+
+fidelity:
+  divergences: >-
+    Mizar codes products as set-theoretic functions product F with
+    proj(F,i) and updates f+*(i,xi). The Lean development uses
+    dependent products ∀ i, X i, Function.eval, Function.update, and
+    cylinders eval i ⁻¹' U. Mizar Th8–Th13 are topological-carrier
+    wrappers of Th1–Th7 and are merged. Th14 / Th15 and the headline
+    Tychonoff theorem reuse Mathlib (isCompact_iff_finite_subcover,
+    isCompact_generateFrom, isCompact_univ_pi, Pi.compactSpace) rather
+    than replaying Mizar’s untyped choice-function argument. Mizar
+    assumes a nonempty index set and nonempty factors; the Lean
+    statements allow empty index types. Th15 is formalized in the
+    Alexander “if” direction only.
+
+sources:
+  - title: "The Tychonoff theorem (Mizar YELLOW_17)"
+    authors: ["Lars Warren Ericson"]
+    type: "notes"
+    id: "https://github.com/catskillsresearch/yellow17/blob/main/view.pdf"
+    relationship: other
+    author_endorsement: participated
+    note: >-
+      Write-up of this formalization (view.pdf; source arxiv.md).
+      Challenge.lean is checked against the named Lean theorems, which
+      translate Skorulski’s YELLOW_17 rather than Tychonoff’s 1930 paper
+      in full.
+
+  - title: "The Tichonov Theorem"
+    authors: ["Bartłomiej Skorulski"]
+    type: "article"
+    location: >-
+      Formalized Mathematics 9(2), 2001; Mizar article YELLOW_17,
+      received 23 May 2000. Source file mml/yellow17.miz in
+      https://github.com/MizarSystem/MML/tree/047822c4d814630b28eec8ca6b455e9eb912d5ff
+    relationship: other
+    note: >-
+      The article being translated. Copied into this repository as
+      yellow17.miz and mml/yellow17.miz (pin: mml/FROZEN.txt). Licensed
+      GPL-3.0-or-later OR CC-BY-SA-3.0-or-later by the Association of
+      Mizar Users. This package is a Lean 4 translation, not a Mizar
+      checker run.
+
+  - title: "A Compendium of Continuous Lattices"
+    authors:
+      - "Gerhard Gierz"
+      - "Karl Heinrich Hofmann"
+      - "Klaus Keimel"
+      - "Jimmie D. Lawson"
+      - "Michael W. Mislove"
+      - "Dana S. Scott"
+    type: "book"
+    location: "Springer-Verlag, Berlin, 1980. §III-1, §VI-2–VI-3"
+    relationship: background
+    note: >-
+      Continuous lattices are compact Hausdorff Lawson semilattices.
+      §III-1 (Lawson topology) obtains compactness of λ(L) from
+      Tychonoff (product of two-point spaces). §VI-2–VI-3 treat
+      compact topological semilattices and the fundamental theorem;
+      products of those spaces are compact by the same theorem.
+      This package formalizes the space-level Tychonoff lemma those
+      sections use, not the Lawson topology itself.
+
+  - title: "Über die topologische Erweiterung von Räumen"
+    authors: ["Andrey Tychonoff"]
+    type: "article"
+    location: "Mathematische Annalen 102 (1930), 544–561"
+    relationship: background
+    note: >-
+      Original compactness-of-products theorem. Background only; this
+      package formalizes Skorulski’s Mizar development and Mathlib’s
+      typed Tychonoff, not a line-by-line reading of the 1930 paper.
+
+  - title: "Tychonoff's theorem"
+    authors: []
+    type: "folklore"
+    relationship: independently-proves
+    note: >-
+      Prior result: an arbitrary product of compact spaces is compact.
+      Independently proved here as Yellow17.yellow17_tychonoff /
+      yellow17_tychonoff_sets, following the Mizar YELLOW_17 outline
+      and Mathlib’s Alexander-subbasis / Tychonoff infrastructure.
+      The theorem is not claimed as original.
+
+related_formalizations:
+  - id: "https://github.com/MizarSystem/MML/tree/047822c4d814630b28eec8ca6b455e9eb912d5ff"
+    relationship: other
+    note: >-
+      Upstream Mizar Mathematical Library (Mizar 7.13.01 / MML
+      4.181.1147). mml/yellow17.miz is a copy of mml/yellow17.miz at
+      revision 047822c4d814630b28eec8ca6b455e9eb912d5ff. No Lean was
+      taken from MML. Local copy only; see mml/FROZEN.txt.
+
+  - id: "https://github.com/catskillsresearch/scott_models"
+    relationship: other
+    note: >-
+      Same-author repository where the Lean translation was first
+      written as a standalone root file Yellow17.lean. This package
+      is the Palomar/arxiv extract of that translation. Not a
+      republication of someone else’s formalization.
+
+automation:
+  methods:
+    - method: agent
+      models: ["Cursor Grok 4.6 (SpaceXAI / Cursor)"]
+      framework: "Cursor"
+      role: >-
+        Translated yellow17.miz into Yellow17.lean and packaged the
+        Palomar Challenge / Solution / comparator / formalization.yaml
+        kit and the arxiv.md write-up.
+    - method: manual
+      models: []
+      role: >-
+        The author chose the formalization route, reviewed every
+        definition and claim, and takes sole responsibility for the
+        mathematical content. No large language model is listed as a
+        co-author.
+  notes: >-
+    Generated Lean was provisional until it compiled under the pinned
+    toolchain (leanprover/lean4:v4.33.0, mathlib v4.33.0).
+
+review:
+  status: self-assessed
+  reviewers:
+    - "Lars Warren Ericson"
+  notes: >-
+    The author directed and reviewed the development as it was
+    produced. No external or independent review has been performed.
+
+known_gaps: []
+
+limitations:
+  - >-
+    Tychonoff’s theorem is prior and is not claimed as original. This
+    package is a Lean translation of Mizar YELLOW_17 plus Mathlib reuse,
+    not a first proof of compactness of products.
+  - >-
+    Compared declarations may depend on propext, Quot.sound, and
+    Classical.choice. The headline Tychonoff theorems audit to that
+    set. There is no sorry outside Challenge.lean, no project-defined
+    axiom, and no native_decide.
+  - >-
+    Challenge.lean states the family but does not prove it; that is the
+    Comparator convention. Solution.lean re-exports Yellow17.lean.
+
+alignment:
+  namespace: "Yellow17"
+  statements:
+    - source: "Mizar Th1 / Th9 — singleton-cylinder intersection"
+      lean: "eval_singleton_inter_mem"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th2 — coordinate update stays in the product box"
+      lean: "update_mem_univ_pi"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th3 — projection of a nonempty product is surjective"
+      lean: "range_eval_eq_univ"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th4 / Th10 — full cylinder is the product"
+      lean: "preimage_eval_univ"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th5 / Th11 — update lands in the singleton cylinder"
+      lean: "update_mem_eval_singleton"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th8 — projection is evaluation"
+      lean: "eval_apply"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Lm1 / Th6 / Th13 — off-axis update preserves cylinder membership"
+      lean: "mem_preimage_eval_update_iff"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th7 / Th12 — proper-cylinder inclusion characterization"
+      lean: "eval_singleton_subset_eval_iff"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar scheme ElProductEx"
+      lean: "elProductEx"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th16 — product prebasis elements are open cylinders"
+      lean: "mem_cylinderSubbasis_iff"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Open cylinders generate the product topology"
+      lean: "pi_eq_generateFrom_cylinderSubbasis"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th17 — singleton cylinder inside a proper prebasis element"
+      lean: "cylinder_of_singleton_subset"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th18 — factor cover lifts to a cylinder cover"
+      lean: "univ_subset_iUnion_preimage_eval"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th14 — compactness is the finite-open-subcover property"
+      lean: "isCompact_iff_finite_open_subcover"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th15 — Alexander subbasis theorem (if direction)"
+      lean: "isCompact_of_subbasis_finite_subcover"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Th19–Th22 — cylinder-cover combinatorics"
+      lean: "exists_point_fiber_not_finitely_covered"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Tichonov Theorem — product of compact sets is compact"
+      lean: "yellow17_tychonoff_sets"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Tichonov Theorem — product of compact spaces is compact"
+      lean: "yellow17_tychonoff"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
+    - source: "Mizar Tichonov Theorem — implication form"
+      lean: "yellow17_tychonoff'"
+      module: "Challenge (statement), Solution / Yellow17 (proof)"
+      status: proved
