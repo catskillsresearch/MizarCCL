@@ -27,7 +27,8 @@ is abandoned. Do not submit that kit.
   (`047822c4d814630b28eec8ca6b455e9eb912d5ff`).
 - Used-module queue: **368** articles (58 YELLOW*/WAYBEL* seeds).
   First: `TARSKI`. First seed: `YELLOW_0` (index 232). `YELLOW17` is
-  index 362. Last: `WAYBEL35`.
+  index 362. Last: `WAYBEL35`. Same closure is in
+  `waybel_yellow_dependencies.yaml` (10280 direct environ edges).
 - No 1–1 Lean translation has started. Abandon the Palomar
   `yellow17` submission.
 
@@ -125,3 +126,12 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   `Desktop/MizarCCL`.
 - Queue files are now `mizarccl_translation_order.yaml` and
   `scripts/mizarccl_translation_order.py`.
+
+### 2026-08-25 — Full WAYBEL/YELLOW environ closure YAML
+
+- Replaced the intra-family-only `waybel_yellow_dependencies.yaml`
+  (58 YELLOW*/WAYBEL* nodes) with the transitive environ closure
+  rooted at those 58 seeds: **368** articles under `vendor/MML/mml`,
+  least-dependent → most-dependent (`TARSKI` first, then `mml.lar`),
+  10280 direct edges, 0 forward edges. Unreached MML articles are
+  omitted. Same used-set as `mizarccl_translation_order.yaml`.
