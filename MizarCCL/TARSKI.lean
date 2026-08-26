@@ -80,7 +80,7 @@ noncomputable instance : Singleton TarskiSet.{u} TarskiSet.{u} where
 theorem singleton_mk (p : PreSet.{u}) : singleton (mk p) = mk (singletonPre p) :=
   rfl
 
-theorem singleton_iff (y x : TarskiSet.{u}) : x ∈ singleton y ↔ x = y := by
+@[simp] theorem singleton_iff (y x : TarskiSet.{u}) : x ∈ singleton y ↔ x = y := by
   refine inductionOn₂ (β := fun y x => x ∈ singleton y ↔ x = y) y x fun p q => ?_
   rw [singleton_mk, mem_mk_iff]
   simp only [singletonPre, PreSet.mem_mk]
@@ -92,6 +92,7 @@ theorem singleton_iff (y x : TarskiSet.{u}) : x ∈ singleton y ↔ x = y := by
 
 theorem def1 (y x : TarskiSet.{u}) : x ∈ singleton y ↔ x = y :=
   singleton_iff y x
+
 
 /-! ## TARSKI:def 2 — unordered pair `{ y, z }` -/
 
@@ -120,7 +121,7 @@ def upair (y z : TarskiSet.{u}) : TarskiSet.{u} :=
 theorem upair_mk (p q : PreSet.{u}) : upair (mk p) (mk q) = mk (upairPre p q) :=
   rfl
 
-theorem upair_iff (y z x : TarskiSet.{u}) :
+@[simp] theorem upair_iff (y z x : TarskiSet.{u}) :
     x ∈ upair y z ↔ x = y ∨ x = z := by
   revert z x
   refine inductionOn (β := fun y => ∀ z x, x ∈ upair y z ↔ x = y ∨ x = z) y
@@ -209,7 +210,7 @@ def union (X : TarskiSet.{u}) : TarskiSet.{u} :=
 theorem union_mk (p : PreSet.{u}) : union (mk p) = mk (unionPre p) :=
   rfl
 
-theorem union_iff (X x : TarskiSet.{u}) :
+@[simp] theorem union_iff (X x : TarskiSet.{u}) :
     x ∈ union X ↔ ∃ Y, x ∈ Y ∧ Y ∈ X := by
   refine inductionOn₂ (β := fun X x => x ∈ union X ↔ ∃ Y, x ∈ Y ∧ Y ∈ X)
     X x fun p r => ?_
@@ -324,6 +325,71 @@ theorem pair_eq (x y : TarskiSet.{u}) :
 theorem def5 (x y : TarskiSet.{u}) :
     pair x y = upair (upair x y) (singleton x) :=
   pair_eq x y
+
+theorem pair_inj {x₁ y₁ x₂ y₂ : TarskiSet.{u}} :
+    pair x₁ y₁ = pair x₂ y₂ ↔ x₁ = x₂ ∧ y₁ = y₂ := by
+  constructor
+  · intro h
+    change upair (upair x₁ y₁) (singleton x₁) =
+           upair (upair x₂ y₂) (singleton x₂) at h
+    have hx1_s1 : x₁ ∈ singleton x₁ := (singleton_iff x₁ x₁).mpr rfl
+    have hx1_u1 : x₁ ∈ upair x₁ y₁ := (upair_iff x₁ y₁ x₁).mpr (Or.inl rfl)
+    have hy1_u1 : y₁ ∈ upair x₁ y₁ := (upair_iff x₁ y₁ y₁).mpr (Or.inr rfl)
+    have hx2_s2 : x₂ ∈ singleton x₂ := (singleton_iff x₂ x₂).mpr rfl
+    have hx2_u2 : x₂ ∈ upair x₂ y₂ := (upair_iff x₂ y₂ x₂).mpr (Or.inl rfl)
+    have hy2_u2 : y₂ ∈ upair x₂ y₂ := (upair_iff x₂ y₂ y₂).mpr (Or.inr rfl)
+
+    -- Step 1: Prove x₁ = x₂
+    have hs2_in : singleton x₂ ∈ upair (upair x₂ y₂) (singleton x₂) :=
+      (upair_iff _ _ _).mpr (Or.inr rfl)
+    have hs2_in1 : singleton x₂ ∈ upair (upair x₁ y₁) (singleton x₁) :=
+      h ▸ hs2_in
+    have hx_eq : x₁ = x₂ := by
+      cases (upair_iff _ _ _).mp hs2_in1 with
+      | inl hs2_eq_u1 =>
+        have : x₁ ∈ singleton x₂ := hs2_eq_u1 ▸ hx1_u1
+        exact (singleton_iff x₂ x₁).mp this
+      | inr hs2_eq_s1 =>
+        have : x₁ ∈ singleton x₂ := hs2_eq_s1 ▸ hx1_s1
+        exact (singleton_iff x₂ x₁).mp this
+    subst hx_eq
+
+    -- Step 2: Prove y₁ = y₂
+    have hu1_in : upair x₁ y₁ ∈ upair (upair x₁ y₁) (singleton x₁) :=
+      (upair_iff _ _ _).mpr (Or.inl rfl)
+    have hu1_in2 : upair x₁ y₁ ∈ upair (upair x₁ y₂) (singleton x₁) :=
+      h ▸ hu1_in
+    have hy_eq : y₁ = y₂ := by
+      cases (upair_iff _ _ _).mp hu1_in2 with
+      | inl hu1_eq_u2 =>
+        have hy1_in_u2 : y₁ ∈ upair x₁ y₂ := hu1_eq_u2 ▸ hy1_u1
+        cases (upair_iff _ _ _).mp hy1_in_u2 with
+        | inr hy1_eq_y2 => exact hy1_eq_y2
+        | inl hy1_eq_x1 =>
+          have hy2_in_u1 : y₂ ∈ upair x₁ y₁ := hu1_eq_u2.symm ▸ hy2_u2
+          cases (upair_iff _ _ _).mp hy2_in_u1 with
+          | inr hy2_eq_y1 => exact hy2_eq_y1.symm
+          | inl hy2_eq_x1 => exact hy1_eq_x1.trans hy2_eq_x1.symm
+      | inr hu1_eq_s1 =>
+        have hy1_in_s1 : y₁ ∈ singleton x₁ := hu1_eq_s1 ▸ hy1_u1
+        have hy1_eq_x1 : y₁ = x₁ := (singleton_iff x₁ y₁).mp hy1_in_s1
+        have hu2_in : upair x₁ y₂ ∈ upair (upair x₁ y₂) (singleton x₁) :=
+          (upair_iff _ _ _).mpr (Or.inl rfl)
+        have hu2_in1 : upair x₁ y₂ ∈ upair (upair x₁ y₁) (singleton x₁) :=
+          h.symm ▸ hu2_in
+        cases (upair_iff _ _ _).mp hu2_in1 with
+        | inl hu2_eq_u1 =>
+          have : upair x₁ y₂ = singleton x₁ := hu2_eq_u1.trans hu1_eq_s1
+          have hy2_in_s1 : y₂ ∈ singleton x₁ := this ▸ hy2_u2
+          have hy2_eq_x1 : y₂ = x₁ := (singleton_iff x₁ y₂).mp hy2_in_s1
+          exact hy1_eq_x1.trans hy2_eq_x1.symm
+        | inr hu2_eq_s1 =>
+          have hy2_in_s1 : y₂ ∈ singleton x₁ := hu2_eq_s1 ▸ hy2_u2
+          have hy2_eq_x1 : y₂ = x₁ := (singleton_iff x₁ y₂).mp hy2_in_s1
+          exact hy1_eq_x1.trans hy2_eq_x1.symm
+    exact ⟨rfl, hy_eq⟩
+  · rintro ⟨rfl, rfl⟩
+    rfl
 
 /-! ## TARSKI:def 6 — equipotence -/
 

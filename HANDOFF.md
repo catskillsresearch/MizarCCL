@@ -223,3 +223,8 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Challenge `subset` is the real predicate `∀ x, x ∈ X → x ∈ Y`, not
   `sorry`, so `instHasSubset` agrees with `MizarCCL/TARSKI.lean`.
   Preflight `#print`s `TARSKI.subset` and `TARSKI.instHasSubset`.
+
+### 2026-08-26 — Kuratowski injectivity and simp lemmas
+
+- Marked `singleton_iff`, `upair_iff`, and `union_iff` `@[simp]`.
+- Added `pair_inj`: `[x₁,y₁] = [x₂,y₂] ↔ x₁ = x₂ ∧ y₁ = y₂`.
