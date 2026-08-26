@@ -11,7 +11,7 @@ project:
     of the Tarski–Grothendieck axiom. Account: view.pdf.
   authors:
     - "Lars Warren Ericson"
-  license: "GPL-3.0-or-later OR CC-BY-SA-3.0"
+  license: "Apache-2.0"
   responsible_maintainers:
     - "Lars Warren Ericson"
 

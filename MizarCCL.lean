@@ -5,7 +5,7 @@ import MizarCCL.TARSKI
 Copyright (c) 1990-2012 Association of Mizar Users
   (Stowarzyszenie Uzytkownikow Mizara, Bialystok, Poland).
 Copyright (c) 2026 Lars Warren Ericson.
-Released under GNU GPL-3.0-or-later or CC-BY-SA-3.0.
+Released under Apache-2.0.
 See `doc/COPYING.*`.
 -/
 

@@ -49,8 +49,9 @@ python3 scripts/mizarccl_translation_order.py
 
 ## License
 
-The Mizar sources are © 1990–2012 Association of Mizar Users and are
-distributed under **GPL-3.0-or-later** or **CC-BY-SA-3.0**.
-This Lean translation is a derivative work under the same dual
-license. Full texts: `doc/COPYING.GPL`, `doc/COPYING.CC-BY-SA`,
-`doc/COPYING.interpretation`.
+The Lean package (`MizarCCL/`, Challenge, Solution) is **Apache-2.0**,
+same as `scott_models`. See `LICENSE`.
+
+Vendored Mizar articles in `vendor/mml/` remain © Association of
+Mizar Users under **GPL-3.0-or-later** or **CC-BY-SA-3.0**
+(`doc/COPYING.*` and the notices in each `.miz` file).

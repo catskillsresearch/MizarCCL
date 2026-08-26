@@ -201,3 +201,10 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   self-notes `other` source.
 - Optional full MML clone stays at gitignored `vendor/MML` for
   queue regeneration only.
+
+### 2026-08-25 — Apache-2.0 for Palomar
+
+- Palomar could not repair the dual SPDX
+  `GPL-3.0-or-later OR CC-BY-SA-3.0`. Root `LICENSE` is now the
+  Apache-2.0 text from `scott_models`; `project.license` is
+  `Apache-2.0`. Vendored `.miz` files keep the AMU notices.

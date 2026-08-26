@@ -18,8 +18,9 @@ The first translated article is `TARSKI`
 ([`vendor/mml/tarski.miz`](vendor/mml/tarski.miz);
 [upstream](https://github.com/MizarSystem/MML/blob/047822c4d814630b28eec8ca6b455e9eb912d5ff/mml/tarski.miz)).
 Andrzej Trybulec, *Tarski Grothendieck Set Theory*, received
-1 January 1989. Copyright Association of Mizar Users. License:
-GPL-3.0-or-later or CC-BY-SA-3.0 (`doc/COPYING.*`).
+1 January 1989. Copyright Association of Mizar Users. Those
+`.miz` files stay under GPL-3.0-or-later or CC-BY-SA-3.0
+(`doc/COPYING.*`). The Lean package is Apache-2.0 (`LICENSE`).
 
 This repository does not run the Mizar checker. The 1–1 Lean queue
 is `mizarccl_translation_order.yaml`. A full local MML clone may be

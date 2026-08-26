@@ -38,8 +38,8 @@ theorems of `Type u` and are not claimed.
 
 The Mizar source is vendored from
 [`MizarSystem/MML`](https://github.com/MizarSystem/MML.git)
-as `vendor/mml/tarski.miz` and is licensed GPL-3.0-or-later or
-CC-BY-SA-3.0 by the Association of Mizar Users. Pin:
+as `vendor/mml/tarski.miz` (AMU dual license). The Lean package is
+Apache-2.0. Pin:
 `vendor/MML_PIN` = `047822c4d814630b28eec8ca6b455e9eb912d5ff`. This
 repository uses the same dual license.
 
