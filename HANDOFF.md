@@ -16,8 +16,8 @@ is abandoned. Do not submit that kit.
 4. Translate the next unused article in `translation_order` 1–1
    (not Mathlib-paraphrase). Palomar headlines come later: one key
    theorem per YELLOW*/WAYBEL* seed.
-5. Old `arxiv.md` / `Yellow17.lean` / Challenge–Solution are the
-   abandoned extract; do not extend them.
+5. Palomar surface is now TARSKI (`Challenge.lean` / `Solution.lean`).
+   The old YELLOW_17 extract is gone; do not restore it.
 
 ## Current status (2026-08-25)
 
@@ -33,7 +33,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `XBOOLE_0`. Abandon the Palomar `yellow17` submission.
+  Next unused: `XBOOLE_0`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -173,3 +173,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - No `axiom` / `admit` / `sorry` in `MizarCCL/`. `#print axioms` of
   public theorems ⊆ `{propext, Classical.choice, Quot.sound}`
   (choice only in regularity / Fraenkel). `lake build` green.
+
+### 2026-08-25 — Palomar surface for TARSKI
+
+- Retargeted Challenge / Solution / `comparator.json` /
+  `formalization.yaml` / `arxiv.md` from the abandoned YELLOW_17
+  extract to the 12 Mizar-labelled TARSKI theorems (`th1`–`th3`,
+  `def1`–`def6`, `sch1`, `upair_comm`, `subset_refl`) and 7
+  constructors. `Solution.lean` imports `MizarCCL.TARSKI`.
+- Lake default targets include `MizarCCL`, `Challenge`, `Solution`.
+- Named `TARSKI.instHasSubset` so Challenge/Solution types match
+  under `pp.explicit`.
+- `scripts/palomar_preflight.sh` passed: types match; Solution /
+  `MizarCCL/*.lean` have no `sorry`; axioms ⊆
+  `{propext, Classical.choice, Quot.sound}`.

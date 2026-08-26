@@ -2,12 +2,13 @@
 version: "v0.4"
 
 project:
-  name: "The Tychonoff theorem (Mizar YELLOW_17)"
+  name: "Tarski–Grothendieck set theory (Mizar TARSKI)"
   description: >-
-    Idiomatic Lean 4 translation of Bartłomiej Skorulski, The Tichonov
-    Theorem (Mizar article YELLOW_17): compactness of an arbitrary
-    dependent product of compact spaces, with the article’s projection,
-    cylinder, and subbasis lemmas. Account: view.pdf.
+    Lean 4 translation of Andrzej Trybulec, Tarski Grothendieck Set
+    Theory (Mizar article TARSKI): extensionality, singleton and
+    unordered pair, inclusion, union, regularity, the Fraenkel scheme,
+    the Kuratowski pair, equipotence, and a universe-polymorphic form
+    of the Tarski–Grothendieck axiom. Account: view.pdf.
   authors:
     - "Lars Warren Ericson"
   license: "GPL-3.0-or-later OR CC-BY-SA-3.0"
@@ -18,122 +19,104 @@ repository:
   role: substantive-development
 
 classification:
-  arxiv: [math.GN, cs.LO]
-  msc2020: ["54B10", "54D30"]
+  arxiv: [math.LO, cs.LO]
+  msc2020: ["03E30", "03B35", "68V20"]
 
 status:
   scope: >-
-    Complete for the compared family. Every theorem and definition in
-    Yellow17.lean is restated in Challenge.lean and listed in
-    comparator.json. The headline results are yellow17_tychonoff_sets,
-    yellow17_tychonoff, and yellow17_tychonoff'. Nothing in the compared
-    statements is imported from a prior Palomar entry.
+    Complete for the compared family. Every Mizar-labelled theorem,
+    definition, and scheme in TARSKI is restated in Challenge.lean
+    and listed in comparator.json. The headline results are th1
+    (extensionality), th2 (regularity), sch1 (Fraenkel), and th3
+    (Tarski–Grothendieck, universe-polymorphic). Nothing in the
+    compared statements is imported from a prior Palomar entry.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Quot.sound", "Classical.choice"]
   main_results:
-    - declaration: "Yellow17.yellow17_tychonoff_sets"
+    - declaration: "TARSKI.th1"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "TARSKI.th2"
       file: "Solution.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "comparator.json"
       literature_dependencies: []
-    - declaration: "Yellow17.yellow17_tychonoff"
+    - declaration: "TARSKI.sch1"
       file: "Solution.lean"
       sorry_count: 0
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "comparator.json"
       literature_dependencies: []
-    - declaration: "Yellow17.yellow17_tychonoff'"
+    - declaration: "TARSKI.th3"
       file: "Solution.lean"
       sorry_count: 0
-      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      axioms: ["propext", "Quot.sound"]
       comparator_config: "comparator.json"
       literature_dependencies: []
 
 fidelity:
   divergences: >-
-    Mizar codes products as set-theoretic functions product F with
-    proj(F,i) and updates f+*(i,xi). The Lean development uses
-    dependent products ∀ i, X i, Function.eval, Function.update, and
-    cylinders eval i ⁻¹' U. Mizar Th8–Th13 are topological-carrier
-    wrappers of Th1–Th7 and are merged. Th14 / Th15 and the headline
-    Tychonoff theorem reuse Mathlib (isCompact_iff_finite_subcover,
-    isCompact_generateFrom, isCompact_univ_pi, Pi.compactSpace) rather
-    than replaying Mizar’s untyped choice-function argument. Mizar
-    assumes a nonempty index set and nonempty factors; the Lean
-    statements allow empty index types. Th15 is formalized in the
-    Alexander “if” direction only.
+    Mizar’s single sort set is formalized as the defined type
+    TarskiSet.{u} (Aczel pre-sets quotiented by extensional
+    equivalence), not as a synonym for Type and not as an axiom.
+    Membership is defined. TARSKI:3 is universe-polymorphic: the
+    collection of all TarskiSet.{u} is an element of TarskiSet.{u+1},
+    contains every lifted u-set, and is closed under subsets. Mizar
+    clauses (iii) (a power-set witness) and (iv) (inaccessibility of
+    a single sort) are not theorems of Type u and are not claimed.
 
 sources:
-  - title: "The Tychonoff theorem (Mizar YELLOW_17)"
+  - title: "Tarski–Grothendieck set theory (Mizar TARSKI)"
     authors: ["Lars Warren Ericson"]
     type: "notes"
-    id: "https://github.com/catskillsresearch/yellow17/blob/main/view.pdf"
+    id: "https://github.com/catskillsresearch/MizarCCL/blob/main/view.pdf"
     relationship: other
     author_endorsement: participated
     note: >-
       Write-up of this formalization (view.pdf; source arxiv.md).
       Challenge.lean is checked against the named Lean theorems, which
-      translate Skorulski’s YELLOW_17 rather than Tychonoff’s 1930 paper
-      in full.
+      translate Trybulec’s TARSKI.
 
-  - title: "The Tichonov Theorem"
-    authors: ["Bartłomiej Skorulski"]
+  - title: "Tarski Grothendieck Set Theory"
+    authors: ["Andrzej Trybulec"]
     type: "article"
     location: >-
-      Formalized Mathematics 9(2), 2001; Mizar article YELLOW_17,
-      received 23 May 2000. Source file mml/yellow17.miz in
+      Mizar article TARSKI, received 1 January 1989. Source file
+      mml/tarski.miz in
       https://github.com/MizarSystem/MML/tree/047822c4d814630b28eec8ca6b455e9eb912d5ff
     relationship: other
     note: >-
       The article being translated. Canonical copy is
-      vendor/MML/mml/yellow17.miz (submodule pin
+      vendor/MML/mml/tarski.miz (submodule pin
       047822c4d814630b28eec8ca6b455e9eb912d5ff). Licensed
       GPL-3.0-or-later OR CC-BY-SA-3.0 by the Association of
       Mizar Users. This package is a Lean 4 translation, not a Mizar
       checker run.
 
-  - title: "A Compendium of Continuous Lattices"
-    authors:
-      - "Gerhard Gierz"
-      - "Karl Heinrich Hofmann"
-      - "Klaus Keimel"
-      - "Jimmie D. Lawson"
-      - "Michael W. Mislove"
-      - "Dana S. Scott"
-    type: "book"
-    location: "Springer-Verlag, Berlin, 1980. §III-1, §VI-2–VI-3"
-    relationship: background
-    note: >-
-      Continuous lattices are compact Hausdorff Lawson semilattices.
-      §III-1 (Lawson topology) obtains compactness of λ(L) from
-      Tychonoff (product of two-point spaces). §VI-2–VI-3 treat
-      compact topological semilattices and the fundamental theorem;
-      products of those spaces are compact by the same theorem.
-      This package formalizes the space-level Tychonoff lemma those
-      sections use, not the Lawson topology itself.
-
-  - title: "Über die topologische Erweiterung von Räumen"
-    authors: ["Andrey Tychonoff"]
+  - title: "Über unerreichbare Kardinalzahlen"
+    authors: ["Alfred Tarski"]
     type: "article"
-    location: "Mathematische Annalen 102 (1930), 544–561"
+    location: "Fundamenta Mathematicae 30 (1938), 68–69"
     relationship: background
     note: >-
-      Original compactness-of-products theorem. Background only; this
-      package formalizes Skorulski’s Mizar development and Mathlib’s
-      typed Tychonoff, not a line-by-line reading of the 1930 paper.
+      Axiom of inaccessible sets. Mizar TARSKI:3 is the English form
+      from Tarski 1939; this 1938 note is the German statement
+      (A1–A4) cited in tarski.miz.
 
-  - title: "Tychonoff's theorem"
-    authors: []
-    type: "folklore"
-    relationship: independently-proves
+  - title: "On Well-ordered Subsets of any Set"
+    authors: ["Alfred Tarski"]
+    type: "article"
+    location: "Fundamenta Mathematicae 32 (1939), 176–183"
+    relationship: background
     note: >-
-      Prior result: an arbitrary product of compact spaces is compact.
-      Independently proved here as Yellow17.yellow17_tychonoff /
-      yellow17_tychonoff_sets, following the Mizar YELLOW_17 outline
-      and Mathlib’s Alexander-subbasis / Tychonoff infrastructure.
-      The theorem is not claimed as original.
+      Source of Mizar clauses (i)–(iv) of TARSKI:3. Background only;
+      this package formalizes Trybulec’s Mizar article over a defined
+      Lean model, not a line-by-line reading of the 1939 paper.
 
 related_formalizations:
   - id: "https://github.com/MizarSystem/MML/tree/047822c4d814630b28eec8ca6b455e9eb912d5ff"
@@ -144,23 +127,15 @@ related_formalizations:
       047822c4d814630b28eec8ca6b455e9eb912d5ff. No Lean was
       taken from MML. See vendor/README.md.
 
-  - id: "https://github.com/catskillsresearch/scott_models"
-    relationship: other
-    note: >-
-      Same-author repository where the Lean translation was first
-      written as a standalone root file Yellow17.lean. This package
-      is the Palomar/arxiv extract of that translation. Not a
-      republication of someone else’s formalization.
-
 automation:
   methods:
     - method: agent
       models: ["Cursor Grok 4.6 (SpaceXAI / Cursor)"]
       framework: "Cursor"
       role: >-
-        Translated yellow17.miz into Yellow17.lean and packaged the
-        Palomar Challenge / Solution / comparator / formalization.yaml
-        kit and the arxiv.md write-up.
+        Translated tarski.miz into MizarCCL/TARSKI.lean and packaged
+        the Palomar Challenge / Solution / comparator /
+        formalization.yaml kit and the arxiv.md write-up.
     - method: manual
       models: []
       role: >-
@@ -170,7 +145,7 @@ automation:
         co-author.
   notes: >-
     Generated Lean was provisional until it compiled under the pinned
-    toolchain (leanprover/lean4:v4.33.0, mathlib v4.33.0).
+    toolchain (leanprover/lean4:v4.33.0). No Mathlib.
 
 review:
   status: self-assessed
@@ -184,94 +159,68 @@ known_gaps: []
 
 limitations:
   - >-
-    Tychonoff’s theorem is prior and is not claimed as original. This
-    package is a Lean translation of Mizar YELLOW_17 plus Mathlib reuse,
-    not a first proof of compactness of products.
+    TARSKI:3 is formalized over Lean universes. Clauses (i)–(ii) and
+    “every u-set is an element of M” are theorems. A power-set
+    witness (iii) and the equipotence form of (iv) need Type u to
+    be inaccessible, which Lean does not assume.
   - >-
     Compared declarations may depend on propext, Quot.sound, and
-    Classical.choice. The headline Tychonoff theorems audit to that
-    set. There is no sorry outside Challenge.lean, no project-defined
-    axiom, and no native_decide.
+    Classical.choice. Regularity and Fraenkel use choice. There is
+    no sorry outside Challenge.lean, no project-defined axiom, and
+    no native_decide.
   - >-
-    Challenge.lean states the family but does not prove it; that is the
-    Comparator convention. Solution.lean re-exports Yellow17.lean.
+    Challenge.lean states the family but does not prove it; that is
+    the Comparator convention. Solution.lean re-exports
+    MizarCCL/TARSKI.lean.
 
 alignment:
-  namespace: "Yellow17"
+  namespace: "TARSKI"
   statements:
-    - source: "Mizar Th1 / Th9 — singleton-cylinder intersection"
-      lean: "eval_singleton_inter_mem"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:1 — extensionality"
+      lean: "th1"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th2 — coordinate update stays in the product box"
-      lean: "update_mem_univ_pi"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 1 — singleton"
+      lean: "def1"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th3 — projection of a nonempty product is surjective"
-      lean: "range_eval_eq_univ"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 2 — unordered pair"
+      lean: "def2"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th4 / Th10 — full cylinder is the product"
-      lean: "preimage_eval_univ"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 2 commutativity"
+      lean: "upair_comm"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th5 / Th11 — update lands in the singleton cylinder"
-      lean: "update_mem_eval_singleton"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 3 — inclusion"
+      lean: "def3"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th8 — projection is evaluation"
-      lean: "eval_apply"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 3 reflexivity"
+      lean: "subset_refl"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Lm1 / Th6 / Th13 — off-axis update preserves cylinder membership"
-      lean: "mem_preimage_eval_update_iff"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 4 — union"
+      lean: "def4"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th7 / Th12 — proper-cylinder inclusion characterization"
-      lean: "eval_singleton_subset_eval_iff"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:2 — regularity"
+      lean: "th2"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar scheme ElProductEx"
-      lean: "elProductEx"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:sch 1 — Fraenkel"
+      lean: "sch1"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th16 — product prebasis elements are open cylinders"
-      lean: "mem_cylinderSubbasis_iff"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 5 — Kuratowski pair"
+      lean: "def5"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Open cylinders generate the product topology"
-      lean: "pi_eq_generateFrom_cylinderSubbasis"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:def 6 — equipotence"
+      lean: "def6"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
-    - source: "Mizar Th17 — singleton cylinder inside a proper prebasis element"
-      lean: "cylinder_of_singleton_subset"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
-      status: proved
-    - source: "Mizar Th18 — factor cover lifts to a cylinder cover"
-      lean: "univ_subset_iUnion_preimage_eval"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
-      status: proved
-    - source: "Mizar Th14 — compactness is the finite-open-subcover property"
-      lean: "isCompact_iff_finite_open_subcover"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
-      status: proved
-    - source: "Mizar Th15 — Alexander subbasis theorem (if direction)"
-      lean: "isCompact_of_subbasis_finite_subcover"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
-      status: proved
-    - source: "Mizar Th19–Th22 — cylinder-cover combinatorics"
-      lean: "exists_point_fiber_not_finitely_covered"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
-      status: proved
-    - source: "Mizar Tichonov Theorem — product of compact sets is compact"
-      lean: "yellow17_tychonoff_sets"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
-      status: proved
-    - source: "Mizar Tichonov Theorem — product of compact spaces is compact"
-      lean: "yellow17_tychonoff"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
-      status: proved
-    - source: "Mizar Tichonov Theorem — implication form"
-      lean: "yellow17_tychonoff'"
-      module: "Challenge (statement), Solution / Yellow17 (proof)"
+    - source: "Mizar TARSKI:3 — Tarski–Grothendieck (i)–(ii), universe-polymorphic"
+      lean: "th3"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved

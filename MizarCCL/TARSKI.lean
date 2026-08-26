@@ -154,7 +154,7 @@ theorem upair_comm (y z : TarskiSet.{u}) : upair y z = upair z y :=
 
 def subset (X Y : TarskiSet.{u}) : Prop := ∀ x, x ∈ X → x ∈ Y
 
-instance : HasSubset TarskiSet.{u} where
+instance instHasSubset : HasSubset TarskiSet.{u} where
   Subset := subset
 
 theorem subset_iff (X Y : TarskiSet.{u}) : X ⊆ Y ↔ ∀ x, x ∈ X → x ∈ Y :=

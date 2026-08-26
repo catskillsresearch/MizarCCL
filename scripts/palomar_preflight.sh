@@ -57,7 +57,7 @@ PALOMAR_QUIET=1 bash scripts/compare_challenge_solution_types.sh
 step "Reject proof holes in Solution sources"
 if rg -n --glob '*.lean' \
     '(^|:=|by)[[:space:]]+sorry([[:space:];]|$)|^[[:space:]]*sorry([[:space:];]|$)' \
-    Yellow17.lean Solution.lean; then
+    MizarCCL/HIDDEN.lean MizarCCL/TARSKI.lean Solution.lean; then
   echo "FAIL: Solution proof sources contain sorry."
   exit 1
 fi

@@ -1,11 +1,12 @@
 name = "MizarCCL"
 version = "0.1.0"
 keywords = ["mizar", "lean4", "set-theory"]
-defaultTargets = ["MizarCCL"]
+defaultTargets = ["MizarCCL", "Challenge", "Solution"]
 
 # 1–1 translation of the used-module closure of YELLOW* / WAYBEL*.
 # One Lean module per Mizar article, imported from MizarCCL.lean.
 # No Mathlib: Mizar set theory is untyped Tarski–Grothendieck.
+# Challenge / Solution are the Palomar surface for TARSKI.
 
 [leanOptions]
 pp.unicode.fun = true
@@ -13,3 +14,9 @@ relaxedAutoImplicit = true
 
 [[lean_lib]]
 name = "MizarCCL"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"

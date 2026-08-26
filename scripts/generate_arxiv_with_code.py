@@ -9,12 +9,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 FILE_ROLES: dict[str, str] = {
-    "Yellow17.lean": "Mizar YELLOW_17 translation (proofs)",
+    "MizarCCL/HIDDEN.lean": "Mizar HIDDEN (TarskiSet, membership)",
+    "MizarCCL/TARSKI.lean": "Mizar TARSKI translation (proofs)",
 }
 
 
 def paper_title(arxiv_text: str) -> str:
-    first = arxiv_text.splitlines()[0] if arxiv_text else "# Yellow17"
+    first = arxiv_text.splitlines()[0] if arxiv_text else "# TARSKI"
     if first.startswith("# "):
         return first[2:].strip()
     return first.strip()
@@ -43,7 +44,7 @@ def strip_lean_code_section(body: str) -> str:
 
 
 def lean_files_from_root() -> list[str]:
-    return ["Yellow17.lean"]
+    return ["MizarCCL/HIDDEN.lean", "MizarCCL/TARSKI.lean"]
 
 
 def sanitize_fence_content(content: str) -> str:

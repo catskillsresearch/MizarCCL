@@ -1,23 +1,22 @@
 /-
-Copyright (c) 2000-2012 Association of Mizar Users
+Copyright (c) 1990-2012 Association of Mizar Users
   (Stowarzyszenie Uzytkownikow Mizara, Bialystok, Poland).
 Copyright (c) 2026 Lars Warren Ericson.
-Released under the GNU General Public License version 3.0 or later,
-or the Creative Commons Attribution-ShareAlike License version 3.0 or later.
-See the notices in `yellow17.miz`.
-Authors: Bartłomiej Skorulski (Mizar), Lars Warren Ericson (Lean 4).
+Released under GNU GPL-3.0-or-later or CC-BY-SA-3.0.
+See `doc/COPYING.*` and the notices in `vendor/MML/mml/tarski.miz`.
+Authors: Andrzej Trybulec (Mizar), Lars Warren Ericson (Lean 4).
 -/
-import Yellow17
+import MizarCCL.TARSKI
 
 /-!
 # Solutions to the Challenge
 
-Importing `Yellow17` supplies every compared declaration from
-`Challenge.lean`, with the same module-qualified names `Yellow17.*` and
-no `sorry`. The proofs are the idiomatic Lean 4 translation of Mizar
-article `YELLOW_17` (Bartłomiej Skorulski, *The Tichonov Theorem*).
+Importing `MizarCCL.TARSKI` supplies every compared declaration from
+`Challenge.lean`, with the same module-qualified names `TARSKI.*` and
+no `sorry`. The proofs are the Lean 4 translation of Mizar article
+`TARSKI` (Andrzej Trybulec, *Tarski Grothendieck Set Theory*).
 
-The headline Tychonoff theorems audit to
-`{propext, Classical.choice, Quot.sound}`. Those axioms are listed in
-`comparator.json`.
+Compared theorems audit to `{propext, Classical.choice, Quot.sound}`.
+Those axioms are listed in `comparator.json`. Choice appears only in
+regularity (`th2`) and Fraenkel (`sch1`).
 -/
