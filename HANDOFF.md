@@ -212,6 +212,8 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 ### 2026-08-25 — Challenge compiles without Lake
 
 - Palomar runs `lean Challenge.lean` with only the stdlib path, so
-  `import MizarCCL.HIDDEN` failed. `Challenge.lean` is now Init-only:
-  it restates `PreSet` / `TarskiSet` / `∈` locally. Types still match
-  Solution. Named `instMembership` in HIDDEN to match.
+  `import MizarCCL.HIDDEN` failed. `Challenge.lean` is now Init-only.
+  Shared carriers are copied verbatim from `HIDDEN.lean` (not
+  `sorry`); Palomar Comparator rejects extra constants whose values
+  differ (`PreSet.instSetoid`). `compare_challenge_solution_types.sh`
+  `#print`s those shared names. Named `instMembership` in HIDDEN.

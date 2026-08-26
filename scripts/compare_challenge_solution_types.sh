@@ -12,6 +12,17 @@ for name in cfg["theorem_names"] + cfg["definition_names"]:
 PY
 )
 
+# Palomar Comparator also rejects shared extra constants whose
+# *values* differ (e.g. a sorry PreSet.instSetoid vs the real one).
+mapfile -t SHARED < <(printf '%s\n' \
+  PreSet \
+  PreSet.Equiv \
+  PreSet.instSetoid \
+  PreSet.Mem \
+  TarskiSet \
+  TarskiSet.mem \
+  instMembership)
+
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
@@ -25,6 +36,9 @@ write_lean() {
     echo "set_option pp.funBinderTypes true"
     for n in "${NAMES[@]}"; do
       echo "#check ${n}"
+    done
+    for n in "${SHARED[@]}"; do
+      echo "#print ${n}"
     done
   } >"${out}"
 }
