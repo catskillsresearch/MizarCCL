@@ -1,7 +1,8 @@
 # MizarCCL translation queue.
 #
-# Full Mizar 7.13.01 / MML 4.181.1147 is vendored at vendor/MML
-# (git submodule, rev 047822c4d814630b28eec8ca6b455e9eb912d5ff).
+# Used Mizar 7.13.01 / MML 4.181.1147 articles are vendored at
+# vendor/mml (ordinary files, pin in vendor/MML_PIN). hidden.miz
+# plus this queue. Not a git submodule.
 # This file is the used-module closure of the 58 YELLOW* / WAYBEL*
 # articles, ordered least-dependent → most-dependent.
 #
@@ -11,12 +12,12 @@
 # schemes. vocabularies (symbol lexicons) and requirements (BOOLE,
 # SUBSET, ...) are omitted; they are not article proofs.
 # TARSKI is the axiomatic root and is not listed in mml.lar; it is
-# placed first. Remaining articles follow vendor/MML/mml.lar.
+# placed first. Remaining articles follow the pin’s mml.lar order.
 #
 # Palomar headlines: one key theorem per YELLOW*/WAYBEL* article.
 # Translate every article in translation_order, not only the seeds.
 #
-source: vendor/MML
+source: vendor/mml
 mml_revision: 047822c4d814630b28eec8ca6b455e9eb912d5ff
 mizar_version: 7.13.01
 mml_version: 4.181.1147
@@ -84,25 +85,25 @@ palomar_seeds:
   - YELLOW_9
 translation_order:
   - name: TARSKI
-    file: vendor/MML/mml/tarski.miz
+    file: vendor/mml/tarski.miz
     role: used
     index: 1
     depends_on: []
   - name: XBOOLE_0
-    file: vendor/MML/mml/xboole_0.miz
+    file: vendor/mml/xboole_0.miz
     role: used
     index: 2
     depends_on:
       - TARSKI
   - name: XBOOLE_1
-    file: vendor/MML/mml/xboole_1.miz
+    file: vendor/mml/xboole_1.miz
     role: used
     index: 3
     depends_on:
       - TARSKI
       - XBOOLE_0
   - name: ENUMSET1
-    file: vendor/MML/mml/enumset1.miz
+    file: vendor/mml/enumset1.miz
     role: used
     index: 4
     depends_on:
@@ -110,7 +111,7 @@ translation_order:
       - XBOOLE_0
       - XBOOLE_1
   - name: XTUPLE_0
-    file: vendor/MML/mml/xtuple_0.miz
+    file: vendor/mml/xtuple_0.miz
     role: used
     index: 5
     depends_on:
@@ -119,7 +120,7 @@ translation_order:
       - XBOOLE_1
       - ENUMSET1
   - name: XREGULAR
-    file: vendor/MML/mml/xregular.miz
+    file: vendor/mml/xregular.miz
     role: used
     index: 6
     depends_on:
@@ -128,7 +129,7 @@ translation_order:
       - XBOOLE_1
       - ENUMSET1
   - name: ZFMISC_1
-    file: vendor/MML/mml/zfmisc_1.miz
+    file: vendor/mml/zfmisc_1.miz
     role: used
     index: 7
     depends_on:
@@ -139,7 +140,7 @@ translation_order:
       - XTUPLE_0
       - XREGULAR
   - name: SUBSET_1
-    file: vendor/MML/mml/subset_1.miz
+    file: vendor/mml/subset_1.miz
     role: used
     index: 8
     depends_on:
@@ -149,7 +150,7 @@ translation_order:
       - ENUMSET1
       - ZFMISC_1
   - name: SETFAM_1
-    file: vendor/MML/mml/setfam_1.miz
+    file: vendor/mml/setfam_1.miz
     role: used
     index: 9
     depends_on:
@@ -160,7 +161,7 @@ translation_order:
       - ZFMISC_1
       - SUBSET_1
   - name: RELAT_1
-    file: vendor/MML/mml/relat_1.miz
+    file: vendor/mml/relat_1.miz
     role: used
     index: 10
     depends_on:
@@ -172,7 +173,7 @@ translation_order:
       - ZFMISC_1
       - SUBSET_1
   - name: FUNCT_1
-    file: vendor/MML/mml/funct_1.miz
+    file: vendor/mml/funct_1.miz
     role: used
     index: 11
     depends_on:
@@ -185,7 +186,7 @@ translation_order:
       - SETFAM_1
       - RELAT_1
   - name: GRFUNC_1
-    file: vendor/MML/mml/grfunc_1.miz
+    file: vendor/mml/grfunc_1.miz
     role: used
     index: 12
     depends_on:
@@ -199,7 +200,7 @@ translation_order:
       - RELAT_1
       - FUNCT_1
   - name: RELAT_2
-    file: vendor/MML/mml/relat_2.miz
+    file: vendor/mml/relat_2.miz
     role: used
     index: 13
     depends_on:
@@ -210,7 +211,7 @@ translation_order:
       - SUBSET_1
       - RELAT_1
   - name: ORDINAL1
-    file: vendor/MML/mml/ordinal1.miz
+    file: vendor/mml/ordinal1.miz
     role: used
     index: 14
     depends_on:
@@ -225,7 +226,7 @@ translation_order:
       - RELAT_1
       - FUNCT_1
   - name: WELLORD1
-    file: vendor/MML/mml/wellord1.miz
+    file: vendor/mml/wellord1.miz
     role: used
     index: 15
     depends_on:
@@ -239,7 +240,7 @@ translation_order:
       - FUNCT_1
       - RELAT_2
   - name: RELSET_1
-    file: vendor/MML/mml/relset_1.miz
+    file: vendor/mml/relset_1.miz
     role: used
     index: 16
     depends_on:
@@ -251,7 +252,7 @@ translation_order:
       - SUBSET_1
       - RELAT_1
   - name: PARTFUN1
-    file: vendor/MML/mml/partfun1.miz
+    file: vendor/mml/partfun1.miz
     role: used
     index: 17
     depends_on:
@@ -267,7 +268,7 @@ translation_order:
       - RELAT_2
       - RELSET_1
   - name: MCART_1
-    file: vendor/MML/mml/mcart_1.miz
+    file: vendor/mml/mcart_1.miz
     role: used
     index: 18
     depends_on:
@@ -281,7 +282,7 @@ translation_order:
       - RELAT_1
       - FUNCT_1
   - name: WELLORD2
-    file: vendor/MML/mml/wellord2.miz
+    file: vendor/mml/wellord2.miz
     role: used
     index: 19
     depends_on:
@@ -298,7 +299,7 @@ translation_order:
       - WELLORD1
       - MCART_1
   - name: FUNCT_2
-    file: vendor/MML/mml/funct_2.miz
+    file: vendor/mml/funct_2.miz
     role: used
     index: 20
     depends_on:
@@ -317,7 +318,7 @@ translation_order:
       - PARTFUN1
       - MCART_1
   - name: BINOP_1
-    file: vendor/MML/mml/binop_1.miz
+    file: vendor/mml/binop_1.miz
     role: used
     index: 21
     depends_on:
@@ -332,7 +333,7 @@ translation_order:
       - PARTFUN1
       - FUNCT_2
   - name: DOMAIN_1
-    file: vendor/MML/mml/domain_1.miz
+    file: vendor/mml/domain_1.miz
     role: used
     index: 22
     depends_on:
@@ -348,7 +349,7 @@ translation_order:
       - PARTFUN1
       - MCART_1
   - name: FUNCT_3
-    file: vendor/MML/mml/funct_3.miz
+    file: vendor/mml/funct_3.miz
     role: used
     index: 23
     depends_on:
@@ -365,7 +366,7 @@ translation_order:
       - BINOP_1
       - DOMAIN_1
   - name: FUNCOP_1
-    file: vendor/MML/mml/funcop_1.miz
+    file: vendor/mml/funcop_1.miz
     role: used
     index: 24
     depends_on:
@@ -386,7 +387,7 @@ translation_order:
       - BINOP_1
       - FUNCT_3
   - name: FUNCT_4
-    file: vendor/MML/mml/funct_4.miz
+    file: vendor/mml/funct_4.miz
     role: used
     index: 25
     depends_on:
@@ -407,7 +408,7 @@ translation_order:
       - BINOP_1
       - FUNCOP_1
   - name: ORDINAL2
-    file: vendor/MML/mml/ordinal2.miz
+    file: vendor/mml/ordinal2.miz
     role: used
     index: 26
     depends_on:
@@ -423,7 +424,7 @@ translation_order:
       - ORDINAL1
       - FUNCOP_1
   - name: ORDINAL3
-    file: vendor/MML/mml/ordinal3.miz
+    file: vendor/mml/ordinal3.miz
     role: used
     index: 27
     depends_on:
@@ -439,7 +440,7 @@ translation_order:
       - ORDINAL1
       - ORDINAL2
   - name: WELLSET1
-    file: vendor/MML/mml/wellset1.miz
+    file: vendor/mml/wellset1.miz
     role: used
     index: 28
     depends_on:
@@ -455,7 +456,7 @@ translation_order:
       - RELAT_2
       - WELLORD1
   - name: MULTOP_1
-    file: vendor/MML/mml/multop_1.miz
+    file: vendor/mml/multop_1.miz
     role: used
     index: 29
     depends_on:
@@ -469,7 +470,7 @@ translation_order:
       - FUNCT_2
       - DOMAIN_1
   - name: SYSREL
-    file: vendor/MML/mml/sysrel.miz
+    file: vendor/mml/sysrel.miz
     role: used
     index: 30
     depends_on:
@@ -481,7 +482,7 @@ translation_order:
       - SUBSET_1
       - RELAT_1
   - name: FINSET_1
-    file: vendor/MML/mml/finset_1.miz
+    file: vendor/mml/finset_1.miz
     role: used
     index: 31
     depends_on:
@@ -507,7 +508,7 @@ translation_order:
       - ORDINAL2
       - ORDINAL3
   - name: FINSUB_1
-    file: vendor/MML/mml/finsub_1.miz
+    file: vendor/mml/finsub_1.miz
     role: used
     index: 32
     depends_on:
@@ -518,7 +519,7 @@ translation_order:
       - SUBSET_1
       - FINSET_1
   - name: ORDERS_1
-    file: vendor/MML/mml/orders_1.miz
+    file: vendor/mml/orders_1.miz
     role: used
     index: 33
     depends_on:
@@ -541,7 +542,7 @@ translation_order:
       - FUNCT_2
       - FINSET_1
   - name: SETWISEO
-    file: vendor/MML/mml/setwiseo.miz
+    file: vendor/mml/setwiseo.miz
     role: used
     index: 34
     depends_on:
@@ -562,7 +563,7 @@ translation_order:
       - FINSET_1
       - FINSUB_1
   - name: FRAENKEL
-    file: vendor/MML/mml/fraenkel.miz
+    file: vendor/mml/fraenkel.miz
     role: used
     index: 35
     depends_on:
@@ -584,7 +585,7 @@ translation_order:
       - FINSUB_1
       - SETWISEO
   - name: CARD_1
-    file: vendor/MML/mml/card_1.miz
+    file: vendor/mml/card_1.miz
     role: used
     index: 36
     depends_on:
@@ -607,7 +608,7 @@ translation_order:
       - ORDINAL3
       - FINSET_1
   - name: FUNCT_5
-    file: vendor/MML/mml/funct_5.miz
+    file: vendor/mml/funct_5.miz
     role: used
     index: 37
     depends_on:
@@ -632,7 +633,7 @@ translation_order:
       - FUNCT_4
       - CARD_1
   - name: PARTFUN2
-    file: vendor/MML/mml/partfun2.miz
+    file: vendor/mml/partfun2.miz
     role: used
     index: 38
     depends_on:
@@ -647,7 +648,7 @@ translation_order:
       - FUNCT_2
       - FUNCOP_1
   - name: CLASSES1
-    file: vendor/MML/mml/classes1.miz
+    file: vendor/mml/classes1.miz
     role: used
     index: 39
     depends_on:
@@ -670,7 +671,7 @@ translation_order:
       - ORDINAL2
       - CARD_1
   - name: PBOOLE
-    file: vendor/MML/mml/pboole.miz
+    file: vendor/mml/pboole.miz
     role: used
     index: 40
     depends_on:
@@ -690,7 +691,7 @@ translation_order:
       - FUNCT_4
       - CLASSES1
   - name: CARD_3
-    file: vendor/MML/mml/card_3.miz
+    file: vendor/mml/card_3.miz
     role: used
     index: 41
     depends_on:
@@ -724,7 +725,7 @@ translation_order:
       - CLASSES1
       - PBOOLE
   - name: FUNCT_6
-    file: vendor/MML/mml/funct_6.miz
+    file: vendor/mml/funct_6.miz
     role: used
     index: 42
     depends_on:
@@ -755,7 +756,7 @@ translation_order:
       - CLASSES1
       - CARD_3
   - name: ARYTM_3
-    file: vendor/MML/mml/arytm_3.miz
+    file: vendor/mml/arytm_3.miz
     role: used
     index: 43
     depends_on:
@@ -769,7 +770,7 @@ translation_order:
       - ORDINAL2
       - ORDINAL3
   - name: ARYTM_2
-    file: vendor/MML/mml/arytm_2.miz
+    file: vendor/mml/arytm_2.miz
     role: used
     index: 44
     depends_on:
@@ -784,7 +785,7 @@ translation_order:
       - ORDINAL3
       - ARYTM_3
   - name: ARYTM_1
-    file: vendor/MML/mml/arytm_1.miz
+    file: vendor/mml/arytm_1.miz
     role: used
     index: 45
     depends_on:
@@ -793,7 +794,7 @@ translation_order:
       - ARYTM_3
       - ARYTM_2
   - name: NUMBERS
-    file: vendor/MML/mml/numbers.miz
+    file: vendor/mml/numbers.miz
     role: used
     index: 46
     depends_on:
@@ -817,7 +818,7 @@ translation_order:
       - ARYTM_3
       - ARYTM_2
   - name: ARYTM_0
-    file: vendor/MML/mml/arytm_0.miz
+    file: vendor/mml/arytm_0.miz
     role: used
     index: 47
     depends_on:
@@ -839,7 +840,7 @@ translation_order:
       - ARYTM_1
       - NUMBERS
   - name: XCMPLX_0
-    file: vendor/MML/mml/xcmplx_0.miz
+    file: vendor/mml/xcmplx_0.miz
     role: used
     index: 48
     depends_on:
@@ -858,7 +859,7 @@ translation_order:
       - NUMBERS
       - ARYTM_0
   - name: XXREAL_0
-    file: vendor/MML/mml/xxreal_0.miz
+    file: vendor/mml/xxreal_0.miz
     role: used
     index: 49
     depends_on:
@@ -875,7 +876,7 @@ translation_order:
       - NUMBERS
       - ARYTM_0
   - name: XREAL_0
-    file: vendor/MML/mml/xreal_0.miz
+    file: vendor/mml/xreal_0.miz
     role: used
     index: 50
     depends_on:
@@ -895,7 +896,7 @@ translation_order:
       - XCMPLX_0
       - XXREAL_0
   - name: XCMPLX_1
-    file: vendor/MML/mml/xcmplx_1.miz
+    file: vendor/mml/xcmplx_1.miz
     role: used
     index: 51
     depends_on:
@@ -906,7 +907,7 @@ translation_order:
       - XXREAL_0
       - XREAL_0
   - name: XREAL_1
-    file: vendor/MML/mml/xreal_1.miz
+    file: vendor/mml/xreal_1.miz
     role: used
     index: 52
     depends_on:
@@ -926,7 +927,7 @@ translation_order:
       - XREAL_0
       - XCMPLX_1
   - name: AXIOMS
-    file: vendor/MML/mml/axioms.miz
+    file: vendor/mml/axioms.miz
     role: used
     index: 53
     depends_on:
@@ -947,7 +948,7 @@ translation_order:
       - XXREAL_0
       - XREAL_0
   - name: REAL_1
-    file: vendor/MML/mml/real_1.miz
+    file: vendor/mml/real_1.miz
     role: used
     index: 54
     depends_on:
@@ -965,7 +966,7 @@ translation_order:
       - XXREAL_0
       - XREAL_0
   - name: SQUARE_1
-    file: vendor/MML/mml/square_1.miz
+    file: vendor/mml/square_1.miz
     role: used
     index: 55
     depends_on:
@@ -982,7 +983,7 @@ translation_order:
       - AXIOMS
       - REAL_1
   - name: NAT_1
-    file: vendor/MML/mml/nat_1.miz
+    file: vendor/mml/nat_1.miz
     role: used
     index: 56
     depends_on:
@@ -1014,7 +1015,7 @@ translation_order:
       - AXIOMS
       - REAL_1
   - name: INT_1
-    file: vendor/MML/mml/int_1.miz
+    file: vendor/mml/int_1.miz
     role: used
     index: 57
     depends_on:
@@ -1040,7 +1041,7 @@ translation_order:
       - REAL_1
       - NAT_1
   - name: RAT_1
-    file: vendor/MML/mml/rat_1.miz
+    file: vendor/mml/rat_1.miz
     role: used
     index: 58
     depends_on:
@@ -1067,7 +1068,7 @@ translation_order:
       - NAT_1
       - INT_1
   - name: MEMBERED
-    file: vendor/MML/mml/membered.miz
+    file: vendor/mml/membered.miz
     role: used
     index: 59
     depends_on:
@@ -1088,7 +1089,7 @@ translation_order:
       - INT_1
       - RAT_1
   - name: VALUED_0
-    file: vendor/MML/mml/valued_0.miz
+    file: vendor/mml/valued_0.miz
     role: used
     index: 60
     depends_on:
@@ -1118,7 +1119,7 @@ translation_order:
       - RAT_1
       - MEMBERED
   - name: COMPLEX1
-    file: vendor/MML/mml/complex1.miz
+    file: vendor/mml/complex1.miz
     role: used
     index: 61
     depends_on:
@@ -1143,7 +1144,7 @@ translation_order:
       - SQUARE_1
       - MEMBERED
   - name: ABSVALUE
-    file: vendor/MML/mml/absvalue.miz
+    file: vendor/mml/absvalue.miz
     role: used
     index: 62
     depends_on:
@@ -1161,7 +1162,7 @@ translation_order:
       - INT_1
       - COMPLEX1
   - name: INT_2
-    file: vendor/MML/mml/int_2.miz
+    file: vendor/mml/int_2.miz
     role: used
     index: 63
     depends_on:
@@ -1180,7 +1181,7 @@ translation_order:
       - COMPLEX1
       - ABSVALUE
   - name: NAT_D
-    file: vendor/MML/mml/nat_d.miz
+    file: vendor/mml/nat_d.miz
     role: used
     index: 64
     depends_on:
@@ -1204,7 +1205,7 @@ translation_order:
       - ABSVALUE
       - INT_2
   - name: BINOP_2
-    file: vendor/MML/mml/binop_2.miz
+    file: vendor/mml/binop_2.miz
     role: used
     index: 65
     depends_on:
@@ -1225,7 +1226,7 @@ translation_order:
       - INT_1
       - RAT_1
   - name: XXREAL_1
-    file: vendor/MML/mml/xxreal_1.miz
+    file: vendor/mml/xxreal_1.miz
     role: used
     index: 66
     depends_on:
@@ -1243,7 +1244,7 @@ translation_order:
       - REAL_1
       - MEMBERED
   - name: CARD_2
-    file: vendor/MML/mml/card_2.miz
+    file: vendor/mml/card_2.miz
     role: used
     index: 67
     depends_on:
@@ -1282,7 +1283,7 @@ translation_order:
       - XREAL_1
       - NAT_1
   - name: XXREAL_2
-    file: vendor/MML/mml/xxreal_2.miz
+    file: vendor/mml/xxreal_2.miz
     role: used
     index: 68
     depends_on:
@@ -1313,7 +1314,7 @@ translation_order:
       - MEMBERED
       - XXREAL_1
   - name: XXREAL_3
-    file: vendor/MML/mml/xxreal_3.miz
+    file: vendor/mml/xxreal_3.miz
     role: used
     index: 69
     depends_on:
@@ -1329,7 +1330,7 @@ translation_order:
       - REAL_1
       - XXREAL_2
   - name: MEMBER_1
-    file: vendor/MML/mml/member_1.miz
+    file: vendor/mml/member_1.miz
     role: used
     index: 70
     depends_on:
@@ -1351,7 +1352,7 @@ translation_order:
       - BINOP_2
       - XXREAL_3
   - name: SUPINF_1
-    file: vendor/MML/mml/supinf_1.miz
+    file: vendor/mml/supinf_1.miz
     role: used
     index: 71
     depends_on:
@@ -1367,7 +1368,7 @@ translation_order:
       - MEMBERED
       - XXREAL_2
   - name: QUIN_1
-    file: vendor/MML/mml/quin_1.miz
+    file: vendor/mml/quin_1.miz
     role: used
     index: 72
     depends_on:
@@ -1382,7 +1383,7 @@ translation_order:
       - SQUARE_1
       - MEMBERED
   - name: REALSET1
-    file: vendor/MML/mml/realset1.miz
+    file: vendor/mml/realset1.miz
     role: used
     index: 73
     depends_on:
@@ -1404,7 +1405,7 @@ translation_order:
       - XXREAL_0
       - MEMBERED
   - name: CLASSES2
-    file: vendor/MML/mml/classes2.miz
+    file: vendor/mml/classes2.miz
     role: used
     index: 74
     depends_on:
@@ -1431,7 +1432,7 @@ translation_order:
       - NUMBERS
       - CARD_2
   - name: ORDINAL4
-    file: vendor/MML/mml/ordinal4.miz
+    file: vendor/mml/ordinal4.miz
     role: used
     index: 75
     depends_on:
@@ -1456,7 +1457,7 @@ translation_order:
       - CARD_2
       - CLASSES2
   - name: FINSEQ_1
-    file: vendor/MML/mml/finseq_1.miz
+    file: vendor/mml/finseq_1.miz
     role: used
     index: 76
     depends_on:
@@ -1491,7 +1492,7 @@ translation_order:
       - INT_1
       - VALUED_0
   - name: RECDEF_1
-    file: vendor/MML/mml/recdef_1.miz
+    file: vendor/mml/recdef_1.miz
     role: used
     index: 77
     depends_on:
@@ -1526,7 +1527,7 @@ translation_order:
       - VALUED_0
       - FINSEQ_1
   - name: VALUED_1
-    file: vendor/MML/mml/valued_1.miz
+    file: vendor/mml/valued_1.miz
     role: used
     index: 78
     depends_on:
@@ -1570,7 +1571,7 @@ translation_order:
       - FINSEQ_1
       - RECDEF_1
   - name: FINSEQ_2
-    file: vendor/MML/mml/finseq_2.miz
+    file: vendor/mml/finseq_2.miz
     role: used
     index: 79
     depends_on:
@@ -1607,7 +1608,7 @@ translation_order:
       - FINSEQ_1
       - VALUED_1
   - name: SEQ_1
-    file: vendor/MML/mml/seq_1.miz
+    file: vendor/mml/seq_1.miz
     role: used
     index: 80
     depends_on:
@@ -1636,7 +1637,7 @@ translation_order:
       - ABSVALUE
       - VALUED_1
   - name: COMSEQ_1
-    file: vendor/MML/mml/comseq_1.miz
+    file: vendor/mml/comseq_1.miz
     role: used
     index: 81
     depends_on:
@@ -1663,7 +1664,7 @@ translation_order:
       - VALUED_1
       - SEQ_1
   - name: XBOOLEAN
-    file: vendor/MML/mml/xboolean.miz
+    file: vendor/mml/xboolean.miz
     role: used
     index: 82
     depends_on:
@@ -1672,7 +1673,7 @@ translation_order:
       - XCMPLX_0
       - SEQ_1
   - name: EQREL_1
-    file: vendor/MML/mml/eqrel_1.miz
+    file: vendor/mml/eqrel_1.miz
     role: used
     index: 83
     depends_on:
@@ -1704,7 +1705,7 @@ translation_order:
       - NAT_1
       - FINSEQ_1
   - name: COMSEQ_2
-    file: vendor/MML/mml/comseq_2.miz
+    file: vendor/mml/comseq_2.miz
     role: used
     index: 84
     depends_on:
@@ -1736,7 +1737,7 @@ translation_order:
       - SEQ_1
       - COMSEQ_1
   - name: SEQ_2
-    file: vendor/MML/mml/seq_2.miz
+    file: vendor/mml/seq_2.miz
     role: used
     index: 85
     depends_on:
@@ -1767,7 +1768,7 @@ translation_order:
       - COMSEQ_1
       - COMSEQ_2
   - name: FINSEQOP
-    file: vendor/MML/mml/finseqop.miz
+    file: vendor/mml/finseqop.miz
     role: used
     index: 86
     depends_on:
@@ -1793,7 +1794,7 @@ translation_order:
       - FINSEQ_2
       - EQREL_1
   - name: FINSEQ_3
-    file: vendor/MML/mml/finseq_3.miz
+    file: vendor/mml/finseq_3.miz
     role: used
     index: 87
     depends_on:
@@ -1838,7 +1839,7 @@ translation_order:
       - EQREL_1
       - FINSEQOP
   - name: MARGREL1
-    file: vendor/MML/mml/margrel1.miz
+    file: vendor/mml/margrel1.miz
     role: used
     index: 88
     depends_on:
@@ -1865,7 +1866,7 @@ translation_order:
       - XBOOLEAN
       - FINSEQ_3
   - name: TOLER_1
-    file: vendor/MML/mml/toler_1.miz
+    file: vendor/mml/toler_1.miz
     role: used
     index: 89
     depends_on:
@@ -1885,7 +1886,7 @@ translation_order:
       - ORDERS_1
       - EQREL_1
   - name: TREES_1
-    file: vendor/MML/mml/trees_1.miz
+    file: vendor/mml/trees_1.miz
     role: used
     index: 90
     depends_on:
@@ -1916,7 +1917,7 @@ translation_order:
       - FINSEQ_2
       - FINSEQ_3
   - name: FINSEQ_4
-    file: vendor/MML/mml/finseq_4.miz
+    file: vendor/mml/finseq_4.miz
     role: used
     index: 91
     depends_on:
@@ -1952,7 +1953,7 @@ translation_order:
       - EQREL_1
       - FINSEQ_3
   - name: FINSOP_1
-    file: vendor/MML/mml/finsop_1.miz
+    file: vendor/mml/finsop_1.miz
     role: used
     index: 92
     depends_on:
@@ -1984,7 +1985,7 @@ translation_order:
       - FINSEQ_3
       - FINSEQ_4
   - name: SETWOP_2
-    file: vendor/MML/mml/setwop_2.miz
+    file: vendor/mml/setwop_2.miz
     role: used
     index: 93
     depends_on:
@@ -2018,7 +2019,7 @@ translation_order:
       - FINSEQOP
       - FINSOP_1
   - name: RFUNCT_1
-    file: vendor/MML/mml/rfunct_1.miz
+    file: vendor/mml/rfunct_1.miz
     role: used
     index: 94
     depends_on:
@@ -2049,7 +2050,7 @@ translation_order:
       - COMSEQ_2
       - SEQ_2
   - name: RVSUM_1
-    file: vendor/MML/mml/rvsum_1.miz
+    file: vendor/mml/rvsum_1.miz
     role: used
     index: 95
     depends_on:
@@ -2092,7 +2093,7 @@ translation_order:
       - SETWOP_2
       - RFUNCT_1
   - name: NEWTON
-    file: vendor/MML/mml/newton.miz
+    file: vendor/mml/newton.miz
     role: used
     index: 96
     depends_on:
@@ -2134,7 +2135,7 @@ translation_order:
       - FINSOP_1
       - RVSUM_1
   - name: CARD_4
-    file: vendor/MML/mml/card_4.miz
+    file: vendor/mml/card_4.miz
     role: used
     index: 97
     depends_on:
@@ -2177,7 +2178,7 @@ translation_order:
       - FINSEQ_2
       - NEWTON
   - name: CARD_5
-    file: vendor/MML/mml/card_5.miz
+    file: vendor/mml/card_5.miz
     role: used
     index: 98
     depends_on:
@@ -2216,7 +2217,7 @@ translation_order:
       - FINSEQ_1
       - CARD_4
   - name: TREES_2
-    file: vendor/MML/mml/trees_2.miz
+    file: vendor/mml/trees_2.miz
     role: used
     index: 99
     depends_on:
@@ -2253,7 +2254,7 @@ translation_order:
       - FINSEQ_2
       - TREES_1
   - name: VALUED_2
-    file: vendor/MML/mml/valued_2.miz
+    file: vendor/mml/valued_2.miz
     role: used
     index: 100
     depends_on:
@@ -2288,7 +2289,7 @@ translation_order:
       - VALUED_1
       - RFUNCT_1
   - name: SEQM_3
-    file: vendor/MML/mml/seqm_3.miz
+    file: vendor/mml/seqm_3.miz
     role: used
     index: 101
     depends_on:
@@ -2325,7 +2326,7 @@ translation_order:
       - FINSEQ_3
       - RFUNCT_1
   - name: RFINSEQ
-    file: vendor/MML/mml/rfinseq.miz
+    file: vendor/mml/rfinseq.miz
     role: used
     index: 102
     depends_on:
@@ -2369,7 +2370,7 @@ translation_order:
       - RVSUM_1
       - SEQM_3
   - name: SEQ_4
-    file: vendor/MML/mml/seq_4.miz
+    file: vendor/mml/seq_4.miz
     role: used
     index: 103
     depends_on:
@@ -2423,7 +2424,7 @@ translation_order:
       - RVSUM_1
       - SEQM_3
   - name: RCOMP_1
-    file: vendor/MML/mml/rcomp_1.miz
+    file: vendor/mml/rcomp_1.miz
     role: used
     index: 104
     depends_on:
@@ -2461,7 +2462,7 @@ translation_order:
       - SEQM_3
       - SEQ_4
   - name: RFUNCT_2
-    file: vendor/MML/mml/rfunct_2.miz
+    file: vendor/mml/rfunct_2.miz
     role: used
     index: 105
     depends_on:
@@ -2497,7 +2498,7 @@ translation_order:
       - SEQ_4
       - RCOMP_1
   - name: PREPOWER
-    file: vendor/MML/mml/prepower.miz
+    file: vendor/mml/prepower.miz
     role: used
     index: 106
     depends_on:
@@ -2539,7 +2540,7 @@ translation_order:
       - SEQ_4
       - RFUNCT_2
   - name: FINSEQ_5
-    file: vendor/MML/mml/finseq_5.miz
+    file: vendor/mml/finseq_5.miz
     role: used
     index: 107
     depends_on:
@@ -2570,7 +2571,7 @@ translation_order:
       - FINSEQ_4
       - RFINSEQ
   - name: REWRITE1
-    file: vendor/MML/mml/rewrite1.miz
+    file: vendor/mml/rewrite1.miz
     role: used
     index: 108
     depends_on:
@@ -2603,7 +2604,7 @@ translation_order:
       - TREES_2
       - FINSEQ_5
   - name: FUNCT_7
-    file: vendor/MML/mml/funct_7.miz
+    file: vendor/mml/funct_7.miz
     role: used
     index: 109
     depends_on:
@@ -2654,7 +2655,7 @@ translation_order:
       - FINSEQ_5
       - REWRITE1
   - name: SCHEME1
-    file: vendor/MML/mml/scheme1.miz
+    file: vendor/mml/scheme1.miz
     role: used
     index: 110
     depends_on:
@@ -2684,7 +2685,7 @@ translation_order:
       - SEQ_1
       - SEQM_3
   - name: ABIAN
-    file: vendor/MML/mml/abian.miz
+    file: vendor/mml/abian.miz
     role: used
     index: 111
     depends_on:
@@ -2721,7 +2722,7 @@ translation_order:
       - FUNCT_7
       - SCHEME1
   - name: POWER
-    file: vendor/MML/mml/power.miz
+    file: vendor/mml/power.miz
     role: used
     index: 112
     depends_on:
@@ -2756,7 +2757,7 @@ translation_order:
       - PREPOWER
       - ABIAN
   - name: SERIES_1
-    file: vendor/MML/mml/series_1.miz
+    file: vendor/mml/series_1.miz
     role: used
     index: 113
     depends_on:
@@ -2797,7 +2798,7 @@ translation_order:
       - ABIAN
       - POWER
   - name: COMSEQ_3
-    file: vendor/MML/mml/comseq_3.miz
+    file: vendor/mml/comseq_3.miz
     role: used
     index: 114
     depends_on:
@@ -2840,7 +2841,7 @@ translation_order:
       - POWER
       - SERIES_1
   - name: SUPINF_2
-    file: vendor/MML/mml/supinf_2.miz
+    file: vendor/mml/supinf_2.miz
     role: used
     index: 115
     depends_on:
@@ -2877,7 +2878,7 @@ translation_order:
       - VALUED_1
       - CARD_4
   - name: TREES_A
-    file: vendor/MML/mml/trees_a.miz
+    file: vendor/mml/trees_a.miz
     role: used
     index: 116
     depends_on:
@@ -2898,7 +2899,7 @@ translation_order:
       - TREES_1
       - TREES_2
   - name: PRE_FF
-    file: vendor/MML/mml/pre_ff.miz
+    file: vendor/mml/pre_ff.miz
     role: used
     index: 117
     depends_on:
@@ -2935,7 +2936,7 @@ translation_order:
       - NEWTON
       - POWER
   - name: TREES_3
-    file: vendor/MML/mml/trees_3.miz
+    file: vendor/mml/trees_3.miz
     role: used
     index: 118
     depends_on:
@@ -2973,7 +2974,7 @@ translation_order:
       - TREES_1
       - TREES_2
   - name: TREES_4
-    file: vendor/MML/mml/trees_4.miz
+    file: vendor/mml/trees_4.miz
     role: used
     index: 119
     depends_on:
@@ -3008,7 +3009,7 @@ translation_order:
       - TREES_2
       - TREES_3
   - name: CARD_FIL
-    file: vendor/MML/mml/card_fil.miz
+    file: vendor/mml/card_fil.miz
     role: used
     index: 120
     depends_on:
@@ -3041,7 +3042,7 @@ translation_order:
       - CARD_5
       - TREES_2
   - name: BINARITH
-    file: vendor/MML/mml/binarith.miz
+    file: vendor/mml/binarith.miz
     role: used
     index: 121
     depends_on:
@@ -3080,7 +3081,7 @@ translation_order:
       - POWER
       - SERIES_1
   - name: PRE_CIRC
-    file: vendor/MML/mml/pre_circ.miz
+    file: vendor/mml/pre_circ.miz
     role: used
     index: 122
     depends_on:
@@ -3134,7 +3135,7 @@ translation_order:
       - TREES_4
       - BINARITH
   - name: FINSEQ_6
-    file: vendor/MML/mml/finseq_6.miz
+    file: vendor/mml/finseq_6.miz
     role: used
     index: 123
     depends_on:
@@ -3171,7 +3172,7 @@ translation_order:
       - FINSEQ_5
       - BINARITH
   - name: MBOOLEAN
-    file: vendor/MML/mml/mboolean.miz
+    file: vendor/mml/mboolean.miz
     role: used
     index: 124
     depends_on:
@@ -3194,7 +3195,7 @@ translation_order:
       - CARD_2
       - PRE_CIRC
   - name: WSIERP_1
-    file: vendor/MML/mml/wsierp_1.miz
+    file: vendor/mml/wsierp_1.miz
     role: used
     index: 125
     depends_on:
@@ -3239,7 +3240,7 @@ translation_order:
       - PRE_FF
       - TREES_4
   - name: PZFMISC1
-    file: vendor/MML/mml/pzfmisc1.miz
+    file: vendor/mml/pzfmisc1.miz
     role: used
     index: 126
     depends_on:
@@ -3257,7 +3258,7 @@ translation_order:
       - PBOOLE
       - MBOOLEAN
   - name: TREES_9
-    file: vendor/MML/mml/trees_9.miz
+    file: vendor/mml/trees_9.miz
     role: used
     index: 127
     depends_on:
@@ -3300,7 +3301,7 @@ translation_order:
       - PRE_CIRC
       - FINSEQ_6
   - name: MSSUBFAM
-    file: vendor/MML/mml/mssubfam.miz
+    file: vendor/mml/mssubfam.miz
     role: used
     index: 128
     depends_on:
@@ -3328,7 +3329,7 @@ translation_order:
       - MBOOLEAN
       - PZFMISC1
   - name: PROB_1
-    file: vendor/MML/mml/prob_1.miz
+    file: vendor/mml/prob_1.miz
     role: used
     index: 129
     depends_on:
@@ -3363,7 +3364,7 @@ translation_order:
       - SEQ_2
       - FUNCT_7
   - name: PROB_2
-    file: vendor/MML/mml/prob_2.miz
+    file: vendor/mml/prob_2.miz
     role: used
     index: 130
     depends_on:
@@ -3395,7 +3396,7 @@ translation_order:
       - SEQ_2
       - PROB_1
   - name: LIMFUNC1
-    file: vendor/MML/mml/limfunc1.miz
+    file: vendor/mml/limfunc1.miz
     role: used
     index: 131
     depends_on:
@@ -3438,7 +3439,7 @@ translation_order:
       - RFUNCT_2
       - PROB_1
   - name: MEASURE1
-    file: vendor/MML/mml/measure1.miz
+    file: vendor/mml/measure1.miz
     role: used
     index: 132
     depends_on:
@@ -3471,7 +3472,7 @@ translation_order:
       - PROB_1
       - PROB_2
   - name: MEASURE2
-    file: vendor/MML/mml/measure2.miz
+    file: vendor/mml/measure2.miz
     role: used
     index: 133
     depends_on:
@@ -3500,7 +3501,7 @@ translation_order:
       - PROB_2
       - MEASURE1
   - name: RFUNCT_3
-    file: vendor/MML/mml/rfunct_3.miz
+    file: vendor/mml/rfunct_3.miz
     role: used
     index: 134
     depends_on:
@@ -3557,7 +3558,7 @@ translation_order:
       - PROB_1
       - LIMFUNC1
   - name: NAT_2
-    file: vendor/MML/mml/nat_2.miz
+    file: vendor/mml/nat_2.miz
     role: used
     index: 135
     depends_on:
@@ -3590,7 +3591,7 @@ translation_order:
       - SERIES_1
       - BINARITH
   - name: ARROW
-    file: vendor/MML/mml/arrow.miz
+    file: vendor/mml/arrow.miz
     role: used
     index: 136
     depends_on:
@@ -3625,7 +3626,7 @@ translation_order:
       - FINSEQ_3
       - FINSEQ_4
   - name: PRE_POLY
-    file: vendor/MML/mml/pre_poly.miz
+    file: vendor/mml/pre_poly.miz
     role: used
     index: 137
     depends_on:
@@ -3694,7 +3695,7 @@ translation_order:
       - NAT_2
       - ARROW
   - name: CARD_LAR
-    file: vendor/MML/mml/card_lar.miz
+    file: vendor/mml/card_lar.miz
     role: used
     index: 138
     depends_on:
@@ -3727,7 +3728,7 @@ translation_order:
       - TREES_2
       - CARD_FIL
   - name: ZF_LANG
-    file: vendor/MML/mml/zf_lang.miz
+    file: vendor/mml/zf_lang.miz
     role: used
     index: 139
     depends_on:
@@ -3747,7 +3748,7 @@ translation_order:
       - NAT_1
       - FINSEQ_1
   - name: ZF_MODEL
-    file: vendor/MML/mml/zf_model.miz
+    file: vendor/mml/zf_model.miz
     role: used
     index: 140
     depends_on:
@@ -3765,7 +3766,7 @@ translation_order:
       - FUNCT_7
       - ZF_LANG
   - name: ZFMODEL1
-    file: vendor/MML/mml/zfmodel1.miz
+    file: vendor/mml/zfmodel1.miz
     role: used
     index: 141
     depends_on:
@@ -3790,7 +3791,7 @@ translation_order:
       - ZF_LANG
       - ZF_MODEL
   - name: ZF_LANG1
-    file: vendor/MML/mml/zf_lang1.miz
+    file: vendor/mml/zf_lang1.miz
     role: used
     index: 142
     depends_on:
@@ -3818,7 +3819,7 @@ translation_order:
       - ZF_MODEL
       - ZFMODEL1
   - name: ZF_REFLE
-    file: vendor/MML/mml/zf_refle.miz
+    file: vendor/mml/zf_refle.miz
     role: used
     index: 143
     depends_on:
@@ -3858,7 +3859,7 @@ translation_order:
       - ZFMODEL1
       - ZF_LANG1
   - name: QC_LANG1
-    file: vendor/MML/mml/qc_lang1.miz
+    file: vendor/mml/qc_lang1.miz
     role: used
     index: 144
     depends_on:
@@ -3888,7 +3889,7 @@ translation_order:
       - NAT_1
       - FINSEQ_1
   - name: QC_LANG2
-    file: vendor/MML/mml/qc_lang2.miz
+    file: vendor/mml/qc_lang2.miz
     role: used
     index: 145
     depends_on:
@@ -3912,7 +3913,7 @@ translation_order:
       - FINSEQ_1
       - QC_LANG1
   - name: QC_LANG3
-    file: vendor/MML/mml/qc_lang3.miz
+    file: vendor/mml/qc_lang3.miz
     role: used
     index: 146
     depends_on:
@@ -3933,7 +3934,7 @@ translation_order:
       - QC_LANG1
       - QC_LANG2
   - name: CQC_LANG
-    file: vendor/MML/mml/cqc_lang.miz
+    file: vendor/mml/cqc_lang.miz
     role: used
     index: 147
     depends_on:
@@ -3964,7 +3965,7 @@ translation_order:
       - QC_LANG2
       - QC_LANG3
   - name: CQC_THE1
-    file: vendor/MML/mml/cqc_the1.miz
+    file: vendor/mml/cqc_the1.miz
     role: used
     index: 148
     depends_on:
@@ -3992,7 +3993,7 @@ translation_order:
       - QC_LANG1
       - CQC_LANG
   - name: VALUAT_1
-    file: vendor/MML/mml/valuat_1.miz
+    file: vendor/mml/valuat_1.miz
     role: used
     index: 149
     depends_on:
@@ -4021,7 +4022,7 @@ translation_order:
       - QC_LANG3
       - CQC_LANG
   - name: ZF_FUND1
-    file: vendor/MML/mml/zf_fund1.miz
+    file: vendor/mml/zf_fund1.miz
     role: used
     index: 150
     depends_on:
@@ -4061,7 +4062,7 @@ translation_order:
       - ZF_LANG1
       - ZF_REFLE
   - name: CQC_SIM1
-    file: vendor/MML/mml/cqc_sim1.miz
+    file: vendor/mml/cqc_sim1.miz
     role: used
     index: 151
     depends_on:
@@ -4106,7 +4107,7 @@ translation_order:
       - QC_LANG3
       - CQC_LANG
   - name: STRUCT_0
-    file: vendor/MML/mml/struct_0.miz
+    file: vendor/mml/struct_0.miz
     role: used
     index: 152
     depends_on:
@@ -4134,7 +4135,7 @@ translation_order:
       - CARD_5
       - FUNCT_7
   - name: ALGSTR_0
-    file: vendor/MML/mml/algstr_0.miz
+    file: vendor/mml/algstr_0.miz
     role: used
     index: 153
     depends_on:
@@ -4148,7 +4149,7 @@ translation_order:
       - FUNCT_5
       - STRUCT_0
   - name: PRE_TOPC
-    file: vendor/MML/mml/pre_topc.miz
+    file: vendor/mml/pre_topc.miz
     role: used
     index: 154
     depends_on:
@@ -4168,7 +4169,7 @@ translation_order:
       - CARD_1
       - STRUCT_0
   - name: ORDERS_2
-    file: vendor/MML/mml/orders_2.miz
+    file: vendor/mml/orders_2.miz
     role: used
     index: 155
     depends_on:
@@ -4192,7 +4193,7 @@ translation_order:
       - STRUCT_0
       - PRE_TOPC
   - name: GRAPH_1
-    file: vendor/MML/mml/graph_1.miz
+    file: vendor/mml/graph_1.miz
     role: used
     index: 156
     depends_on:
@@ -4221,7 +4222,7 @@ translation_order:
       - FINSEQ_3
       - STRUCT_0
   - name: CAT_1
-    file: vendor/MML/mml/cat_1.miz
+    file: vendor/mml/cat_1.miz
     role: used
     index: 157
     depends_on:
@@ -4242,7 +4243,7 @@ translation_order:
       - STRUCT_0
       - GRAPH_1
   - name: LATTICES
-    file: vendor/MML/mml/lattices.miz
+    file: vendor/mml/lattices.miz
     role: used
     index: 158
     depends_on:
@@ -4255,7 +4256,7 @@ translation_order:
       - CARD_1
       - STRUCT_0
   - name: TOPS_1
-    file: vendor/MML/mml/tops_1.miz
+    file: vendor/mml/tops_1.miz
     role: used
     index: 159
     depends_on:
@@ -4267,7 +4268,7 @@ translation_order:
       - STRUCT_0
       - PRE_TOPC
   - name: CONNSP_1
-    file: vendor/MML/mml/connsp_1.miz
+    file: vendor/mml/connsp_1.miz
     role: used
     index: 160
     depends_on:
@@ -4286,7 +4287,7 @@ translation_order:
       - PRE_TOPC
       - TOPS_1
   - name: TOPS_2
-    file: vendor/MML/mml/tops_2.miz
+    file: vendor/mml/tops_2.miz
     role: used
     index: 161
     depends_on:
@@ -4317,7 +4318,7 @@ translation_order:
       - TOPS_1
       - CONNSP_1
   - name: RLVECT_1
-    file: vendor/MML/mml/rlvect_1.miz
+    file: vendor/mml/rlvect_1.miz
     role: used
     index: 162
     depends_on:
@@ -4351,7 +4352,7 @@ translation_order:
       - STRUCT_0
       - ALGSTR_0
   - name: RLSUB_1
-    file: vendor/MML/mml/rlsub_1.miz
+    file: vendor/mml/rlsub_1.miz
     role: used
     index: 163
     depends_on:
@@ -4379,7 +4380,7 @@ translation_order:
       - ALGSTR_0
       - RLVECT_1
   - name: GROUP_1
-    file: vendor/MML/mml/group_1.miz
+    file: vendor/mml/group_1.miz
     role: used
     index: 164
     depends_on:
@@ -4416,7 +4417,7 @@ translation_order:
       - ALGSTR_0
       - RLVECT_1
   - name: VECTSP_1
-    file: vendor/MML/mml/vectsp_1.miz
+    file: vendor/mml/vectsp_1.miz
     role: used
     index: 165
     depends_on:
@@ -4444,7 +4445,7 @@ translation_order:
       - RLVECT_1
       - GROUP_1
   - name: ALGSTR_1
-    file: vendor/MML/mml/algstr_1.miz
+    file: vendor/mml/algstr_1.miz
     role: used
     index: 166
     depends_on:
@@ -4468,7 +4469,7 @@ translation_order:
       - GROUP_1
       - VECTSP_1
   - name: COMPTS_1
-    file: vendor/MML/mml/compts_1.miz
+    file: vendor/mml/compts_1.miz
     role: used
     index: 167
     depends_on:
@@ -4493,7 +4494,7 @@ translation_order:
       - TOPS_1
       - TOPS_2
   - name: RLSUB_2
-    file: vendor/MML/mml/rlsub_2.miz
+    file: vendor/mml/rlsub_2.miz
     role: used
     index: 168
     depends_on:
@@ -4523,7 +4524,7 @@ translation_order:
       - RLSUB_1
       - VECTSP_1
   - name: MIDSP_1
-    file: vendor/MML/mml/midsp_1.miz
+    file: vendor/mml/midsp_1.miz
     role: used
     index: 169
     depends_on:
@@ -4543,7 +4544,7 @@ translation_order:
       - ALGSTR_0
       - RLVECT_1
   - name: FUNCSDOM
-    file: vendor/MML/mml/funcsdom.miz
+    file: vendor/mml/funcsdom.miz
     role: used
     index: 170
     depends_on:
@@ -4573,7 +4574,7 @@ translation_order:
       - GROUP_1
       - VECTSP_1
   - name: VECTSP_2
-    file: vendor/MML/mml/vectsp_2.miz
+    file: vendor/mml/vectsp_2.miz
     role: used
     index: 171
     depends_on:
@@ -4593,7 +4594,7 @@ translation_order:
       - VECTSP_1
       - FUNCSDOM
   - name: FILTER_0
-    file: vendor/MML/mml/filter_0.miz
+    file: vendor/mml/filter_0.miz
     role: used
     index: 172
     depends_on:
@@ -4622,7 +4623,7 @@ translation_order:
       - LATTICES
       - RLSUB_2
   - name: LATTICE2
-    file: vendor/MML/mml/lattice2.miz
+    file: vendor/mml/lattice2.miz
     role: used
     index: 173
     depends_on:
@@ -4650,7 +4651,7 @@ translation_order:
       - RLSUB_2
       - FILTER_0
   - name: RLVECT_2
-    file: vendor/MML/mml/rlvect_2.miz
+    file: vendor/mml/rlvect_2.miz
     role: used
     index: 174
     depends_on:
@@ -4697,7 +4698,7 @@ translation_order:
       - RLSUB_2
       - VECTSP_2
   - name: METRIC_1
-    file: vendor/MML/mml/metric_1.miz
+    file: vendor/mml/metric_1.miz
     role: used
     index: 175
     depends_on:
@@ -4732,7 +4733,7 @@ translation_order:
       - VALUED_1
       - STRUCT_0
   - name: REAL_LAT
-    file: vendor/MML/mml/real_lat.miz
+    file: vendor/mml/real_lat.miz
     role: used
     index: 176
     depends_on:
@@ -4753,7 +4754,7 @@ translation_order:
       - LATTICES
       - FUNCSDOM
   - name: CAT_2
-    file: vendor/MML/mml/cat_2.miz
+    file: vendor/mml/cat_2.miz
     role: used
     index: 177
     depends_on:
@@ -4781,7 +4782,7 @@ translation_order:
       - GRAPH_1
       - CAT_1
   - name: RLVECT_3
-    file: vendor/MML/mml/rlvect_3.miz
+    file: vendor/mml/rlvect_3.miz
     role: used
     index: 178
     depends_on:
@@ -4816,7 +4817,7 @@ translation_order:
       - RLSUB_2
       - RLVECT_2
   - name: GROUP_2
-    file: vendor/MML/mml/group_2.miz
+    file: vendor/mml/group_2.miz
     role: used
     index: 179
     depends_on:
@@ -4854,7 +4855,7 @@ translation_order:
       - ALGSTR_0
       - GROUP_1
   - name: VECTSP_4
-    file: vendor/MML/mml/vectsp_4.miz
+    file: vendor/mml/vectsp_4.miz
     role: used
     index: 180
     depends_on:
@@ -4878,7 +4879,7 @@ translation_order:
       - VECTSP_1
       - VECTSP_2
   - name: VECTSP_5
-    file: vendor/MML/mml/vectsp_5.miz
+    file: vendor/mml/vectsp_5.miz
     role: used
     index: 181
     depends_on:
@@ -4907,7 +4908,7 @@ translation_order:
       - VECTSP_2
       - VECTSP_4
   - name: NORMSP_0
-    file: vendor/MML/mml/normsp_0.miz
+    file: vendor/mml/normsp_0.miz
     role: used
     index: 182
     depends_on:
@@ -4931,7 +4932,7 @@ translation_order:
       - SEQ_1
       - STRUCT_0
   - name: NORMSP_1
-    file: vendor/MML/mml/normsp_1.miz
+    file: vendor/mml/normsp_1.miz
     role: used
     index: 183
     depends_on:
@@ -4968,7 +4969,7 @@ translation_order:
       - RLSUB_1
       - NORMSP_0
   - name: VFUNCT_1
-    file: vendor/MML/mml/vfunct_1.miz
+    file: vendor/mml/vfunct_1.miz
     role: used
     index: 184
     depends_on:
@@ -5003,7 +5004,7 @@ translation_order:
       - NORMSP_0
       - NORMSP_1
   - name: VECTSP_6
-    file: vendor/MML/mml/vectsp_6.miz
+    file: vendor/mml/vectsp_6.miz
     role: used
     index: 185
     depends_on:
@@ -5044,7 +5045,7 @@ translation_order:
       - VECTSP_4
       - VFUNCT_1
   - name: VECTSP_7
-    file: vendor/MML/mml/vectsp_7.miz
+    file: vendor/mml/vectsp_7.miz
     role: used
     index: 186
     depends_on:
@@ -5073,7 +5074,7 @@ translation_order:
       - VECTSP_5
       - VECTSP_6
   - name: GROUP_3
-    file: vendor/MML/mml/group_3.miz
+    file: vendor/mml/group_3.miz
     role: used
     index: 187
     depends_on:
@@ -5111,7 +5112,7 @@ translation_order:
       - GROUP_1
       - GROUP_2
   - name: GROUP_4
-    file: vendor/MML/mml/group_4.miz
+    file: vendor/mml/group_4.miz
     role: used
     index: 188
     depends_on:
@@ -5158,7 +5159,7 @@ translation_order:
       - GROUP_2
       - GROUP_3
   - name: GR_CY_1
-    file: vendor/MML/mml/gr_cy_1.miz
+    file: vendor/mml/gr_cy_1.miz
     role: used
     index: 189
     depends_on:
@@ -5206,7 +5207,7 @@ translation_order:
       - GROUP_2
       - GROUP_4
   - name: REALSET2
-    file: vendor/MML/mml/realset2.miz
+    file: vendor/mml/realset2.miz
     role: used
     index: 190
     depends_on:
@@ -5237,7 +5238,7 @@ translation_order:
       - GROUP_1
       - VECTSP_1
   - name: CONNSP_2
-    file: vendor/MML/mml/connsp_2.miz
+    file: vendor/mml/connsp_2.miz
     role: used
     index: 191
     depends_on:
@@ -5254,7 +5255,7 @@ translation_order:
       - CONNSP_1
       - COMPTS_1
   - name: METRIC_3
-    file: vendor/MML/mml/metric_3.miz
+    file: vendor/mml/metric_3.miz
     role: used
     index: 192
     depends_on:
@@ -5282,7 +5283,7 @@ translation_order:
       - STRUCT_0
       - METRIC_1
   - name: OPPCAT_1
-    file: vendor/MML/mml/oppcat_1.miz
+    file: vendor/mml/oppcat_1.miz
     role: used
     index: 193
     depends_on:
@@ -5301,7 +5302,7 @@ translation_order:
       - GRAPH_1
       - CAT_1
   - name: FILTER_1
-    file: vendor/MML/mml/filter_1.miz
+    file: vendor/mml/filter_1.miz
     role: used
     index: 194
     depends_on:
@@ -5328,7 +5329,7 @@ translation_order:
       - FILTER_0
       - LATTICE2
   - name: NAT_LAT
-    file: vendor/MML/mml/nat_lat.miz
+    file: vendor/mml/nat_lat.miz
     role: used
     index: 195
     depends_on:
@@ -5357,7 +5358,7 @@ translation_order:
       - STRUCT_0
       - LATTICES
   - name: GROUP_5
-    file: vendor/MML/mml/group_5.miz
+    file: vendor/mml/group_5.miz
     role: used
     index: 196
     depends_on:
@@ -5394,7 +5395,7 @@ translation_order:
       - GROUP_3
       - GROUP_4
   - name: CAT_3
-    file: vendor/MML/mml/cat_3.miz
+    file: vendor/mml/cat_3.miz
     role: used
     index: 197
     depends_on:
@@ -5414,7 +5415,7 @@ translation_order:
       - CAT_1
       - OPPCAT_1
   - name: NATTRA_1
-    file: vendor/MML/mml/nattra_1.miz
+    file: vendor/mml/nattra_1.miz
     role: used
     index: 198
     depends_on:
@@ -5447,7 +5448,7 @@ translation_order:
       - CAT_2
       - CAT_3
   - name: MATRIX_1
-    file: vendor/MML/mml/matrix_1.miz
+    file: vendor/mml/matrix_1.miz
     role: used
     index: 199
     depends_on:
@@ -5483,7 +5484,7 @@ translation_order:
       - RLVECT_1
       - VECTSP_1
   - name: PCOMPS_1
-    file: vendor/MML/mml/pcomps_1.miz
+    file: vendor/mml/pcomps_1.miz
     role: used
     index: 200
     depends_on:
@@ -5516,7 +5517,7 @@ translation_order:
       - COMPTS_1
       - METRIC_1
   - name: MIDSP_2
-    file: vendor/MML/mml/midsp_2.miz
+    file: vendor/mml/midsp_2.miz
     role: used
     index: 201
     depends_on:
@@ -5534,7 +5535,7 @@ translation_order:
       - VECTSP_1
       - MIDSP_1
   - name: ALI2
-    file: vendor/MML/mml/ali2.miz
+    file: vendor/mml/ali2.miz
     role: used
     index: 202
     depends_on:
@@ -5572,7 +5573,7 @@ translation_order:
       - METRIC_1
       - PCOMPS_1
   - name: BHSP_1
-    file: vendor/MML/mml/bhsp_1.miz
+    file: vendor/mml/bhsp_1.miz
     role: used
     index: 203
     depends_on:
@@ -5611,7 +5612,7 @@ translation_order:
       - NORMSP_1
       - VFUNCT_1
   - name: BHSP_2
-    file: vendor/MML/mml/bhsp_2.miz
+    file: vendor/mml/bhsp_2.miz
     role: used
     index: 204
     depends_on:
@@ -5648,7 +5649,7 @@ translation_order:
       - VFUNCT_1
       - BHSP_1
   - name: ENS_1
-    file: vendor/MML/mml/ens_1.miz
+    file: vendor/mml/ens_1.miz
     role: used
     index: 205
     depends_on:
@@ -5678,7 +5679,7 @@ translation_order:
       - CAT_2
       - OPPCAT_1
   - name: BORSUK_1
-    file: vendor/MML/mml/borsuk_1.miz
+    file: vendor/mml/borsuk_1.miz
     role: used
     index: 206
     depends_on:
@@ -5718,7 +5719,7 @@ translation_order:
       - CONNSP_2
       - PCOMPS_1
   - name: TBSP_1
-    file: vendor/MML/mml/tbsp_1.miz
+    file: vendor/mml/tbsp_1.miz
     role: used
     index: 207
     depends_on:
@@ -5760,7 +5761,7 @@ translation_order:
       - PCOMPS_1
       - ALI2
   - name: GRCAT_1
-    file: vendor/MML/mml/grcat_1.miz
+    file: vendor/mml/grcat_1.miz
     role: used
     index: 208
     depends_on:
@@ -5795,7 +5796,7 @@ translation_order:
       - CAT_2
       - MIDSP_2
   - name: GROUP_6
-    file: vendor/MML/mml/group_6.miz
+    file: vendor/mml/group_6.miz
     role: used
     index: 209
     depends_on:
@@ -5838,7 +5839,7 @@ translation_order:
       - REALSET2
       - GROUP_5
   - name: MATRIX_2
-    file: vendor/MML/mml/matrix_2.miz
+    file: vendor/mml/matrix_2.miz
     role: used
     index: 210
     depends_on:
@@ -5876,7 +5877,7 @@ translation_order:
       - GROUP_4
       - MATRIX_1
   - name: MONOID_0
-    file: vendor/MML/mml/monoid_0.miz
+    file: vendor/mml/monoid_0.miz
     role: used
     index: 211
     depends_on:
@@ -5918,7 +5919,7 @@ translation_order:
       - VECTSP_2
       - GR_CY_1
   - name: RUSUB_1
-    file: vendor/MML/mml/rusub_1.miz
+    file: vendor/mml/rusub_1.miz
     role: used
     index: 212
     depends_on:
@@ -5951,7 +5952,7 @@ translation_order:
       - RLSUB_1
       - BHSP_1
   - name: RUSUB_2
-    file: vendor/MML/mml/rusub_2.miz
+    file: vendor/mml/rusub_2.miz
     role: used
     index: 213
     depends_on:
@@ -5982,7 +5983,7 @@ translation_order:
       - BHSP_1
       - RUSUB_1
   - name: RLVECT_4
-    file: vendor/MML/mml/rlvect_4.miz
+    file: vendor/mml/rlvect_4.miz
     role: used
     index: 214
     depends_on:
@@ -6015,7 +6016,7 @@ translation_order:
       - RLVECT_2
       - RLVECT_3
   - name: RUSUB_3
-    file: vendor/MML/mml/rusub_3.miz
+    file: vendor/mml/rusub_3.miz
     role: used
     index: 215
     depends_on:
@@ -6060,7 +6061,7 @@ translation_order:
       - RUSUB_2
       - RLVECT_4
   - name: RLVECT_5
-    file: vendor/MML/mml/rlvect_5.miz
+    file: vendor/mml/rlvect_5.miz
     role: used
     index: 216
     depends_on:
@@ -6102,7 +6103,7 @@ translation_order:
       - RLVECT_2
       - RLVECT_3
   - name: RUSUB_4
-    file: vendor/MML/mml/rusub_4.miz
+    file: vendor/mml/rusub_4.miz
     role: used
     index: 217
     depends_on:
@@ -6146,7 +6147,7 @@ translation_order:
       - RUSUB_3
       - RLVECT_5
   - name: T_0TOPSP
-    file: vendor/MML/mml/t_0topsp.miz
+    file: vendor/mml/t_0topsp.miz
     role: used
     index: 218
     depends_on:
@@ -6169,7 +6170,7 @@ translation_order:
       - TOPS_2
       - BORSUK_1
   - name: CANTOR_1
-    file: vendor/MML/mml/cantor_1.miz
+    file: vendor/mml/cantor_1.miz
     role: used
     index: 219
     depends_on:
@@ -6197,7 +6198,7 @@ translation_order:
       - PRE_TOPC
       - TOPS_2
   - name: TSEP_1
-    file: vendor/MML/mml/tsep_1.miz
+    file: vendor/mml/tsep_1.miz
     role: used
     index: 220
     depends_on:
@@ -6212,7 +6213,7 @@ translation_order:
       - TOPS_2
       - BORSUK_1
   - name: TDLAT_1
-    file: vendor/MML/mml/tdlat_1.miz
+    file: vendor/mml/tdlat_1.miz
     role: used
     index: 221
     depends_on:
@@ -6239,7 +6240,7 @@ translation_order:
       - LATTICE2
       - NAT_LAT
   - name: LATTICE3
-    file: vendor/MML/mml/lattice3.miz
+    file: vendor/mml/lattice3.miz
     role: used
     index: 222
     depends_on:
@@ -6268,7 +6269,7 @@ translation_order:
       - LATTICE2
       - FILTER_1
   - name: TDLAT_2
-    file: vendor/MML/mml/tdlat_2.miz
+    file: vendor/mml/tdlat_2.miz
     role: used
     index: 223
     depends_on:
@@ -6300,7 +6301,7 @@ translation_order:
       - TDLAT_1
       - LATTICE3
   - name: TDLAT_3
-    file: vendor/MML/mml/tdlat_3.miz
+    file: vendor/mml/tdlat_3.miz
     role: used
     index: 224
     depends_on:
@@ -6325,7 +6326,7 @@ translation_order:
       - LATTICE3
       - TDLAT_2
   - name: TOPS_3
-    file: vendor/MML/mml/tops_3.miz
+    file: vendor/mml/tops_3.miz
     role: used
     index: 225
     depends_on:
@@ -6341,7 +6342,7 @@ translation_order:
       - TSEP_1
       - TDLAT_3
   - name: URYSOHN1
-    file: vendor/MML/mml/urysohn1.miz
+    file: vendor/mml/urysohn1.miz
     role: used
     index: 226
     depends_on:
@@ -6377,7 +6378,7 @@ translation_order:
       - COMPTS_1
       - CONNSP_2
   - name: UNIALG_1
-    file: vendor/MML/mml/unialg_1.miz
+    file: vendor/mml/unialg_1.miz
     role: used
     index: 227
     depends_on:
@@ -6400,7 +6401,7 @@ translation_order:
       - MARGREL1
       - STRUCT_0
   - name: UNIALG_2
-    file: vendor/MML/mml/unialg_2.miz
+    file: vendor/mml/unialg_2.miz
     role: used
     index: 228
     depends_on:
@@ -6429,7 +6430,7 @@ translation_order:
       - LATTICES
       - UNIALG_1
   - name: LANG1
-    file: vendor/MML/mml/lang1.miz
+    file: vendor/mml/lang1.miz
     role: used
     index: 229
     depends_on:
@@ -6460,7 +6461,7 @@ translation_order:
       - PRE_POLY
       - STRUCT_0
   - name: DTCONSTR
-    file: vendor/MML/mml/dtconstr.miz
+    file: vendor/mml/dtconstr.miz
     role: used
     index: 230
     depends_on:
@@ -6508,7 +6509,7 @@ translation_order:
       - STRUCT_0
       - LANG1
   - name: PRALG_1
-    file: vendor/MML/mml/pralg_1.miz
+    file: vendor/mml/pralg_1.miz
     role: used
     index: 231
     depends_on:
@@ -6545,7 +6546,7 @@ translation_order:
       - UNIALG_2
       - DTCONSTR
   - name: YELLOW_0
-    file: vendor/MML/mml/yellow_0.miz
+    file: vendor/mml/yellow_0.miz
     role: seed
     index: 232
     depends_on:
@@ -6569,7 +6570,7 @@ translation_order:
       - REALSET2
       - LATTICE3
   - name: CAT_5
-    file: vendor/MML/mml/cat_5.miz
+    file: vendor/mml/cat_5.miz
     role: used
     index: 233
     depends_on:
@@ -6598,7 +6599,7 @@ translation_order:
       - CAT_2
       - NATTRA_1
   - name: ALTCAT_1
-    file: vendor/MML/mml/altcat_1.miz
+    file: vendor/mml/altcat_1.miz
     role: used
     index: 234
     depends_on:
@@ -6625,7 +6626,7 @@ translation_order:
       - STRUCT_0
       - REALSET2
   - name: ORDERS_3
-    file: vendor/MML/mml/orders_3.miz
+    file: vendor/mml/orders_3.miz
     role: used
     index: 235
     depends_on:
@@ -6657,7 +6658,7 @@ translation_order:
       - CAT_5
       - ALTCAT_1
   - name: YELLOW_1
-    file: vendor/MML/mml/yellow_1.miz
+    file: vendor/mml/yellow_1.miz
     role: seed
     index: 236
     depends_on:
@@ -6693,7 +6694,7 @@ translation_order:
       - YELLOW_0
       - ORDERS_3
   - name: WAYBEL_0
-    file: vendor/MML/mml/waybel_0.miz
+    file: vendor/mml/waybel_0.miz
     role: seed
     index: 237
     depends_on:
@@ -6720,7 +6721,7 @@ translation_order:
       - YELLOW_0
       - ORDERS_3
   - name: QUANTAL1
-    file: vendor/MML/mml/quantal1.miz
+    file: vendor/mml/quantal1.miz
     role: used
     index: 238
     depends_on:
@@ -6748,7 +6749,7 @@ translation_order:
       - MONOID_0
       - LATTICE3
   - name: YELLOW_2
-    file: vendor/MML/mml/yellow_2.miz
+    file: vendor/mml/yellow_2.miz
     role: seed
     index: 239
     depends_on:
@@ -6775,7 +6776,7 @@ translation_order:
       - WAYBEL_0
       - QUANTAL1
   - name: WAYBEL_1
-    file: vendor/MML/mml/waybel_1.miz
+    file: vendor/mml/waybel_1.miz
     role: seed
     index: 240
     depends_on:
@@ -6802,7 +6803,7 @@ translation_order:
       - QUANTAL1
       - YELLOW_2
   - name: YELLOW_3
-    file: vendor/MML/mml/yellow_3.miz
+    file: vendor/mml/yellow_3.miz
     role: seed
     index: 241
     depends_on:
@@ -6829,7 +6830,7 @@ translation_order:
       - WAYBEL_0
       - YELLOW_2
   - name: YELLOW_4
-    file: vendor/MML/mml/yellow_4.miz
+    file: vendor/mml/yellow_4.miz
     role: seed
     index: 242
     depends_on:
@@ -6847,7 +6848,7 @@ translation_order:
       - YELLOW_2
       - YELLOW_3
   - name: TMAP_1
-    file: vendor/MML/mml/tmap_1.miz
+    file: vendor/mml/tmap_1.miz
     role: used
     index: 243
     depends_on:
@@ -6874,7 +6875,7 @@ translation_order:
       - BORSUK_1
       - TSEP_1
   - name: TEX_1
-    file: vendor/MML/mml/tex_1.miz
+    file: vendor/mml/tex_1.miz
     role: used
     index: 244
     depends_on:
@@ -6898,7 +6899,7 @@ translation_order:
       - TOPS_3
       - TMAP_1
   - name: WAYBEL_2
-    file: vendor/MML/mml/waybel_2.miz
+    file: vendor/mml/waybel_2.miz
     role: seed
     index: 245
     depends_on:
@@ -6934,7 +6935,7 @@ translation_order:
       - YELLOW_3
       - YELLOW_4
   - name: WAYBEL_3
-    file: vendor/MML/mml/waybel_3.miz
+    file: vendor/mml/waybel_3.miz
     role: seed
     index: 246
     depends_on:
@@ -6981,7 +6982,7 @@ translation_order:
       - YELLOW_4
       - WAYBEL_2
   - name: TEX_2
-    file: vendor/MML/mml/tex_2.miz
+    file: vendor/mml/tex_2.miz
     role: used
     index: 247
     depends_on:
@@ -7011,7 +7012,7 @@ translation_order:
       - TOPS_3
       - TEX_1
   - name: TEX_4
-    file: vendor/MML/mml/tex_4.miz
+    file: vendor/mml/tex_4.miz
     role: used
     index: 248
     depends_on:
@@ -7035,7 +7036,7 @@ translation_order:
       - TEX_1
       - TEX_2
   - name: TSP_1
-    file: vendor/MML/mml/tsp_1.miz
+    file: vendor/mml/tsp_1.miz
     role: used
     index: 249
     depends_on:
@@ -7057,7 +7058,7 @@ translation_order:
       - TEX_2
       - TEX_4
   - name: YELLOW_8
-    file: vendor/MML/mml/yellow_8.miz
+    file: vendor/mml/yellow_8.miz
     role: seed
     index: 250
     depends_on:
@@ -7092,7 +7093,7 @@ translation_order:
       - WAYBEL_3
       - TSP_1
   - name: TOPMETR
-    file: vendor/MML/mml/topmetr.miz
+    file: vendor/mml/topmetr.miz
     role: used
     index: 251
     depends_on:
@@ -7138,7 +7139,7 @@ translation_order:
       - BORSUK_1
       - TBSP_1
   - name: HEINE
-    file: vendor/MML/mml/heine.miz
+    file: vendor/mml/heine.miz
     role: used
     index: 252
     depends_on:
@@ -7186,7 +7187,7 @@ translation_order:
       - PCOMPS_1
       - TOPMETR
   - name: TREAL_1
-    file: vendor/MML/mml/treal_1.miz
+    file: vendor/mml/treal_1.miz
     role: used
     index: 253
     depends_on:
@@ -7233,7 +7234,7 @@ translation_order:
       - TOPMETR
       - HEINE
   - name: BORSUK_2
-    file: vendor/MML/mml/borsuk_2.miz
+    file: vendor/mml/borsuk_2.miz
     role: used
     index: 254
     depends_on:
@@ -7283,7 +7284,7 @@ translation_order:
       - HEINE
       - TREAL_1
   - name: YELLOW_6
-    file: vendor/MML/mml/yellow_6.miz
+    file: vendor/mml/yellow_6.miz
     role: seed
     index: 255
     depends_on:
@@ -7331,7 +7332,7 @@ translation_order:
       - YELLOW_3
       - WAYBEL_3
   - name: MSUALG_1
-    file: vendor/MML/mml/msualg_1.miz
+    file: vendor/mml/msualg_1.miz
     role: used
     index: 256
     depends_on:
@@ -7359,7 +7360,7 @@ translation_order:
       - REALSET2
       - UNIALG_1
   - name: PRALG_2
-    file: vendor/MML/mml/pralg_2.miz
+    file: vendor/mml/pralg_2.miz
     role: used
     index: 257
     depends_on:
@@ -7389,7 +7390,7 @@ translation_order:
       - PRALG_1
       - MSUALG_1
   - name: MSUALG_2
-    file: vendor/MML/mml/msualg_2.miz
+    file: vendor/mml/msualg_2.miz
     role: used
     index: 258
     depends_on:
@@ -7415,7 +7416,7 @@ translation_order:
       - LATTICES
       - MSUALG_1
   - name: MSUALG_3
-    file: vendor/MML/mml/msualg_3.miz
+    file: vendor/mml/msualg_3.miz
     role: used
     index: 259
     depends_on:
@@ -7444,7 +7445,7 @@ translation_order:
       - PRALG_2
       - MSUALG_2
   - name: WAYBEL_5
-    file: vendor/MML/mml/waybel_5.miz
+    file: vendor/mml/waybel_5.miz
     role: seed
     index: 260
     depends_on:
@@ -7491,7 +7492,7 @@ translation_order:
       - PRALG_2
       - MSUALG_3
   - name: YELLOW_5
-    file: vendor/MML/mml/yellow_5.miz
+    file: vendor/mml/yellow_5.miz
     role: seed
     index: 261
     depends_on:
@@ -7502,7 +7503,7 @@ translation_order:
       - WAYBEL_0
       - WAYBEL_1
   - name: YELLOW_7
-    file: vendor/MML/mml/yellow_7.miz
+    file: vendor/mml/yellow_7.miz
     role: seed
     index: 262
     depends_on:
@@ -7538,7 +7539,7 @@ translation_order:
       - WAYBEL_5
       - YELLOW_5
   - name: ALG_1
-    file: vendor/MML/mml/alg_1.miz
+    file: vendor/mml/alg_1.miz
     role: used
     index: 263
     depends_on:
@@ -7568,7 +7569,7 @@ translation_order:
       - UNIALG_1
       - UNIALG_2
   - name: WAYBEL_4
-    file: vendor/MML/mml/waybel_4.miz
+    file: vendor/mml/waybel_4.miz
     role: seed
     index: 264
     depends_on:
@@ -7606,7 +7607,7 @@ translation_order:
       - WAYBEL_3
       - ALG_1
   - name: WAYBEL_6
-    file: vendor/MML/mml/waybel_6.miz
+    file: vendor/mml/waybel_6.miz
     role: seed
     index: 265
     depends_on:
@@ -7658,7 +7659,7 @@ translation_order:
       - YELLOW_7
       - WAYBEL_4
   - name: WAYBEL_7
-    file: vendor/MML/mml/waybel_7.miz
+    file: vendor/mml/waybel_7.miz
     role: seed
     index: 266
     depends_on:
@@ -7700,7 +7701,7 @@ translation_order:
       - WAYBEL_4
       - WAYBEL_6
   - name: WAYBEL_8
-    file: vendor/MML/mml/waybel_8.miz
+    file: vendor/mml/waybel_8.miz
     role: seed
     index: 267
     depends_on:
@@ -7740,7 +7741,7 @@ translation_order:
       - WAYBEL_6
       - WAYBEL_7
   - name: WAYBEL_9
-    file: vendor/MML/mml/waybel_9.miz
+    file: vendor/mml/waybel_9.miz
     role: seed
     index: 268
     depends_on:
@@ -7791,7 +7792,7 @@ translation_order:
       - YELLOW_7
       - WAYBEL_8
   - name: WAYBEL11
-    file: vendor/MML/mml/waybel11.miz
+    file: vendor/mml/waybel11.miz
     role: seed
     index: 269
     depends_on:
@@ -7852,7 +7853,7 @@ translation_order:
       - WAYBEL_7
       - WAYBEL_9
   - name: YELLOW_9
-    file: vendor/MML/mml/yellow_9.miz
+    file: vendor/mml/yellow_9.miz
     role: seed
     index: 270
     depends_on:
@@ -7901,7 +7902,7 @@ translation_order:
       - WAYBEL_9
       - WAYBEL11
   - name: TOPGRP_1
-    file: vendor/MML/mml/topgrp_1.miz
+    file: vendor/mml/topgrp_1.miz
     role: used
     index: 271
     depends_on:
@@ -7940,7 +7941,7 @@ translation_order:
       - BORSUK_2
       - YELLOW_9
   - name: RUSUB_5
-    file: vendor/MML/mml/rusub_5.miz
+    file: vendor/mml/rusub_5.miz
     role: used
     index: 272
     depends_on:
@@ -7976,7 +7977,7 @@ translation_order:
       - RUSUB_3
       - RUSUB_4
   - name: CONVEX1
-    file: vendor/MML/mml/convex1.miz
+    file: vendor/mml/convex1.miz
     role: used
     index: 273
     depends_on:
@@ -8018,7 +8019,7 @@ translation_order:
       - RUSUB_4
       - RUSUB_5
   - name: MSAFREE
-    file: vendor/MML/mml/msafree.miz
+    file: vendor/mml/msafree.miz
     role: used
     index: 274
     depends_on:
@@ -8059,7 +8060,7 @@ translation_order:
       - MSUALG_2
       - MSUALG_3
   - name: MSUALG_4
-    file: vendor/MML/mml/msualg_4.miz
+    file: vendor/mml/msualg_4.miz
     role: used
     index: 275
     depends_on:
@@ -8087,7 +8088,7 @@ translation_order:
       - MSUALG_3
       - MSAFREE
   - name: MSAFREE1
-    file: vendor/MML/mml/msafree1.miz
+    file: vendor/mml/msafree1.miz
     role: used
     index: 276
     depends_on:
@@ -8125,7 +8126,7 @@ translation_order:
       - MSUALG_3
       - MSAFREE
   - name: MSAFREE2
-    file: vendor/MML/mml/msafree2.miz
+    file: vendor/mml/msafree2.miz
     role: used
     index: 277
     depends_on:
@@ -8169,7 +8170,7 @@ translation_order:
       - MSAFREE
       - MSAFREE1
   - name: MSUALG_5
-    file: vendor/MML/mml/msualg_5.miz
+    file: vendor/mml/msualg_5.miz
     role: used
     index: 278
     depends_on:
@@ -8214,7 +8215,7 @@ translation_order:
       - MSUALG_4
       - MSAFREE2
   - name: CLOSURE2
-    file: vendor/MML/mml/closure2.miz
+    file: vendor/mml/closure2.miz
     role: used
     index: 279
     depends_on:
@@ -8243,7 +8244,7 @@ translation_order:
       - STRUCT_0
       - MSUALG_1
   - name: LATTICE4
-    file: vendor/MML/mml/lattice4.miz
+    file: vendor/mml/lattice4.miz
     role: used
     index: 280
     depends_on:
@@ -8274,7 +8275,7 @@ translation_order:
       - FILTER_1
       - GRCAT_1
   - name: WAYBEL12
-    file: vendor/MML/mml/waybel12.miz
+    file: vendor/mml/waybel12.miz
     role: seed
     index: 281
     depends_on:
@@ -8325,7 +8326,7 @@ translation_order:
       - WAYBEL_6
       - WAYBEL_7
   - name: WAYBEL14
-    file: vendor/MML/mml/waybel14.miz
+    file: vendor/mml/waybel14.miz
     role: seed
     index: 282
     depends_on:
@@ -8381,7 +8382,7 @@ translation_order:
       - WAYBEL11
       - WAYBEL12
   - name: YELLOW12
-    file: vendor/MML/mml/yellow12.miz
+    file: vendor/mml/yellow12.miz
     role: seed
     index: 283
     depends_on:
@@ -8433,7 +8434,7 @@ translation_order:
       - WAYBEL11
       - YELLOW_9
   - name: LATTICE5
-    file: vendor/MML/mml/lattice5.miz
+    file: vendor/mml/lattice5.miz
     role: used
     index: 284
     depends_on:
@@ -8502,7 +8503,7 @@ translation_order:
       - WAYBEL_6
       - MSUALG_5
   - name: YELLOW11
-    file: vendor/MML/mml/yellow11.miz
+    file: vendor/mml/yellow11.miz
     role: seed
     index: 285
     depends_on:
@@ -8535,7 +8536,7 @@ translation_order:
       - YELLOW_5
       - LATTICE5
   - name: YELLOW13
-    file: vendor/MML/mml/yellow13.miz
+    file: vendor/mml/yellow13.miz
     role: seed
     index: 286
     depends_on:
@@ -8586,7 +8587,7 @@ translation_order:
       - YELLOW12
       - YELLOW11
   - name: RLTOPSP1
-    file: vendor/MML/mml/rltopsp1.miz
+    file: vendor/mml/rltopsp1.miz
     role: used
     index: 287
     depends_on:
@@ -8633,7 +8634,7 @@ translation_order:
       - CONVEX1
       - YELLOW13
   - name: RSSPACE
-    file: vendor/MML/mml/rsspace.miz
+    file: vendor/mml/rsspace.miz
     role: used
     index: 288
     depends_on:
@@ -8679,7 +8680,7 @@ translation_order:
       - RLSUB_1
       - BHSP_1
   - name: EUCLID
-    file: vendor/MML/mml/euclid.miz
+    file: vendor/mml/euclid.miz
     role: used
     index: 289
     depends_on:
@@ -8731,7 +8732,7 @@ translation_order:
       - RLTOPSP1
       - RSSPACE
   - name: TOPMETR2
-    file: vendor/MML/mml/topmetr2.miz
+    file: vendor/mml/topmetr2.miz
     role: used
     index: 290
     depends_on:
@@ -8764,7 +8765,7 @@ translation_order:
       - TOPMETR
       - HEINE
   - name: TOPREAL1
-    file: vendor/MML/mml/topreal1.miz
+    file: vendor/mml/topreal1.miz
     role: used
     index: 291
     depends_on:
@@ -8822,7 +8823,7 @@ translation_order:
       - EUCLID
       - TOPMETR2
   - name: TOPREAL3
-    file: vendor/MML/mml/topreal3.miz
+    file: vendor/mml/topreal3.miz
     role: used
     index: 292
     depends_on:
@@ -8872,7 +8873,7 @@ translation_order:
       - EUCLID
       - TOPREAL1
   - name: TOPREAL2
-    file: vendor/MML/mml/topreal2.miz
+    file: vendor/mml/topreal2.miz
     role: used
     index: 293
     depends_on:
@@ -8907,7 +8908,7 @@ translation_order:
       - TOPMETR2
       - TOPREAL1
   - name: TOPREAL4
-    file: vendor/MML/mml/topreal4.miz
+    file: vendor/mml/topreal4.miz
     role: used
     index: 294
     depends_on:
@@ -8948,7 +8949,7 @@ translation_order:
       - TOPREAL3
       - TOPREAL2
   - name: GOBOARD1
-    file: vendor/MML/mml/goboard1.miz
+    file: vendor/mml/goboard1.miz
     role: used
     index: 295
     depends_on:
@@ -8989,7 +8990,7 @@ translation_order:
       - TOPREAL1
       - TOPREAL3
   - name: GOBOARD2
-    file: vendor/MML/mml/goboard2.miz
+    file: vendor/mml/goboard2.miz
     role: used
     index: 296
     depends_on:
@@ -9039,7 +9040,7 @@ translation_order:
       - TOPREAL3
       - GOBOARD1
   - name: SPPOL_1
-    file: vendor/MML/mml/sppol_1.miz
+    file: vendor/mml/sppol_1.miz
     role: used
     index: 297
     depends_on:
@@ -9100,7 +9101,7 @@ translation_order:
       - TOPREAL1
       - TOPREAL3
   - name: SPPOL_2
-    file: vendor/MML/mml/sppol_2.miz
+    file: vendor/mml/sppol_2.miz
     role: used
     index: 298
     depends_on:
@@ -9150,7 +9151,7 @@ translation_order:
       - GOBOARD1
       - SPPOL_1
   - name: GOBOARD5
-    file: vendor/MML/mml/goboard5.miz
+    file: vendor/mml/goboard5.miz
     role: used
     index: 299
     depends_on:
@@ -9201,7 +9202,7 @@ translation_order:
       - GOBOARD2
       - SPPOL_2
   - name: GOBOARD6
-    file: vendor/MML/mml/goboard6.miz
+    file: vendor/mml/goboard6.miz
     role: used
     index: 300
     depends_on:
@@ -9245,7 +9246,7 @@ translation_order:
       - SPPOL_2
       - GOBOARD5
   - name: MOD_2
-    file: vendor/MML/mml/mod_2.miz
+    file: vendor/mml/mod_2.miz
     role: used
     index: 301
     depends_on:
@@ -9276,7 +9277,7 @@ translation_order:
       - VECTSP_2
       - GRCAT_1
   - name: VECTSP_8
-    file: vendor/MML/mml/vectsp_8.miz
+    file: vendor/mml/vectsp_8.miz
     role: used
     index: 302
     depends_on:
@@ -9307,7 +9308,7 @@ translation_order:
       - LATTICE4
       - MOD_2
   - name: MSUALG_7
-    file: vendor/MML/mml/msualg_7.miz
+    file: vendor/mml/msualg_7.miz
     role: used
     index: 303
     depends_on:
@@ -9350,7 +9351,7 @@ translation_order:
       - CLOSURE2
       - VECTSP_8
   - name: BORSUK_3
-    file: vendor/MML/mml/borsuk_3.miz
+    file: vendor/mml/borsuk_3.miz
     role: used
     index: 304
     depends_on:
@@ -9386,7 +9387,7 @@ translation_order:
       - TOPGRP_1
       - YELLOW12
   - name: ISOCAT_1
-    file: vendor/MML/mml/isocat_1.miz
+    file: vendor/mml/isocat_1.miz
     role: used
     index: 305
     depends_on:
@@ -9409,7 +9410,7 @@ translation_order:
       - CAT_3
       - NATTRA_1
   - name: METRIC_6
-    file: vendor/MML/mml/metric_6.miz
+    file: vendor/mml/metric_6.miz
     role: used
     index: 306
     depends_on:
@@ -9447,7 +9448,7 @@ translation_order:
       - PCOMPS_1
       - TBSP_1
   - name: COH_SP
-    file: vendor/MML/mml/coh_sp.miz
+    file: vendor/mml/coh_sp.miz
     role: used
     index: 307
     depends_on:
@@ -9475,7 +9476,7 @@ translation_order:
       - CAT_1
       - CAT_2
   - name: MONOID_1
-    file: vendor/MML/mml/monoid_1.miz
+    file: vendor/mml/monoid_1.miz
     role: used
     index: 308
     depends_on:
@@ -9517,7 +9518,7 @@ translation_order:
       - LATTICE2
       - MONOID_0
   - name: MSATERM
-    file: vendor/MML/mml/msaterm.miz
+    file: vendor/mml/msaterm.miz
     role: used
     index: 309
     depends_on:
@@ -9563,7 +9564,7 @@ translation_order:
       - MSUALG_3
       - MSAFREE
   - name: MSUHOM_1
-    file: vendor/MML/mml/msuhom_1.miz
+    file: vendor/mml/msuhom_1.miz
     role: used
     index: 310
     depends_on:
@@ -9597,7 +9598,7 @@ translation_order:
       - ALG_1
       - MONOID_1
   - name: AUTALG_1
-    file: vendor/MML/mml/autalg_1.miz
+    file: vendor/mml/autalg_1.miz
     role: used
     index: 311
     depends_on:
@@ -9629,7 +9630,7 @@ translation_order:
       - ALG_1
       - MSUHOM_1
   - name: CIRCUIT1
-    file: vendor/MML/mml/circuit1.miz
+    file: vendor/mml/circuit1.miz
     role: used
     index: 312
     depends_on:
@@ -9682,7 +9683,7 @@ translation_order:
       - MSAFREE1
       - MSAFREE2
   - name: EXTENS_1
-    file: vendor/MML/mml/extens_1.miz
+    file: vendor/mml/extens_1.miz
     role: used
     index: 313
     depends_on:
@@ -9717,7 +9718,7 @@ translation_order:
       - MSAFREE2
       - MSUHOM_1
   - name: GRAPH_2
-    file: vendor/MML/mml/graph_2.miz
+    file: vendor/mml/graph_2.miz
     role: used
     index: 314
     depends_on:
@@ -9763,7 +9764,7 @@ translation_order:
       - STRUCT_0
       - GRAPH_1
   - name: WEIERSTR
-    file: vendor/MML/mml/weierstr.miz
+    file: vendor/mml/weierstr.miz
     role: used
     index: 315
     depends_on:
@@ -9807,7 +9808,7 @@ translation_order:
       - EUCLID
       - METRIC_6
   - name: COHSP_1
-    file: vendor/MML/mml/cohsp_1.miz
+    file: vendor/mml/cohsp_1.miz
     role: used
     index: 316
     depends_on:
@@ -9844,7 +9845,7 @@ translation_order:
       - BORSUK_1
       - COH_SP
   - name: PUA2MSS1
-    file: vendor/MML/mml/pua2mss1.miz
+    file: vendor/mml/pua2mss1.miz
     role: used
     index: 317
     depends_on:
@@ -9880,7 +9881,7 @@ translation_order:
       - UNIALG_1
       - MSUALG_1
   - name: ALTCAT_2
-    file: vendor/MML/mml/altcat_2.miz
+    file: vendor/mml/altcat_2.miz
     role: used
     index: 318
     depends_on:
@@ -9914,7 +9915,7 @@ translation_order:
       - PRALG_1
       - ALTCAT_1
   - name: CLOSURE1
-    file: vendor/MML/mml/closure1.miz
+    file: vendor/mml/closure1.miz
     role: used
     index: 319
     depends_on:
@@ -9942,7 +9943,7 @@ translation_order:
       - MSUALG_1
       - MSUALG_3
   - name: MSUALG_6
-    file: vendor/MML/mml/msualg_6.miz
+    file: vendor/mml/msualg_6.miz
     role: used
     index: 320
     depends_on:
@@ -9986,7 +9987,7 @@ translation_order:
       - MSUALG_5
       - PUA2MSS1
   - name: MSSCYC_1
-    file: vendor/MML/mml/msscyc_1.miz
+    file: vendor/mml/msscyc_1.miz
     role: used
     index: 321
     depends_on:
@@ -10043,7 +10044,7 @@ translation_order:
       - EXTENS_1
       - GRAPH_2
   - name: MSUALG_8
-    file: vendor/MML/mml/msualg_8.miz
+    file: vendor/mml/msualg_8.miz
     role: used
     index: 322
     depends_on:
@@ -10087,7 +10088,7 @@ translation_order:
       - MSUALG_7
       - MSUALG_6
   - name: FUNCTOR0
-    file: vendor/MML/mml/functor0.miz
+    file: vendor/mml/functor0.miz
     role: used
     index: 323
     depends_on:
@@ -10115,7 +10116,7 @@ translation_order:
       - ISOCAT_1
       - ALTCAT_2
   - name: FUNCTOR1
-    file: vendor/MML/mml/functor1.miz
+    file: vendor/mml/functor1.miz
     role: used
     index: 324
     depends_on:
@@ -10141,7 +10142,7 @@ translation_order:
       - ALTCAT_2
       - FUNCTOR0
   - name: PRALG_3
-    file: vendor/MML/mml/pralg_3.miz
+    file: vendor/mml/pralg_3.miz
     role: used
     index: 325
     depends_on:
@@ -10169,7 +10170,7 @@ translation_order:
       - MSUALG_2
       - MSUALG_3
   - name: MSALIMIT
-    file: vendor/MML/mml/msalimit.miz
+    file: vendor/mml/msalimit.miz
     role: used
     index: 326
     depends_on:
@@ -10211,7 +10212,7 @@ translation_order:
       - PUA2MSS1
       - PRALG_3
   - name: MSUALG_9
-    file: vendor/MML/mml/msualg_9.miz
+    file: vendor/mml/msualg_9.miz
     role: used
     index: 327
     depends_on:
@@ -10265,7 +10266,7 @@ translation_order:
       - MSUALG_8
       - PRALG_3
   - name: INSTALG1
-    file: vendor/MML/mml/instalg1.miz
+    file: vendor/mml/instalg1.miz
     role: used
     index: 328
     depends_on:
@@ -10308,7 +10309,7 @@ translation_order:
       - MSALIMIT
       - MSUALG_9
   - name: WAYBEL10
-    file: vendor/MML/mml/waybel10.miz
+    file: vendor/mml/waybel10.miz
     role: seed
     index: 329
     depends_on:
@@ -10343,7 +10344,7 @@ translation_order:
       - WAYBEL_3
       - YELLOW_7
   - name: ALTCAT_3
-    file: vendor/MML/mml/altcat_3.miz
+    file: vendor/mml/altcat_3.miz
     role: used
     index: 330
     depends_on:
@@ -10362,7 +10363,7 @@ translation_order:
       - STRUCT_0
       - ALTCAT_1
   - name: WAYBEL13
-    file: vendor/MML/mml/waybel13.miz
+    file: vendor/mml/waybel13.miz
     role: seed
     index: 331
     depends_on:
@@ -10397,7 +10398,7 @@ translation_order:
       - WAYBEL_8
       - WAYBEL10
   - name: EQUATION
-    file: vendor/MML/mml/equation.miz
+    file: vendor/mml/equation.miz
     role: used
     index: 332
     depends_on:
@@ -10442,7 +10443,7 @@ translation_order:
       - MSUALG_9
       - INSTALG1
   - name: FUNCTOR2
-    file: vendor/MML/mml/functor2.miz
+    file: vendor/mml/functor2.miz
     role: used
     index: 333
     depends_on:
@@ -10468,7 +10469,7 @@ translation_order:
       - ALTCAT_2
       - FUNCTOR0
   - name: ALTCAT_4
-    file: vendor/MML/mml/altcat_4.miz
+    file: vendor/mml/altcat_4.miz
     role: used
     index: 334
     depends_on:
@@ -10498,7 +10499,7 @@ translation_order:
       - ALTCAT_3
       - FUNCTOR2
   - name: WAYBEL15
-    file: vendor/MML/mml/waybel15.miz
+    file: vendor/mml/waybel15.miz
     role: seed
     index: 335
     depends_on:
@@ -10537,7 +10538,7 @@ translation_order:
       - WAYBEL10
       - WAYBEL13
   - name: FUNCTOR3
-    file: vendor/MML/mml/functor3.miz
+    file: vendor/mml/functor3.miz
     role: used
     index: 336
     depends_on:
@@ -10562,7 +10563,7 @@ translation_order:
       - FUNCTOR2
       - ALTCAT_4
   - name: WAYBEL16
-    file: vendor/MML/mml/waybel16.miz
+    file: vendor/mml/waybel16.miz
     role: seed
     index: 337
     depends_on:
@@ -10599,7 +10600,7 @@ translation_order:
       - WAYBEL13
       - WAYBEL15
   - name: WAYBEL17
-    file: vendor/MML/mml/waybel17.miz
+    file: vendor/mml/waybel17.miz
     role: seed
     index: 338
     depends_on:
@@ -10652,7 +10653,7 @@ translation_order:
       - WAYBEL10
       - WAYBEL13
   - name: YELLOW10
-    file: vendor/MML/mml/yellow10.miz
+    file: vendor/mml/yellow10.miz
     role: seed
     index: 339
     depends_on:
@@ -10680,7 +10681,7 @@ translation_order:
       - WAYBEL11
       - WAYBEL14
   - name: WAYBEL18
-    file: vendor/MML/mml/waybel18.miz
+    file: vendor/mml/waybel18.miz
     role: seed
     index: 340
     depends_on:
@@ -10738,7 +10739,7 @@ translation_order:
       - WAYBEL13
       - WAYBEL17
   - name: FRECHET
-    file: vendor/MML/mml/frechet.miz
+    file: vendor/mml/frechet.miz
     role: used
     index: 341
     depends_on:
@@ -10783,7 +10784,7 @@ translation_order:
       - TOPMETR
       - GOBOARD6
   - name: WAYBEL19
-    file: vendor/MML/mml/waybel19.miz
+    file: vendor/mml/waybel19.miz
     role: seed
     index: 342
     depends_on:
@@ -10837,7 +10838,7 @@ translation_order:
       - YELLOW12
       - YELLOW10
   - name: WAYBEL20
-    file: vendor/MML/mml/waybel20.miz
+    file: vendor/mml/waybel20.miz
     role: seed
     index: 343
     depends_on:
@@ -10887,7 +10888,7 @@ translation_order:
       - WAYBEL17
       - YELLOW10
   - name: WAYBEL21
-    file: vendor/MML/mml/waybel21.miz
+    file: vendor/mml/waybel21.miz
     role: seed
     index: 344
     depends_on:
@@ -10941,7 +10942,7 @@ translation_order:
       - WAYBEL19
       - WAYBEL20
   - name: WAYBEL22
-    file: vendor/MML/mml/waybel22.miz
+    file: vendor/mml/waybel22.miz
     role: seed
     index: 345
     depends_on:
@@ -10993,7 +10994,7 @@ translation_order:
       - WAYBEL17
       - WAYBEL20
   - name: WAYBEL23
-    file: vendor/MML/mml/waybel23.miz
+    file: vendor/mml/waybel23.miz
     role: seed
     index: 346
     depends_on:
@@ -11036,7 +11037,7 @@ translation_order:
       - WAYBEL20
       - WAYBEL21
   - name: YELLOW15
-    file: vendor/MML/mml/yellow15.miz
+    file: vendor/mml/yellow15.miz
     role: seed
     index: 347
     depends_on:
@@ -11088,7 +11089,7 @@ translation_order:
       - YELLOW_9
       - WAYBEL23
   - name: YELLOW18
-    file: vendor/MML/mml/yellow18.miz
+    file: vendor/mml/yellow18.miz
     role: seed
     index: 348
     depends_on:
@@ -11127,7 +11128,7 @@ translation_order:
       - ALTCAT_4
       - FUNCTOR3
   - name: YELLOW20
-    file: vendor/MML/mml/yellow20.miz
+    file: vendor/mml/yellow20.miz
     role: seed
     index: 349
     depends_on:
@@ -11161,7 +11162,7 @@ translation_order:
       - FUNCTOR3
       - YELLOW18
   - name: FRECHET2
-    file: vendor/MML/mml/frechet2.miz
+    file: vendor/mml/frechet2.miz
     role: used
     index: 350
     depends_on:
@@ -11214,7 +11215,7 @@ translation_order:
       - METRIC_6
       - FRECHET
   - name: WAYBEL24
-    file: vendor/MML/mml/waybel24.miz
+    file: vendor/mml/waybel24.miz
     role: seed
     index: 351
     depends_on:
@@ -11259,7 +11260,7 @@ translation_order:
       - WAYBEL17
       - YELLOW10
   - name: YELLOW14
-    file: vendor/MML/mml/yellow14.miz
+    file: vendor/mml/yellow14.miz
     role: seed
     index: 352
     depends_on:
@@ -11323,7 +11324,7 @@ translation_order:
       - WAYBEL19
       - WAYBEL24
   - name: WAYBEL25
-    file: vendor/MML/mml/waybel25.miz
+    file: vendor/mml/waybel25.miz
     role: seed
     index: 353
     depends_on:
@@ -11401,7 +11402,7 @@ translation_order:
       - WAYBEL24
       - YELLOW14
   - name: YELLOW16
-    file: vendor/MML/mml/yellow16.miz
+    file: vendor/mml/yellow16.miz
     role: seed
     index: 354
     depends_on:
@@ -11456,7 +11457,7 @@ translation_order:
       - WAYBEL21
       - WAYBEL25
   - name: WAYBEL26
-    file: vendor/MML/mml/waybel26.miz
+    file: vendor/mml/waybel26.miz
     role: seed
     index: 355
     depends_on:
@@ -11528,7 +11529,7 @@ translation_order:
       - WAYBEL25
       - YELLOW16
   - name: WAYBEL27
-    file: vendor/MML/mml/waybel27.miz
+    file: vendor/mml/waybel27.miz
     role: seed
     index: 356
     depends_on:
@@ -11596,7 +11597,7 @@ translation_order:
       - YELLOW16
       - WAYBEL26
   - name: WAYBEL28
-    file: vendor/MML/mml/waybel28.miz
+    file: vendor/mml/waybel28.miz
     role: seed
     index: 357
     depends_on:
@@ -11631,7 +11632,7 @@ translation_order:
       - WAYBEL17
       - WAYBEL21
   - name: WAYBEL29
-    file: vendor/MML/mml/waybel29.miz
+    file: vendor/mml/waybel29.miz
     role: seed
     index: 358
     depends_on:
@@ -11708,7 +11709,7 @@ translation_order:
       - WAYBEL26
       - WAYBEL27
   - name: WAYBEL30
-    file: vendor/MML/mml/waybel30.miz
+    file: vendor/mml/waybel30.miz
     role: seed
     index: 359
     depends_on:
@@ -11767,7 +11768,7 @@ translation_order:
       - WAYBEL21
       - WAYBEL29
   - name: WAYBEL31
-    file: vendor/MML/mml/waybel31.miz
+    file: vendor/mml/waybel31.miz
     role: seed
     index: 360
     depends_on:
@@ -11830,7 +11831,7 @@ translation_order:
       - WAYBEL25
       - WAYBEL30
   - name: LATTICE7
-    file: vendor/MML/mml/lattice7.miz
+    file: vendor/mml/lattice7.miz
     role: used
     index: 361
     depends_on:
@@ -11871,7 +11872,7 @@ translation_order:
       - COHSP_1
       - WAYBEL13
   - name: YELLOW17
-    file: vendor/MML/mml/yellow17.miz
+    file: vendor/mml/yellow17.miz
     role: seed
     index: 362
     depends_on:
@@ -11906,7 +11907,7 @@ translation_order:
       - WAYBEL_7
       - WAYBEL18
   - name: WAYBEL32
-    file: vendor/MML/mml/waybel32.miz
+    file: vendor/mml/waybel32.miz
     role: seed
     index: 363
     depends_on:
@@ -11952,7 +11953,7 @@ translation_order:
       - YELLOW14
       - WAYBEL29
   - name: YELLOW19
-    file: vendor/MML/mml/yellow19.miz
+    file: vendor/mml/yellow19.miz
     role: seed
     index: 364
     depends_on:
@@ -11996,7 +11997,7 @@ translation_order:
       - WAYBEL21
       - WAYBEL32
   - name: WAYBEL33
-    file: vendor/MML/mml/waybel33.miz
+    file: vendor/mml/waybel33.miz
     role: seed
     index: 365
     depends_on:
@@ -12054,7 +12055,7 @@ translation_order:
       - WAYBEL32
       - YELLOW19
   - name: YELLOW21
-    file: vendor/MML/mml/yellow21.miz
+    file: vendor/mml/yellow21.miz
     role: seed
     index: 366
     depends_on:
@@ -12107,7 +12108,7 @@ translation_order:
       - YELLOW20
       - YELLOW16
   - name: WAYBEL34
-    file: vendor/MML/mml/waybel34.miz
+    file: vendor/mml/waybel34.miz
     role: seed
     index: 367
     depends_on:
@@ -12166,7 +12167,7 @@ translation_order:
       - YELLOW20
       - YELLOW21
   - name: WAYBEL35
-    file: vendor/MML/mml/waybel35.miz
+    file: vendor/mml/waybel35.miz
     role: seed
     index: 368
     depends_on:

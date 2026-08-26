@@ -10,8 +10,10 @@ is abandoned. Do not submit that kit.
 ## Resume Protocol (read this first)
 
 1. Read this `HANDOFF.md`.
-2. Init the vendor: `git submodule update --init --recursive`.
-   Confirm `vendor/MML` is `047822c4d814630b28eec8ca6b455e9eb912d5ff`.
+2. Confirm `vendor/MML_PIN` is `047822c4d814630b28eec8ca6b455e9eb912d5ff`
+   and `vendor/mml/` has `hidden.miz` plus the 368 queue articles.
+   There is no git submodule. An optional full clone may live at
+   gitignored `vendor/MML`.
 3. Read `vendor/README.md` and `mizarccl_translation_order.yaml`.
 4. Translate the next unused article in `translation_order` 1–1
    (not Mathlib-paraphrase). Palomar headlines come later: one key
@@ -23,8 +25,9 @@ is abandoned. Do not submit that kit.
 
 - Repo renamed: `catskillsresearch/yellow17` →
   `catskillsresearch/MizarCCL` (via a brief `LeanMizar` name).
-- Full Mizar 7.13.01 / MML 4.181.1147 vendored at `vendor/MML`
-  (`047822c4d814630b28eec8ca6b455e9eb912d5ff`).
+- Used Mizar slice (no submodule): `vendor/mml/` has `hidden.miz`
+  plus the 368 queue articles at pin
+  `047822c4d814630b28eec8ca6b455e9eb912d5ff` (`vendor/MML_PIN`).
 - Used-module queue: **368** articles (58 YELLOW*/WAYBEL* seeds).
   First: `TARSKI`. First seed: `YELLOW_0` (index 232). `YELLOW17` is
   index 362. Last: `WAYBEL35`. Same closure is in
@@ -187,3 +190,14 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - `scripts/palomar_preflight.sh` passed: types match; Solution /
   `MizarCCL/*.lean` have no `sorry`; axioms ⊆
   `{propext, Classical.choice, Quot.sound}`.
+
+### 2026-08-25 — Palomar-safe used-module vendor
+
+- Removed the `vendor/MML` git submodule (Palomar cannot preserve
+  submodules). Checked in `vendor/mml/` as ordinary files:
+  `hidden.miz` plus the 368 queue articles. Pin in `vendor/MML_PIN`.
+- `formalization.yaml` cites Trybulec `TARSKI` with relationship
+  `adapts` (universe-polymorphic `TARSKI:3`). Dropped the
+  self-notes `other` source.
+- Optional full MML clone stays at gitignored `vendor/MML` for
+  queue regeneration only.

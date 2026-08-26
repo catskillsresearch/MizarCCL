@@ -71,32 +71,21 @@ fidelity:
     a single sort) are not theorems of Type u and are not claimed.
 
 sources:
-  - title: "Tarski–Grothendieck set theory (Mizar TARSKI)"
-    authors: ["Lars Warren Ericson"]
-    type: "notes"
-    id: "https://github.com/catskillsresearch/MizarCCL/blob/main/view.pdf"
-    relationship: other
-    author_endorsement: participated
-    note: >-
-      Write-up of this formalization (view.pdf; source arxiv.md).
-      Challenge.lean is checked against the named Lean theorems, which
-      translate Trybulec’s TARSKI.
-
   - title: "Tarski Grothendieck Set Theory"
     authors: ["Andrzej Trybulec"]
     type: "article"
     location: >-
       Mizar article TARSKI, received 1 January 1989. Source file
-      mml/tarski.miz in
-      https://github.com/MizarSystem/MML/tree/047822c4d814630b28eec8ca6b455e9eb912d5ff
-    relationship: other
+      vendor/mml/tarski.miz, copied from
+      https://github.com/MizarSystem/MML/blob/047822c4d814630b28eec8ca6b455e9eb912d5ff/mml/tarski.miz
+    relationship: adapts
     note: >-
-      The article being translated. Canonical copy is
-      vendor/MML/mml/tarski.miz (submodule pin
-      047822c4d814630b28eec8ca6b455e9eb912d5ff). Licensed
-      GPL-3.0-or-later OR CC-BY-SA-3.0 by the Association of
-      Mizar Users. This package is a Lean 4 translation, not a Mizar
-      checker run.
+      The article being translated. Lean proves TARSKI:1–2, def 1–6,
+      and sch 1 over a defined TarskiSet model. TARSKI:3 is adapted
+      to Lean universes (clauses (i)–(ii) and every u-set in M);
+      Mizar (iii)–(iv) are not claimed. Licensed GPL-3.0-or-later OR
+      CC-BY-SA-3.0 by the Association of Mizar Users. This package
+      is a Lean 4 translation, not a Mizar checker run.
 
   - title: "Über unerreichbare Kardinalzahlen"
     authors: ["Alfred Tarski"]
@@ -123,9 +112,10 @@ related_formalizations:
     relationship: other
     note: >-
       Upstream Mizar Mathematical Library (Mizar 7.13.01 / MML
-      4.181.1147), vendored at vendor/MML @
-      047822c4d814630b28eec8ca6b455e9eb912d5ff. No Lean was
-      taken from MML. See vendor/README.md.
+      4.181.1147). Palomar tree vendors hidden.miz plus the 368-article
+      used queue under vendor/mml at pin
+      047822c4d814630b28eec8ca6b455e9eb912d5ff. No Lean was taken from
+      MML. See vendor/README.md.
 
 automation:
   methods:

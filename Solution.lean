@@ -3,7 +3,7 @@ Copyright (c) 1990-2012 Association of Mizar Users
   (Stowarzyszenie Uzytkownikow Mizara, Bialystok, Poland).
 Copyright (c) 2026 Lars Warren Ericson.
 Released under GNU GPL-3.0-or-later or CC-BY-SA-3.0.
-See `doc/COPYING.*` and the notices in `vendor/MML/mml/tarski.miz`.
+See `doc/COPYING.*` and the notices in `vendor/mml/tarski.miz`.
 Authors: Andrzej Trybulec (Mizar), Lars Warren Ericson (Lean 4).
 -/
 import MizarCCL.TARSKI

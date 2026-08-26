@@ -1,8 +1,9 @@
 # MizarCCL
 
 1–1 Lean 4 translation of the Mizar articles needed for the YELLOW* /
-WAYBEL* family (continuous lattices / Way-below / Tychonoff), with the
-full Mizar 7.13.01 library vendored.
+WAYBEL* family (continuous lattices / Way-below / Tychonoff). The
+used-module slice of Mizar 7.13.01 / MML 4.181.1147 is vendored as
+ordinary files (no git submodule).
 
 This is **not** the earlier idiomatic Mathlib paraphrase of `YELLOW_17`.
 That Palomar extract is abandoned: a faithful translation needs the
@@ -11,8 +12,11 @@ That Palomar extract is abandoned: a faithful translation needs the
 ## Repository
 
 - GitHub: https://github.com/catskillsresearch/MizarCCL
-- Mizar pin: `vendor/MML` @ `047822c4d814630b28eec8ca6b455e9eb912d5ff`
-  (Mizar 7.13.01 / MML 4.181.1147). See `vendor/README.md`.
+- Mizar pin: `047822c4d814630b28eec8ca6b455e9eb912d5ff`
+  (Mizar 7.13.01 / MML 4.181.1147), in `vendor/MML_PIN`.
+  Palomar vendors `hidden.miz` plus the 368-article used queue as
+  ordinary files under `vendor/mml/` (no git submodule).
+  See `vendor/README.md`.
 - Translation queue: `mizarccl_translation_order.yaml`
   (368 used articles, least-dependent first; 58 YELLOW*/WAYBEL* seeds).
 - Environ graph: `waybel_yellow_dependencies.yaml`
@@ -27,8 +31,14 @@ that article’s used prefix is translated.
 ## Setup
 
 ```bash
-git submodule update --init --recursive
 lake build
+```
+
+Optional full MML clone for regenerating the queue (gitignored):
+
+```bash
+git clone https://github.com/MizarSystem/MML.git vendor/MML
+git -C vendor/MML checkout "$(cat vendor/MML_PIN)"
 ```
 
 Rebuild the used-module queue:

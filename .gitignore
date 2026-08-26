@@ -1,3 +1,7 @@
+# Optional full MizarSystem/MML clone (queue regeneration only).
+# The submitted tree vendors vendor/mml/*.miz (hidden + used queue).
+vendor/MML/
+
 # cache and other artifacts produced by Lean's Lake build tool
 .lake/
 

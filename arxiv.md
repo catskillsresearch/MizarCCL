@@ -6,7 +6,7 @@
 
 This note is the write-up of a Lean 4 translation of Andrzej Trybulec,
 *Tarski Grothendieck Set Theory* (Mizar article `TARSKI`, received
-1 January 1989). The source file is `vendor/MML/mml/tarski.miz` from
+1 January 1989). The source file is `vendor/mml/tarski.miz` from
 the [Mizar Mathematical Library](https://github.com/MizarSystem/MML.git)
 at revision `047822c4d814630b28eec8ca6b455e9eb912d5ff`. The article
 is the axiomatic root of the MML: extensionality, singleton and
@@ -38,9 +38,9 @@ theorems of `Type u` and are not claimed.
 
 The Mizar source is vendored from
 [`MizarSystem/MML`](https://github.com/MizarSystem/MML.git)
-as `vendor/MML/mml/tarski.miz` and is licensed GPL-3.0-or-later or
+as `vendor/mml/tarski.miz` and is licensed GPL-3.0-or-later or
 CC-BY-SA-3.0 by the Association of Mizar Users. Pin:
-`vendor/MML` @ `047822c4d814630b28eec8ca6b455e9eb912d5ff`. This
+`vendor/MML_PIN` = `047822c4d814630b28eec8ca6b455e9eb912d5ff`. This
 repository uses the same dual license.
 
 ## 2. Representation
@@ -108,7 +108,7 @@ bash scripts/build_arxiv_pdf.sh
 
 `lake build` typechecks `MizarCCL`, `Challenge`, and `Solution`.
 Narrative inventory: this file. Metadata: `comparator.json`,
-`formalization.yaml`. MML pin: `vendor/MML` @
+`formalization.yaml`. MML pin: `vendor/MML_PIN` =
 `047822c4d814630b28eec8ca6b455e9eb912d5ff`.
 
 ## References

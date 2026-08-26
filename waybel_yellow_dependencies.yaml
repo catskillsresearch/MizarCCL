@@ -1,7 +1,7 @@
 # Full environ-dependency closure of Mizar YELLOW* / WAYBEL* articles.
 #
-# Source: vendor/MML/mml (Mizar 7.13.01 / MML 4.181.1147,
-# git submodule rev 047822c4d814630b28eec8ca6b455e9eb912d5ff).
+# Source: vendor/mml (Mizar 7.13.01 / MML 4.181.1147,
+# ordinary files, pin 047822c4d814630b28eec8ca6b455e9eb912d5ff).
 #
 # Seeds: every article whose filename starts with yellow or waybel
 # (58 files). An article is included if it is a seed or
@@ -13,11 +13,11 @@
 # reached from a seed are excluded.
 #
 # TARSKI is the axiomatic root and is not listed in mml.lar; it is
-# placed first. Remaining articles follow vendor/MML/mml.lar, which
+# placed first. Remaining articles follow the pin’s mml.lar, which
 # is a valid least-dependent → most-dependent order (0 forward edges).
 # depends_on lists direct environ prerequisites, in that same order.
 #
-source: vendor/MML/mml
+source: vendor/mml
 mml_revision: 047822c4d814630b28eec8ca6b455e9eb912d5ff
 mizar_version: 7.13.01
 mml_version: 4.181.1147
@@ -85,47 +85,47 @@ seeds:
   - YELLOW_8
   - YELLOW_9
 dependencies:
-  TARSKI: []  # used vendor/MML/mml/tarski.miz
-  XBOOLE_0:  # used vendor/MML/mml/xboole_0.miz
+  TARSKI: []  # used vendor/mml/tarski.miz
+  XBOOLE_0:  # used vendor/mml/xboole_0.miz
     - TARSKI
-  XBOOLE_1:  # used vendor/MML/mml/xboole_1.miz
-    - TARSKI
-    - XBOOLE_0
-  ENUMSET1:  # used vendor/MML/mml/enumset1.miz
+  XBOOLE_1:  # used vendor/mml/xboole_1.miz
     - TARSKI
     - XBOOLE_0
-    - XBOOLE_1
-  XTUPLE_0:  # used vendor/MML/mml/xtuple_0.miz
+  ENUMSET1:  # used vendor/mml/enumset1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
-    - ENUMSET1
-  XREGULAR:  # used vendor/MML/mml/xregular.miz
+  XTUPLE_0:  # used vendor/mml/xtuple_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
     - ENUMSET1
-  ZFMISC_1:  # used vendor/MML/mml/zfmisc_1.miz
+  XREGULAR:  # used vendor/mml/xregular.miz
+    - TARSKI
+    - XBOOLE_0
+    - XBOOLE_1
+    - ENUMSET1
+  ZFMISC_1:  # used vendor/mml/zfmisc_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
     - ENUMSET1
     - XTUPLE_0
     - XREGULAR
-  SUBSET_1:  # used vendor/MML/mml/subset_1.miz
+  SUBSET_1:  # used vendor/mml/subset_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
     - ENUMSET1
     - ZFMISC_1
-  SETFAM_1:  # used vendor/MML/mml/setfam_1.miz
+  SETFAM_1:  # used vendor/mml/setfam_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
     - ENUMSET1
     - ZFMISC_1
     - SUBSET_1
-  RELAT_1:  # used vendor/MML/mml/relat_1.miz
+  RELAT_1:  # used vendor/mml/relat_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -133,7 +133,7 @@ dependencies:
     - XTUPLE_0
     - ZFMISC_1
     - SUBSET_1
-  FUNCT_1:  # used vendor/MML/mml/funct_1.miz
+  FUNCT_1:  # used vendor/mml/funct_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -142,7 +142,7 @@ dependencies:
     - SUBSET_1
     - SETFAM_1
     - RELAT_1
-  GRFUNC_1:  # used vendor/MML/mml/grfunc_1.miz
+  GRFUNC_1:  # used vendor/mml/grfunc_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -152,14 +152,14 @@ dependencies:
     - SUBSET_1
     - RELAT_1
     - FUNCT_1
-  RELAT_2:  # used vendor/MML/mml/relat_2.miz
+  RELAT_2:  # used vendor/mml/relat_2.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
     - ZFMISC_1
     - SUBSET_1
     - RELAT_1
-  ORDINAL1:  # used vendor/MML/mml/ordinal1.miz
+  ORDINAL1:  # used vendor/mml/ordinal1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -170,7 +170,7 @@ dependencies:
     - SUBSET_1
     - RELAT_1
     - FUNCT_1
-  WELLORD1:  # used vendor/MML/mml/wellord1.miz
+  WELLORD1:  # used vendor/mml/wellord1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -180,7 +180,7 @@ dependencies:
     - RELAT_1
     - FUNCT_1
     - RELAT_2
-  RELSET_1:  # used vendor/MML/mml/relset_1.miz
+  RELSET_1:  # used vendor/mml/relset_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -188,7 +188,7 @@ dependencies:
     - ZFMISC_1
     - SUBSET_1
     - RELAT_1
-  PARTFUN1:  # used vendor/MML/mml/partfun1.miz
+  PARTFUN1:  # used vendor/mml/partfun1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -200,7 +200,7 @@ dependencies:
     - GRFUNC_1
     - RELAT_2
     - RELSET_1
-  MCART_1:  # used vendor/MML/mml/mcart_1.miz
+  MCART_1:  # used vendor/mml/mcart_1.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -210,7 +210,7 @@ dependencies:
     - SUBSET_1
     - RELAT_1
     - FUNCT_1
-  WELLORD2:  # used vendor/MML/mml/wellord2.miz
+  WELLORD2:  # used vendor/mml/wellord2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -223,7 +223,7 @@ dependencies:
     - ORDINAL1
     - WELLORD1
     - MCART_1
-  FUNCT_2:  # used vendor/MML/mml/funct_2.miz
+  FUNCT_2:  # used vendor/mml/funct_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -238,7 +238,7 @@ dependencies:
     - RELSET_1
     - PARTFUN1
     - MCART_1
-  BINOP_1:  # used vendor/MML/mml/binop_1.miz
+  BINOP_1:  # used vendor/mml/binop_1.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -249,7 +249,7 @@ dependencies:
     - RELSET_1
     - PARTFUN1
     - FUNCT_2
-  DOMAIN_1:  # used vendor/MML/mml/domain_1.miz
+  DOMAIN_1:  # used vendor/mml/domain_1.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -261,7 +261,7 @@ dependencies:
     - ORDINAL1
     - PARTFUN1
     - MCART_1
-  FUNCT_3:  # used vendor/MML/mml/funct_3.miz
+  FUNCT_3:  # used vendor/mml/funct_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -274,7 +274,7 @@ dependencies:
     - FUNCT_2
     - BINOP_1
     - DOMAIN_1
-  FUNCOP_1:  # used vendor/MML/mml/funcop_1.miz
+  FUNCOP_1:  # used vendor/mml/funcop_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -291,7 +291,7 @@ dependencies:
     - FUNCT_2
     - BINOP_1
     - FUNCT_3
-  FUNCT_4:  # used vendor/MML/mml/funct_4.miz
+  FUNCT_4:  # used vendor/mml/funct_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -308,7 +308,7 @@ dependencies:
     - FUNCT_2
     - BINOP_1
     - FUNCOP_1
-  ORDINAL2:  # used vendor/MML/mml/ordinal2.miz
+  ORDINAL2:  # used vendor/mml/ordinal2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -320,7 +320,7 @@ dependencies:
     - FUNCT_1
     - ORDINAL1
     - FUNCOP_1
-  ORDINAL3:  # used vendor/MML/mml/ordinal3.miz
+  ORDINAL3:  # used vendor/mml/ordinal3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -332,7 +332,7 @@ dependencies:
     - FUNCT_1
     - ORDINAL1
     - ORDINAL2
-  WELLSET1:  # used vendor/MML/mml/wellset1.miz
+  WELLSET1:  # used vendor/mml/wellset1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -344,7 +344,7 @@ dependencies:
     - FUNCT_1
     - RELAT_2
     - WELLORD1
-  MULTOP_1:  # used vendor/MML/mml/multop_1.miz
+  MULTOP_1:  # used vendor/mml/multop_1.miz
     - XBOOLE_0
     - XTUPLE_0
     - ZFMISC_1
@@ -354,7 +354,7 @@ dependencies:
     - MCART_1
     - FUNCT_2
     - DOMAIN_1
-  SYSREL:  # used vendor/MML/mml/sysrel.miz
+  SYSREL:  # used vendor/mml/sysrel.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -362,7 +362,7 @@ dependencies:
     - ZFMISC_1
     - SUBSET_1
     - RELAT_1
-  FINSET_1:  # used vendor/MML/mml/finset_1.miz
+  FINSET_1:  # used vendor/mml/finset_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -384,14 +384,14 @@ dependencies:
     - FUNCT_4
     - ORDINAL2
     - ORDINAL3
-  FINSUB_1:  # used vendor/MML/mml/finsub_1.miz
+  FINSUB_1:  # used vendor/mml/finsub_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
     - ZFMISC_1
     - SUBSET_1
     - FINSET_1
-  ORDERS_1:  # used vendor/MML/mml/orders_1.miz
+  ORDERS_1:  # used vendor/mml/orders_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -410,7 +410,7 @@ dependencies:
     - WELLORD2
     - FUNCT_2
     - FINSET_1
-  SETWISEO:  # used vendor/MML/mml/setwiseo.miz
+  SETWISEO:  # used vendor/mml/setwiseo.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -427,7 +427,7 @@ dependencies:
     - FUNCOP_1
     - FINSET_1
     - FINSUB_1
-  FRAENKEL:  # used vendor/MML/mml/fraenkel.miz
+  FRAENKEL:  # used vendor/mml/fraenkel.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -445,7 +445,7 @@ dependencies:
     - FINSET_1
     - FINSUB_1
     - SETWISEO
-  CARD_1:  # used vendor/MML/mml/card_1.miz
+  CARD_1:  # used vendor/mml/card_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -464,7 +464,7 @@ dependencies:
     - ORDINAL2
     - ORDINAL3
     - FINSET_1
-  FUNCT_5:  # used vendor/MML/mml/funct_5.miz
+  FUNCT_5:  # used vendor/mml/funct_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -485,7 +485,7 @@ dependencies:
     - FUNCOP_1
     - FUNCT_4
     - CARD_1
-  PARTFUN2:  # used vendor/MML/mml/partfun2.miz
+  PARTFUN2:  # used vendor/mml/partfun2.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -496,7 +496,7 @@ dependencies:
     - PARTFUN1
     - FUNCT_2
     - FUNCOP_1
-  CLASSES1:  # used vendor/MML/mml/classes1.miz
+  CLASSES1:  # used vendor/mml/classes1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -515,7 +515,7 @@ dependencies:
     - FUNCT_2
     - ORDINAL2
     - CARD_1
-  PBOOLE:  # used vendor/MML/mml/pboole.miz
+  PBOOLE:  # used vendor/mml/pboole.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -531,7 +531,7 @@ dependencies:
     - FUNCOP_1
     - FUNCT_4
     - CLASSES1
-  CARD_3:  # used vendor/MML/mml/card_3.miz
+  CARD_3:  # used vendor/mml/card_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -561,7 +561,7 @@ dependencies:
     - FUNCT_5
     - CLASSES1
     - PBOOLE
-  FUNCT_6:  # used vendor/MML/mml/funct_6.miz
+  FUNCT_6:  # used vendor/mml/funct_6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -588,7 +588,7 @@ dependencies:
     - FUNCT_5
     - CLASSES1
     - CARD_3
-  ARYTM_3:  # used vendor/MML/mml/arytm_3.miz
+  ARYTM_3:  # used vendor/mml/arytm_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -598,7 +598,7 @@ dependencies:
     - ORDINAL1
     - ORDINAL2
     - ORDINAL3
-  ARYTM_2:  # used vendor/MML/mml/arytm_2.miz
+  ARYTM_2:  # used vendor/mml/arytm_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -609,12 +609,12 @@ dependencies:
     - ORDINAL2
     - ORDINAL3
     - ARYTM_3
-  ARYTM_1:  # used vendor/MML/mml/arytm_1.miz
+  ARYTM_1:  # used vendor/mml/arytm_1.miz
     - TARSKI
     - SUBSET_1
     - ARYTM_3
     - ARYTM_2
-  NUMBERS:  # used vendor/MML/mml/numbers.miz
+  NUMBERS:  # used vendor/mml/numbers.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -634,7 +634,7 @@ dependencies:
     - CARD_1
     - ARYTM_3
     - ARYTM_2
-  ARYTM_0:  # used vendor/MML/mml/arytm_0.miz
+  ARYTM_0:  # used vendor/mml/arytm_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -652,7 +652,7 @@ dependencies:
     - ARYTM_2
     - ARYTM_1
     - NUMBERS
-  XCMPLX_0:  # used vendor/MML/mml/xcmplx_0.miz
+  XCMPLX_0:  # used vendor/mml/xcmplx_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -667,7 +667,7 @@ dependencies:
     - ARYTM_1
     - NUMBERS
     - ARYTM_0
-  XXREAL_0:  # used vendor/MML/mml/xxreal_0.miz
+  XXREAL_0:  # used vendor/mml/xxreal_0.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -680,7 +680,7 @@ dependencies:
     - ARYTM_1
     - NUMBERS
     - ARYTM_0
-  XREAL_0:  # used vendor/MML/mml/xreal_0.miz
+  XREAL_0:  # used vendor/mml/xreal_0.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -696,14 +696,14 @@ dependencies:
     - ARYTM_0
     - XCMPLX_0
     - XXREAL_0
-  XCMPLX_1:  # used vendor/MML/mml/xcmplx_1.miz
+  XCMPLX_1:  # used vendor/mml/xcmplx_1.miz
     - XBOOLE_0
     - ORDINAL1
     - NUMBERS
     - XCMPLX_0
     - XXREAL_0
     - XREAL_0
-  XREAL_1:  # used vendor/MML/mml/xreal_1.miz
+  XREAL_1:  # used vendor/mml/xreal_1.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -719,7 +719,7 @@ dependencies:
     - XXREAL_0
     - XREAL_0
     - XCMPLX_1
-  AXIOMS:  # used vendor/MML/mml/axioms.miz
+  AXIOMS:  # used vendor/mml/axioms.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -736,7 +736,7 @@ dependencies:
     - XCMPLX_0
     - XXREAL_0
     - XREAL_0
-  REAL_1:  # used vendor/MML/mml/real_1.miz
+  REAL_1:  # used vendor/mml/real_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -750,7 +750,7 @@ dependencies:
     - XCMPLX_0
     - XXREAL_0
     - XREAL_0
-  SQUARE_1:  # used vendor/MML/mml/square_1.miz
+  SQUARE_1:  # used vendor/mml/square_1.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -763,7 +763,7 @@ dependencies:
     - XREAL_1
     - AXIOMS
     - REAL_1
-  NAT_1:  # used vendor/MML/mml/nat_1.miz
+  NAT_1:  # used vendor/mml/nat_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -791,7 +791,7 @@ dependencies:
     - XREAL_1
     - AXIOMS
     - REAL_1
-  INT_1:  # used vendor/MML/mml/int_1.miz
+  INT_1:  # used vendor/mml/int_1.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -813,7 +813,7 @@ dependencies:
     - AXIOMS
     - REAL_1
     - NAT_1
-  RAT_1:  # used vendor/MML/mml/rat_1.miz
+  RAT_1:  # used vendor/mml/rat_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -836,7 +836,7 @@ dependencies:
     - REAL_1
     - NAT_1
     - INT_1
-  MEMBERED:  # used vendor/MML/mml/membered.miz
+  MEMBERED:  # used vendor/mml/membered.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -853,7 +853,7 @@ dependencies:
     - NAT_1
     - INT_1
     - RAT_1
-  VALUED_0:  # used vendor/MML/mml/valued_0.miz
+  VALUED_0:  # used vendor/mml/valued_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -879,7 +879,7 @@ dependencies:
     - INT_1
     - RAT_1
     - MEMBERED
-  COMPLEX1:  # used vendor/MML/mml/complex1.miz
+  COMPLEX1:  # used vendor/mml/complex1.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -900,7 +900,7 @@ dependencies:
     - REAL_1
     - SQUARE_1
     - MEMBERED
-  ABSVALUE:  # used vendor/MML/mml/absvalue.miz
+  ABSVALUE:  # used vendor/mml/absvalue.miz
     - XBOOLE_0
     - ORDINAL1
     - NUMBERS
@@ -914,7 +914,7 @@ dependencies:
     - NAT_1
     - INT_1
     - COMPLEX1
-  INT_2:  # used vendor/MML/mml/int_2.miz
+  INT_2:  # used vendor/mml/int_2.miz
     - XBOOLE_0
     - SUBSET_1
     - ORDINAL1
@@ -929,7 +929,7 @@ dependencies:
     - INT_1
     - COMPLEX1
     - ABSVALUE
-  NAT_D:  # used vendor/MML/mml/nat_d.miz
+  NAT_D:  # used vendor/mml/nat_d.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -949,7 +949,7 @@ dependencies:
     - COMPLEX1
     - ABSVALUE
     - INT_2
-  BINOP_2:  # used vendor/MML/mml/binop_2.miz
+  BINOP_2:  # used vendor/mml/binop_2.miz
     - XBOOLE_0
     - ZFMISC_1
     - SUBSET_1
@@ -966,7 +966,7 @@ dependencies:
     - NAT_1
     - INT_1
     - RAT_1
-  XXREAL_1:  # used vendor/MML/mml/xxreal_1.miz
+  XXREAL_1:  # used vendor/mml/xxreal_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -980,7 +980,7 @@ dependencies:
     - AXIOMS
     - REAL_1
     - MEMBERED
-  CARD_2:  # used vendor/MML/mml/card_2.miz
+  CARD_2:  # used vendor/mml/card_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1015,7 +1015,7 @@ dependencies:
     - XREAL_0
     - XREAL_1
     - NAT_1
-  XXREAL_2:  # used vendor/MML/mml/xxreal_2.miz
+  XXREAL_2:  # used vendor/mml/xxreal_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1042,7 +1042,7 @@ dependencies:
     - RAT_1
     - MEMBERED
     - XXREAL_1
-  XXREAL_3:  # used vendor/MML/mml/xxreal_3.miz
+  XXREAL_3:  # used vendor/mml/xxreal_3.miz
     - XBOOLE_0
     - SUBSET_1
     - ORDINAL1
@@ -1054,7 +1054,7 @@ dependencies:
     - XREAL_1
     - REAL_1
     - XXREAL_2
-  MEMBER_1:  # used vendor/MML/mml/member_1.miz
+  MEMBER_1:  # used vendor/mml/member_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1072,7 +1072,7 @@ dependencies:
     - MEMBERED
     - BINOP_2
     - XXREAL_3
-  SUPINF_1:  # used vendor/MML/mml/supinf_1.miz
+  SUPINF_1:  # used vendor/mml/supinf_1.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -1084,7 +1084,7 @@ dependencies:
     - XREAL_0
     - MEMBERED
     - XXREAL_2
-  QUIN_1:  # used vendor/MML/mml/quin_1.miz
+  QUIN_1:  # used vendor/mml/quin_1.miz
     - ORDINAL1
     - NUMBERS
     - XCMPLX_0
@@ -1095,7 +1095,7 @@ dependencies:
     - REAL_1
     - SQUARE_1
     - MEMBERED
-  REALSET1:  # used vendor/MML/mml/realset1.miz
+  REALSET1:  # used vendor/mml/realset1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -1113,7 +1113,7 @@ dependencies:
     - NUMBERS
     - XXREAL_0
     - MEMBERED
-  CLASSES2:  # used vendor/MML/mml/classes2.miz
+  CLASSES2:  # used vendor/mml/classes2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1136,7 +1136,7 @@ dependencies:
     - CARD_3
     - NUMBERS
     - CARD_2
-  ORDINAL4:  # used vendor/MML/mml/ordinal4.miz
+  ORDINAL4:  # used vendor/mml/ordinal4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1157,7 +1157,7 @@ dependencies:
     - CLASSES1
     - CARD_2
     - CLASSES2
-  FINSEQ_1:  # used vendor/MML/mml/finseq_1.miz
+  FINSEQ_1:  # used vendor/mml/finseq_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1188,7 +1188,7 @@ dependencies:
     - NAT_1
     - INT_1
     - VALUED_0
-  RECDEF_1:  # used vendor/MML/mml/recdef_1.miz
+  RECDEF_1:  # used vendor/mml/recdef_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1219,7 +1219,7 @@ dependencies:
     - INT_1
     - VALUED_0
     - FINSEQ_1
-  VALUED_1:  # used vendor/MML/mml/valued_1.miz
+  VALUED_1:  # used vendor/mml/valued_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1259,7 +1259,7 @@ dependencies:
     - REALSET1
     - FINSEQ_1
     - RECDEF_1
-  FINSEQ_2:  # used vendor/MML/mml/finseq_2.miz
+  FINSEQ_2:  # used vendor/mml/finseq_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1292,7 +1292,7 @@ dependencies:
     - NAT_1
     - FINSEQ_1
     - VALUED_1
-  SEQ_1:  # used vendor/MML/mml/seq_1.miz
+  SEQ_1:  # used vendor/mml/seq_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -1317,7 +1317,7 @@ dependencies:
     - COMPLEX1
     - ABSVALUE
     - VALUED_1
-  COMSEQ_1:  # used vendor/MML/mml/comseq_1.miz
+  COMSEQ_1:  # used vendor/mml/comseq_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -1340,12 +1340,12 @@ dependencies:
     - COMPLEX1
     - VALUED_1
     - SEQ_1
-  XBOOLEAN:  # used vendor/MML/mml/xboolean.miz
+  XBOOLEAN:  # used vendor/mml/xboolean.miz
     - ORDINAL1
     - NUMBERS
     - XCMPLX_0
     - SEQ_1
-  EQREL_1:  # used vendor/MML/mml/eqrel_1.miz
+  EQREL_1:  # used vendor/mml/eqrel_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1373,7 +1373,7 @@ dependencies:
     - XREAL_1
     - NAT_1
     - FINSEQ_1
-  COMSEQ_2:  # used vendor/MML/mml/comseq_2.miz
+  COMSEQ_2:  # used vendor/mml/comseq_2.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -1401,7 +1401,7 @@ dependencies:
     - FINSEQ_2
     - SEQ_1
     - COMSEQ_1
-  SEQ_2:  # used vendor/MML/mml/seq_2.miz
+  SEQ_2:  # used vendor/mml/seq_2.miz
     - XBOOLE_0
     - SUBSET_1
     - RELAT_1
@@ -1428,7 +1428,7 @@ dependencies:
     - SEQ_1
     - COMSEQ_1
     - COMSEQ_2
-  FINSEQOP:  # used vendor/MML/mml/finseqop.miz
+  FINSEQOP:  # used vendor/mml/finseqop.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -1450,7 +1450,7 @@ dependencies:
     - FINSEQ_1
     - FINSEQ_2
     - EQREL_1
-  FINSEQ_3:  # used vendor/MML/mml/finseq_3.miz
+  FINSEQ_3:  # used vendor/mml/finseq_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1491,7 +1491,7 @@ dependencies:
     - FINSEQ_2
     - EQREL_1
     - FINSEQOP
-  MARGREL1:  # used vendor/MML/mml/margrel1.miz
+  MARGREL1:  # used vendor/mml/margrel1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1514,7 +1514,7 @@ dependencies:
     - FINSEQ_2
     - XBOOLEAN
     - FINSEQ_3
-  TOLER_1:  # used vendor/MML/mml/toler_1.miz
+  TOLER_1:  # used vendor/mml/toler_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1530,7 +1530,7 @@ dependencies:
     - PARTFUN1
     - ORDERS_1
     - EQREL_1
-  TREES_1:  # used vendor/MML/mml/trees_1.miz
+  TREES_1:  # used vendor/mml/trees_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1557,7 +1557,7 @@ dependencies:
     - FINSEQ_1
     - FINSEQ_2
     - FINSEQ_3
-  FINSEQ_4:  # used vendor/MML/mml/finseq_4.miz
+  FINSEQ_4:  # used vendor/mml/finseq_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1589,7 +1589,7 @@ dependencies:
     - FINSEQ_2
     - EQREL_1
     - FINSEQ_3
-  FINSOP_1:  # used vendor/MML/mml/finsop_1.miz
+  FINSOP_1:  # used vendor/mml/finsop_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1617,7 +1617,7 @@ dependencies:
     - FINSEQ_2
     - FINSEQ_3
     - FINSEQ_4
-  SETWOP_2:  # used vendor/MML/mml/setwop_2.miz
+  SETWOP_2:  # used vendor/mml/setwop_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1647,7 +1647,7 @@ dependencies:
     - FINSEQ_2
     - FINSEQOP
     - FINSOP_1
-  RFUNCT_1:  # used vendor/MML/mml/rfunct_1.miz
+  RFUNCT_1:  # used vendor/mml/rfunct_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1674,7 +1674,7 @@ dependencies:
     - SEQ_1
     - COMSEQ_2
     - SEQ_2
-  RVSUM_1:  # used vendor/MML/mml/rvsum_1.miz
+  RVSUM_1:  # used vendor/mml/rvsum_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1713,7 +1713,7 @@ dependencies:
     - FINSOP_1
     - SETWOP_2
     - RFUNCT_1
-  NEWTON:  # used vendor/MML/mml/newton.miz
+  NEWTON:  # used vendor/mml/newton.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1751,7 +1751,7 @@ dependencies:
     - FINSEQOP
     - FINSOP_1
     - RVSUM_1
-  CARD_4:  # used vendor/MML/mml/card_4.miz
+  CARD_4:  # used vendor/mml/card_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1790,7 +1790,7 @@ dependencies:
     - FINSEQ_1
     - FINSEQ_2
     - NEWTON
-  CARD_5:  # used vendor/MML/mml/card_5.miz
+  CARD_5:  # used vendor/mml/card_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1825,7 +1825,7 @@ dependencies:
     - ORDINAL4
     - FINSEQ_1
     - CARD_4
-  TREES_2:  # used vendor/MML/mml/trees_2.miz
+  TREES_2:  # used vendor/mml/trees_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1858,7 +1858,7 @@ dependencies:
     - FINSEQ_1
     - FINSEQ_2
     - TREES_1
-  VALUED_2:  # used vendor/MML/mml/valued_2.miz
+  VALUED_2:  # used vendor/mml/valued_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1889,7 +1889,7 @@ dependencies:
     - FINSEQ_1
     - VALUED_1
     - RFUNCT_1
-  SEQM_3:  # used vendor/MML/mml/seqm_3.miz
+  SEQM_3:  # used vendor/mml/seqm_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1922,7 +1922,7 @@ dependencies:
     - SEQ_2
     - FINSEQ_3
     - RFUNCT_1
-  RFINSEQ:  # used vendor/MML/mml/rfinseq.miz
+  RFINSEQ:  # used vendor/mml/rfinseq.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -1962,7 +1962,7 @@ dependencies:
     - FINSOP_1
     - RVSUM_1
     - SEQM_3
-  SEQ_4:  # used vendor/MML/mml/seq_4.miz
+  SEQ_4:  # used vendor/mml/seq_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2012,7 +2012,7 @@ dependencies:
     - FINSEQ_4
     - RVSUM_1
     - SEQM_3
-  RCOMP_1:  # used vendor/MML/mml/rcomp_1.miz
+  RCOMP_1:  # used vendor/mml/rcomp_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2046,7 +2046,7 @@ dependencies:
     - RVSUM_1
     - SEQM_3
     - SEQ_4
-  RFUNCT_2:  # used vendor/MML/mml/rfunct_2.miz
+  RFUNCT_2:  # used vendor/mml/rfunct_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2078,7 +2078,7 @@ dependencies:
     - SEQM_3
     - SEQ_4
     - RCOMP_1
-  PREPOWER:  # used vendor/MML/mml/prepower.miz
+  PREPOWER:  # used vendor/mml/prepower.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -2116,7 +2116,7 @@ dependencies:
     - SEQM_3
     - SEQ_4
     - RFUNCT_2
-  FINSEQ_5:  # used vendor/MML/mml/finseq_5.miz
+  FINSEQ_5:  # used vendor/mml/finseq_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2143,7 +2143,7 @@ dependencies:
     - FINSEQ_3
     - FINSEQ_4
     - RFINSEQ
-  REWRITE1:  # used vendor/MML/mml/rewrite1.miz
+  REWRITE1:  # used vendor/mml/rewrite1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2172,7 +2172,7 @@ dependencies:
     - EQREL_1
     - TREES_2
     - FINSEQ_5
-  FUNCT_7:  # used vendor/MML/mml/funct_7.miz
+  FUNCT_7:  # used vendor/mml/funct_7.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2219,7 +2219,7 @@ dependencies:
     - RFINSEQ
     - FINSEQ_5
     - REWRITE1
-  SCHEME1:  # used vendor/MML/mml/scheme1.miz
+  SCHEME1:  # used vendor/mml/scheme1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2245,7 +2245,7 @@ dependencies:
     - RECDEF_1
     - SEQ_1
     - SEQM_3
-  ABIAN:  # used vendor/MML/mml/abian.miz
+  ABIAN:  # used vendor/mml/abian.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2278,7 +2278,7 @@ dependencies:
     - SEQ_4
     - FUNCT_7
     - SCHEME1
-  POWER:  # used vendor/MML/mml/power.miz
+  POWER:  # used vendor/mml/power.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -2309,7 +2309,7 @@ dependencies:
     - SEQ_4
     - PREPOWER
     - ABIAN
-  SERIES_1:  # used vendor/MML/mml/series_1.miz
+  SERIES_1:  # used vendor/mml/series_1.miz
     - XBOOLE_0
     - SUBSET_1
     - RELAT_1
@@ -2346,7 +2346,7 @@ dependencies:
     - PREPOWER
     - ABIAN
     - POWER
-  COMSEQ_3:  # used vendor/MML/mml/comseq_3.miz
+  COMSEQ_3:  # used vendor/mml/comseq_3.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -2385,7 +2385,7 @@ dependencies:
     - SEQ_4
     - POWER
     - SERIES_1
-  SUPINF_2:  # used vendor/MML/mml/supinf_2.miz
+  SUPINF_2:  # used vendor/mml/supinf_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2418,7 +2418,7 @@ dependencies:
     - RECDEF_1
     - VALUED_1
     - CARD_4
-  TREES_A:  # used vendor/MML/mml/trees_a.miz
+  TREES_A:  # used vendor/mml/trees_a.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2435,7 +2435,7 @@ dependencies:
     - FINSEQ_2
     - TREES_1
     - TREES_2
-  PRE_FF:  # used vendor/MML/mml/pre_ff.miz
+  PRE_FF:  # used vendor/mml/pre_ff.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -2468,7 +2468,7 @@ dependencies:
     - FINSEQ_4
     - NEWTON
     - POWER
-  TREES_3:  # used vendor/MML/mml/trees_3.miz
+  TREES_3:  # used vendor/mml/trees_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2502,7 +2502,7 @@ dependencies:
     - FINSEQ_3
     - TREES_1
     - TREES_2
-  TREES_4:  # used vendor/MML/mml/trees_4.miz
+  TREES_4:  # used vendor/mml/trees_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2533,7 +2533,7 @@ dependencies:
     - TREES_1
     - TREES_2
     - TREES_3
-  CARD_FIL:  # used vendor/MML/mml/card_fil.miz
+  CARD_FIL:  # used vendor/mml/card_fil.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2562,7 +2562,7 @@ dependencies:
     - CARD_2
     - CARD_5
     - TREES_2
-  BINARITH:  # used vendor/MML/mml/binarith.miz
+  BINARITH:  # used vendor/mml/binarith.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -2597,7 +2597,7 @@ dependencies:
     - RFINSEQ
     - POWER
     - SERIES_1
-  PRE_CIRC:  # used vendor/MML/mml/pre_circ.miz
+  PRE_CIRC:  # used vendor/mml/pre_circ.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2647,7 +2647,7 @@ dependencies:
     - TREES_3
     - TREES_4
     - BINARITH
-  FINSEQ_6:  # used vendor/MML/mml/finseq_6.miz
+  FINSEQ_6:  # used vendor/mml/finseq_6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2680,7 +2680,7 @@ dependencies:
     - RFINSEQ
     - FINSEQ_5
     - BINARITH
-  MBOOLEAN:  # used vendor/MML/mml/mboolean.miz
+  MBOOLEAN:  # used vendor/mml/mboolean.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2699,7 +2699,7 @@ dependencies:
     - PBOOLE
     - CARD_2
     - PRE_CIRC
-  WSIERP_1:  # used vendor/MML/mml/wsierp_1.miz
+  WSIERP_1:  # used vendor/mml/wsierp_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2740,7 +2740,7 @@ dependencies:
     - FINSEQ_5
     - PRE_FF
     - TREES_4
-  PZFMISC1:  # used vendor/MML/mml/pzfmisc1.miz
+  PZFMISC1:  # used vendor/mml/pzfmisc1.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -2754,7 +2754,7 @@ dependencies:
     - FINSET_1
     - PBOOLE
     - MBOOLEAN
-  TREES_9:  # used vendor/MML/mml/trees_9.miz
+  TREES_9:  # used vendor/mml/trees_9.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2793,7 +2793,7 @@ dependencies:
     - TREES_4
     - PRE_CIRC
     - FINSEQ_6
-  MSSUBFAM:  # used vendor/MML/mml/mssubfam.miz
+  MSSUBFAM:  # used vendor/mml/mssubfam.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2817,7 +2817,7 @@ dependencies:
     - PRE_CIRC
     - MBOOLEAN
     - PZFMISC1
-  PROB_1:  # used vendor/MML/mml/prob_1.miz
+  PROB_1:  # used vendor/mml/prob_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2848,7 +2848,7 @@ dependencies:
     - COMSEQ_2
     - SEQ_2
     - FUNCT_7
-  PROB_2:  # used vendor/MML/mml/prob_2.miz
+  PROB_2:  # used vendor/mml/prob_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2876,7 +2876,7 @@ dependencies:
     - COMSEQ_2
     - SEQ_2
     - PROB_1
-  LIMFUNC1:  # used vendor/MML/mml/limfunc1.miz
+  LIMFUNC1:  # used vendor/mml/limfunc1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2915,7 +2915,7 @@ dependencies:
     - RCOMP_1
     - RFUNCT_2
     - PROB_1
-  MEASURE1:  # used vendor/MML/mml/measure1.miz
+  MEASURE1:  # used vendor/mml/measure1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2944,7 +2944,7 @@ dependencies:
     - SUPINF_2
     - PROB_1
     - PROB_2
-  MEASURE2:  # used vendor/MML/mml/measure2.miz
+  MEASURE2:  # used vendor/mml/measure2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -2969,7 +2969,7 @@ dependencies:
     - PROB_1
     - PROB_2
     - MEASURE1
-  RFUNCT_3:  # used vendor/MML/mml/rfunct_3.miz
+  RFUNCT_3:  # used vendor/mml/rfunct_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3022,7 +3022,7 @@ dependencies:
     - RCOMP_1
     - PROB_1
     - LIMFUNC1
-  NAT_2:  # used vendor/MML/mml/nat_2.miz
+  NAT_2:  # used vendor/mml/nat_2.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3051,7 +3051,7 @@ dependencies:
     - POWER
     - SERIES_1
     - BINARITH
-  ARROW:  # used vendor/MML/mml/arrow.miz
+  ARROW:  # used vendor/mml/arrow.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3082,7 +3082,7 @@ dependencies:
     - FINSEQ_1
     - FINSEQ_3
     - FINSEQ_4
-  PRE_POLY:  # used vendor/MML/mml/pre_poly.miz
+  PRE_POLY:  # used vendor/mml/pre_poly.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3147,7 +3147,7 @@ dependencies:
     - RFUNCT_3
     - NAT_2
     - ARROW
-  CARD_LAR:  # used vendor/MML/mml/card_lar.miz
+  CARD_LAR:  # used vendor/mml/card_lar.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3176,7 +3176,7 @@ dependencies:
     - CARD_5
     - TREES_2
     - CARD_FIL
-  ZF_LANG:  # used vendor/MML/mml/zf_lang.miz
+  ZF_LANG:  # used vendor/mml/zf_lang.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -3192,7 +3192,7 @@ dependencies:
     - XREAL_1
     - NAT_1
     - FINSEQ_1
-  ZF_MODEL:  # used vendor/MML/mml/zf_model.miz
+  ZF_MODEL:  # used vendor/mml/zf_model.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -3206,7 +3206,7 @@ dependencies:
     - NUMBERS
     - FUNCT_7
     - ZF_LANG
-  ZFMODEL1:  # used vendor/MML/mml/zfmodel1.miz
+  ZFMODEL1:  # used vendor/mml/zfmodel1.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -3227,7 +3227,7 @@ dependencies:
     - FUNCT_7
     - ZF_LANG
     - ZF_MODEL
-  ZF_LANG1:  # used vendor/MML/mml/zf_lang1.miz
+  ZF_LANG1:  # used vendor/mml/zf_lang1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3251,7 +3251,7 @@ dependencies:
     - ZF_LANG
     - ZF_MODEL
     - ZFMODEL1
-  ZF_REFLE:  # used vendor/MML/mml/zf_refle.miz
+  ZF_REFLE:  # used vendor/mml/zf_refle.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3287,7 +3287,7 @@ dependencies:
     - ZF_MODEL
     - ZFMODEL1
     - ZF_LANG1
-  QC_LANG1:  # used vendor/MML/mml/qc_lang1.miz
+  QC_LANG1:  # used vendor/mml/qc_lang1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3313,7 +3313,7 @@ dependencies:
     - XREAL_0
     - NAT_1
     - FINSEQ_1
-  QC_LANG2:  # used vendor/MML/mml/qc_lang2.miz
+  QC_LANG2:  # used vendor/mml/qc_lang2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3333,7 +3333,7 @@ dependencies:
     - NAT_1
     - FINSEQ_1
     - QC_LANG1
-  QC_LANG3:  # used vendor/MML/mml/qc_lang3.miz
+  QC_LANG3:  # used vendor/mml/qc_lang3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3350,7 +3350,7 @@ dependencies:
     - FINSEQ_1
     - QC_LANG1
     - QC_LANG2
-  CQC_LANG:  # used vendor/MML/mml/cqc_lang.miz
+  CQC_LANG:  # used vendor/mml/cqc_lang.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -3377,7 +3377,7 @@ dependencies:
     - QC_LANG1
     - QC_LANG2
     - QC_LANG3
-  CQC_THE1:  # used vendor/MML/mml/cqc_the1.miz
+  CQC_THE1:  # used vendor/mml/cqc_the1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3401,7 +3401,7 @@ dependencies:
     - FINSEQ_1
     - QC_LANG1
     - CQC_LANG
-  VALUAT_1:  # used vendor/MML/mml/valuat_1.miz
+  VALUAT_1:  # used vendor/mml/valuat_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3426,7 +3426,7 @@ dependencies:
     - QC_LANG2
     - QC_LANG3
     - CQC_LANG
-  ZF_FUND1:  # used vendor/MML/mml/zf_fund1.miz
+  ZF_FUND1:  # used vendor/mml/zf_fund1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3462,7 +3462,7 @@ dependencies:
     - ZF_MODEL
     - ZF_LANG1
     - ZF_REFLE
-  CQC_SIM1:  # used vendor/MML/mml/cqc_sim1.miz
+  CQC_SIM1:  # used vendor/mml/cqc_sim1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3503,7 +3503,7 @@ dependencies:
     - QC_LANG2
     - QC_LANG3
     - CQC_LANG
-  STRUCT_0:  # used vendor/MML/mml/struct_0.miz
+  STRUCT_0:  # used vendor/mml/struct_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3527,7 +3527,7 @@ dependencies:
     - FINSEQ_1
     - CARD_5
     - FUNCT_7
-  ALGSTR_0:  # used vendor/MML/mml/algstr_0.miz
+  ALGSTR_0:  # used vendor/mml/algstr_0.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3537,7 +3537,7 @@ dependencies:
     - CARD_1
     - FUNCT_5
     - STRUCT_0
-  PRE_TOPC:  # used vendor/MML/mml/pre_topc.miz
+  PRE_TOPC:  # used vendor/mml/pre_topc.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3553,7 +3553,7 @@ dependencies:
     - FUNCOP_1
     - CARD_1
     - STRUCT_0
-  ORDERS_2:  # used vendor/MML/mml/orders_2.miz
+  ORDERS_2:  # used vendor/mml/orders_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3573,7 +3573,7 @@ dependencies:
     - CARD_1
     - STRUCT_0
     - PRE_TOPC
-  GRAPH_1:  # used vendor/MML/mml/graph_1.miz
+  GRAPH_1:  # used vendor/mml/graph_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3598,7 +3598,7 @@ dependencies:
     - FINSEQ_1
     - FINSEQ_3
     - STRUCT_0
-  CAT_1:  # used vendor/MML/mml/cat_1.miz
+  CAT_1:  # used vendor/mml/cat_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3615,7 +3615,7 @@ dependencies:
     - NUMBERS
     - STRUCT_0
     - GRAPH_1
-  LATTICES:  # used vendor/MML/mml/lattices.miz
+  LATTICES:  # used vendor/mml/lattices.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3624,7 +3624,7 @@ dependencies:
     - BINOP_1
     - CARD_1
     - STRUCT_0
-  TOPS_1:  # used vendor/MML/mml/tops_1.miz
+  TOPS_1:  # used vendor/mml/tops_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3632,7 +3632,7 @@ dependencies:
     - SETFAM_1
     - STRUCT_0
     - PRE_TOPC
-  CONNSP_1:  # used vendor/MML/mml/connsp_1.miz
+  CONNSP_1:  # used vendor/mml/connsp_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3647,7 +3647,7 @@ dependencies:
     - STRUCT_0
     - PRE_TOPC
     - TOPS_1
-  TOPS_2:  # used vendor/MML/mml/tops_2.miz
+  TOPS_2:  # used vendor/mml/tops_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3674,7 +3674,7 @@ dependencies:
     - PRE_TOPC
     - TOPS_1
     - CONNSP_1
-  RLVECT_1:  # used vendor/MML/mml/rlvect_1.miz
+  RLVECT_1:  # used vendor/mml/rlvect_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3704,7 +3704,7 @@ dependencies:
     - FINSEQ_4
     - STRUCT_0
     - ALGSTR_0
-  RLSUB_1:  # used vendor/MML/mml/rlsub_1.miz
+  RLSUB_1:  # used vendor/mml/rlsub_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3728,7 +3728,7 @@ dependencies:
     - STRUCT_0
     - ALGSTR_0
     - RLVECT_1
-  GROUP_1:  # used vendor/MML/mml/group_1.miz
+  GROUP_1:  # used vendor/mml/group_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3761,7 +3761,7 @@ dependencies:
     - STRUCT_0
     - ALGSTR_0
     - RLVECT_1
-  VECTSP_1:  # used vendor/MML/mml/vectsp_1.miz
+  VECTSP_1:  # used vendor/mml/vectsp_1.miz
     - XBOOLE_0
     - ZFMISC_1
     - SUBSET_1
@@ -3785,7 +3785,7 @@ dependencies:
     - ALGSTR_0
     - RLVECT_1
     - GROUP_1
-  ALGSTR_1:  # used vendor/MML/mml/algstr_1.miz
+  ALGSTR_1:  # used vendor/mml/algstr_1.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -3805,7 +3805,7 @@ dependencies:
     - RLVECT_1
     - GROUP_1
     - VECTSP_1
-  COMPTS_1:  # used vendor/MML/mml/compts_1.miz
+  COMPTS_1:  # used vendor/mml/compts_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3826,7 +3826,7 @@ dependencies:
     - PRE_TOPC
     - TOPS_1
     - TOPS_2
-  RLSUB_2:  # used vendor/MML/mml/rlsub_2.miz
+  RLSUB_2:  # used vendor/mml/rlsub_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3852,7 +3852,7 @@ dependencies:
     - RLVECT_1
     - RLSUB_1
     - VECTSP_1
-  MIDSP_1:  # used vendor/MML/mml/midsp_1.miz
+  MIDSP_1:  # used vendor/mml/midsp_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3868,7 +3868,7 @@ dependencies:
     - STRUCT_0
     - ALGSTR_0
     - RLVECT_1
-  FUNCSDOM:  # used vendor/MML/mml/funcsdom.miz
+  FUNCSDOM:  # used vendor/mml/funcsdom.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3894,7 +3894,7 @@ dependencies:
     - RLVECT_1
     - GROUP_1
     - VECTSP_1
-  VECTSP_2:  # used vendor/MML/mml/vectsp_2.miz
+  VECTSP_2:  # used vendor/mml/vectsp_2.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -3910,7 +3910,7 @@ dependencies:
     - GROUP_1
     - VECTSP_1
     - FUNCSDOM
-  FILTER_0:  # used vendor/MML/mml/filter_0.miz
+  FILTER_0:  # used vendor/mml/filter_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3935,7 +3935,7 @@ dependencies:
     - STRUCT_0
     - LATTICES
     - RLSUB_2
-  LATTICE2:  # used vendor/MML/mml/lattice2.miz
+  LATTICE2:  # used vendor/mml/lattice2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -3959,7 +3959,7 @@ dependencies:
     - GROUP_1
     - RLSUB_2
     - FILTER_0
-  RLVECT_2:  # used vendor/MML/mml/rlvect_2.miz
+  RLVECT_2:  # used vendor/mml/rlvect_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4002,7 +4002,7 @@ dependencies:
     - VECTSP_1
     - RLSUB_2
     - VECTSP_2
-  METRIC_1:  # used vendor/MML/mml/metric_1.miz
+  METRIC_1:  # used vendor/mml/metric_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4033,7 +4033,7 @@ dependencies:
     - ABSVALUE
     - VALUED_1
     - STRUCT_0
-  REAL_LAT:  # used vendor/MML/mml/real_lat.miz
+  REAL_LAT:  # used vendor/mml/real_lat.miz
     - XBOOLE_0
     - SUBSET_1
     - RELAT_1
@@ -4050,7 +4050,7 @@ dependencies:
     - STRUCT_0
     - LATTICES
     - FUNCSDOM
-  CAT_2:  # used vendor/MML/mml/cat_2.miz
+  CAT_2:  # used vendor/mml/cat_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4074,7 +4074,7 @@ dependencies:
     - STRUCT_0
     - GRAPH_1
     - CAT_1
-  RLVECT_3:  # used vendor/MML/mml/rlvect_3.miz
+  RLVECT_3:  # used vendor/mml/rlvect_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4105,7 +4105,7 @@ dependencies:
     - RLSUB_1
     - RLSUB_2
     - RLVECT_2
-  GROUP_2:  # used vendor/MML/mml/group_2.miz
+  GROUP_2:  # used vendor/mml/group_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4139,7 +4139,7 @@ dependencies:
     - STRUCT_0
     - ALGSTR_0
     - GROUP_1
-  VECTSP_4:  # used vendor/MML/mml/vectsp_4.miz
+  VECTSP_4:  # used vendor/mml/vectsp_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4159,7 +4159,7 @@ dependencies:
     - GROUP_1
     - VECTSP_1
     - VECTSP_2
-  VECTSP_5:  # used vendor/MML/mml/vectsp_5.miz
+  VECTSP_5:  # used vendor/mml/vectsp_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4184,7 +4184,7 @@ dependencies:
     - RLSUB_2
     - VECTSP_2
     - VECTSP_4
-  NORMSP_0:  # used vendor/MML/mml/normsp_0.miz
+  NORMSP_0:  # used vendor/mml/normsp_0.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -4204,7 +4204,7 @@ dependencies:
     - NAT_1
     - SEQ_1
     - STRUCT_0
-  NORMSP_1:  # used vendor/MML/mml/normsp_1.miz
+  NORMSP_1:  # used vendor/mml/normsp_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -4237,7 +4237,7 @@ dependencies:
     - RLVECT_1
     - RLSUB_1
     - NORMSP_0
-  VFUNCT_1:  # used vendor/MML/mml/vfunct_1.miz
+  VFUNCT_1:  # used vendor/mml/vfunct_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4268,7 +4268,7 @@ dependencies:
     - RLVECT_1
     - NORMSP_0
     - NORMSP_1
-  VECTSP_6:  # used vendor/MML/mml/vectsp_6.miz
+  VECTSP_6:  # used vendor/mml/vectsp_6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4305,7 +4305,7 @@ dependencies:
     - RLVECT_2
     - VECTSP_4
     - VFUNCT_1
-  VECTSP_7:  # used vendor/MML/mml/vectsp_7.miz
+  VECTSP_7:  # used vendor/mml/vectsp_7.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4330,7 +4330,7 @@ dependencies:
     - VECTSP_4
     - VECTSP_5
     - VECTSP_6
-  GROUP_3:  # used vendor/MML/mml/group_3.miz
+  GROUP_3:  # used vendor/mml/group_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4364,7 +4364,7 @@ dependencies:
     - ALGSTR_0
     - GROUP_1
     - GROUP_2
-  GROUP_4:  # used vendor/MML/mml/group_4.miz
+  GROUP_4:  # used vendor/mml/group_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4407,7 +4407,7 @@ dependencies:
     - RLSUB_2
     - GROUP_2
     - GROUP_3
-  GR_CY_1:  # used vendor/MML/mml/gr_cy_1.miz
+  GR_CY_1:  # used vendor/mml/gr_cy_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4451,7 +4451,7 @@ dependencies:
     - GROUP_1
     - GROUP_2
     - GROUP_4
-  REALSET2:  # used vendor/MML/mml/realset2.miz
+  REALSET2:  # used vendor/mml/realset2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4478,7 +4478,7 @@ dependencies:
     - RLVECT_1
     - GROUP_1
     - VECTSP_1
-  CONNSP_2:  # used vendor/MML/mml/connsp_2.miz
+  CONNSP_2:  # used vendor/mml/connsp_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4491,7 +4491,7 @@ dependencies:
     - TOPS_1
     - CONNSP_1
     - COMPTS_1
-  METRIC_3:  # used vendor/MML/mml/metric_3.miz
+  METRIC_3:  # used vendor/mml/metric_3.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -4515,7 +4515,7 @@ dependencies:
     - COMPLEX1
     - STRUCT_0
     - METRIC_1
-  OPPCAT_1:  # used vendor/MML/mml/oppcat_1.miz
+  OPPCAT_1:  # used vendor/mml/oppcat_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -4530,7 +4530,7 @@ dependencies:
     - STRUCT_0
     - GRAPH_1
     - CAT_1
-  FILTER_1:  # used vendor/MML/mml/filter_1.miz
+  FILTER_1:  # used vendor/mml/filter_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4553,7 +4553,7 @@ dependencies:
     - LATTICES
     - FILTER_0
     - LATTICE2
-  NAT_LAT:  # used vendor/MML/mml/nat_lat.miz
+  NAT_LAT:  # used vendor/mml/nat_lat.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4578,7 +4578,7 @@ dependencies:
     - NEWTON
     - STRUCT_0
     - LATTICES
-  GROUP_5:  # used vendor/MML/mml/group_5.miz
+  GROUP_5:  # used vendor/mml/group_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4611,7 +4611,7 @@ dependencies:
     - GROUP_2
     - GROUP_3
     - GROUP_4
-  CAT_3:  # used vendor/MML/mml/cat_3.miz
+  CAT_3:  # used vendor/mml/cat_3.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -4627,7 +4627,7 @@ dependencies:
     - GRAPH_1
     - CAT_1
     - OPPCAT_1
-  NATTRA_1:  # used vendor/MML/mml/nattra_1.miz
+  NATTRA_1:  # used vendor/mml/nattra_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4656,7 +4656,7 @@ dependencies:
     - CAT_1
     - CAT_2
     - CAT_3
-  MATRIX_1:  # used vendor/MML/mml/matrix_1.miz
+  MATRIX_1:  # used vendor/mml/matrix_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -4688,7 +4688,7 @@ dependencies:
     - ALGSTR_0
     - RLVECT_1
     - VECTSP_1
-  PCOMPS_1:  # used vendor/MML/mml/pcomps_1.miz
+  PCOMPS_1:  # used vendor/mml/pcomps_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4717,7 +4717,7 @@ dependencies:
     - TOPS_2
     - COMPTS_1
     - METRIC_1
-  MIDSP_2:  # used vendor/MML/mml/midsp_2.miz
+  MIDSP_2:  # used vendor/mml/midsp_2.miz
     - XBOOLE_0
     - ZFMISC_1
     - SUBSET_1
@@ -4731,7 +4731,7 @@ dependencies:
     - RLVECT_1
     - VECTSP_1
     - MIDSP_1
-  ALI2:  # used vendor/MML/mml/ali2.miz
+  ALI2:  # used vendor/mml/ali2.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -4765,7 +4765,7 @@ dependencies:
     - COMPTS_1
     - METRIC_1
     - PCOMPS_1
-  BHSP_1:  # used vendor/MML/mml/bhsp_1.miz
+  BHSP_1:  # used vendor/mml/bhsp_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -4800,7 +4800,7 @@ dependencies:
     - RLSUB_1
     - NORMSP_1
     - VFUNCT_1
-  BHSP_2:  # used vendor/MML/mml/bhsp_2.miz
+  BHSP_2:  # used vendor/mml/bhsp_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4833,7 +4833,7 @@ dependencies:
     - NORMSP_1
     - VFUNCT_1
     - BHSP_1
-  ENS_1:  # used vendor/MML/mml/ens_1.miz
+  ENS_1:  # used vendor/mml/ens_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4859,7 +4859,7 @@ dependencies:
     - CAT_1
     - CAT_2
     - OPPCAT_1
-  BORSUK_1:  # used vendor/MML/mml/borsuk_1.miz
+  BORSUK_1:  # used vendor/mml/borsuk_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4895,7 +4895,7 @@ dependencies:
     - METRIC_1
     - CONNSP_2
     - PCOMPS_1
-  TBSP_1:  # used vendor/MML/mml/tbsp_1.miz
+  TBSP_1:  # used vendor/mml/tbsp_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -4933,7 +4933,7 @@ dependencies:
     - METRIC_1
     - PCOMPS_1
     - ALI2
-  GRCAT_1:  # used vendor/MML/mml/grcat_1.miz
+  GRCAT_1:  # used vendor/mml/grcat_1.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -4964,7 +4964,7 @@ dependencies:
     - VECTSP_2
     - CAT_2
     - MIDSP_2
-  GROUP_6:  # used vendor/MML/mml/group_6.miz
+  GROUP_6:  # used vendor/mml/group_6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5003,7 +5003,7 @@ dependencies:
     - GROUP_4
     - REALSET2
     - GROUP_5
-  MATRIX_2:  # used vendor/MML/mml/matrix_2.miz
+  MATRIX_2:  # used vendor/mml/matrix_2.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -5037,7 +5037,7 @@ dependencies:
     - VECTSP_1
     - GROUP_4
     - MATRIX_1
-  MONOID_0:  # used vendor/MML/mml/monoid_0.miz
+  MONOID_0:  # used vendor/mml/monoid_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5075,7 +5075,7 @@ dependencies:
     - VECTSP_1
     - VECTSP_2
     - GR_CY_1
-  RUSUB_1:  # used vendor/MML/mml/rusub_1.miz
+  RUSUB_1:  # used vendor/mml/rusub_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5104,7 +5104,7 @@ dependencies:
     - RLVECT_1
     - RLSUB_1
     - BHSP_1
-  RUSUB_2:  # used vendor/MML/mml/rusub_2.miz
+  RUSUB_2:  # used vendor/mml/rusub_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5131,7 +5131,7 @@ dependencies:
     - RLSUB_2
     - BHSP_1
     - RUSUB_1
-  RLVECT_4:  # used vendor/MML/mml/rlvect_4.miz
+  RLVECT_4:  # used vendor/mml/rlvect_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5160,7 +5160,7 @@ dependencies:
     - RLSUB_2
     - RLVECT_2
     - RLVECT_3
-  RUSUB_3:  # used vendor/MML/mml/rusub_3.miz
+  RUSUB_3:  # used vendor/mml/rusub_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5201,7 +5201,7 @@ dependencies:
     - RUSUB_1
     - RUSUB_2
     - RLVECT_4
-  RLVECT_5:  # used vendor/MML/mml/rlvect_5.miz
+  RLVECT_5:  # used vendor/mml/rlvect_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5239,7 +5239,7 @@ dependencies:
     - RLSUB_2
     - RLVECT_2
     - RLVECT_3
-  RUSUB_4:  # used vendor/MML/mml/rusub_4.miz
+  RUSUB_4:  # used vendor/mml/rusub_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5279,7 +5279,7 @@ dependencies:
     - RUSUB_2
     - RUSUB_3
     - RLVECT_5
-  T_0TOPSP:  # used vendor/MML/mml/t_0topsp.miz
+  T_0TOPSP:  # used vendor/mml/t_0topsp.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -5298,7 +5298,7 @@ dependencies:
     - PRE_TOPC
     - TOPS_2
     - BORSUK_1
-  CANTOR_1:  # used vendor/MML/mml/cantor_1.miz
+  CANTOR_1:  # used vendor/mml/cantor_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5322,7 +5322,7 @@ dependencies:
     - STRUCT_0
     - PRE_TOPC
     - TOPS_2
-  TSEP_1:  # used vendor/MML/mml/tsep_1.miz
+  TSEP_1:  # used vendor/mml/tsep_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5333,7 +5333,7 @@ dependencies:
     - CONNSP_1
     - TOPS_2
     - BORSUK_1
-  TDLAT_1:  # used vendor/MML/mml/tdlat_1.miz
+  TDLAT_1:  # used vendor/mml/tdlat_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5356,7 +5356,7 @@ dependencies:
     - TOPS_1
     - LATTICE2
     - NAT_LAT
-  LATTICE3:  # used vendor/MML/mml/lattice3.miz
+  LATTICE3:  # used vendor/mml/lattice3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5381,7 +5381,7 @@ dependencies:
     - FILTER_0
     - LATTICE2
     - FILTER_1
-  TDLAT_2:  # used vendor/MML/mml/tdlat_2.miz
+  TDLAT_2:  # used vendor/mml/tdlat_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5409,7 +5409,7 @@ dependencies:
     - PCOMPS_1
     - TDLAT_1
     - LATTICE3
-  TDLAT_3:  # used vendor/MML/mml/tdlat_3.miz
+  TDLAT_3:  # used vendor/mml/tdlat_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5430,7 +5430,7 @@ dependencies:
     - TDLAT_1
     - LATTICE3
     - TDLAT_2
-  TOPS_3:  # used vendor/MML/mml/tops_3.miz
+  TOPS_3:  # used vendor/mml/tops_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5442,7 +5442,7 @@ dependencies:
     - BORSUK_1
     - TSEP_1
     - TDLAT_3
-  URYSOHN1:  # used vendor/MML/mml/urysohn1.miz
+  URYSOHN1:  # used vendor/mml/urysohn1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5474,7 +5474,7 @@ dependencies:
     - TOPS_1
     - COMPTS_1
     - CONNSP_2
-  UNIALG_1:  # used vendor/MML/mml/unialg_1.miz
+  UNIALG_1:  # used vendor/mml/unialg_1.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -5493,7 +5493,7 @@ dependencies:
     - FINSEQ_2
     - MARGREL1
     - STRUCT_0
-  UNIALG_2:  # used vendor/MML/mml/unialg_2.miz
+  UNIALG_2:  # used vendor/mml/unialg_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5518,7 +5518,7 @@ dependencies:
     - STRUCT_0
     - LATTICES
     - UNIALG_1
-  LANG1:  # used vendor/MML/mml/lang1.miz
+  LANG1:  # used vendor/mml/lang1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5545,7 +5545,7 @@ dependencies:
     - TREES_2
     - PRE_POLY
     - STRUCT_0
-  DTCONSTR:  # used vendor/MML/mml/dtconstr.miz
+  DTCONSTR:  # used vendor/mml/dtconstr.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5589,7 +5589,7 @@ dependencies:
     - CQC_SIM1
     - STRUCT_0
     - LANG1
-  PRALG_1:  # used vendor/MML/mml/pralg_1.miz
+  PRALG_1:  # used vendor/mml/pralg_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5622,7 +5622,7 @@ dependencies:
     - UNIALG_1
     - UNIALG_2
     - DTCONSTR
-  YELLOW_0:  # seed vendor/MML/mml/yellow_0.miz
+  YELLOW_0:  # seed vendor/mml/yellow_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5642,7 +5642,7 @@ dependencies:
     - LATTICES
     - REALSET2
     - LATTICE3
-  CAT_5:  # used vendor/MML/mml/cat_5.miz
+  CAT_5:  # used vendor/mml/cat_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5667,7 +5667,7 @@ dependencies:
     - CAT_1
     - CAT_2
     - NATTRA_1
-  ALTCAT_1:  # used vendor/MML/mml/altcat_1.miz
+  ALTCAT_1:  # used vendor/mml/altcat_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5690,7 +5690,7 @@ dependencies:
     - NUMBERS
     - STRUCT_0
     - REALSET2
-  ORDERS_3:  # used vendor/MML/mml/orders_3.miz
+  ORDERS_3:  # used vendor/mml/orders_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5718,7 +5718,7 @@ dependencies:
     - ENS_1
     - CAT_5
     - ALTCAT_1
-  YELLOW_1:  # seed vendor/MML/mml/yellow_1.miz
+  YELLOW_1:  # seed vendor/mml/yellow_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5750,7 +5750,7 @@ dependencies:
     - PRALG_1
     - YELLOW_0
     - ORDERS_3
-  WAYBEL_0:  # seed vendor/MML/mml/waybel_0.miz
+  WAYBEL_0:  # seed vendor/mml/waybel_0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5773,7 +5773,7 @@ dependencies:
     - LATTICE3
     - YELLOW_0
     - ORDERS_3
-  QUANTAL1:  # used vendor/MML/mml/quantal1.miz
+  QUANTAL1:  # used vendor/mml/quantal1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5797,7 +5797,7 @@ dependencies:
     - VECTSP_1
     - MONOID_0
     - LATTICE3
-  YELLOW_2:  # seed vendor/MML/mml/yellow_2.miz
+  YELLOW_2:  # seed vendor/mml/yellow_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5820,7 +5820,7 @@ dependencies:
     - YELLOW_1
     - WAYBEL_0
     - QUANTAL1
-  WAYBEL_1:  # seed vendor/MML/mml/waybel_1.miz
+  WAYBEL_1:  # seed vendor/mml/waybel_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5843,7 +5843,7 @@ dependencies:
     - WAYBEL_0
     - QUANTAL1
     - YELLOW_2
-  YELLOW_3:  # seed vendor/MML/mml/yellow_3.miz
+  YELLOW_3:  # seed vendor/mml/yellow_3.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -5866,7 +5866,7 @@ dependencies:
     - ORDERS_3
     - WAYBEL_0
     - YELLOW_2
-  YELLOW_4:  # seed vendor/MML/mml/yellow_4.miz
+  YELLOW_4:  # seed vendor/mml/yellow_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5880,7 +5880,7 @@ dependencies:
     - WAYBEL_0
     - YELLOW_2
     - YELLOW_3
-  TMAP_1:  # used vendor/MML/mml/tmap_1.miz
+  TMAP_1:  # used vendor/mml/tmap_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5903,7 +5903,7 @@ dependencies:
     - CONNSP_2
     - BORSUK_1
     - TSEP_1
-  TEX_1:  # used vendor/MML/mml/tex_1.miz
+  TEX_1:  # used vendor/mml/tex_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5923,7 +5923,7 @@ dependencies:
     - TDLAT_3
     - TOPS_3
     - TMAP_1
-  WAYBEL_2:  # seed vendor/MML/mml/waybel_2.miz
+  WAYBEL_2:  # seed vendor/mml/waybel_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5955,7 +5955,7 @@ dependencies:
     - WAYBEL_1
     - YELLOW_3
     - YELLOW_4
-  WAYBEL_3:  # seed vendor/MML/mml/waybel_3.miz
+  WAYBEL_3:  # seed vendor/mml/waybel_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -5998,7 +5998,7 @@ dependencies:
     - YELLOW_2
     - YELLOW_4
     - WAYBEL_2
-  TEX_2:  # used vendor/MML/mml/tex_2.miz
+  TEX_2:  # used vendor/mml/tex_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6024,7 +6024,7 @@ dependencies:
     - TDLAT_3
     - TOPS_3
     - TEX_1
-  TEX_4:  # used vendor/MML/mml/tex_4.miz
+  TEX_4:  # used vendor/mml/tex_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6044,7 +6044,7 @@ dependencies:
     - TDLAT_3
     - TEX_1
     - TEX_2
-  TSP_1:  # used vendor/MML/mml/tsp_1.miz
+  TSP_1:  # used vendor/mml/tsp_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6062,7 +6062,7 @@ dependencies:
     - TEX_1
     - TEX_2
     - TEX_4
-  YELLOW_8:  # seed vendor/MML/mml/yellow_8.miz
+  YELLOW_8:  # seed vendor/mml/yellow_8.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6093,7 +6093,7 @@ dependencies:
     - URYSOHN1
     - WAYBEL_3
     - TSP_1
-  TOPMETR:  # used vendor/MML/mml/topmetr.miz
+  TOPMETR:  # used vendor/mml/topmetr.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6135,7 +6135,7 @@ dependencies:
     - PCOMPS_1
     - BORSUK_1
     - TBSP_1
-  HEINE:  # used vendor/MML/mml/heine.miz
+  HEINE:  # used vendor/mml/heine.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6179,7 +6179,7 @@ dependencies:
     - METRIC_1
     - PCOMPS_1
     - TOPMETR
-  TREAL_1:  # used vendor/MML/mml/treal_1.miz
+  TREAL_1:  # used vendor/mml/treal_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6222,7 +6222,7 @@ dependencies:
     - TMAP_1
     - TOPMETR
     - HEINE
-  BORSUK_2:  # used vendor/MML/mml/borsuk_2.miz
+  BORSUK_2:  # used vendor/mml/borsuk_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6268,7 +6268,7 @@ dependencies:
     - TOPMETR
     - HEINE
     - TREAL_1
-  YELLOW_6:  # seed vendor/MML/mml/yellow_6.miz
+  YELLOW_6:  # seed vendor/mml/yellow_6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6312,7 +6312,7 @@ dependencies:
     - WAYBEL_0
     - YELLOW_3
     - WAYBEL_3
-  MSUALG_1:  # used vendor/MML/mml/msualg_1.miz
+  MSUALG_1:  # used vendor/mml/msualg_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -6336,7 +6336,7 @@ dependencies:
     - STRUCT_0
     - REALSET2
     - UNIALG_1
-  PRALG_2:  # used vendor/MML/mml/pralg_2.miz
+  PRALG_2:  # used vendor/mml/pralg_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6362,7 +6362,7 @@ dependencies:
     - STRUCT_0
     - PRALG_1
     - MSUALG_1
-  MSUALG_2:  # used vendor/MML/mml/msualg_2.miz
+  MSUALG_2:  # used vendor/mml/msualg_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6384,7 +6384,7 @@ dependencies:
     - STRUCT_0
     - LATTICES
     - MSUALG_1
-  MSUALG_3:  # used vendor/MML/mml/msualg_3.miz
+  MSUALG_3:  # used vendor/mml/msualg_3.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -6409,7 +6409,7 @@ dependencies:
     - MSUALG_1
     - PRALG_2
     - MSUALG_2
-  WAYBEL_5:  # seed vendor/MML/mml/waybel_5.miz
+  WAYBEL_5:  # seed vendor/mml/waybel_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6452,14 +6452,14 @@ dependencies:
     - YELLOW_6
     - PRALG_2
     - MSUALG_3
-  YELLOW_5:  # seed vendor/MML/mml/yellow_5.miz
+  YELLOW_5:  # seed vendor/mml/yellow_5.miz
     - STRUCT_0
     - ORDERS_2
     - LATTICE3
     - YELLOW_0
     - WAYBEL_0
     - WAYBEL_1
-  YELLOW_7:  # seed vendor/MML/mml/yellow_7.miz
+  YELLOW_7:  # seed vendor/mml/yellow_7.miz
     - TARSKI
     - XBOOLE_0
     - SUBSET_1
@@ -6491,7 +6491,7 @@ dependencies:
     - PRALG_2
     - WAYBEL_5
     - YELLOW_5
-  ALG_1:  # used vendor/MML/mml/alg_1.miz
+  ALG_1:  # used vendor/mml/alg_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -6517,7 +6517,7 @@ dependencies:
     - STRUCT_0
     - UNIALG_1
     - UNIALG_2
-  WAYBEL_4:  # seed vendor/MML/mml/waybel_4.miz
+  WAYBEL_4:  # seed vendor/mml/waybel_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6551,7 +6551,7 @@ dependencies:
     - WAYBEL_2
     - WAYBEL_3
     - ALG_1
-  WAYBEL_6:  # seed vendor/MML/mml/waybel_6.miz
+  WAYBEL_6:  # seed vendor/mml/waybel_6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6599,7 +6599,7 @@ dependencies:
     - YELLOW_5
     - YELLOW_7
     - WAYBEL_4
-  WAYBEL_7:  # seed vendor/MML/mml/waybel_7.miz
+  WAYBEL_7:  # seed vendor/mml/waybel_7.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6637,7 +6637,7 @@ dependencies:
     - ALG_1
     - WAYBEL_4
     - WAYBEL_6
-  WAYBEL_8:  # seed vendor/MML/mml/waybel_8.miz
+  WAYBEL_8:  # seed vendor/mml/waybel_8.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6673,7 +6673,7 @@ dependencies:
     - WAYBEL_4
     - WAYBEL_6
     - WAYBEL_7
-  WAYBEL_9:  # seed vendor/MML/mml/waybel_9.miz
+  WAYBEL_9:  # seed vendor/mml/waybel_9.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6720,7 +6720,7 @@ dependencies:
     - YELLOW_6
     - YELLOW_7
     - WAYBEL_8
-  WAYBEL11:  # seed vendor/MML/mml/waybel11.miz
+  WAYBEL11:  # seed vendor/mml/waybel11.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6777,7 +6777,7 @@ dependencies:
     - WAYBEL_6
     - WAYBEL_7
     - WAYBEL_9
-  YELLOW_9:  # seed vendor/MML/mml/yellow_9.miz
+  YELLOW_9:  # seed vendor/mml/yellow_9.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6822,7 +6822,7 @@ dependencies:
     - YELLOW_7
     - WAYBEL_9
     - WAYBEL11
-  TOPGRP_1:  # used vendor/MML/mml/topgrp_1.miz
+  TOPGRP_1:  # used vendor/mml/topgrp_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6857,7 +6857,7 @@ dependencies:
     - YELLOW_8
     - BORSUK_2
     - YELLOW_9
-  RUSUB_5:  # used vendor/MML/mml/rusub_5.miz
+  RUSUB_5:  # used vendor/mml/rusub_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6889,7 +6889,7 @@ dependencies:
     - RUSUB_1
     - RUSUB_3
     - RUSUB_4
-  CONVEX1:  # used vendor/MML/mml/convex1.miz
+  CONVEX1:  # used vendor/mml/convex1.miz
     - TARSKI
     - XBOOLE_0
     - ENUMSET1
@@ -6927,7 +6927,7 @@ dependencies:
     - BHSP_1
     - RUSUB_4
     - RUSUB_5
-  MSAFREE:  # used vendor/MML/mml/msafree.miz
+  MSAFREE:  # used vendor/mml/msafree.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -6964,7 +6964,7 @@ dependencies:
     - MSUALG_1
     - MSUALG_2
     - MSUALG_3
-  MSUALG_4:  # used vendor/MML/mml/msualg_4.miz
+  MSUALG_4:  # used vendor/mml/msualg_4.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -6988,7 +6988,7 @@ dependencies:
     - PRALG_2
     - MSUALG_3
     - MSAFREE
-  MSAFREE1:  # used vendor/MML/mml/msafree1.miz
+  MSAFREE1:  # used vendor/mml/msafree1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7022,7 +7022,7 @@ dependencies:
     - MSUALG_1
     - MSUALG_3
     - MSAFREE
-  MSAFREE2:  # used vendor/MML/mml/msafree2.miz
+  MSAFREE2:  # used vendor/mml/msafree2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7062,7 +7062,7 @@ dependencies:
     - MSUALG_3
     - MSAFREE
     - MSAFREE1
-  MSUALG_5:  # used vendor/MML/mml/msualg_5.miz
+  MSUALG_5:  # used vendor/mml/msualg_5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7103,7 +7103,7 @@ dependencies:
     - MSUALG_3
     - MSUALG_4
     - MSAFREE2
-  CLOSURE2:  # used vendor/MML/mml/closure2.miz
+  CLOSURE2:  # used vendor/mml/closure2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7128,7 +7128,7 @@ dependencies:
     - MSSUBFAM
     - STRUCT_0
     - MSUALG_1
-  LATTICE4:  # used vendor/MML/mml/lattice4.miz
+  LATTICE4:  # used vendor/mml/lattice4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7155,7 +7155,7 @@ dependencies:
     - LATTICE2
     - FILTER_1
     - GRCAT_1
-  WAYBEL12:  # seed vendor/MML/mml/waybel12.miz
+  WAYBEL12:  # seed vendor/mml/waybel12.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7202,7 +7202,7 @@ dependencies:
     - WAYBEL_4
     - WAYBEL_6
     - WAYBEL_7
-  WAYBEL14:  # seed vendor/MML/mml/waybel14.miz
+  WAYBEL14:  # seed vendor/mml/waybel14.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7254,7 +7254,7 @@ dependencies:
     - WAYBEL_9
     - WAYBEL11
     - WAYBEL12
-  YELLOW12:  # seed vendor/MML/mml/yellow12.miz
+  YELLOW12:  # seed vendor/mml/yellow12.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7302,7 +7302,7 @@ dependencies:
     - WAYBEL_8
     - WAYBEL11
     - YELLOW_9
-  LATTICE5:  # used vendor/MML/mml/lattice5.miz
+  LATTICE5:  # used vendor/mml/lattice5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7367,7 +7367,7 @@ dependencies:
     - YELLOW_5
     - WAYBEL_6
     - MSUALG_5
-  YELLOW11:  # seed vendor/MML/mml/yellow11.miz
+  YELLOW11:  # seed vendor/mml/yellow11.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7396,7 +7396,7 @@ dependencies:
     - YELLOW_3
     - YELLOW_5
     - LATTICE5
-  YELLOW13:  # seed vendor/MML/mml/yellow13.miz
+  YELLOW13:  # seed vendor/mml/yellow13.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7443,7 +7443,7 @@ dependencies:
     - WAYBEL14
     - YELLOW12
     - YELLOW11
-  RLTOPSP1:  # used vendor/MML/mml/rltopsp1.miz
+  RLTOPSP1:  # used vendor/mml/rltopsp1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7486,7 +7486,7 @@ dependencies:
     - TOPGRP_1
     - CONVEX1
     - YELLOW13
-  RSSPACE:  # used vendor/MML/mml/rsspace.miz
+  RSSPACE:  # used vendor/mml/rsspace.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -7528,7 +7528,7 @@ dependencies:
     - RLVECT_1
     - RLSUB_1
     - BHSP_1
-  EUCLID:  # used vendor/MML/mml/euclid.miz
+  EUCLID:  # used vendor/mml/euclid.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -7576,7 +7576,7 @@ dependencies:
     - TOPMETR
     - RLTOPSP1
     - RSSPACE
-  TOPMETR2:  # used vendor/MML/mml/topmetr2.miz
+  TOPMETR2:  # used vendor/mml/topmetr2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7605,7 +7605,7 @@ dependencies:
     - BORSUK_1
     - TOPMETR
     - HEINE
-  TOPREAL1:  # used vendor/MML/mml/topreal1.miz
+  TOPREAL1:  # used vendor/mml/topreal1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7659,7 +7659,7 @@ dependencies:
     - RLTOPSP1
     - EUCLID
     - TOPMETR2
-  TOPREAL3:  # used vendor/MML/mml/topreal3.miz
+  TOPREAL3:  # used vendor/mml/topreal3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7705,7 +7705,7 @@ dependencies:
     - RLTOPSP1
     - EUCLID
     - TOPREAL1
-  TOPREAL2:  # used vendor/MML/mml/topreal2.miz
+  TOPREAL2:  # used vendor/mml/topreal2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7736,7 +7736,7 @@ dependencies:
     - EUCLID
     - TOPMETR2
     - TOPREAL1
-  TOPREAL4:  # used vendor/MML/mml/topreal4.miz
+  TOPREAL4:  # used vendor/mml/topreal4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7773,7 +7773,7 @@ dependencies:
     - TOPREAL1
     - TOPREAL3
     - TOPREAL2
-  GOBOARD1:  # used vendor/MML/mml/goboard1.miz
+  GOBOARD1:  # used vendor/mml/goboard1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -7810,7 +7810,7 @@ dependencies:
     - EUCLID
     - TOPREAL1
     - TOPREAL3
-  GOBOARD2:  # used vendor/MML/mml/goboard2.miz
+  GOBOARD2:  # used vendor/mml/goboard2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7856,7 +7856,7 @@ dependencies:
     - TOPREAL1
     - TOPREAL3
     - GOBOARD1
-  SPPOL_1:  # used vendor/MML/mml/sppol_1.miz
+  SPPOL_1:  # used vendor/mml/sppol_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7913,7 +7913,7 @@ dependencies:
     - EUCLID
     - TOPREAL1
     - TOPREAL3
-  SPPOL_2:  # used vendor/MML/mml/sppol_2.miz
+  SPPOL_2:  # used vendor/mml/sppol_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -7959,7 +7959,7 @@ dependencies:
     - TOPREAL4
     - GOBOARD1
     - SPPOL_1
-  GOBOARD5:  # used vendor/MML/mml/goboard5.miz
+  GOBOARD5:  # used vendor/mml/goboard5.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8006,7 +8006,7 @@ dependencies:
     - GOBOARD1
     - GOBOARD2
     - SPPOL_2
-  GOBOARD6:  # used vendor/MML/mml/goboard6.miz
+  GOBOARD6:  # used vendor/mml/goboard6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8046,7 +8046,7 @@ dependencies:
     - GOBOARD1
     - SPPOL_2
     - GOBOARD5
-  MOD_2:  # used vendor/MML/mml/mod_2.miz
+  MOD_2:  # used vendor/mml/mod_2.miz
     - XBOOLE_0
     - ENUMSET1
     - ZFMISC_1
@@ -8073,7 +8073,7 @@ dependencies:
     - FUNCSDOM
     - VECTSP_2
     - GRCAT_1
-  VECTSP_8:  # used vendor/MML/mml/vectsp_8.miz
+  VECTSP_8:  # used vendor/mml/vectsp_8.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8100,7 +8100,7 @@ dependencies:
     - LATTICE3
     - LATTICE4
     - MOD_2
-  MSUALG_7:  # used vendor/MML/mml/msualg_7.miz
+  MSUALG_7:  # used vendor/mml/msualg_7.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8139,7 +8139,7 @@ dependencies:
     - MSUALG_5
     - CLOSURE2
     - VECTSP_8
-  BORSUK_3:  # used vendor/MML/mml/borsuk_3.miz
+  BORSUK_3:  # used vendor/mml/borsuk_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8171,7 +8171,7 @@ dependencies:
     - BORSUK_2
     - TOPGRP_1
     - YELLOW12
-  ISOCAT_1:  # used vendor/MML/mml/isocat_1.miz
+  ISOCAT_1:  # used vendor/mml/isocat_1.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -8190,7 +8190,7 @@ dependencies:
     - CAT_2
     - CAT_3
     - NATTRA_1
-  METRIC_6:  # used vendor/MML/mml/metric_6.miz
+  METRIC_6:  # used vendor/mml/metric_6.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8224,7 +8224,7 @@ dependencies:
     - METRIC_1
     - PCOMPS_1
     - TBSP_1
-  COH_SP:  # used vendor/MML/mml/coh_sp.miz
+  COH_SP:  # used vendor/mml/coh_sp.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8248,7 +8248,7 @@ dependencies:
     - GRAPH_1
     - CAT_1
     - CAT_2
-  MONOID_1:  # used vendor/MML/mml/monoid_1.miz
+  MONOID_1:  # used vendor/mml/monoid_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8286,7 +8286,7 @@ dependencies:
     - GROUP_1
     - LATTICE2
     - MONOID_0
-  MSATERM:  # used vendor/MML/mml/msaterm.miz
+  MSATERM:  # used vendor/mml/msaterm.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -8328,7 +8328,7 @@ dependencies:
     - MSUALG_2
     - MSUALG_3
     - MSAFREE
-  MSUHOM_1:  # used vendor/MML/mml/msuhom_1.miz
+  MSUHOM_1:  # used vendor/mml/msuhom_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8358,7 +8358,7 @@ dependencies:
     - MSUALG_3
     - ALG_1
     - MONOID_1
-  AUTALG_1:  # used vendor/MML/mml/autalg_1.miz
+  AUTALG_1:  # used vendor/mml/autalg_1.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -8386,7 +8386,7 @@ dependencies:
     - MSUALG_3
     - ALG_1
     - MSUHOM_1
-  CIRCUIT1:  # used vendor/MML/mml/circuit1.miz
+  CIRCUIT1:  # used vendor/mml/circuit1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8435,7 +8435,7 @@ dependencies:
     - MSAFREE
     - MSAFREE1
     - MSAFREE2
-  EXTENS_1:  # used vendor/MML/mml/extens_1.miz
+  EXTENS_1:  # used vendor/mml/extens_1.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -8466,7 +8466,7 @@ dependencies:
     - MSAFREE1
     - MSAFREE2
     - MSUHOM_1
-  GRAPH_2:  # used vendor/MML/mml/graph_2.miz
+  GRAPH_2:  # used vendor/mml/graph_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8508,7 +8508,7 @@ dependencies:
     - CQC_THE1
     - STRUCT_0
     - GRAPH_1
-  WEIERSTR:  # used vendor/MML/mml/weierstr.miz
+  WEIERSTR:  # used vendor/mml/weierstr.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8548,7 +8548,7 @@ dependencies:
     - TOPMETR
     - EUCLID
     - METRIC_6
-  COHSP_1:  # used vendor/MML/mml/cohsp_1.miz
+  COHSP_1:  # used vendor/mml/cohsp_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8581,7 +8581,7 @@ dependencies:
     - CARD_5
     - BORSUK_1
     - COH_SP
-  PUA2MSS1:  # used vendor/MML/mml/pua2mss1.miz
+  PUA2MSS1:  # used vendor/mml/pua2mss1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8613,7 +8613,7 @@ dependencies:
     - STRUCT_0
     - UNIALG_1
     - MSUALG_1
-  ALTCAT_2:  # used vendor/MML/mml/altcat_2.miz
+  ALTCAT_2:  # used vendor/mml/altcat_2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8643,7 +8643,7 @@ dependencies:
     - CAT_1
     - PRALG_1
     - ALTCAT_1
-  CLOSURE1:  # used vendor/MML/mml/closure1.miz
+  CLOSURE1:  # used vendor/mml/closure1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8667,7 +8667,7 @@ dependencies:
     - PRALG_1
     - MSUALG_1
     - MSUALG_3
-  MSUALG_6:  # used vendor/MML/mml/msualg_6.miz
+  MSUALG_6:  # used vendor/mml/msualg_6.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -8707,7 +8707,7 @@ dependencies:
     - MSUALG_4
     - MSUALG_5
     - PUA2MSS1
-  MSSCYC_1:  # used vendor/MML/mml/msscyc_1.miz
+  MSSCYC_1:  # used vendor/mml/msscyc_1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8760,7 +8760,7 @@ dependencies:
     - MSATERM
     - EXTENS_1
     - GRAPH_2
-  MSUALG_8:  # used vendor/MML/mml/msualg_8.miz
+  MSUALG_8:  # used vendor/mml/msualg_8.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8800,7 +8800,7 @@ dependencies:
     - VECTSP_8
     - MSUALG_7
     - MSUALG_6
-  FUNCTOR0:  # used vendor/MML/mml/functor0.miz
+  FUNCTOR0:  # used vendor/mml/functor0.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8824,7 +8824,7 @@ dependencies:
     - MSUALG_3
     - ISOCAT_1
     - ALTCAT_2
-  FUNCTOR1:  # used vendor/MML/mml/functor1.miz
+  FUNCTOR1:  # used vendor/mml/functor1.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8846,7 +8846,7 @@ dependencies:
     - MSUALG_3
     - ALTCAT_2
     - FUNCTOR0
-  PRALG_3:  # used vendor/MML/mml/pralg_3.miz
+  PRALG_3:  # used vendor/mml/pralg_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8870,7 +8870,7 @@ dependencies:
     - PRALG_2
     - MSUALG_2
     - MSUALG_3
-  MSALIMIT:  # used vendor/MML/mml/msalimit.miz
+  MSALIMIT:  # used vendor/mml/msalimit.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8908,7 +8908,7 @@ dependencies:
     - MSUHOM_1
     - PUA2MSS1
     - PRALG_3
-  MSUALG_9:  # used vendor/MML/mml/msualg_9.miz
+  MSUALG_9:  # used vendor/mml/msualg_9.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -8958,7 +8958,7 @@ dependencies:
     - MSUALG_6
     - MSUALG_8
     - PRALG_3
-  INSTALG1:  # used vendor/MML/mml/instalg1.miz
+  INSTALG1:  # used vendor/mml/instalg1.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -8997,7 +8997,7 @@ dependencies:
     - MSUALG_6
     - MSALIMIT
     - MSUALG_9
-  WAYBEL10:  # seed vendor/MML/mml/waybel10.miz
+  WAYBEL10:  # seed vendor/mml/waybel10.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9028,7 +9028,7 @@ dependencies:
     - TMAP_1
     - WAYBEL_3
     - YELLOW_7
-  ALTCAT_3:  # used vendor/MML/mml/altcat_3.miz
+  ALTCAT_3:  # used vendor/mml/altcat_3.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9043,7 +9043,7 @@ dependencies:
     - REALSET1
     - STRUCT_0
     - ALTCAT_1
-  WAYBEL13:  # seed vendor/MML/mml/waybel13.miz
+  WAYBEL13:  # seed vendor/mml/waybel13.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9074,7 +9074,7 @@ dependencies:
     - WAYBEL_4
     - WAYBEL_8
     - WAYBEL10
-  EQUATION:  # used vendor/MML/mml/equation.miz
+  EQUATION:  # used vendor/mml/equation.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9115,7 +9115,7 @@ dependencies:
     - PRALG_3
     - MSUALG_9
     - INSTALG1
-  FUNCTOR2:  # used vendor/MML/mml/functor2.miz
+  FUNCTOR2:  # used vendor/mml/functor2.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -9137,7 +9137,7 @@ dependencies:
     - ALTCAT_1
     - ALTCAT_2
     - FUNCTOR0
-  ALTCAT_4:  # used vendor/MML/mml/altcat_4.miz
+  ALTCAT_4:  # used vendor/mml/altcat_4.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9163,7 +9163,7 @@ dependencies:
     - FUNCTOR1
     - ALTCAT_3
     - FUNCTOR2
-  WAYBEL15:  # seed vendor/MML/mml/waybel15.miz
+  WAYBEL15:  # seed vendor/mml/waybel15.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9198,7 +9198,7 @@ dependencies:
     - WAYBEL14
     - WAYBEL10
     - WAYBEL13
-  FUNCTOR3:  # used vendor/MML/mml/functor3.miz
+  FUNCTOR3:  # used vendor/mml/functor3.miz
     - TARSKI
     - XBOOLE_0
     - ZFMISC_1
@@ -9219,7 +9219,7 @@ dependencies:
     - ALTCAT_3
     - FUNCTOR2
     - ALTCAT_4
-  WAYBEL16:  # seed vendor/MML/mml/waybel16.miz
+  WAYBEL16:  # seed vendor/mml/waybel16.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9252,7 +9252,7 @@ dependencies:
     - WAYBEL14
     - WAYBEL13
     - WAYBEL15
-  WAYBEL17:  # seed vendor/MML/mml/waybel17.miz
+  WAYBEL17:  # seed vendor/mml/waybel17.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9301,7 +9301,7 @@ dependencies:
     - WAYBEL11
     - WAYBEL10
     - WAYBEL13
-  YELLOW10:  # seed vendor/MML/mml/yellow10.miz
+  YELLOW10:  # seed vendor/mml/yellow10.miz
     - TARSKI
     - XBOOLE_0
     - XTUPLE_0
@@ -9325,7 +9325,7 @@ dependencies:
     - WAYBEL_8
     - WAYBEL11
     - WAYBEL14
-  WAYBEL18:  # seed vendor/MML/mml/waybel18.miz
+  WAYBEL18:  # seed vendor/mml/waybel18.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9379,7 +9379,7 @@ dependencies:
     - WAYBEL14
     - WAYBEL13
     - WAYBEL17
-  FRECHET:  # used vendor/MML/mml/frechet.miz
+  FRECHET:  # used vendor/mml/frechet.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9420,7 +9420,7 @@ dependencies:
     - YELLOW_8
     - TOPMETR
     - GOBOARD6
-  WAYBEL19:  # seed vendor/MML/mml/waybel19.miz
+  WAYBEL19:  # seed vendor/mml/waybel19.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9470,7 +9470,7 @@ dependencies:
     - WAYBEL14
     - YELLOW12
     - YELLOW10
-  WAYBEL20:  # seed vendor/MML/mml/waybel20.miz
+  WAYBEL20:  # seed vendor/mml/waybel20.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9516,7 +9516,7 @@ dependencies:
     - WAYBEL16
     - WAYBEL17
     - YELLOW10
-  WAYBEL21:  # seed vendor/MML/mml/waybel21.miz
+  WAYBEL21:  # seed vendor/mml/waybel21.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9566,7 +9566,7 @@ dependencies:
     - WAYBEL17
     - WAYBEL19
     - WAYBEL20
-  WAYBEL22:  # seed vendor/MML/mml/waybel22.miz
+  WAYBEL22:  # seed vendor/mml/waybel22.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9614,7 +9614,7 @@ dependencies:
     - WAYBEL16
     - WAYBEL17
     - WAYBEL20
-  WAYBEL23:  # seed vendor/MML/mml/waybel23.miz
+  WAYBEL23:  # seed vendor/mml/waybel23.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9653,7 +9653,7 @@ dependencies:
     - WAYBEL13
     - WAYBEL20
     - WAYBEL21
-  YELLOW15:  # seed vendor/MML/mml/yellow15.miz
+  YELLOW15:  # seed vendor/mml/yellow15.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9701,7 +9701,7 @@ dependencies:
     - WAYBEL_8
     - YELLOW_9
     - WAYBEL23
-  YELLOW18:  # seed vendor/MML/mml/yellow18.miz
+  YELLOW18:  # seed vendor/mml/yellow18.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9736,7 +9736,7 @@ dependencies:
     - FUNCTOR2
     - ALTCAT_4
     - FUNCTOR3
-  YELLOW20:  # seed vendor/MML/mml/yellow20.miz
+  YELLOW20:  # seed vendor/mml/yellow20.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9766,7 +9766,7 @@ dependencies:
     - ALTCAT_4
     - FUNCTOR3
     - YELLOW18
-  FRECHET2:  # used vendor/MML/mml/frechet2.miz
+  FRECHET2:  # used vendor/mml/frechet2.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9815,7 +9815,7 @@ dependencies:
     - TOPMETR
     - METRIC_6
     - FRECHET
-  WAYBEL24:  # seed vendor/MML/mml/waybel24.miz
+  WAYBEL24:  # seed vendor/mml/waybel24.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9856,7 +9856,7 @@ dependencies:
     - WAYBEL15
     - WAYBEL17
     - YELLOW10
-  YELLOW14:  # seed vendor/MML/mml/yellow14.miz
+  YELLOW14:  # seed vendor/mml/yellow14.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9916,7 +9916,7 @@ dependencies:
     - WAYBEL18
     - WAYBEL19
     - WAYBEL24
-  WAYBEL25:  # seed vendor/MML/mml/waybel25.miz
+  WAYBEL25:  # seed vendor/mml/waybel25.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -9990,7 +9990,7 @@ dependencies:
     - WAYBEL21
     - WAYBEL24
     - YELLOW14
-  YELLOW16:  # seed vendor/MML/mml/yellow16.miz
+  YELLOW16:  # seed vendor/mml/yellow16.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10041,7 +10041,7 @@ dependencies:
     - WAYBEL20
     - WAYBEL21
     - WAYBEL25
-  WAYBEL26:  # seed vendor/MML/mml/waybel26.miz
+  WAYBEL26:  # seed vendor/mml/waybel26.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10109,7 +10109,7 @@ dependencies:
     - YELLOW14
     - WAYBEL25
     - YELLOW16
-  WAYBEL27:  # seed vendor/MML/mml/waybel27.miz
+  WAYBEL27:  # seed vendor/mml/waybel27.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10173,7 +10173,7 @@ dependencies:
     - WAYBEL25
     - YELLOW16
     - WAYBEL26
-  WAYBEL28:  # seed vendor/MML/mml/waybel28.miz
+  WAYBEL28:  # seed vendor/mml/waybel28.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10204,7 +10204,7 @@ dependencies:
     - YELLOW12
     - WAYBEL17
     - WAYBEL21
-  WAYBEL29:  # seed vendor/MML/mml/waybel29.miz
+  WAYBEL29:  # seed vendor/mml/waybel29.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10277,7 +10277,7 @@ dependencies:
     - YELLOW16
     - WAYBEL26
     - WAYBEL27
-  WAYBEL30:  # seed vendor/MML/mml/waybel30.miz
+  WAYBEL30:  # seed vendor/mml/waybel30.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10332,7 +10332,7 @@ dependencies:
     - WAYBEL19
     - WAYBEL21
     - WAYBEL29
-  WAYBEL31:  # seed vendor/MML/mml/waybel31.miz
+  WAYBEL31:  # seed vendor/mml/waybel31.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10391,7 +10391,7 @@ dependencies:
     - YELLOW15
     - WAYBEL25
     - WAYBEL30
-  LATTICE7:  # used vendor/MML/mml/lattice7.miz
+  LATTICE7:  # used vendor/mml/lattice7.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10428,7 +10428,7 @@ dependencies:
     - YELLOW11
     - COHSP_1
     - WAYBEL13
-  YELLOW17:  # seed vendor/MML/mml/yellow17.miz
+  YELLOW17:  # seed vendor/mml/yellow17.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10459,7 +10459,7 @@ dependencies:
     - YELLOW_6
     - WAYBEL_7
     - WAYBEL18
-  WAYBEL32:  # seed vendor/MML/mml/waybel32.miz
+  WAYBEL32:  # seed vendor/mml/waybel32.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10501,7 +10501,7 @@ dependencies:
     - WAYBEL21
     - YELLOW14
     - WAYBEL29
-  YELLOW19:  # seed vendor/MML/mml/yellow19.miz
+  YELLOW19:  # seed vendor/mml/yellow19.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10541,7 +10541,7 @@ dependencies:
     - WAYBEL12
     - WAYBEL21
     - WAYBEL32
-  WAYBEL33:  # seed vendor/MML/mml/waybel33.miz
+  WAYBEL33:  # seed vendor/mml/waybel33.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10595,7 +10595,7 @@ dependencies:
     - WAYBEL29
     - WAYBEL32
     - YELLOW19
-  YELLOW21:  # seed vendor/MML/mml/yellow21.miz
+  YELLOW21:  # seed vendor/mml/yellow21.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10644,7 +10644,7 @@ dependencies:
     - YELLOW18
     - YELLOW20
     - YELLOW16
-  WAYBEL34:  # seed vendor/MML/mml/waybel34.miz
+  WAYBEL34:  # seed vendor/mml/waybel34.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1
@@ -10699,7 +10699,7 @@ dependencies:
     - YELLOW18
     - YELLOW20
     - YELLOW21
-  WAYBEL35:  # seed vendor/MML/mml/waybel35.miz
+  WAYBEL35:  # seed vendor/mml/waybel35.miz
     - TARSKI
     - XBOOLE_0
     - XBOOLE_1

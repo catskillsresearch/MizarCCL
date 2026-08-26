@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
-"""Rebuild mizarccl_translation_order.yaml from vendor/MML environs."""
+"""Rebuild mizarccl_translation_order.yaml from a full MML checkout.
+
+Regeneration needs the complete library (to close environs) plus
+`mml.lar`. That optional clone lives at `vendor/MML` (gitignored).
+The submitted tree vendors only `hidden.miz` and the used queue at
+`vendor/mml/`.
+"""
 from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-MML_DIR = ROOT / "vendor" / "MML" / "mml"
-LAR_PATH = ROOT / "vendor" / "MML" / "mml.lar"
+FULL_MML = ROOT / "vendor" / "MML"
+MML_DIR = FULL_MML / "mml"
+LAR_PATH = FULL_MML / "mml.lar"
 OUT = ROOT / "mizarccl_translation_order.yaml"
 PIN = "047822c4d814630b28eec8ca6b455e9eb912d5ff"
 
@@ -49,6 +56,12 @@ def parse_article_deps(path: Path) -> list[str]:
 
 
 def main() -> None:
+    if not MML_DIR.is_dir() or not LAR_PATH.is_file():
+        raise SystemExit(
+            "Regenerating the queue needs a full MML checkout at "
+            "vendor/MML (gitignored). Clone MizarSystem/MML and check "
+            f"out {PIN}."
+        )
     files = {p.stem.upper(): p for p in MML_DIR.glob("*.miz")}
     graph = {}
     for art, path in files.items():
@@ -77,8 +90,9 @@ def main() -> None:
     lines = [
         "# MizarCCL translation queue.",
         "#",
-        "# Full Mizar 7.13.01 / MML 4.181.1147 is vendored at vendor/MML",
-        f"# (git submodule, rev {PIN}).",
+        "# Used Mizar 7.13.01 / MML 4.181.1147 articles are vendored at",
+        f"# vendor/mml (ordinary files, pin {PIN}). hidden.miz plus",
+        "# this queue. Not a git submodule.",
         "# This file is the used-module closure of the 58 YELLOW* / WAYBEL*",
         "# articles, ordered least-dependent → most-dependent.",
         "#",
@@ -88,12 +102,12 @@ def main() -> None:
         "# schemes. vocabularies (symbol lexicons) and requirements (BOOLE,",
         "# SUBSET, ...) are omitted; they are not article proofs.",
         "# TARSKI is the axiomatic root and is not listed in mml.lar; it is",
-        "# placed first. Remaining articles follow vendor/MML/mml.lar.",
+        "# placed first. Remaining articles follow the pin’s mml.lar order.",
         "#",
         "# Palomar headlines: one key theorem per YELLOW*/WAYBEL* article.",
         "# Translate every article in translation_order, not only the seeds.",
         "#",
-        "source: vendor/MML",
+        "source: vendor/mml",
         f"mml_revision: {PIN}",
         "mizar_version: 7.13.01",
         "mml_version: 4.181.1147",
@@ -108,7 +122,7 @@ def main() -> None:
     for i, art in enumerate(order, 1):
         deps = [d for d in graph[art] if d in used]
         lines.append(f"  - name: {art}")
-        lines.append(f"    file: vendor/MML/mml/{art.lower()}.miz")
+        lines.append(f"    file: vendor/mml/{art.lower()}.miz")
         lines.append(f"    role: {'seed' if art in set(seeds) else 'used'}")
         lines.append(f"    index: {i}")
         if not deps:
