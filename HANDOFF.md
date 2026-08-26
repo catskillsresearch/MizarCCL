@@ -29,9 +29,10 @@ is abandoned. Do not submit that kit.
   First: `TARSKI`. First seed: `YELLOW_0` (index 232). `YELLOW17` is
   index 362. Last: `WAYBEL35`. Same closure is in
   `waybel_yellow_dependencies.yaml` (10280 direct environ edges).
-- No 1–1 Lean translation has started. Abandon the Palomar
-  `yellow17` submission. Top-level `mml/` copy is gone; use
-  `vendor/MML`.
+- 1–1 Lean package `MizarCCL` started. `lake build` default is
+  `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
+  articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), sorry-free.
+  Next unused: `XBOOLE_0`. Abandon the Palomar `yellow17` submission.
 
 ## On finishing a work item
 
@@ -143,3 +144,16 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   library lives only at `vendor/MML`. Retargeted `PROVENANCE.md`,
   `formalization.yaml`, `arxiv.md`, and `scripts/palomar_preflight.sh`
   to the submodule pin.
+
+### 2026-08-25 — `MizarCCL` package + TARSKI
+
+- Retargeted Lake to library `MizarCCL` (dropped Mathlib / Yellow17 /
+  Challenge / Solution as default targets).
+- `MizarCCL/HIDDEN.lean`: Mizar built-ins `set` and `∈` (`mizarMem`).
+- `MizarCCL/TARSKI.lean`: 1–1 of `vendor/MML/mml/tarski.miz`.
+  Axioms: extensionality, singleton, upair, union, regularity,
+  Fraenkel, Tarski–Grothendieck. Definitions: `⊆`, Kuratowski `pair`,
+  `are_equipotent`. Proved: `upair_comm`, `subset_refl`.
+  `#print axioms` of proved theorems ⊆ those constructors plus
+  `{set, mizarMem}`; no `Classical.choice`.
+- `MizarCCL.lean` imports HIDDEN and TARSKI. `lake build` green.

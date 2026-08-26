@@ -1,26 +1,15 @@
-name = "yellow17"
+name = "MizarCCL"
 version = "0.1.0"
-keywords = ["tychonoff", "topology", "mizar", "lean4"]
-defaultTargets = ["Yellow17", "Challenge", "Solution"]
+keywords = ["mizar", "lean4", "set-theory"]
+defaultTargets = ["MizarCCL"]
 
-# Yellow17 is the proof library. Challenge / Solution are the Palomar
-# Comparator pair. Challenge restates every Yellow17 declaration with
-# sorry; Solution re-exports the sorry-free proofs.
+# 1–1 translation of the used-module closure of YELLOW* / WAYBEL*.
+# One Lean module per Mizar article, imported from MizarCCL.lean.
+# No Mathlib: Mizar set theory is untyped Tarski–Grothendieck.
 
 [leanOptions]
 pp.unicode.fun = true
 relaxedAutoImplicit = true
 
-[[require]]
-name = "mathlib"
-scope = "leanprover-community"
-rev = "v4.33.0"
-
 [[lean_lib]]
-name = "Yellow17"
-
-[[lean_lib]]
-name = "Challenge"
-
-[[lean_lib]]
-name = "Solution"
+name = "MizarCCL"

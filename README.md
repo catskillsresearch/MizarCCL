@@ -15,7 +15,9 @@ That Palomar extract is abandoned: a faithful translation needs the
   (Mizar 7.13.01 / MML 4.181.1147). See `vendor/README.md`.
 - Translation queue: `mizarccl_translation_order.yaml`
   (368 used articles, least-dependent first; 58 YELLOW*/WAYBEL* seeds).
-- Family-only graph: `waybel_yellow_dependencies.yaml`
+- Environ graph: `waybel_yellow_dependencies.yaml`
+- Lean package: `MizarCCL` (`MizarCCL.lean` imports every translated
+  article; first: `MizarCCL/TARSKI.lean`)
 
 Palomar plan: one key theorem per YELLOW*/WAYBEL* article, after that
 article’s used prefix is translated.
@@ -24,7 +26,7 @@ article’s used prefix is translated.
 
 ```bash
 git submodule update --init --recursive
-lake exe cache get
+lake build
 ```
 
 Rebuild the used-module queue:
