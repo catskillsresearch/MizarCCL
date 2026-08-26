@@ -224,8 +224,7 @@ def singleton (y : TarskiSet.{u}) : TarskiSet.{u} :=
 def upair (y z : TarskiSet.{u}) : TarskiSet.{u} :=
   sorry
 
-def subset (X Y : TarskiSet.{u}) : Prop :=
-  sorry
+def subset (X Y : TarskiSet.{u}) : Prop := ∀ x, x ∈ X → x ∈ Y
 
 instance instHasSubset : HasSubset TarskiSet.{u} where
   Subset := subset
@@ -266,8 +265,7 @@ theorem def3 (X Y : TarskiSet.{u}) : X ⊆ Y ↔ ∀ x, x ∈ X → x ∈ Y := b
   sorry
 
 @[refl]
-theorem subset_refl (X : TarskiSet.{u}) : X ⊆ X := by
-  sorry
+theorem subset_refl (X : TarskiSet.{u}) : X ⊆ X := fun _ hx => hx
 
 /-! ## TARSKI:def 4 — `union X` -/
 

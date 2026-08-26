@@ -217,3 +217,9 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   `sorry`); Palomar Comparator rejects extra constants whose values
   differ (`PreSet.instSetoid`). `compare_challenge_solution_types.sh`
   `#print`s those shared names. Named `instMembership` in HIDDEN.
+
+### 2026-08-25 — `TARSKI.instHasSubset` matches Solution
+
+- Challenge `subset` is the real predicate `∀ x, x ∈ X → x ∈ Y`, not
+  `sorry`, so `instHasSubset` agrees with `MizarCCL/TARSKI.lean`.
+  Preflight `#print`s `TARSKI.subset` and `TARSKI.instHasSubset`.

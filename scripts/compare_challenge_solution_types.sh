@@ -21,7 +21,9 @@ mapfile -t SHARED < <(printf '%s\n' \
   PreSet.Mem \
   TarskiSet \
   TarskiSet.mem \
-  instMembership)
+  instMembership \
+  TARSKI.subset \
+  TARSKI.instHasSubset)
 
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
