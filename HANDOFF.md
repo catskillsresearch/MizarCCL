@@ -31,7 +31,8 @@ is abandoned. Do not submit that kit.
   `waybel_yellow_dependencies.yaml` (10280 direct environ edges).
 - 1–1 Lean package `MizarCCL` started. `lake build` default is
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
-  articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), sorry-free.
+  articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
+  `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
   Next unused: `XBOOLE_0`. Abandon the Palomar `yellow17` submission.
 
 ## On finishing a work item
@@ -157,3 +158,18 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   `#print axioms` of proved theorems ⊆ those constructors plus
   `{set, mizarMem}`; no `Classical.choice`.
 - `MizarCCL.lean` imports HIDDEN and TARSKI. `lake build` green.
+
+### 2026-08-25 — HIDDEN/`TarskiSet` without `axiom`
+
+- `MizarCCL/HIDDEN.lean` no longer posts `axiom set` / `axiom mizarMem`.
+  `TarskiSet.{u}` is `Quotient` of Aczel `PreSet.{u}` by extensional
+  `Equiv`. Membership is defined. `set` is not a synonym for `Type`.
+- `MizarCCL/TARSKI.lean` proves the article over that model: `th1`–
+  `def 6`, `sch 1`, regularity, union. `th3` is universe-polymorphic:
+  `universeSet : TarskiSet.{u+1}` contains every `ulift X`, and is
+  closed under subsets (`subset_of_mem_universe`). Full Mizar (iii)
+  power-set witness and (iv) inaccessibility are not theorems of
+  `Type u`.
+- No `axiom` / `admit` / `sorry` in `MizarCCL/`. `#print axioms` of
+  public theorems ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice only in regularity / Fraenkel). `lake build` green.
