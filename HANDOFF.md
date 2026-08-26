@@ -208,3 +208,10 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   `GPL-3.0-or-later OR CC-BY-SA-3.0`. Root `LICENSE` is now the
   Apache-2.0 text from `scott_models`; `project.license` is
   `Apache-2.0`. Vendored `.miz` files keep the AMU notices.
+
+### 2026-08-25 — Challenge compiles without Lake
+
+- Palomar runs `lean Challenge.lean` with only the stdlib path, so
+  `import MizarCCL.HIDDEN` failed. `Challenge.lean` is now Init-only:
+  it restates `PreSet` / `TarskiSet` / `∈` locally. Types still match
+  Solution. Named `instMembership` in HIDDEN to match.

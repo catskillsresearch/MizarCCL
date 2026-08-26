@@ -7,17 +7,47 @@ See `doc/COPYING.*` and the notices in `vendor/mml/tarski.miz`.
 Authors: Andrzej Trybulec (Mizar), Lars Warren Ericson (Lean 4).
 -/
 
-import MizarCCL.HIDDEN
-
 /-!
 # Tarski–Grothendieck set theory (Mizar `TARSKI`)
 
 Palomar Challenge: statements of the Lean 4 translation of Andrzej
 Trybulec, *Tarski Grothendieck Set Theory* (Mizar `TARSKI`). Proofs
 are `sorry`; see `MizarCCL/TARSKI.lean`.
+
+This file is self-contained (Init only). Palomar compiles it with
+plain `lean` and no Lake search path, so it must not import
+`MizarCCL`.
 -/
 
 universe u
+
+/-- Aczel pre-set: a family of pre-sets indexed by a `Type u`. -/
+inductive PreSet : Type (u + 1) where
+  | mk : (α : Type u) → (α → PreSet) → PreSet
+
+namespace PreSet
+
+def Equiv : PreSet.{u} → PreSet.{u} → Prop :=
+  sorry
+
+def instSetoid : Setoid PreSet.{u} :=
+  sorry
+
+end PreSet
+
+/-- Extensional sets: pre-sets modulo `PreSet.Equiv`. -/
+def TarskiSet : Type (u + 1) :=
+  Quotient PreSet.instSetoid.{u}
+
+namespace TarskiSet
+
+def mem (x y : TarskiSet.{u}) : Prop :=
+  sorry
+
+end TarskiSet
+
+instance instMembership : Membership TarskiSet.{u} TarskiSet.{u} where
+  mem X x := TarskiSet.mem x X
 
 namespace TARSKI
 

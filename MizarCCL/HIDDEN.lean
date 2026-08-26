@@ -186,7 +186,7 @@ theorem mem_pre (p q : PreSet.{u}) : mem (mk p) (mk q) ↔ PreSet.Mem p q := by
 
 end TarskiSet
 
-instance : Membership TarskiSet.{u} TarskiSet.{u} where
+instance instMembership : Membership TarskiSet.{u} TarskiSet.{u} where
   mem X x := TarskiSet.mem x X
 
 @[simp] theorem TarskiSet.mem_eq (x y : TarskiSet.{u}) :
