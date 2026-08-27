@@ -485,10 +485,100 @@ theorem th31 {f g : TarskiSet.{u}} (hf : isFunctionLike f)
               (id_apply ((hdom ▸ hx2) : x2 ∈ dom f))))))
     (th15 hf hdom)
 
+/-! ## Inverse `f"` (`FUNCT_1:def 5`) — `converse` when one-to-one. -/
+
+noncomputable def inv (f : TarskiSet.{u}) : TarskiSet.{u} := converse f
+
+theorem converse_isFunctionLike_of_inj {f : TarskiSet.{u}}
+    (hf : isFunctionLike f) (h1 : isOneToOne f) :
+    isFunctionLike (converse f) := by
+  intro x y1 y2 hp1 hp2
+  have h1f := (def7 f x y1).mp hp1
+  have h2f := (def7 f x y2).mp hp2
+  exact h1 y1 y2 (pair_mem_dom h1f) (pair_mem_dom h2f)
+    ((apply_of_mem hf h1f).trans (apply_of_mem hf h2f).symm)
+
+theorem inv_isFunction {f : TarskiSet.{u}} (hf : isFunction f)
+    (h1 : isOneToOne f) : isFunction (inv f) :=
+  ⟨converse_isRelation f, converse_isFunctionLike_of_inj hf.2 h1⟩
+
+theorem def5 {f : TarskiSet.{u}} (_h1 : isOneToOne f) : inv f = converse f :=
+  rfl
+
+/-- `FUNCT_1:33` (`Th33`) -/
+theorem th33 {f : TarskiSet.{u}} (_h1 : isOneToOne f) :
+    rng f = dom (inv f) ∧ dom f = rng (inv f) :=
+  RELAT_1.th20 (R := f)
+
+/-- `FUNCT_1:32` (`Th32`) -/
+theorem th32 {f g : TarskiSet.{u}} (hf : isFunction f) (hg : isFunction g)
+    (h1 : isOneToOne f) :
+    g = inv f ↔
+      dom g = rng f ∧
+        ∀ y x, (y ∈ rng f ∧ x = apply g y) ↔ (x ∈ dom f ∧ y = apply f x) := by
+  constructor
+  · intro hginv
+    have hdom : dom g = rng f :=
+      hginv ▸ (RELAT_1.th20 (R := f)).1.symm
+    refine ⟨hdom, fun y x => ⟨?fwd, ?bwd⟩⟩
+    · intro ⟨hy, hxeq⟩
+      have hyD : y ∈ dom (inv f) := (RELAT_1.th20 (R := f)).1 ▸ hy
+      have hp : TARSKI.pair y x ∈ inv f :=
+        hxeq ▸ (hginv ▸ apply_spec (show y ∈ dom g from hdom.symm ▸ hy))
+      have hpf : TARSKI.pair x y ∈ f := (def7 f y x).mp hp
+      exact ⟨pair_mem_dom hpf, (apply_of_mem hf.2 hpf).symm⟩
+    · intro ⟨hx, hyeq⟩
+      have hpf : TARSKI.pair x y ∈ f := (th1 hf.2).mpr ⟨hx, hyeq⟩
+      have hp : TARSKI.pair y x ∈ inv f := (def7 f y x).mpr hpf
+      have hyR : y ∈ rng f := hyeq ▸ th3 hf.2 hx
+      have hyD : y ∈ dom g := hdom.symm ▸ hyR
+      exact ⟨hyR,
+        (apply_of_mem hg.2 (show TARSKI.pair y x ∈ g from hginv ▸ hp)).symm⟩
+  · intro ⟨hdom, hchar⟩
+    exact th2 hg (inv_isFunction hf h1)
+      (hdom.trans (RELAT_1.th20 (R := f)).1) fun y hy => by
+        have hyR : y ∈ rng f := hdom ▸ hy
+        obtain ⟨x, hx, heq⟩ := (def3 hf.2).mp hyR
+        have hgval : apply g y = x := ((hchar y x).mpr ⟨hx, heq⟩).2.symm
+        have hpf : TARSKI.pair x y ∈ f := (th1 hf.2).mpr ⟨hx, heq⟩
+        have hival : apply (inv f) y = x :=
+          apply_of_mem (converse_isFunctionLike_of_inj hf.2 h1)
+            ((def7 f y x).mpr hpf)
+        exact hgval.trans hival.symm
+
+/-- `FUNCT_1:34` (`Th34`) -/
+theorem th34 {f x : TarskiSet.{u}} (hf : isFunction f) (h1 : isOneToOne f)
+    (hx : x ∈ dom f) :
+    apply (inv f) (apply f x) = x ∧ apply (comp f (inv f)) x = x := by
+  have hy : apply f x ∈ rng f := th3 hf.2 hx
+  have hinv : apply (inv f) (apply f x) = x :=
+    ((th32 hf (inv_isFunction hf h1) h1).mp rfl).2 (apply f x) x |>.mpr
+      ⟨hx, rfl⟩ |>.2.symm
+  exact ⟨hinv, (th13 hf.2 (converse_isFunctionLike_of_inj hf.2 h1) hx).trans hinv⟩
+
+/-- `FUNCT_1:35` (`Th35`) -/
+theorem th35 {f y : TarskiSet.{u}} (hf : isFunction f) (h1 : isOneToOne f)
+    (hy : y ∈ rng f) :
+    apply f (apply (inv f) y) = y ∧ apply (comp (inv f) f) y = y := by
+  have ⟨hx, heq⟩ :=
+    ((th32 hf (inv_isFunction hf h1) h1).mp rfl).2 y (apply (inv f) y) |>.mp
+      ⟨hy, rfl⟩
+  have hfy : apply f (apply (inv f) y) = y := heq.symm
+  have hyd : y ∈ dom (inv f) := (th33 h1).1 ▸ hy
+  exact ⟨hfy, (th13 (converse_isFunctionLike_of_inj hf.2 h1) hf.2 hyd).trans hfy⟩
+
+/-- `FUNCT_1:39` (`Th39`) -/
+theorem th39 {f : TarskiSet.{u}} (hf : isFunction f) (h1 : isOneToOne f) :
+    comp f (inv f) = RELAT_1.id (dom f) ∧
+      comp (inv f) f = RELAT_1.id (rng f) := by
+  constructor
+  · exact (th17 (comp_isFunction hf (inv_isFunction hf h1))).mpr
+      ⟨(RELAT_1.th27 (P := inv f) (R := f)
+          (show rng f ⊆ dom (inv f) from (th33 h1).1 ▸ fun _ h => h)),
+        fun x hx => (th34 hf h1 hx).2⟩
+  · exact (th17 (comp_isFunction (inv_isFunction hf h1) hf)).mpr
+      ⟨(RELAT_1.th27 (P := f) (R := inv f)
+          (fun z hz => (th33 h1).2.symm ▸ hz)).trans (th33 h1).1.symm,
+        fun y hy => (th35 hf h1 hy).2⟩
+
 end FUNCT_1
-
-
-
-
-
-
