@@ -547,7 +547,25 @@ permutations, images of families, and `p/*f`. Environ: `TARSKI`,
 | `FUNCT_2:def 12` | `isFunctionDomain` | nonempty set of functions |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Next unused: `BINOP_1`.
+`{propext, Classical.choice, Quot.sound}`. Next unused: `DOMAIN_1`.
+
+## 24. Binary operations (`BINOP_1`)
+
+Binary application `f.(a,b)`, unary/binary operations on a set,
+commutativity / associativity / idempotence, unities, and
+distributivity. Environ ends at `FUNCT_2`. Import is `FUNCT_2` only.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `f.(a,b)` / Def1 | `apply2` / `def1` | `f.[a,b]` |
+| `UnOp` / `BinOp` | `isUnOp` / `isBinOp` | Function of `X` / `[:X,X:]` |
+| `Th1`–`Th15` + unlabeled | `th1`–`th16` | equality; unities; dist. |
+| Def2–12 | commutative … unOp-dist | attrs and `the_unity_wrt` |
+| schemes | `sch_FuncEx2` … `sch_PartLambda2D` | existence / lambda |
+| addenda | `th17`–`th20` / `eq_iff_apply2` | FUNCT_2 / PARTFUN1 links |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `DOMAIN_1`.
 
 ## Lean Code
 
@@ -572,5 +590,6 @@ permutations, images of families, and `p/*f`. Environ: `TARSKI`,
 - [`MizarCCL/MCART_1.lean`](MizarCCL/MCART_1.lean) — tuples, projections, products
 - [`MizarCCL/WELLORD2.lean`](MizarCCL/WELLORD2.lean) — Zermelo and choice
 - [`MizarCCL/FUNCT_2.lean`](MizarCCL/FUNCT_2.lean) — functions from a set to a set
+- [`MizarCCL/BINOP_1.lean`](MizarCCL/BINOP_1.lean) — binary operations
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

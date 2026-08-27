@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `BINOP_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `DOMAIN_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -490,3 +490,14 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `Funcs` / Separation / schemes). No `sorry`.
   `lake build` green. Challenge/Solution types still match. Next
   unused: `BINOP_1`.
+
+### 2026-08-27 — BINOP_1
+
+- `MizarCCL/BINOP_1.lean`: binary operations. `apply2` (`f.(a,b)`),
+  `UnOp`/`BinOp`, commutative/associative/idempotent, unities,
+  distributivity, schemes (`FuncEx2`/`Lambda2`/…), addenda.
+  Numbered `th1`–`th20` (canceled attr redefines omitted). Import
+  is `FUNCT_2` only.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `DOMAIN_1`.

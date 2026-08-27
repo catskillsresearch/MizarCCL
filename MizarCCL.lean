@@ -19,6 +19,7 @@ import MizarCCL.PARTFUN1
 import MizarCCL.MCART_1
 import MizarCCL.WELLORD2
 import MizarCCL.FUNCT_2
+import MizarCCL.BINOP_1
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users
