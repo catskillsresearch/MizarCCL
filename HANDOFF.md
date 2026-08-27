@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `XREGULAR`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `ZFMISC_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -275,3 +275,13 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
   (choice from `fst`/`proj1`). `lake build` green. Challenge/Solution
   types still match. Next unused: `XREGULAR`.
+
+### 2026-08-27 — XREGULAR
+
+- `MizarCCL/XREGULAR.lean`: `th1` (nonempty set has a disjoint
+  element, from `TARSKI:2`), depth-1..5 chain forms `th2`–`th6`,
+  and no 3–6 cycles `th7`–`th10`. Imports `ENUMSET1` only (no
+  `XTUPLE_0`, matching the Mizar environ).
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
+  `lake build` green. Challenge/Solution types still match. Next
+  unused: `ZFMISC_1` (power set / products; ~2400 lines).

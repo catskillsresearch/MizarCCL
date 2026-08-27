@@ -179,7 +179,21 @@ attribute, component functions, triples/quadruples, and
 
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}` (choice from
-`fst`/`proj1`). Next unused queue article: `XREGULAR`.
+`fst`/`proj1`).
+
+## 9. Regularity (`XREGULAR`)
+
+Consequences of `TARSKI:2`. Environ: `TARSKI`, `XBOOLE_0`,
+`XBOOLE_1`, `ENUMSET1` (not `XTUPLE_0`).
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `XREGULAR:1` | `th1` | Nonempty `X` has `Y ∈ X` with `Y` misses `X` |
+| unlabeled depth 1–5 | `th2`–`th6` | Disjointness along ∈-chains |
+| no 3–6 cycles | `th7`–`th10` | Via `th1` on an enumeration |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `ZFMISC_1`.
 
 ## Lean Code
 
@@ -189,5 +203,6 @@ attribute, component functions, triples/quadruples, and
 - [`MizarCCL/XBOOLE_1.lean`](MizarCCL/XBOOLE_1.lean) — Boolean theorems
 - [`MizarCCL/ENUMSET1.lean`](MizarCCL/ENUMSET1.lean) — enumerated sets
 - [`MizarCCL/XTUPLE_0.lean`](MizarCCL/XTUPLE_0.lean) — pairs, tuples, projections
+- [`MizarCCL/XREGULAR.lean`](MizarCCL/XREGULAR.lean) — regularity consequences
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

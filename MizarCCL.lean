@@ -4,6 +4,7 @@ import MizarCCL.XBOOLE_0
 import MizarCCL.XBOOLE_1
 import MizarCCL.ENUMSET1
 import MizarCCL.XTUPLE_0
+import MizarCCL.XREGULAR
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users
