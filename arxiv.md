@@ -580,7 +580,7 @@ products, and enumset/singleton subset redefines. Environ ends at
 | redefines | pair/triple/quad / enumset subsets | coherence |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Sequential next unused:
+`{propext, Classical.choice, Quot.sound}`. Sequential next unused was
 `FUNCT_3` (parallel: `MULTOP_1` done).
 
 ## 26. Three- and four-argument operations (`MULTOP_1`)
@@ -596,8 +596,26 @@ Environ ends at `FUNCT_2` / `DOMAIN_1`. Import is `FUNCT_2` only.
 | schemes | `sch_FuncEx3D` … `sch_QuaOpLambda` | 8 schemes |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Sequential next unused:
+`{propext, Classical.choice, Quot.sound}`. Sequential next unused was
 `FUNCT_3`.
+
+## 27. Basic functions and operations on functions (`FUNCT_3`)
+
+Image / inverse-image functionals, characteristic and inclusion maps,
+projections, diagonal, `<:f,g:>` / `[:f,g:]`, and product identities.
+Environ ends at `BINOP_1` / `DOMAIN_1`. Import is both.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def2 | `imageFunc` / `invimageFunc` | image / preimage functionals |
+| Def3–Def6 | `chi` / `incl` / `pr1` / `pr2` / `delta` | characteristic; incl; projs |
+| Def7–Def8 | `complex` / `productFunc` | `<:f,g:>` / `[:f,g:]` |
+| schemes | `sch_FuncEx3` / `sch_Lambda3` | |
+| `FUNCT_3:1`–`80` | `th1`–`th80` | absolute theorem slots |
+| registrations | `productFunc_oneToOne` / idempotent binop | |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCOP_1`.
 
 ## Lean Code
 
@@ -625,5 +643,6 @@ Environ ends at `FUNCT_2` / `DOMAIN_1`. Import is `FUNCT_2` only.
 - [`MizarCCL/BINOP_1.lean`](MizarCCL/BINOP_1.lean) — binary operations
 - [`MizarCCL/DOMAIN_1.lean`](MizarCCL/DOMAIN_1.lean) — domains and products
 - [`MizarCCL/MULTOP_1.lean`](MizarCCL/MULTOP_1.lean) — multi-argument operations
+- [`MizarCCL/FUNCT_3.lean`](MizarCCL/FUNCT_3.lean) — operations on functions
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

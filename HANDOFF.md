@@ -36,9 +36,9 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FUNCT_3` (sequential). Parallel frontier also
-  translating `WELLSET1` / `SYSREL`; `MULTOP_1` done. Palomar
-  Challenge/Solution expose TARSKI.
+  Next unused: `FUNCOP_1` (sequential). Parallel frontier also
+  translating `WELLSET1` / `SYSREL`; `MULTOP_1` / `FUNCT_3` done.
+  Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -524,3 +524,16 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Sequential next unused remains `FUNCT_3`.
+
+### 2026-08-27 — FUNCT_3
+
+- `MizarCCL/FUNCT_3.lean`: basic functions and operations on
+  functions. `imageFunc` / `invimageFunc`, `chi` / `incl` / `pr1` /
+  `pr2` / `delta` / `complex` / `productFunc`, schemes FuncEx3 /
+  Lambda3, numbered `th1`–`th80` (absolute Mizar theorem slots),
+  AMI_1 addenda, registrations (`productFunc_oneToOne`,
+  `exists_idempotent_binop`, `idempotent_reduce`). Imports
+  `BINOP_1` and `DOMAIN_1`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `FUNCOP_1`.

@@ -21,6 +21,7 @@ import MizarCCL.WELLORD2
 import MizarCCL.FUNCT_2
 import MizarCCL.BINOP_1
 import MizarCCL.DOMAIN_1
+import MizarCCL.FUNCT_3
 import MizarCCL.MULTOP_1
 
 /-
