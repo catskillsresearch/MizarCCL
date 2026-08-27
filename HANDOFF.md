@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `XBOOLE_0`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `ENUMSET1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -236,3 +236,19 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   `waybel_yellow.miz`. Each article is preceded by
   `:: Module <STEM>` (filename root in caps). `hidden.miz` is not
   on the queue and is omitted.
+
+### 2026-08-27 — XBOOLE_0 and XBOOLE_1
+
+- `MizarCCL/XBOOLE_0.lean`: Separation from `TARSKI:sch 1`, empty
+  set, `∪` `∩` `\`, `∆`, `misses`/`meets`, `⊂`, `c=`-comparable,
+  equality via double inclusion, `th1`–`th7`, registrations.
+  Environ import is `TARSKI` only. Mathlib is not used: these
+  constructors live on untyped `TarskiSet`, not `Set α`.
+- `MizarCCL/XBOOLE_1.lean`: `th1`–`th117` plus `Lm1`–`Lm5`,
+  following the Mizar article (membership via `def 3`–`def 5`,
+  inclusion, extensionality). Environ imports `TARSKI` and
+  `XBOOLE_0`.
+- No `sorry` / `axiom` in `MizarCCL/`. `#print axioms` of sampled
+  theorems ⊆ `{propext, Classical.choice, Quot.sound}`. `lake build`
+  green. Challenge/Solution types still match (Palomar remains
+  TARSKI). Next unused: `ENUMSET1`.

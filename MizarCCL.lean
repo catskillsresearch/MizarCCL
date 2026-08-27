@@ -1,5 +1,7 @@
 import MizarCCL.HIDDEN
 import MizarCCL.TARSKI
+import MizarCCL.XBOOLE_0
+import MizarCCL.XBOOLE_1
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users

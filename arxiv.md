@@ -124,9 +124,29 @@ Narrative inventory: this file. Metadata: `comparator.json`,
   at `047822c4d814630b28eec8ca6b455e9eb912d5ff` (Mizar 7.13.01 /
   MML 4.181.1147).
 
+## 6. Boolean articles (`XBOOLE_0`, `XBOOLE_1`)
+
+The next two queue items are Library Committee Boolean properties
+of sets. Lean modules import as the Mizar environs do: `XBOOLE_0`
+imports `TARSKI`; `XBOOLE_1` imports `TARSKI` and `XBOOLE_0`.
+Mathlib `Set α` is not a stand-in for `TarskiSet`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `XBOOLE_0:sch Separation` | `sch_separation` | Fraenkel with `x = y ∧ P[y]` |
+| `XBOOLE_0:def 1`–`def 10` | `isEmpty`, `∅`, `∪`, `∩`, `\`, `∆`, `misses`, `⊂`, `are_ccomparable`, `def10` | Boolean constructors |
+| `XBOOLE_0:1`–`7` | `th1`–`th7` | Symmetric difference, `meets`, schemes |
+| `XBOOLE_1:1`–`117` | `th1`–`th117` | Union/intersection/difference algebra; `Lm1`–`Lm5` |
+
+**Complete?** Yes for both articles. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}` (choice from Separation /
+empty set). No `sorry` in `MizarCCL/`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
-- [`MizarCCL/TARSKI.lean`](MizarCCL/TARSKI.lean) — proofs
+- [`MizarCCL/TARSKI.lean`](MizarCCL/TARSKI.lean) — TARSKI proofs
+- [`MizarCCL/XBOOLE_0.lean`](MizarCCL/XBOOLE_0.lean) — Boolean definitions
+- [`MizarCCL/XBOOLE_1.lean`](MizarCCL/XBOOLE_1.lean) — Boolean theorems
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
