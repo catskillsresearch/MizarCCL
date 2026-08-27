@@ -629,8 +629,25 @@ Environ ends at `RELAT_1`. Import is `RELAT_1` only.
 | Def | `CL` / `CL_eq` | `R ∩ RELAT_1.id (dom R)` |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Sequential next unused remains
+`{propext, Classical.choice, Quot.sound}`. Sequential next unused was
 `FUNCOP_1` (parallel: `WELLSET1`).
+
+## 29. Binary operations applied to functions (`FUNCOP_1`)
+
+Pair-swap `f~`, constant maps `A --> z`, binary ops applied to
+functions (`F.:(f,g)`, `F[:]`, `F[;]`), `IFEQ`, and
+function-/relation-yielding maps. Environ ends at `FUNCT_3` /
+`WELLORD1`. Import is both.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def8 | `tilde` / `mapsTo` / `applied*` / `IFEQ` / `dotArrow` | |
+| locals | `lm1` / `lm2` | |
+| `FUNCOP_1:1`–`89` | `th1`–`th89` | absolute slots; `th46` with `x ∈ X` |
+| attrs | `isFunctionYielding` / `isRelationYielding` | |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_4`.
 
 ## Lean Code
 
@@ -659,6 +676,7 @@ Environ ends at `RELAT_1`. Import is `RELAT_1` only.
 - [`MizarCCL/DOMAIN_1.lean`](MizarCCL/DOMAIN_1.lean) — domains and products
 - [`MizarCCL/MULTOP_1.lean`](MizarCCL/MULTOP_1.lean) — multi-argument operations
 - [`MizarCCL/FUNCT_3.lean`](MizarCCL/FUNCT_3.lean) — operations on functions
+- [`MizarCCL/FUNCOP_1.lean`](MizarCCL/FUNCOP_1.lean) — ops applied to functions
 - [`MizarCCL/SYSREL.lean`](MizarCCL/SYSREL.lean) — binary relation properties
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

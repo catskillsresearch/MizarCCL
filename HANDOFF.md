@@ -36,9 +36,10 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FUNCOP_1` (sequential). Parallel frontier also
-  translating `WELLSET1`; `MULTOP_1` / `FUNCT_3` / `SYSREL` done.
-  Palomar Challenge/Solution expose TARSKI.
+  Next unused: `FUNCT_4` (sequential). Parallel frontier also
+  translating `WELLSET1` / `ORDINAL2` / `PARTFUN2`; `MULTOP_1` /
+  `FUNCT_3` / `SYSREL` / `FUNCOP_1` done. Palomar Challenge/Solution
+  expose TARSKI.
 
 ## On finishing a work item
 
@@ -546,3 +547,15 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Sequential next unused remains `FUNCOP_1`.
+
+### 2026-08-27 — FUNCOP_1
+
+- `MizarCCL/FUNCOP_1.lean`: binary operations applied to functions.
+  `tilde` (`f~`), `mapsTo` / `mapsTo2`, `applied` / `appliedRight` /
+  `appliedLeft`, `IFEQ`, `dotArrow`, function-/relation-yielding.
+  Locals `lm1`/`lm2`, defs `def1`–`def8`, numbered `th1`–`th89`.
+  Imports `FUNCT_3` and `WELLORD1`. Note: unlabeled `th46` stated
+  with `x ∈ X` (Mizar bare form used only under that hyp in-tree).
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `FUNCT_4` (also unlocks `ORDINAL2`, `PARTFUN2`).
