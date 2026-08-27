@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FUNCT_2`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `BINOP_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -475,3 +475,18 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `RelIncl` / Separation / `sch_TSExist` / `sch_Lambda`).
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `FUNCT_2`.
+
+### 2026-08-27 — FUNCT_2
+
+- `MizarCCL/FUNCT_2.lean`: functions from a set to a set.
+  `isQuasiTotal` / `isFunctionOf` / `Funcs`, onto / bijective /
+  permutation, image/preimage families, `composeAlong` (`p/*f`),
+  `FUNCTION_DOMAIN`, `Action`. Numbered `th1`–`th125` (canceled
+  `th37` omitted; Def7/Def8 absent in Mizar). Schemes `FuncEx1` /
+  `Lambda1` / `FuncExD` / `LambdaD` / `Lambda1C` / `LambdaSep1`–
+  `2` / `FunctRealEx` / `KappaMD` / `MChoice`. Imports `PARTFUN1`,
+  `MCART_1`, and `SETFAM_1`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `Funcs` / Separation / schemes). No `sorry`.
+  `lake build` green. Challenge/Solution types still match. Next
+  unused: `BINOP_1`.

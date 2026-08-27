@@ -520,7 +520,34 @@ a well-ordering of `union M`. Environ: `TARSKI`, `XBOOLE_0`,
 | addenda `L1058`–`L1135` | `RelIncl_*_in` / `RelIncl_empty` / … | `RelIncl` on `X`; empty; singleton; product |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_2`.
+`{propext, Classical.choice, Quot.sound}`. Next unused: `BINOP_1`.
+
+## 23. Functions from a set to a set (`FUNCT_2`)
+
+Total / quasi-total functions, `Funcs(X,Y)`, onto and bijective maps,
+permutations, images of families, and `p/*f`. Environ: `TARSKI`,
+`XBOOLE_0`, `XBOOLE_1`, `XTUPLE_0`, `ZFMISC_1`, `SUBSET_1`,
+`SETFAM_1`, `MCART_1`, `RELAT_1`, `RELAT_2`, `FUNCT_1`, `RELSET_1`,
+`PARTFUN1`. Import is `PARTFUN1`, `MCART_1`, and `SETFAM_1`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `FUNCT_2:def 1` | `isQuasiTotal` / `def1` | `dom = X` if `Y ≠ ∅`, else empty |
+| `Function of X,Y` | `isFunctionOf` | quasi-total PartFunc |
+| `FUNCT_2:def 2` | `Funcs` / `def2` | set of total functions into `Y` |
+| `FUNCT_2:1`–`36` | `th1`–`th36` | typing; apply; equality; image |
+| `FUNCT_2:37` | — | canceled |
+| `FUNCT_2:38`–`61` | `th38`–`th61` | preimage; onto; bijective; perm |
+| `FUNCT_2:def 3`–`4` | `isOnto` / `isBijective` / `isPermutation` | |
+| schemes | `sch_FuncEx1` … `sch_MChoice` | Lambda / choice schemes |
+| `FUNCT_2:62`–`91` | `th62`–`th91` | perm images; TotFuncs |
+| `FUNCT_2:def 5`–`6` | `pr1` / `pr2` redefs | via `MCART_1` |
+| `FUNCT_2:def 9`–`11` | `invimageFamily` / `imageFamily` / `composeAlong` | |
+| `FUNCT_2:92`–`125` | `th92`–`th125` | families; `p/*f`; Action |
+| `FUNCT_2:def 12` | `isFunctionDomain` | nonempty set of functions |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `BINOP_1`.
 
 ## Lean Code
 
@@ -544,5 +571,6 @@ a well-ordering of `union M`. Environ: `TARSKI`, `XBOOLE_0`,
 - [`MizarCCL/PARTFUN1.lean`](MizarCCL/PARTFUN1.lean) — partial functions
 - [`MizarCCL/MCART_1.lean`](MizarCCL/MCART_1.lean) — tuples, projections, products
 - [`MizarCCL/WELLORD2.lean`](MizarCCL/WELLORD2.lean) — Zermelo and choice
+- [`MizarCCL/FUNCT_2.lean`](MizarCCL/FUNCT_2.lean) — functions from a set to a set
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
