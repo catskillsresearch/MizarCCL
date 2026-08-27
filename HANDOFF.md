@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `WELLORD2`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `FUNCT_2`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -461,4 +461,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
   (choice from `pr1`/`pr2` / `sch_Lambda` / Separation). No
   `sorry`. `lake build` green. Challenge/Solution types still
-  match. Next unused: `WELLORD2`.
+  match. Next unused: `FUNCT_2`.
+
+### 2026-08-27 — WELLORD2
+
+- `MizarCCL/WELLORD2.lean`: inclusion order `RelIncl`, order
+  types, equipotence, Zermelo (`th17` via Hartogs + transfinite
+  enumeration, not Mizar TG-class inaccessibility), Axiom of Choice
+  (`th18`), and addenda on `RelIncl`. Numbered `th7`–`th17`
+  (`1`–`6` canceled), `lm1`, defs `RelIncl` / `order_type_of` /
+  `def1`–`def2`. Imports `WELLORD1`, `MCART_1`, and `ORDINAL1`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `RelIncl` / Separation / `sch_TSExist` / `sch_Lambda`).
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `FUNCT_2`.

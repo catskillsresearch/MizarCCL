@@ -17,6 +17,7 @@ import MizarCCL.WELLORD1
 import MizarCCL.RELSET_1
 import MizarCCL.PARTFUN1
 import MizarCCL.MCART_1
+import MizarCCL.WELLORD2
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users

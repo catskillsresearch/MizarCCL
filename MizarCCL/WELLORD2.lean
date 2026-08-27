@@ -16,7 +16,7 @@ Authors: Grzegorz Bancerek (Mizar), Lars Warren Ericson (Lean 4).
 
 1–1 Lean rendering of Mizar article `WELLORD2`
 (`vendor/mml/wellord2.miz`). Import is `WELLORD1`, `MCART_1`, and
-`ORDINAL1`. This file is in progress.
+`ORDINAL1`.
 -/
 
 universe u
@@ -1484,11 +1484,158 @@ theorem th17 (X : TarskiSet.{u}) :
             ⟨RELAT_1.restrict L β,
               FUNCT_1.restrict_isFunction hLTS.1, h1β, hdβ, hrngβ⟩)))
 
+/-- `$N` Axiom of Choice. Unlabeled `WELLORD2` after `Th17` (`L968`). -/
+theorem th18 {M : TarskiSet.{u}}
+    (hMne : ∀ X, X ∈ M → X ≠ (∅ : TarskiSet.{u}))
+    (hMdisj : ∀ X Y, X ∈ M → Y ∈ M → X ≠ Y → XBOOLE_0.misses X Y) :
+    ∃ Choice, ∀ X, X ∈ M → ∃ x, Choice ∩ X = TARSKI.singleton x := by
+  let U := TARSKI.union M
+  obtain ⟨R, hRwo⟩ := th17 U
+  have hrefl : RELAT_2.isReflexiveIn R U := hRwo.1
+  have htrans : RELAT_2.isTransitiveIn R U := hRwo.2.1
+  have hanti : RELAT_2.isAntisymmetricIn R U := hRwo.2.2.1
+  have hconn : RELAT_2.isConnectedIn R U := hRwo.2.2.2.1
+  have hwf : WELLORD1.isWellFoundedIn R U := hRwo.2.2.2.2
+  let Ch : TarskiSet.{u} → TarskiSet.{u} → Prop := fun x y =>
+    y ∈ x ∧ ∀ z, z ∈ x → TARSKI.pair y z ∈ R
+  have hChfun : ∀ x y1 y2, x ∈ M → Ch x y1 → Ch x y2 → y1 = y2 := by
+    intro x y1 y2 hx h1 h2
+    have hy1 : y1 ∈ x := h1.1
+    have hy2 : y2 ∈ x := h2.1
+    have hy1U : y1 ∈ U :=
+      (TARSKI.def4 M y1).mpr ⟨x, hy1, hx⟩
+    have hy2U : y2 ∈ U :=
+      (TARSKI.def4 M y2).mpr ⟨x, hy2, hx⟩
+    have hpyz : TARSKI.pair y1 y2 ∈ R := h1.2 y2 hy2
+    have hpzy : TARSKI.pair y2 y1 ∈ R := h2.2 y1 hy1
+    exact hanti y1 y2 hy1U hy2U hpyz hpzy
+  have hChex : ∀ x, x ∈ M → ∃ y, Ch x y := by
+    intro x hxM
+    have hxU : x ⊆ U := ZFMISC_1.th74 hxM
+    have hxne : x ≠ (∅ : TarskiSet.{u}) := hMne x hxM
+    obtain ⟨y, hy, hmiss⟩ :=
+      (WELLORD1.def3 R U).mp hwf x hxU hxne
+    refine ⟨y, hy, ?_⟩
+    have hyU : y ∈ U :=
+      (TARSKI.def4 M y).mpr ⟨x, hy, hxM⟩
+    intro z hz
+    have hzU : z ∈ U :=
+      (TARSKI.def4 M z).mpr ⟨x, hz, hxM⟩
+    have hnseg : z ∉ WELLORD1.seg R y := fun hseg =>
+      (XBOOLE_0.empty_iff z).mp
+        (Eq.subst (motive := fun s => z ∈ s) hmiss
+          ((XBOOLE_0.def4 (WELLORD1.seg R y) x z).mpr ⟨hseg, hz⟩))
+    by_cases h : y = z
+    · subst h
+      exact hrefl y hyU
+    · exact Or.elim (hconn y z hyU hzU h)
+        (fun hp => hp)
+        (fun hpzy =>
+          (hnseg ((WELLORD1.th1 R y z).mpr ⟨Ne.symm h, hpzy⟩)).elim)
+  obtain ⟨f, hf, hfdom, hfCh⟩ :=
+    FUNCT_1.sch_FuncEx M Ch hChfun hChex
+  refine ⟨RELAT_1.rng f, ?_⟩
+  intro X hXM
+  refine ⟨FUNCT_1.apply f X, ?_⟩
+  apply TARSKI.extensionality
+  intro y
+  constructor
+  · intro hy
+    have ⟨hyC, hyX⟩ := (XBOOLE_0.def4 (RELAT_1.rng f) X y).mp hy
+    obtain ⟨Z, hZd, heq⟩ := (FUNCT_1.def3 hf.2).mp hyC
+    have hZX : Z = X := by
+      apply Classical.byContradiction
+      intro hne
+      have hmiss : XBOOLE_0.misses X Z :=
+        hMdisj X Z hXM (Eq.subst (motive := fun s => Z ∈ s) hfdom hZd)
+          (Ne.symm hne)
+      have hfZ : FUNCT_1.apply f Z ∈ Z :=
+        (hfCh Z (Eq.subst (motive := fun s => Z ∈ s) hfdom hZd)).1
+      exact (XBOOLE_0.empty_iff y).mp
+        (Eq.subst (motive := fun s => y ∈ s) hmiss
+          ((XBOOLE_0.def4 X Z y).mpr
+            ⟨hyX, Eq.subst (motive := fun s => s ∈ Z) heq.symm hfZ⟩))
+    exact (TARSKI.singleton_iff (FUNCT_1.apply f X) y).mpr
+      (heq.trans (congrArg (FUNCT_1.apply f) hZX))
+  · intro hy
+    have heq : y = FUNCT_1.apply f X := (TARSKI.singleton_iff _ _).mp hy
+    have hyX : y ∈ X :=
+      Eq.subst (motive := fun s => s ∈ X) heq.symm (hfCh X hXM).1
+    have hxD : X ∈ RELAT_1.dom f := hfdom.symm ▸ hXM
+    have hyC : y ∈ RELAT_1.rng f :=
+      (FUNCT_1.def3 hf.2).mpr ⟨X, hxD, heq⟩
+    exact (XBOOLE_0.def4 (RELAT_1.rng f) X y).mpr ⟨hyC, hyX⟩
+
+/-! ## Addenda (`wellord2.miz` L1056–L1135) -/
+
+theorem RelIncl_reflexive_in (X : TarskiSet.{u}) :
+    RELAT_2.isReflexiveIn (RelIncl X) X := fun a ha =>
+  ((RELAT_2.def9 (RelIncl X)).mp (RelIncl_reflexive X)) a
+    (Eq.subst (motive := fun s => a ∈ s) (RelIncl_field X).symm ha)
+
+theorem RelIncl_transitive_in (X : TarskiSet.{u}) :
+    RELAT_2.isTransitiveIn (RelIncl X) X :=
+  (RELAT_2.def8 (RelIncl X) X).mpr fun a b c ha hb hc hab hbc =>
+    ((RELAT_2.def16 (RelIncl X)).mp (RelIncl_transitive X)) a b c
+      (Eq.subst (motive := fun s => a ∈ s) (RelIncl_field X).symm ha)
+      (Eq.subst (motive := fun s => b ∈ s) (RelIncl_field X).symm hb)
+      (Eq.subst (motive := fun s => c ∈ s) (RelIncl_field X).symm hc)
+      hab hbc
+
+theorem RelIncl_antisymmetric_in (X : TarskiSet.{u}) :
+    RELAT_2.isAntisymmetricIn (RelIncl X) X :=
+  (RELAT_2.def4 (RelIncl X) X).mpr fun a b ha hb hab hba =>
+    ((RELAT_2.def12 (RelIncl X)).mp (RelIncl_antisymmetric X)) a b
+      (Eq.subst (motive := fun s => a ∈ s) (RelIncl_field X).symm ha)
+      (Eq.subst (motive := fun s => b ∈ s) (RelIncl_field X).symm hb)
+      hab hba
+
+theorem RelIncl_empty : RelIncl (∅ : TarskiSet.{u}) = (∅ : TarskiSet.{u}) :=
+  RELAT_1.rel_eq (RelIncl_isRelation (∅ : TarskiSet.{u}))
+    RELAT_1.empty_isRelation fun a b =>
+      ⟨fun hp =>
+        ((XBOOLE_0.empty_iff a).mp ((RelIncl_char (∅ : TarskiSet.{u}) a b).mp hp).1).elim,
+        fun hp => ((XBOOLE_0.empty_iff (TARSKI.pair a b)).mp hp).elim⟩
+
+theorem RelIncl_ne_empty {X : TarskiSet.{u}} (hne : X ≠ (∅ : TarskiSet.{u})) :
+    RelIncl X ≠ (∅ : TarskiSet.{u}) := by
+  obtain ⟨a, ha⟩ := exists_mem_of_ne hne
+  intro hempty
+  exact (XBOOLE_0.empty_iff (TARSKI.pair a a)).mp
+    (Eq.subst (motive := fun s => TARSKI.pair a a ∈ s) hempty
+      ((RelIncl_char X a a).mpr ⟨ha, ha, fun _ hx => hx⟩))
+
+theorem RelIncl_singleton (x : TarskiSet.{u}) :
+    RelIncl (TARSKI.singleton x) =
+      TARSKI.singleton (TARSKI.pair x x) := by
+  apply RELAT_1.rel_eq (RelIncl_isRelation (TARSKI.singleton x))
+    (RELAT_1.singleton_pair_isRelation x x)
+  intro Y Z
+  constructor
+  · intro hp
+    have ⟨hY, hZ, _⟩ := (RelIncl_char (TARSKI.singleton x) Y Z).mp hp
+    have hYx : Y = x := (TARSKI.singleton_iff x Y).mp hY
+    have hZx : Z = x := (TARSKI.singleton_iff x Z).mp hZ
+    exact (TARSKI.singleton_iff (TARSKI.pair x x) (TARSKI.pair Y Z)).mpr
+      (Eq.trans (congrArg (fun t => TARSKI.pair t Z) hYx)
+        (congrArg (TARSKI.pair x) hZx))
+  · intro h
+    have heq : TARSKI.pair Y Z = TARSKI.pair x x :=
+      (TARSKI.singleton_iff (TARSKI.pair x x) (TARSKI.pair Y Z)).mp h
+    have ⟨hYx, hZx⟩ := TARSKI.pair_inj.mp heq
+    exact (RelIncl_char (TARSKI.singleton x) Y Z).mpr
+      ⟨(TARSKI.singleton_iff x Y).mpr hYx,
+        (TARSKI.singleton_iff x Z).mpr hZx,
+        fun w hw =>
+          Eq.subst (motive := fun s => w ∈ s) hZx.symm
+            (Eq.subst (motive := fun s => w ∈ s) hYx hw)⟩
+
+theorem RelIncl_subset_product (X : TarskiSet.{u}) :
+    RelIncl X ⊆ ZFMISC_1.product X X :=
+  RELAT_1.rel_subset (RelIncl_isRelation X) fun a b hp =>
+    (ZFMISC_1.th87 (x := a) (y := b) (X := X) (Y := X)).mpr
+      ⟨((RelIncl_char X a b).mp hp).1, ((RelIncl_char X a b).mp hp).2.1⟩
+
 end WELLORD2
-
-
-
-
-
 
 

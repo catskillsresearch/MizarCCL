@@ -486,7 +486,34 @@ Pair/triple/quadruple projections and products. Environ: `TARSKI`,
 | `sch BiFuncEx` | `sch_BiFuncEx` | two functions from a ternary predicate |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Next unused: `WELLORD2`.
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_2`.
+
+## 22. Zermelo Theorem and the Axiom of Choice (`WELLORD2`)
+
+Inclusion order, order types, Zermelo well-ordering, and choice from
+a well-ordering of `union M`. Environ: `TARSKI`, `XBOOLE_0`,
+`ZFMISC_1`, `SUBSET_1`, `RELAT_1`, `FUNCT_1`, `RELAT_2`, `ORDINAL1`,
+`WELLORD1`, `MCART_1`. Import is `WELLORD1`, `MCART_1`, and
+`ORDINAL1`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `WELLORD2:def 1` | `RelIncl` / `def1` | inclusion relation on `X` |
+| `WELLORD2:1`–`6` | — | canceled |
+| `WELLORD2:7`–`9` | `th7`–`th9` | restrict `RelIncl`; segments |
+| `WELLORD2:10`–`11` | `th10`–`th11` | uniqueness of order type |
+| `WELLORD2:12`–`13` | `th12`–`th13` | existence of order type |
+| `WELLORD2:def 2` | `order_type_of` / `def2` | order type of a well-ordering |
+| unlabeled `L561` | `th14` | order type of a subset |
+| unlabeled after `L591` | `are_equipotent_fun` / `th15` | equipotence via functions |
+| `WELLORD2:16` | `th16` | restrict well-ordering |
+| `WELLORD2:lm 1` | `lm1` | well-ordering along equipotence |
+| `WELLORD2:17` | `th17` | Zermelo (Hartogs + enumeration) |
+| unlabeled `L968` | `th18` | Axiom of Choice |
+| addenda `L1058`–`L1135` | `RelIncl_*_in` / `RelIncl_empty` / … | `RelIncl` on `X`; empty; singleton; product |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_2`.
 
 ## Lean Code
 
@@ -509,5 +536,6 @@ Pair/triple/quadruple projections and products. Environ: `TARSKI`,
 - [`MizarCCL/RELSET_1.lean`](MizarCCL/RELSET_1.lean) — relations defined on sets
 - [`MizarCCL/PARTFUN1.lean`](MizarCCL/PARTFUN1.lean) — partial functions
 - [`MizarCCL/MCART_1.lean`](MizarCCL/MCART_1.lean) — tuples, projections, products
+- [`MizarCCL/WELLORD2.lean`](MizarCCL/WELLORD2.lean) — Zermelo and choice
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
