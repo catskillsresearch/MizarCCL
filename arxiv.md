@@ -263,6 +263,32 @@ and subset-families. Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `RELAT_1`.
 
+## 13. Relations (`RELAT_1`)
+
+Relations as sets of Kuratowski pairs. Environ: `TARSKI`,
+`XBOOLE_0`, `XBOOLE_1`, `ENUMSET1`, `XTUPLE_0`, `ZFMISC_1`,
+`SUBSET_1`. Import is `SUBSET_1` only. Canceled: `4`–`6`,
+`116`–`117`, `136`–`137`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `RELAT_1:def 1` | `isRelation` / `def1` | every element is a pair |
+| `dom` / `rng` / `field` | `dom` / `rng` / `field` | `proj1` / `proj2` / union |
+| `R~` | `converse` / `def7` | `[x,y] ∈ it` iff `[y,x] ∈ R` |
+| `P*R` | `comp` / `def8` | relational composition |
+| `id X` | `id` / `def10` | `[x,y] ∈ it` iff `x ∈ X ∧ x = y` |
+| `R` restricted to `X` | `restrict` / `def11` | Mizar `R\|X` |
+| `Y` range-restricts `R` | `restrictRng` / `def12` | Mizar range restriction |
+| `R.:X` | `image` / `def13` | direct image |
+| `R"Y` | `invimage` / `def14` | inverse image |
+| `Im(R,x)` / `Coim(R,x)` | `Im` / `Coim` | `R.:{x}` / `R"{x}` |
+| `X-defined` / `X-valued` | `isXdefined` / `isXvalued` | `def18` / `def19` |
+| `RELAT_1:1`–`186` | `th1`–`th186` | skip canceled numbers |
+| schemes | `sch_RelExistence`, `sch_ExtensionalityR` | pair Separation; extensionality |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -275,5 +301,6 @@ and subset-families. Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`,
 - [`MizarCCL/ZFMISC_1.lean`](MizarCCL/ZFMISC_1.lean) — power set and products
 - [`MizarCCL/SUBSET_1.lean`](MizarCCL/SUBSET_1.lean) — elements and subsets
 - [`MizarCCL/SETFAM_1.lean`](MizarCCL/SETFAM_1.lean) — families of sets
+- [`MizarCCL/RELAT_1.lean`](MizarCCL/RELAT_1.lean) — relations
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

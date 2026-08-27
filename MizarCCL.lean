@@ -8,6 +8,7 @@ import MizarCCL.XREGULAR
 import MizarCCL.ZFMISC_1
 import MizarCCL.SUBSET_1
 import MizarCCL.SETFAM_1
+import MizarCCL.RELAT_1
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users

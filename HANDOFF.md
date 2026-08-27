@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `RELAT_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `FUNCT_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -328,3 +328,19 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
   (choice from Separation / `meet` / `∅`). No `sorry`. `lake build`
   green. Challenge/Solution types still match. Next unused: `RELAT_1`.
+
+### 2026-08-27 — RELAT_1
+
+- `MizarCCL/RELAT_1.lean`: relations as sets of Kuratowski pairs
+  (`isRelation` / `def1`). `dom` / `rng` are `XTUPLE_0.proj1` /
+  `proj2`; `field` is their union. `converse`, `comp`, `id`,
+  `restrict`, `restrictRng`, `image`, `invimage`, `Im` / `Coim`.
+  `isXdefined` / `isXvalued` (`def18`/`def19`); `isEmptyYielding`
+  is Mizar `non-empty` (`def9`); `isEmptyYieldingSet` is
+  empty-yielding (`def15`). Numbered `th1`–`th186` except canceled
+  `4`–`6`, `116`–`117`, `136`–`137`. Schemes `sch_RelExistence`,
+  `sch_ExtensionalityR`. Imports `SUBSET_1` only.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from Separation / `comp` / `id` / `restrict` / `image`).
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `FUNCT_1`.
