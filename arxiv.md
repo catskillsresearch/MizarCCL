@@ -565,7 +565,22 @@ distributivity. Environ ends at `FUNCT_2`. Import is `FUNCT_2` only.
 | addenda | `th17`–`th20` / `eq_iff_apply2` | FUNCT_2 / PARTFUN1 links |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Next unused: `DOMAIN_1`.
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_3`.
+
+## 25. Domains and their Cartesian products (`DOMAIN_1`)
+
+Domain facts for pairs/triples/quadruples, Fraenkel schemes on
+products, and enumset/singleton subset redefines. Environ ends at
+`ORDINAL1` / `MCART_1`. Import is `MCART_1` and `ORDINAL1`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `DOMAIN_1:1`–`34` | `th1`–`th34` | product domains; boolean ops |
+| Fraenkel / Subset schemes | `sch_Fraenkel1`–`6` / `sch_Subset*` / `sch_AndScheme` | |
+| redefines | pair/triple/quad / enumset subsets | coherence |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_3`.
 
 ## Lean Code
 
@@ -591,5 +606,6 @@ distributivity. Environ ends at `FUNCT_2`. Import is `FUNCT_2` only.
 - [`MizarCCL/WELLORD2.lean`](MizarCCL/WELLORD2.lean) — Zermelo and choice
 - [`MizarCCL/FUNCT_2.lean`](MizarCCL/FUNCT_2.lean) — functions from a set to a set
 - [`MizarCCL/BINOP_1.lean`](MizarCCL/BINOP_1.lean) — binary operations
+- [`MizarCCL/DOMAIN_1.lean`](MizarCCL/DOMAIN_1.lean) — domains and products
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

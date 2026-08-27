@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `DOMAIN_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `FUNCT_3`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -501,3 +501,14 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `DOMAIN_1`.
+
+### 2026-08-27 — DOMAIN_1
+
+- `MizarCCL/DOMAIN_1.lean`: domains and Cartesian products.
+  Pair/triple/quad domain facts, Fraenkel schemes, enumset subset
+  redefines, projection coherence. Numbered `th1`–`th34`, schemes
+  Fraenkel1–6 / SubsetD / SubsetFD / SubsetFD2 / AndScheme.
+  Imports `MCART_1` and `ORDINAL1`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `FUNCT_3`.
