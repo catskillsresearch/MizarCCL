@@ -142,11 +142,52 @@ Mathlib `Set α` is not a stand-in for `TarskiSet`.
 `{propext, Classical.choice, Quot.sound}` (choice from Separation /
 empty set). No `sorry` in `MizarCCL/`.
 
+## 7. Enumerated sets (`ENUMSET1`)
+
+Finite enumerations `{x1,…,xn}` for `n = 3..10` are
+`union({{prefix},{xn}})` as in the Mizar article. Lean insert
+notation is not used. Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `ENUMSET1:def 1`–`def 8` | `enumset3`–`enumset10`, `def1`–`def8` | Membership is a right-associated disjunction |
+| `ENUMSET1:1`–`28` | `th1`–`th28`, `lm2`–`lm6` | Union splits of an enumeration |
+| `ENUMSET1:29`–`56` | `th29`–`th56` | Duplicate-argument collapse |
+| `ENUMSET1:57`–`76` | `th57`–`th76`, `lm7`–`lm8` | 3- and 4-set permutations |
+| `ENUMSET1:77`–`87` | `th77`–`th87`, `lm9` | 9-/10-set splits; addenda |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`.
+
+## 8. Kuratowski pairs and projections (`XTUPLE_0`)
+
+Ordered pairs are `TARSKI.pair`. The article adds the pair
+attribute, component functions, triples/quadruples, and
+`proj1`/`proj2` of a set of pairs (Separation on
+`union (union X)`). Environ theorems include `ENUMSET1`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `x is pair` | `isPair` | `∃ x1 x2, x = pair x1 x2` |
+| pair projections | `fst`, `snd` | Mizar `x\`1` / `x\`2`; choice on an `isPair` witness |
+| `[x1,x2,x3]`, `[x1,x2,x3,x4]` | `triple`, `quadruple` | Nested Kuratowski pairs |
+| `proj1 X`, `proj2 X` | `proj1`, `proj2` | `def4`, `def5` |
+| `XTUPLE_0:1`, `:3` | `th1`, `th3` | Pair/triple injectivity |
+| `XTUPLE_0:10`–`20a` | `th10`–`th20a` | Projection monotonicity and members |
+| `XTUPLE_0:22`–`38` | `th22`–`th38` | Boolean algebra of projections |
+| second `Th32`/`Th34`/`Th36` | `th40`, `th42`, `th44` | Quadruple-projection forms |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}` (choice from
+`fst`/`proj1`). Next unused queue article: `XREGULAR`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
 - [`MizarCCL/TARSKI.lean`](MizarCCL/TARSKI.lean) — TARSKI proofs
 - [`MizarCCL/XBOOLE_0.lean`](MizarCCL/XBOOLE_0.lean) — Boolean definitions
 - [`MizarCCL/XBOOLE_1.lean`](MizarCCL/XBOOLE_1.lean) — Boolean theorems
+- [`MizarCCL/ENUMSET1.lean`](MizarCCL/ENUMSET1.lean) — enumerated sets
+- [`MizarCCL/XTUPLE_0.lean`](MizarCCL/XTUPLE_0.lean) — pairs, tuples, projections
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

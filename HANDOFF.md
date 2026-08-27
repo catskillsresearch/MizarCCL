@@ -21,7 +21,7 @@ is abandoned. Do not submit that kit.
 5. Palomar surface is now TARSKI (`Challenge.lean` / `Solution.lean`).
    The old YELLOW_17 extract is gone; do not restore it.
 
-## Current status (2026-08-25)
+## Current status (2026-08-27)
 
 - Repo renamed: `catskillsresearch/yellow17` →
   `catskillsresearch/MizarCCL` (via a brief `LeanMizar` name).
@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `ENUMSET1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `XREGULAR`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -252,3 +252,26 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   theorems ⊆ `{propext, Classical.choice, Quot.sound}`. `lake build`
   green. Challenge/Solution types still match (Palomar remains
   TARSKI). Next unused: `ENUMSET1`.
+
+### 2026-08-27 — ENUMSET1
+
+- `MizarCCL/ENUMSET1.lean`: `enumset3`–`enumset10` as
+  `union(upair(prefix, singleton last))`, `def1`–`def8`, `th1`–`th87`,
+  `lm1`–`lm9`. Membership lemmas use `lm1` plus a local `or_assoc`
+  (Lean 4.33 Init has no `Or.assoc`). No Lean insert notation.
+  Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`. Do not `open XBOOLE_0`
+  (shadows union/diff).
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (`th86` uses choice via difference). No `sorry`.
+
+### 2026-08-27 — XTUPLE_0
+
+- `MizarCCL/XTUPLE_0.lean`: pair attribute `isPair`, `fst`/`snd`,
+  `triple`/`quadruple` and their projections, `proj1`/`proj2` and
+  3-/4-place set projections, Boolean identities `th22`–`th45`.
+  Kuratowski injectivity is `th1` (from `TARSKI.pair_inj`). `proj1`
+  is Separation on `union (union X)` as in `Pre1`/`Def4`. Duplicate
+  Mizar labels `Th32`/`Th34`/`Th36` (quadruples) are `th40`/`th42`/`th44`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `fst`/`proj1`). `lake build` green. Challenge/Solution
+  types still match. Next unused: `XREGULAR`.
