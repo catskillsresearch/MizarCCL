@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `ZFMISC_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `SUBSET_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -285,3 +285,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
   `lake build` green. Challenge/Solution types still match. Next
   unused: `ZFMISC_1` (power set / products; ~2400 lines).
+
+### 2026-08-27 — ZFMISC_1
+
+- `MizarCCL/ZFMISC_1.lean`: `bool` as the Aczel family of subsets
+  (`def1`), Cartesian `product` by Separation on
+  `bool (bool (X ∪ Y))` (`def2`), 3-/4-fold products, `lm1`–`lm21`,
+  `th1`–`th26` and `th28`–`th138` (`th27` canceled in Mizar).
+  `isTrivial` is `def10`. `th112` is the universe of `TarskiSet.{u}`
+  inside `{u+1}`, subset-closed; Mizar `bool`-closure and
+  inaccessibility are not claimed (need `bool (ulift N) = ulift (bool N)`
+  and `TARSKI:3`(iv)). Imports `XREGULAR` and `XTUPLE_0`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from Separation / `product`). No `sorry`. `lake build`
+  green. Challenge/Solution types still match. Next unused: `SUBSET_1`.

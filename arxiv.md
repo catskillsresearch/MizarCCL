@@ -195,6 +195,31 @@ Consequences of `TARSKI:2`. Environ: `TARSKI`, `XBOOLE_0`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `ZFMISC_1`.
 
+## 10. Some basic properties of sets (`ZFMISC_1`)
+
+Power set, finite-set calculus, and Cartesian products. Environ:
+`TARSKI`, `XBOOLE_0`, `XBOOLE_1`, `ENUMSET1`, `XTUPLE_0`, `XREGULAR`.
+`bool X` is the Aczel family of subsets of `X` (same universe).
+`product X Y` is Separation on `bool (bool (X ∪ Y))` as in the
+article. Mizar `ZFMISC_1:27` is canceled.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `ZFMISC_1:def 1` | `bool` / `def1` | `Z ∈ bool X` iff `Z ⊆ X` |
+| `ZFMISC_1:def 2` | `product` / `def2` | `z ∈ product X Y` iff `z = [x,y]` for `x ∈ X`, `y ∈ Y` |
+| 3-/4-fold products | `product3`, `product4` | `[:X,Y,Z:]`, `[:X,Y,Z,W:]` |
+| `ZFMISC_1:1`–`26` | `th1`–`th26` | Empty set, singletons, pairs, `bool {x}` |
+| canceled | — | Mizar `ZFMISC_1:27` |
+| `ZFMISC_1:28`–`66` | `th28`–`th66` | Pair/product identities; inclusion in a pair |
+| `ZFMISC_1:67`–`83` | `th67`–`th83` | `bool` and `union` |
+| `ZFMISC_1:84`–`111` | `th84`–`th111` | Products; `th93`/`th111` use regularity |
+| `ZFMISC_1:112` | `th112` | Universe subset-closed; not Mizar `bool`-closure / (iv) |
+| `ZFMISC_1:113`–`138` | `th113`–`th138` | Addenda; `def 10` is `isTrivial` |
+
+**Complete?** Yes for numbered theorems except the extra `TARSKI:3`
+clauses in `th112` (documented). `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `SUBSET_1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -204,5 +229,6 @@ Consequences of `TARSKI:2`. Environ: `TARSKI`, `XBOOLE_0`,
 - [`MizarCCL/ENUMSET1.lean`](MizarCCL/ENUMSET1.lean) — enumerated sets
 - [`MizarCCL/XTUPLE_0.lean`](MizarCCL/XTUPLE_0.lean) — pairs, tuples, projections
 - [`MizarCCL/XREGULAR.lean`](MizarCCL/XREGULAR.lean) — regularity consequences
+- [`MizarCCL/ZFMISC_1.lean`](MizarCCL/ZFMISC_1.lean) — power set and products
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
