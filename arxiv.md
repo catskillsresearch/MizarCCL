@@ -461,6 +461,33 @@ Functions that are relations of `X,Y`. Environ: `TARSKI`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `MCART_1`.
 
+## 21. Tuples, projections, Cartesian products (`MCART_1`)
+
+Pair/triple/quadruple projections and products. Environ: `TARSKI`,
+`XBOOLE_0`, `ZFMISC_1`, `SUBSET_1`, `XTUPLE_0`, `RELAT_1`,
+`FUNCT_1`, `ENUMSET1`, `XREGULAR`. Import is `FUNCT_1`,
+`ENUMSET1`, and `XREGULAR`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `MCART_1:7`–`8` / `10` | `th7`–`th8` / `th10` | pair projections; pair membership |
+| unlabeled `L52`–`L220` | `th9` / `th11`–`th24` | regularity vs pairs; product facts |
+| `lm 1` / `MCART_1:23`–`24` | `lm1` / `th23`–`th24` | pair witnesses; finite products |
+| `MCART_1:26` / `30`–`32` | `th26` / `th30`–`th32` | `product3` nonemptiness / projections |
+| unlabeled `L319`–`L428` | `th33`–`th43` | triple components; eta |
+| `def 5`–`7` / `lm 2` | `def5`–`def7` / `lm2` | `fst3`/`snd3`/`thd3` |
+| `MCART_1:45` / `47`–`52` | `th45` / `th47`–`th52` | `product3` subset empty; meets; `product4` |
+| unlabeled `L667`–`L845` | `th53`–`th55` | `product4` equality / eta |
+| `def 8`–`11` / `lm 3` | `def8`–`def11` / `lm3` | `fst4`/`snd4`/`thd4`/`fth4` |
+| unlabeled `L852`–`L1077` | `th56`–`th70` / `th72`–`th73` | `product4` regularity; `product3` ext. |
+| unlabeled `L1114`–`L1266` / `Th84` | `th74`–`th81` / `th83`–`th84` | `product4` projections; mono |
+| `pr1`/`pr2` / `x\`11` | `pr1`/`pr2` / `fst11`…`snd22` | function projections; nest |
+| unlabeled `L1396`–`L1469` / `Th87`/`Th89` | `th85`–`th92` | image; equal pairs; `proj1` of triples |
+| `sch BiFuncEx` | `sch_BiFuncEx` | two functions from a ternary predicate |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `WELLORD2`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -481,5 +508,6 @@ Functions that are relations of `X,Y`. Environ: `TARSKI`,
 - [`MizarCCL/WELLORD1.lean`](MizarCCL/WELLORD1.lean) — well-ordering relations
 - [`MizarCCL/RELSET_1.lean`](MizarCCL/RELSET_1.lean) — relations defined on sets
 - [`MizarCCL/PARTFUN1.lean`](MizarCCL/PARTFUN1.lean) — partial functions
+- [`MizarCCL/MCART_1.lean`](MizarCCL/MCART_1.lean) — tuples, projections, products
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

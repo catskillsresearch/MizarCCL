@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `MCART_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `WELLORD2`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -447,3 +447,18 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `apply` / `clip` / `PFuncs` / `TotFuncs` /
   Separation). No `sorry`. `lake build` green. Challenge/Solution
   types still match. Next unused: `MCART_1`.
+
+### 2026-08-27 — MCART_1
+
+- `MizarCCL/MCART_1.lean`: tuples, projections, Cartesian
+  products. Pair/triple/quad characterizations, `product3` /
+  `product4` membership and monotonicity, `pr1`/`pr2`, nested
+  projections `fst11`/`fst12`/`snd21`/`snd22`, image of a
+  relation, `sch_BiFuncEx`. Numbered `th7`–`th92` (canceled
+  `1`–`6`, `25`, `27`–`29`, `44`, `46`, `71`, `82` omitted).
+  Locals `lm1`–`lm3`. Import is `FUNCT_1`, `ENUMSET1`, and
+  `XREGULAR`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `pr1`/`pr2` / `sch_Lambda` / Separation). No
+  `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `WELLORD2`.
