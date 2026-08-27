@@ -228,3 +228,11 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 
 - Marked `singleton_iff`, `upair_iff`, and `union_iff` `@[simp]`.
 - Added `pair_inj`: `[x₁,y₁] = [x₂,y₂] ↔ x₁ = x₂ ∧ y₁ = y₂`.
+
+### 2026-08-27 — Single-file Mizar payload
+
+- `scripts/build_waybel_yellow_miz.py` concatenates
+  `translation_order` from `mizarccl_translation_order.yaml` into
+  `waybel_yellow.miz`. Each article is preceded by
+  `:: Module <STEM>` (filename root in caps). `hidden.miz` is not
+  on the queue and is omitted.
