@@ -1902,7 +1902,10 @@ theorem th118 : Z ⊆ ENUMSET1.enumset3 x y z ↔
 /-- `ZFMISC_1:112`. Universe of all `TarskiSet.{u}` inside
 `TarskiSet.{u+1}`, subset-closed. Mizar also has `bool`-closure and
 inaccessibility; those need `bool (ulift N) = ulift (bool N)` and
-`TARSKI:3`(iv), which this model does not yet prove. -/
+`TARSKI:3`(iv). This package deliberately does **not** post those as
+a Lean `axiom` (Palomar axiom-free discipline; see `TARSKI` module
+docstring). Impacted downstream proofs must carry a variation note
+(example: `WELLORD2.th17`). -/
 theorem th112 (N : TarskiSet.{u}) :
     ∃ M : TarskiSet.{u + 1},
       TARSKI.ulift N ∈ M ∧

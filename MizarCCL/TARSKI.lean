@@ -17,11 +17,47 @@ Authors: Andrzej Trybulec (Mizar), Lars Warren Ericson (Lean 4).
 
 Mizar labels: `TARSKI:1`–`TARSKI:3`, `TARSKI:def 1`–`def 6`,
 `TARSKI:sch 1`. Every constructor and theorem is a Lean `def` or
-`theorem` over `TarskiSet`. No `axiom`, `admit`, or `sorry`.
+`theorem` over `TarskiSet`. **No `axiom`, `admit`, or `sorry`.**
 
 `TARSKI:3` uses Lean universes: the collection of all `TarskiSet.{u}`
 is a universe object in `TarskiSet.{u+1}`. Mizar’s single sort `set`
 becomes this universe-polymorphic family.
+
+## Palomar / axiom discipline (intentional variation)
+
+Palomar registration for this package requires the compared surface to
+be free of Lean `axiom`, `sorry`, and `admit`. Mizar’s `TARSKI:3` is
+posted as an *axiom* in the MML with four clauses (containment,
+subset-closure, power-set witness, inaccessibility). Lean’s `Type u`
+does not prove a single-sort inaccessible universe object, so posting
+Mizar’s full (iii)–(iv) here would require a Lean `axiom`.
+
+**Choice made in this file:** prove the parts of `TARSKI:3` that are
+theorems of the Aczel `TarskiSet` model (universe-polymorphic (i)–(ii)
+plus “every `u`-set appears via `ulift`”), and **do not** introduce a
+Lean `axiom` for Mizar (iii)–(iv). This is a minor, deliberate
+variation of the Mizar axiomatic packaging — not a mistranslation of
+`def 1`–`def 6`, extensionality, regularity, Fraenkel, or equipotence —
+taken so the development stays axiom-free for Palomar.
+
+**Consequence for later articles.** Theorems whose Mizar proofs need
+the missing power-set / inaccessibility clauses (via `ZFMISC_1:112` or
+`TARSKI:3` directly) may need a different argument in Lean. Every such
+proof **must** carry an explicit docstring note that:
+
+1. the *statement* matches Mizar;
+2. the *proof* varies because this file omits Mizar `TARSKI:3`(iii)–(iv)
+   rather than posting them as a Lean `axiom`;
+3. the alternate argument uses only prior MizarCCL results (translated
+   from dependent Mizar articles) and Lean’s ordinary logic / choice,
+   not Mathlib set theory.
+
+**Example.** `WELLORD2.th17` (Zermelo): Mizar uses a TG class from
+`ZFMISC_1:112` with inaccessibility; Lean proves the same statement by
+a Hartogs bound plus choice-driven transfinite enumeration and `lm1`.
+See the docstring on `WELLORD2.th17` for the full English sketch.
+`ZFMISC_1.th112` inherits the weaker `TARSKI.th3` and documents the
+same gap.
 -/
 
 universe u
@@ -419,11 +455,25 @@ theorem def6 (X Y : TarskiSet.{u}) :
 
 Mizar’s single-sort `set` is `TarskiSet.{u}` here. Lean does not treat
 `Type u` as a ZFC inaccessible, so the universe of all `TarskiSet.{u}`
-lives in `TarskiSet.{u+1}`. Clause (i) of `TARSKI:3` and “every `u`-set
-is an element of that universe” are theorems. Subset-closure of
-elements of that universe is `subset_of_mem_universe`. A power-set
-witness for a lifted `u`-set is `ulift (power N)`. Full Mizar (iv)
-(inaccessibility of a single sort) is not a theorem of this model.
+lives in `TarskiSet.{u+1}`.
+
+Mizar `TARSKI:3` (as an axiom) asserts, for every `N`, an `M` with:
+(i) `N ∈ M`; (ii) subset-closure; (iii) a power-set witness inside
+`M`; (iv) inaccessibility (`X ⊆ M → X ~ M ∨ X ∈ M`).
+
+**What we prove (no Lean `axiom`).** Clause (i) in the lifted reading
+(`ulift N ∈ M`), subset-closure of that universe, and “every `u`-set
+is an element of that universe” via `ulift`. A power-set *object* for
+a lifted set can be written `ulift (bool N)` / related constructions,
+but Mizar’s (iii)–(iv) *as properties of a single-sort class* are not
+theorems of this model and are not postulated.
+
+**Why omit them.** Posting (iii)–(iv) as `axiom` would restore a more
+literal TG packaging and some Mizar proof scripts, but would violate
+the Palomar axiom-free requirement for this package. We prefer
+theorem-only foundations here and accept proof variations downstream;
+see the module docstring above and the note policy for impacted
+theorems (e.g. `WELLORD2.th17`).
 -/
 
 def uliftPre : PreSet.{u} → PreSet.{u + 1}
@@ -516,11 +566,15 @@ theorem subset_of_mem_universe {X Y : TarskiSet.{u + 1}}
       rw [hEq]
       exact ulift_mem_universe (mk r')
 
-/-- `TARSKI:3` over Lean universes. `M` is the set of all
-`TarskiSet.{u}` inside `TarskiSet.{u+1}`. This is Mizar (i)–(ii)
-plus “every `u`-set is an element of `M`”. A power-set witness
-(iii) and the equipotence form of (iv) need `Type u` to be
-inaccessible, which Lean does not assume. -/
+/-- `TARSKI:3` over Lean universes (Palomar axiom-free reading).
+
+`M` is the set of all `TarskiSet.{u}` inside `TarskiSet.{u+1}`. This
+is Mizar (i)–(ii) plus “every `u`-set is an element of `M`”. Mizar’s
+power-set witness (iii) and inaccessibility (iv) are **not** claimed:
+they would need a Lean `axiom` (or a stronger ambient set model),
+which this package deliberately avoids. Downstream proofs that used
+those clauses in Mizar must vary and must document the variation;
+see the module docstring and e.g. `WELLORD2.th17`. -/
 theorem tarski_grothendieck (N : TarskiSet.{u}) :
     ∃ M : TarskiSet.{u + 1},
       ulift N ∈ M ∧
@@ -531,6 +585,8 @@ theorem tarski_grothendieck (N : TarskiSet.{u}) :
     fun _ _ hX hY => subset_of_mem_universe hX hY,
     ulift_mem_universe⟩
 
+/-- `TARSKI:3` (`Th3`). Same as `tarski_grothendieck`: universe-
+polymorphic (i)–(ii), no Lean `axiom` for Mizar (iii)–(iv). -/
 theorem th3 (N : TarskiSet.{u}) :
     ∃ M : TarskiSet.{u + 1},
       ulift N ∈ M ∧

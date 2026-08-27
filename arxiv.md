@@ -34,7 +34,11 @@ Mizar-labelled items `TARSKI:1`–`TARSKI:3`, `TARSKI:def 1`–`def 6`,
 and `TARSKI:sch 1`. `TARSKI:3` is universe-polymorphic: the
 collection of all `TarskiSet.{u}` lives in `TarskiSet.{u+1}`. Mizar’s
 power-set witness (iii) and inaccessibility clause (iv) are not
-theorems of `Type u` and are not claimed.
+theorems of `Type u` and are **not** posted as a Lean `axiom`, so
+the compared surface stays free of `axiom` / `sorry` / `admit` for
+Palomar. Downstream theorems whose Mizar proofs need those clauses
+use alternate arguments and must document the variation (example:
+`WELLORD2.th17`).
 
 The Mizar source is vendored from
 [`MizarSystem/MML`](https://github.com/MizarSystem/MML.git)
@@ -80,7 +84,10 @@ literal `|` is written `\|`.
   `sch 1`, and for clauses (i)–(ii) of `TARSKI:3` in the
   universe-polymorphic reading.
 - No for a **single-sort inaccessible** as in Mizar (iii)–(iv).
-  Lean does not treat `Type u` as a ZFC inaccessible.
+  Lean does not treat `Type u` as a ZFC inaccessible. Those clauses
+  are omitted on purpose (no Lean `axiom`) rather than posted for
+  proof fidelity; see the `TARSKI` module docstring and the
+  variation note on `WELLORD2.th17`.
 
 **Proof note (choice).** `#print axioms` of `th2` and `sch1` includes
 `Classical.choice` (well-founded descent on pre-set membership;

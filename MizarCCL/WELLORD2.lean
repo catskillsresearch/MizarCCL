@@ -1096,6 +1096,12 @@ theorem lm1 {R X : TarskiSet.{u}} (hR : WELLORD1.isWellOrdering R)
 
 /-- `$N` Zermelo Theorem. `WELLORD2:17` (`Th17`).
 
+**Proof variation (TARSKI axiom-free discipline).** Same statement as
+Mizar; different proof because `TARSKI` / `ZFMISC_1.th112` omit Mizar
+`TARSKI:3`(iii)–(iv) rather than posting them as a Lean `axiom` (see
+the `TARSKI` module docstring for Palomar policy). All such impacted
+proofs carry a note of this form.
+
 **Statement.** For every set `X` there is a relation `R` that
 well-orders `X`. Same claim as Mizar.
 
