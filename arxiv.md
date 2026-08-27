@@ -220,6 +220,29 @@ article. Mizar `ZFMISC_1:27` is canceled.
 clauses in `th112` (documented). `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `SUBSET_1`.
 
+## 11. Properties of subsets (`SUBSET_1`)
+
+Modes on `TarskiSet`, not Lean subtypes. Environ: `TARSKI`,
+`XBOOLE_0`, `XBOOLE_1`, `ENUMSET1`, `ZFMISC_1`. Import is
+`ZFMISC_1` only (the rest arrives transitively). `bool X` is never
+empty, so a subset of `E` is just an element of `bool E`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `SUBSET_1:def 1` | `isElement` / `def1` | `x ∈ X` if `X` nonempty, else `x` empty |
+| `Subset of X` | `isSubset` | `Y ⊆ X` (`Element of bool X`) |
+| `{}E`, `[#]E`, `A\`` | `emptyOf`, `hash`, `compl` | Empty / full / complement relative to `E` |
+| `choose S` | `choose` | `the Element of S` (choice) |
+| `proper` | `isProper` | `A ≠ E` |
+| `SUBSET_1:1`–`4` | `th1`–`th4` | Empty subset; subset/eq via `Element of E` |
+| `SUBSET_1:5`–`26` | `th5`–`th26` | Complement and Boolean identities |
+| `SUBSET_1:27`–`41` | `th27`–`th41` | Elements, enumerated subsets |
+| schemes | `sch_SubsetEx`, `sch_SubsetEq`, `sch_SubsetEx2`, `sch_SubComp` | Separation on subsets |
+| `SUBSET_1:42`–`48` | `th42`–`th48` | Addenda; trivial / proper |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `SETFAM_1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -230,5 +253,6 @@ clauses in `th112` (documented). `#print axioms` ⊆
 - [`MizarCCL/XTUPLE_0.lean`](MizarCCL/XTUPLE_0.lean) — pairs, tuples, projections
 - [`MizarCCL/XREGULAR.lean`](MizarCCL/XREGULAR.lean) — regularity consequences
 - [`MizarCCL/ZFMISC_1.lean`](MizarCCL/ZFMISC_1.lean) — power set and products
+- [`MizarCCL/SUBSET_1.lean`](MizarCCL/SUBSET_1.lean) — elements and subsets
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

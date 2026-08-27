@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `SUBSET_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `SETFAM_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -299,3 +299,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
   (choice from Separation / `product`). No `sorry`. `lake build`
   green. Challenge/Solution types still match. Next unused: `SUBSET_1`.
+
+### 2026-08-27 — SUBSET_1
+
+- `MizarCCL/SUBSET_1.lean`: `isElement` is membership when `X` is
+  nonempty and emptiness when `X` is empty (`def1`); not a Lean
+  subtype. `isSubset Y X` is `Y ⊆ X` (`Element of bool X`).
+  `emptyOf` / `hash` / `compl` are `{}E`, `[#]E`, `A\``. `choose`
+  is `the Element of S`. `isProper` is `A ≠ E`. Numbered `th1`–`th48`,
+  `lm1`–`lm3`, schemes `sch_SubsetEx`, `sch_SubsetEq`,
+  `sch_SubsetEx2`, `sch_SubComp`. Imports `ZFMISC_1` only.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `∅` / `\` / `choose` / Separation). No `sorry`.
+  `lake build` green. Challenge/Solution types still match. Next
+  unused: `SETFAM_1`.
