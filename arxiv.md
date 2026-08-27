@@ -407,6 +407,28 @@ comparability. Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `RELSET_1`.
 
+## 19. Relations defined on sets (`RELSET_1`)
+
+Relations as subsets of a cartesian product. Environ: `TARSKI`,
+`XBOOLE_0`, `XBOOLE_1`, `XTUPLE_0`, `ZFMISC_1`, `SUBSET_1`,
+`RELAT_1`. Import is `RELAT_1` only.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `Relation of X,Y` | `isRelationOf` | `R ⊆ [:X,Y:]` |
+| `RELSET_1:1`–`12` | `th1`–`th12` | subset, pairs, empty, field, total dom/rng |
+| `RELSET_1:13`–`15` | `th13`–`th15` | `id X ⊆ [:X,X:]`; `id` vs dom/rng |
+| unlabeled `L415`–`L507` | `th16`–`th21` | `id` equalities; restrict / range-restrict |
+| `RELSET_1:22` | `th22` | `R.:X = rng R`, `R"Y = dom R` |
+| unlabeled `L580` | `th23` | `R.:(R"Y) = rng`, `R"(R.:X) = dom` |
+| `RelOnSetEx` / `RelOnDomEx` | `sch_RelOnSetEx` / `sch_RelOnDomEx` | existence of a relation of sets |
+| unlabeled `L632`–`L726` | `th24`–`th30` | elementwise dom/rng/comp/image |
+| `L758` / `L822` | `sch_ImEx` / `sch_RelEq` | image specification; equality |
+| unlabeled `L790` / `L853` | `th31` / `th32` | `Im` determines `R`; miss restrict |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `PARTFUN1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -425,5 +447,6 @@ comparability. Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`,
 - [`MizarCCL/RELAT_2.lean`](MizarCCL/RELAT_2.lean) — properties of binary relations
 - [`MizarCCL/ORDINAL1.lean`](MizarCCL/ORDINAL1.lean) — ordinal numbers
 - [`MizarCCL/WELLORD1.lean`](MizarCCL/WELLORD1.lean) — well-ordering relations
+- [`MizarCCL/RELSET_1.lean`](MizarCCL/RELSET_1.lean) — relations defined on sets
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

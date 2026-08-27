@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `RELSET_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `PARTFUN1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -420,3 +420,16 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `apply` / Separation / `canonical_isomorphism_of`).
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `RELSET_1`.
+
+### 2026-08-27 — RELSET_1
+
+- `MizarCCL/RELSET_1.lean`: `Relation of X,Y` as a subset of
+  `[:X,Y:]` (`isRelationOf`). Domain/range/field, converse,
+  composition, restriction, image/invimage, identity, and
+  schemes `sch_RelOnSetEx` / `sch_RelOnDomEx` / `sch_ImEx` /
+  `sch_RelEq`. Numbered `th1`–`th32` (`Th13`, `Th15`, `Th22`
+  labeled). Import is `RELAT_1` only.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `id` / `restrict` / Separation). No `sorry`.
+  `lake build` green. Challenge/Solution types still match. Next
+  unused: `PARTFUN1`.
