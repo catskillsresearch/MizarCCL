@@ -1,3 +1,5 @@
+[![Lean 4](https://img.shields.io/github/actions/workflow/status/catskillsresearch/MizarCCL/build.yml?label=Lean%204)](https://github.com/catskillsresearch/MizarCCL/actions/workflows/build.yml)
+
 # MizarCCL
 
 1–1 Lean 4 translation of the Mizar articles needed for the YELLOW* /
