@@ -37,7 +37,7 @@ is abandoned. Do not submit that kit.
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
   Next unused: `FUNCOP_1` (sequential). Parallel frontier also
-  translating `WELLSET1` / `SYSREL`; `MULTOP_1` / `FUNCT_3` done.
+  translating `WELLSET1`; `MULTOP_1` / `FUNCT_3` / `SYSREL` done.
   Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
@@ -537,3 +537,12 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `FUNCOP_1`.
+
+### 2026-08-27 — SYSREL (parallel frontier)
+
+- `MizarCCL/SYSREL.lean`: some properties of binary relations.
+  Locals `lm1`/`lm2`, numbered `th1`–`th40`, closure `CL`.
+  Import is `RELAT_1` only. Nothing canceled.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Sequential next unused remains `FUNCOP_1`.

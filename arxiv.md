@@ -617,6 +617,21 @@ Environ ends at `BINOP_1` / `DOMAIN_1`. Import is both.
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCOP_1`.
 
+## 28. Some properties of binary relations (`SYSREL`)
+
+Diagonal facts and the closure relation `CL R = R ∩ id(dom R)`.
+Environ ends at `RELAT_1`. Import is `RELAT_1` only.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| locals | `lm1` / `lm2` | nonempty products; `id` facts |
+| `SYSREL:1`–`40` | `th1`–`th40` | absolute theorem slots |
+| Def | `CL` / `CL_eq` | `R ∩ RELAT_1.id (dom R)` |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Sequential next unused remains
+`FUNCOP_1` (parallel: `WELLSET1`).
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -644,5 +659,6 @@ Environ ends at `BINOP_1` / `DOMAIN_1`. Import is both.
 - [`MizarCCL/DOMAIN_1.lean`](MizarCCL/DOMAIN_1.lean) — domains and products
 - [`MizarCCL/MULTOP_1.lean`](MizarCCL/MULTOP_1.lean) — multi-argument operations
 - [`MizarCCL/FUNCT_3.lean`](MizarCCL/FUNCT_3.lean) — operations on functions
+- [`MizarCCL/SYSREL.lean`](MizarCCL/SYSREL.lean) — binary relation properties
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

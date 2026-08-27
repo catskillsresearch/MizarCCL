@@ -23,6 +23,7 @@ import MizarCCL.BINOP_1
 import MizarCCL.DOMAIN_1
 import MizarCCL.FUNCT_3
 import MizarCCL.MULTOP_1
+import MizarCCL.SYSREL
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users
