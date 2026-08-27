@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `ORDINAL1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `WELLORD1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -389,3 +389,20 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `id` / `converse` / Separation). No `sorry`.
   `lake build` green. Challenge/Solution types still match. Next
   unused: `ORDINAL1`.
+
+### 2026-08-27 — ORDINAL1
+
+- `MizarCCL/ORDINAL1.lean`: ordinals as epsilon-transitive
+  epsilon-connected sets (`def4`). Successor, trichotomy, least
+  ordinal, transfinite induction, limit ordinals, T-sequences,
+  uniqueness/existence of transfinite recursion, `On` / `Lim` /
+  `omega` / naturals. Numbered `th5`–`th37` except canceled
+  `th1`–`th4`. Schemes `sch_OrdinalMin`, `sch_TransfiniteInd`,
+  `sch_TSUniq`, `sch_TSExist`, `sch_FuncTS`, `sch_ALFA`. `th36`
+  builds a limit above an ordinal via a `Nat`-indexed successor
+  chain (Lean model; Mizar uses universe bool-closure). Imports
+  `FUNCT_1` and `XREGULAR`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from Separation / `apply` / `omega` / `On`). No `sorry`.
+  `lake build` green. Challenge/Solution types still match. Next
+  unused: `WELLORD1`.

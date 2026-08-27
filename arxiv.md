@@ -357,6 +357,32 @@ relation. Environ: `TARSKI`, `XBOOLE_0`, `XTUPLE_0`, `ZFMISC_1`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `ORDINAL1`.
 
+## 17. Ordinal numbers (`ORDINAL1`)
+
+Epsilon-transitive, epsilon-connected ordinals, successors, transfinite
+induction, T-sequences, and `omega`. Environ: `TARSKI`, `XBOOLE_0`,
+`XBOOLE_1`, `ENUMSET1`, `XTUPLE_0`, `XREGULAR`, `ZFMISC_1`,
+`SUBSET_1`, `RELAT_1`, `FUNCT_1`. Import is `FUNCT_1` and `XREGULAR`.
+Canceled: `th1`–`th4`. Generalized infinity (`th36`) uses a
+`Nat`-indexed successor chain in this model (Mizar uses
+`ZFMISC_1:112` bool-closure, which the Lean universe does not yet
+prove).
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `ORDINAL1:def 1` | `succ` / `def1` | `X ∪ {X}` |
+| `ORDINAL1:def 2`–`4` | `isEpsilonTransitive` / `isEpsilonConnected` / `isOrdinal` | ordinal attributes |
+| `ORDINAL1:def 5` | `def5` | `c=` on ordinals |
+| `ORDINAL1:def 6` | `isLimitOrdinal` / `def6` | `A = union A` |
+| `ORDINAL1:def 7` | `isTSequenceLike` / `isTSequence` | `dom` is an ordinal |
+| `ORDINAL1:def 8` | `isCLinear` / `def8` | pairwise `c=`-comparable |
+| `ORDINAL1:def 9`–`12` | `On` / `Lim` / `omega` / `isNatural` | ordinals of `X`; least limit over `∅` |
+| `ORDINAL1:5`–`37` | `th5`–`th37` | skip canceled `1`–`4`; unlabeled blocks numbered consecutively |
+| schemes | `sch_OrdinalMin` / `sch_TransfiniteInd` / `sch_TSUniq` / `sch_TSExist` / `sch_FuncTS` / `sch_ALFA` | min, induction, recursion |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `WELLORD1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -373,5 +399,6 @@ relation. Environ: `TARSKI`, `XBOOLE_0`, `XTUPLE_0`, `ZFMISC_1`,
 - [`MizarCCL/FUNCT_1.lean`](MizarCCL/FUNCT_1.lean) — functions
 - [`MizarCCL/GRFUNC_1.lean`](MizarCCL/GRFUNC_1.lean) — graphs of functions
 - [`MizarCCL/RELAT_2.lean`](MizarCCL/RELAT_2.lean) — properties of binary relations
+- [`MizarCCL/ORDINAL1.lean`](MizarCCL/ORDINAL1.lean) — ordinal numbers
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

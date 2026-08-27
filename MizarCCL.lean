@@ -12,6 +12,7 @@ import MizarCCL.RELAT_1
 import MizarCCL.FUNCT_1
 import MizarCCL.GRFUNC_1
 import MizarCCL.RELAT_2
+import MizarCCL.ORDINAL1
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users
