@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FUNCT_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `GRFUNC_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -344,3 +344,19 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from Separation / `comp` / `id` / `restrict` / `image`).
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `FUNCT_1`.
+
+### 2026-08-27 — FUNCT_1
+
+- `MizarCCL/FUNCT_1.lean`: a function is a function-like relation
+  (`isFunction` / `def1`). Application `f.x` is `apply` (`def2`).
+  Mizar `g*f` is `RELAT_1.comp f g` (apply `f` then `g`). Inverse
+  of a one-to-one function is `converse`. Restriction, image, and
+  inverse image are re-characterized via `apply`. `the_value_of`
+  a nonempty constant; `isFunctional`; `isCompatible`. Numbered
+  `th1`–`th111` except canceled `th30`. Schemes `sch_GraphFunc`,
+  `sch_FuncEx`, `sch_Lambda`, `sch_LambdaB`,
+  `sch_NonUniqBoundFuncEx`. Imports `RELAT_1` and `SETFAM_1`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `apply` / Separation / `the_value_of` / `th111`).
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `GRFUNC_1`.

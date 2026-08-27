@@ -289,6 +289,33 @@ Relations as sets of Kuratowski pairs. Environ: `TARSKI`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_1`.
 
+## 14. Functions (`FUNCT_1`)
+
+A function is a function-like relation. Environ: `TARSKI`,
+`XBOOLE_0`, `XBOOLE_1`, `XTUPLE_0`, `ZFMISC_1`, `SUBSET_1`,
+`SETFAM_1`, `RELAT_1`. Import is `RELAT_1` and `SETFAM_1`.
+Mizar `g*f` is `RELAT_1.comp f g` (apply `f` then `g`).
+Canceled: `th30`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `FUNCT_1:def 1` | `isFunctionLike` / `isFunction` / `def1` | unique value at each `x` |
+| `f.x` | `apply` / `def2` | `∅` off the domain |
+| `FUNCT_1:def 4` | `isOneToOne` / `def4` | injective on `dom` |
+| `f"` | `inv` / `def5` | `converse` of a 1-1 function |
+| `f\|X` / range-restrict | `restrict` / `restrictRng` | function-like restrictions |
+| `f.:X` / `f"Y` | `image` / `invimage` / `def6` / `def7` | via `apply` |
+| `empty-yielding` / `non-empty` | `def8` / `def9` | `isEmptyYieldingSet` / `isEmptyYielding` |
+| `constant` | `isConstant` / `def10` | equal values on `dom` |
+| `the_value_of f` | `the_value_of` | nonempty constant |
+| `functional` | `isFunctional` / `def13_functional` | set of functions |
+| `g-compatible` | `isCompatible` / `def14_compatible` | `f.x ∈ g.x` |
+| `FUNCT_1:1`–`111` | `th1`–`th111` | skip canceled `30` |
+| schemes | `sch_GraphFunc`, `sch_FuncEx`, `sch_Lambda`, `sch_LambdaB`, `sch_NonUniqBoundFuncEx` | graph, lambda, bounded choice |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `GRFUNC_1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -302,5 +329,6 @@ Relations as sets of Kuratowski pairs. Environ: `TARSKI`,
 - [`MizarCCL/SUBSET_1.lean`](MizarCCL/SUBSET_1.lean) — elements and subsets
 - [`MizarCCL/SETFAM_1.lean`](MizarCCL/SETFAM_1.lean) — families of sets
 - [`MizarCCL/RELAT_1.lean`](MizarCCL/RELAT_1.lean) — relations
+- [`MizarCCL/FUNCT_1.lean`](MizarCCL/FUNCT_1.lean) — functions
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
