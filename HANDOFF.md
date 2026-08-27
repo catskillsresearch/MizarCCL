@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `RELAT_2`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `ORDINAL1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -374,3 +374,18 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `apply` / Separation). No `sorry`. `lake build`
   green. Challenge/Solution types still match. Next unused:
   `RELAT_2`.
+
+### 2026-08-27 — RELAT_2
+
+- `MizarCCL/RELAT_2.lean`: reflexive / irreflexive / symmetric /
+  antisymmetric / asymmetric / connected / strongly connected /
+  transitive, both `in X` (`def1`–`def8`) and on `field R`
+  (`def9`–`def16`). Official `th1`–`th4`, `th12`–`th13`, `th22`,
+  `th27`–`th28`, `th30`–`th31`. Canceled `th5`–`th11`, `th14`–`th21`,
+  `th23`–`th26`, `th29`. Registrations as helpers (`empty_is*`,
+  `id_is*`, converse / union / inter / diff closures). Import is
+  `RELAT_1` only.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `id` / `converse` / Separation). No `sorry`.
+  `lake build` green. Challenge/Solution types still match. Next
+  unused: `ORDINAL1`.

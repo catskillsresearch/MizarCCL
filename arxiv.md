@@ -337,6 +337,26 @@ A subset of a function is a function. Environ: `TARSKI`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `RELAT_2`.
 
+## 16. Properties of binary relations (`RELAT_2`)
+
+Reflexive, symmetric, transitive, and related attributes of a
+relation. Environ: `TARSKI`, `XBOOLE_0`, `XTUPLE_0`, `ZFMISC_1`,
+`SUBSET_1`, `RELAT_1`. Import is `RELAT_1` only. Canceled:
+`th5`–`th11`, `th14`–`th21`, `th23`–`th26`, `th29`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `RELAT_2:def 1`–`8` | `isReflexiveIn` … `isTransitiveIn` | attributes on a set `X` |
+| `RELAT_2:def 9`–`16` | `isReflexive` … `isTransitive` | same on `field R` |
+| `RELAT_2:1`–`4` | `th1`–`th4` | `id` characterizations; anti/asymm via `id` |
+| `RELAT_2:12`–`13` | `th12`–`th13` | reflexive domains; `R` symmetric iff `R = R~` |
+| `RELAT_2:22` | `th22` | antisymmetric iff `R ∩ R~ ⊆ id (dom R)` |
+| `RELAT_2:27`–`28` | `th27`–`th28` | `R*R ⊆ R`; connected via the field square |
+| `RELAT_2:30`–`31` | `th30`–`th31` | strongly connected; transitivity without field |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `ORDINAL1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -352,5 +372,6 @@ A subset of a function is a function. Environ: `TARSKI`,
 - [`MizarCCL/RELAT_1.lean`](MizarCCL/RELAT_1.lean) — relations
 - [`MizarCCL/FUNCT_1.lean`](MizarCCL/FUNCT_1.lean) — functions
 - [`MizarCCL/GRFUNC_1.lean`](MizarCCL/GRFUNC_1.lean) — graphs of functions
+- [`MizarCCL/RELAT_2.lean`](MizarCCL/RELAT_2.lean) — properties of binary relations
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
