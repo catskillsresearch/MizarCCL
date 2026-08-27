@@ -383,6 +383,30 @@ prove).
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `WELLORD1`.
 
+## 18. The well ordering relations (`WELLORD1`)
+
+Well-founded and well-ordering relations, initial segments, the
+`|_2` restriction, transfinite induction, and order-isomorphism
+comparability. Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`,
+`XTUPLE_0`, `ZFMISC_1`, `SUBSET_1`, `RELAT_1`, `FUNCT_1`,
+`RELAT_2`. Import is `FUNCT_1` and `RELAT_2`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `WELLORD1:lm 1`–`4` | `lm1`–`lm4` | refl / trans / anti / connected via `field` |
+| `R-Seg(a)` | `seg` | `Coim(R,a) \ {a}` |
+| `WELLORD1:def 2`–`5` | `isWellFounded` / `isWellFoundedIn` / `isWellOrdering` / `wellOrders` | well-founded; well-order |
+| `WELLORD1:def 6` | `restrict2` | `R ∩ [:Y,Y:]` |
+| `WELLORD1:def 7`–`9` | `isIsomorphismOf` / `areIsomorphic` / `canonical_isomorphism_of` | order isomorphism |
+| `WELLORD1:1`–`37` | `th1`–`th37` | segments, restrict, induction, `id` iso |
+| unlabeled `L947` | `th38` | `R ≅ R` |
+| `WELLORD1:39`–`52` | `th39`–`th52` | inverse/compose; uniqueness; comparability |
+| unlabeled `L1809` | `th53` | restriction of a well-order is comparable |
+| unlabeled `L1853` | `th54` | isomorphism preserves well-order |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `RELSET_1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -400,5 +424,6 @@ prove).
 - [`MizarCCL/GRFUNC_1.lean`](MizarCCL/GRFUNC_1.lean) — graphs of functions
 - [`MizarCCL/RELAT_2.lean`](MizarCCL/RELAT_2.lean) — properties of binary relations
 - [`MizarCCL/ORDINAL1.lean`](MizarCCL/ORDINAL1.lean) — ordinal numbers
+- [`MizarCCL/WELLORD1.lean`](MizarCCL/WELLORD1.lean) — well-ordering relations
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

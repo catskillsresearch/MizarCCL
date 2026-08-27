@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `WELLORD1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `RELSET_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -406,3 +406,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from Separation / `apply` / `omega` / `On`). No `sorry`.
   `lake build` green. Challenge/Solution types still match. Next
   unused: `WELLORD1`.
+
+### 2026-08-27 — WELLORD1
+
+- `MizarCCL/WELLORD1.lean`: well-orderings, initial segments
+  (`R-Seg`), `|_2` restriction, transfinite induction, order
+  isomorphisms, and comparability of well-orders (`th52`).
+  Locals `lm1`–`lm5`. Numbered `th1`–`th54` (`th38` / `th53` /
+  `th54` unlabeled). Defs `seg` / well-founded / well-ordering /
+  `restrict2` / isomorphism / `areIsomorphic` /
+  `canonical_isomorphism_of`. Imports `FUNCT_1` and `RELAT_2`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `apply` / Separation / `canonical_isomorphism_of`).
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Next unused: `RELSET_1`.
