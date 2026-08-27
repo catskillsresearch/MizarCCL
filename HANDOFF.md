@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `SETFAM_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `RELAT_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -313,3 +313,18 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `∅` / `\` / `choose` / Separation). No `sorry`.
   `lake build` green. Challenge/Solution types still match. Next
   unused: `SETFAM_1`.
+
+### 2026-08-27 — SETFAM_1
+
+- `MizarCCL/SETFAM_1.lean`: `meet` by Separation on `union X`
+  (`def1`); `isFiner` / `isCoarser`; pairwise `familyUnion` /
+  `familyIntersection` / `familyDifference` (`def4`–`def6`) by
+  Separation on a `bool` of unions; `isSubsetFamily` is
+  `F ⊆ bool D`; `complement` via `SUBSET_1.sch_SubsetEx`;
+  `Intersect` is `meet` if nonempty else the ambient set;
+  `isCover`, `withNonemptyElements`, `isEmptyMembered`,
+  `withProperSubsets`. Numbered `th1`–`th49`. Imports `SUBSET_1`
+  only.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from Separation / `meet` / `∅`). No `sorry`. `lake build`
+  green. Challenge/Solution types still match. Next unused: `RELAT_1`.

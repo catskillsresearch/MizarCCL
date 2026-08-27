@@ -243,6 +243,26 @@ empty, so a subset of `E` is just an element of `bool E`.
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `SETFAM_1`.
 
+## 12. Families of sets (`SETFAM_1`)
+
+Intersection of a family, pairwise Boolean operations on families,
+and subset-families. Environ: `TARSKI`, `XBOOLE_0`, `XBOOLE_1`,
+`ENUMSET1`, `ZFMISC_1`, `SUBSET_1`. Import is `SUBSET_1` only.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `SETFAM_1:def 1` | `meet` / `def1` | `x ∈ meet X` iff `∀ Y ∈ X, x ∈ Y` (`X ≠ ∅`); else `∅` |
+| `is_finer_than` / `is_coarser_than` | `isFiner` / `isCoarser` | |
+| `UNION` / `INTERSECTION` / `DIFFERENCE` | `familyUnion` / `familyIntersection` / `familyDifference` | `def4`–`def6` |
+| `Subset-Family of D` | `isSubsetFamily` | `F ⊆ bool D` |
+| `COMPLEMENT(F)` | `complement` | `P ∈ it` iff `P\` ∈ F` |
+| `Intersect B` | `Intersect` | `meet B` if nonempty, else the ambient set |
+| `Cover of X` | `isCover` | `X ⊆ union F` |
+| `SETFAM_1:1`–`49` | `th1`–`th49` | Meet calculus, complements, covers |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `RELAT_1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -254,5 +274,6 @@ empty, so a subset of `E` is just an element of `bool E`.
 - [`MizarCCL/XREGULAR.lean`](MizarCCL/XREGULAR.lean) — regularity consequences
 - [`MizarCCL/ZFMISC_1.lean`](MizarCCL/ZFMISC_1.lean) — power set and products
 - [`MizarCCL/SUBSET_1.lean`](MizarCCL/SUBSET_1.lean) — elements and subsets
+- [`MizarCCL/SETFAM_1.lean`](MizarCCL/SETFAM_1.lean) — families of sets
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
