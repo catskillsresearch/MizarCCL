@@ -1095,9 +1095,65 @@ theorem lm1 {R X : TarskiSet.{u}} (hR : WELLORD1.isWellOrdering R)
     ((WELLORD1.th4 Q).mp hQwo)
 
 /-- `$N` Zermelo Theorem. `WELLORD2:17` (`Th17`).
-Mizar uses `ZFMISC_1:112` inaccessibility of a TG class; this model
-does not prove that clause, so the argument is Hartogs plus a
-choice-driven transfinite enumeration, then `lm1`. -/
+
+**Statement.** For every set `X` there is a relation `R` that
+well-orders `X`. Same claim as Mizar.
+
+**What “this model” means.** The carrier is `TarskiSet` from
+`HIDDEN` / `TARSKI`: the Aczel quotient that interprets
+Tarski–Grothendieck set theory in Lean. Membership, pairs, union,
+Separation / Fraenkel, and the universe axiom live there. So we are
+still inside the TG development defined by those articles — not a
+different foundational theory, and not Mathlib.
+
+**Why Mizar’s proof does not port.** Mizar’s `Th17` takes a TG class
+`Class` containing `X` from `ZFMISC_1:112`, with subset-closure,
+`bool`-closure, and the inaccessibility clause
+“`Y ⊆ Class → (Y ~ Class ∨ Y ∈ Class)`”. It separates the ordinals
+inside `Class` into an ordinal `ON`, shows `ON ~ Class` by
+inaccessibility (else `ON ∈ ON`), and transfers the well-ordering
+`RelIncl ON` along that equipotence to a well-ordering of `X`. In this
+Lean model, `ZFMISC_1.th112` only gives a universe object in
+`TarskiSet.{u+1}` that contains `ulift N` and is subset-closed. It does
+**not** prove Mizar’s `bool`-closure or inaccessibility clauses (those
+need `bool (ulift N) = ulift (bool N)` and `TARSKI:3`(iv), which
+`TARSKI.th3` does not claim). So the Class/`ON` argument cannot be
+copied line-for-line even though the underlying TG axioms are the ones
+from `HIDDEN` / `TARSKI`.
+
+**How we prove it anyway.** The statement is proved by a different
+argument that uses only results already present in dependent MizarCCL
+modules (`XBOOLE_0`, `ZFMISC_1`, `FUNCT_1`, `RELAT_1`, `ORDINAL1`,
+`WELLORD1`, and earlier material in this file), which were themselves
+translated from the original Mizar proofs. No Mathlib ordinals or
+well-order API.
+
+**English sketch of the Lean argument.**
+1. Let `W` be the set of relations `R ⊆ product X X` that well-order
+   their field with `field R ⊆ X` (Separation on `bool (product X X)`).
+2. Map each `R ∈ W` to its order type via `FUNCT_1.sch_Lambda` and
+   `order_type_of`; let `α` be the successor of the union of those
+   order types (a Hartogs-style bound on well-orderings of subsets of
+   `X`).
+3. By `ORDINAL1.sch_TSExist`, build a transfinite sequence `L` of
+   length `α` that at each stage picks an unused element of `X` when
+   any remain, else returns the sentinel `X`.
+4. If the enumeration never exhausts `X`, then `L` injects `α` into
+   `X`. Pull back `RelIncl α` along `inv L` to a well-ordering `Q` of
+   `rng L ⊆ X`. Then `Q ∈ W` and its order type is `α`, so `α` is among
+   the order types already collected — hence `α ∈ α`, contradiction.
+5. If it does exhaust, the least stage `β` where the sentinel appears
+   gives a bijection between `β` and `X`. Transfer
+   `RelIncl β` along that equipotence by `lm1` to a well-ordering of
+   `X`.
+
+**How that differs from Mizar.** Mizar reduces well-ordering of `X` to
+well-ordering of a TG class via inaccessibility and equipotence with
+an ordinal of ordinals inside the class. Lean never builds such a
+class; it bounds the set of well-orderings of subsets of `X` by a
+Hartogs ordinal and obtains the well-ordering of `X` by a choice-driven
+transfinite enumeration plus `lm1`. Same theorem, different route,
+still inside the prior MizarCCL / Mizar dependency chain. -/
 theorem th17 (X : TarskiSet.{u}) :
     ∃ R, WELLORD1.wellOrders R X := by
   obtain ⟨W, hW⟩ :=
