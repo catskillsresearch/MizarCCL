@@ -316,6 +316,27 @@ Canceled: `th30`.
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `GRFUNC_1`.
 
+## 15. Graphs of functions (`GRFUNC_1`)
+
+A subset of a function is a function. Environ: `TARSKI`,
+`XBOOLE_0`, `XBOOLE_1`, `ENUMSET1`, `XTUPLE_0`, `ZFMISC_1`,
+`SUBSET_1`, `RELAT_1`, `FUNCT_1`. Import is `FUNCT_1` and
+`ENUMSET1`. Canceled: `th18`, `th19`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `GRFUNC_1:1` | `th1` | `G ⊆ f` implies `G` is a function |
+| `GRFUNC_1:2` | `th2` | inclusion iff domain inclusion and pointwise `apply` |
+| `GRFUNC_1:5`–`8` | `th5`–`th8` | singleton and two-point graphs |
+| `GRFUNC_1:13`–`17` | `th13`–`th17` | union when domains miss or both sit in `h` |
+| restriction | `th22`–`th25` | domain restrict and range restrict |
+| `GRFUNC_1:28`–`31` | `th28`–`th31` | restrict to a singleton, pair, or triple |
+| `g-compatible` | `compatible_of_subset` / `compatible_subset` | along `g ⊆ f` |
+| `GRFUNC_1:1`–`35` | `th1`–`th35` | skip canceled `18`, `19`; locals `lm1`–`lm3` |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `RELAT_2`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -330,5 +351,6 @@ Canceled: `th30`.
 - [`MizarCCL/SETFAM_1.lean`](MizarCCL/SETFAM_1.lean) — families of sets
 - [`MizarCCL/RELAT_1.lean`](MizarCCL/RELAT_1.lean) — relations
 - [`MizarCCL/FUNCT_1.lean`](MizarCCL/FUNCT_1.lean) — functions
+- [`MizarCCL/GRFUNC_1.lean`](MizarCCL/GRFUNC_1.lean) — graphs of functions
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

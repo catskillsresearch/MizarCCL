@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `GRFUNC_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `RELAT_2`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -360,3 +360,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `apply` / Separation / `the_value_of` / `th111`).
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `GRFUNC_1`.
+
+### 2026-08-27 — GRFUNC_1
+
+- `MizarCCL/GRFUNC_1.lean`: a subset of a function is a function
+  (`th1`). Graph characterizations of inclusion, singleton and
+  two-point graphs, unions when domains miss or both sit in a
+  function, restrictions, inverse of the empty function, and
+  compatibility downward along subsets. Numbered `th1`–`th35`
+  except canceled `th18`, `th19`. Locals `lm1`–`lm3`. Imports
+  `FUNCT_1` and `ENUMSET1`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `apply` / Separation). No `sorry`. `lake build`
+  green. Challenge/Solution types still match. Next unused:
+  `RELAT_2`.

@@ -10,6 +10,7 @@ import MizarCCL.SUBSET_1
 import MizarCCL.SETFAM_1
 import MizarCCL.RELAT_1
 import MizarCCL.FUNCT_1
+import MizarCCL.GRFUNC_1
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users
