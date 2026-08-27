@@ -429,6 +429,38 @@ Relations as subsets of a cartesian product. Environ: `TARSKI`,
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `PARTFUN1`.
 
+## 20. Partial functions (`PARTFUN1`)
+
+Functions that are relations of `X,Y`. Environ: `TARSKI`,
+`XBOOLE_0`, `XBOOLE_1`, `XTUPLE_0`, `ZFMISC_1`, `SUBSET_1`,
+`RELAT_1`, `FUNCT_1`, `GRFUNC_1`, `RELAT_2`, `RELSET_1`. Import is
+`GRFUNC_1`, `RELAT_2`, and `RELSET_1`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `PartFunc of X,Y` | `isPartFunc` | Function ∧ `Relation of X,Y` |
+| `PARTFUN1:1`–`2` | `th1`–`th2` | union of pointwise-agreeing functions |
+| `LambdaC` / `PartFuncEx` / `LambdaR` | `sch_LambdaC` / `sch_PartFuncEx` / `sch_LambdaR` | existence schemes |
+| `PARTFUN1:3`–`14` | `th3`–`th14` | apply, equality, `id`, 1-1, restrict as PartFunc |
+| `<:f,X,Y:>` | `clip` | `Y\|`f\|X` |
+| unlabeled `L384`–`L450` | `th15`–`th21` | image; singleton domain/codomain |
+| `PARTFUN1:22`–`37` | `th22`–`th37` | clip ⊆, dom/apply, mono, compose, 1-1 |
+| unlabeled `L782` | `th38` | `(clip f X Y)⁻¹ = clip (f⁻¹) Y X` |
+| unlabeled `L848` | `th39` | `Z\|`clip = clip f X (Z ∩ Y)` |
+| `PARTFUN1:def 2` | `isTotal` / `def2` | `dom f = X` |
+| `PARTFUN1:40`–`44` | `th40`–`th44` | totality of clip |
+| `PFuncs` / `def 3` | `PFuncs` / `def3` | set of partial functions |
+| `PARTFUN1:45`–`50` | `th45`–`th50` | membership; empty; subset |
+| `tolerates` / `def 4` | `tolerates` / `def4` | pointwise on `dom f ∩ dom g` |
+| `PARTFUN1:51`–`67` | `th51`–`th67` | tolerance vs union / totals |
+| `PARTFUN1:68` / `TotFuncs` | `th68` / `TotFuncs` / `def5` | common total extension |
+| `PARTFUN1:69`–`76` | `th69`–`th76` | `TotFuncs` membership; meets ↔ tolerate |
+| `lm 2`–`4` / `LambdaC9` | `lm2`–`lm4` / `sch_LambdaC9` | `id X` total / equiv; LambdaC on nonempty |
+| `PARTFUN1:77`–`80` / `def 6` | `th77`–`th80` / `apply_at` | tolerate uniqueness; union; `p/.i` |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Next unused: `MCART_1`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -448,5 +480,6 @@ Relations as subsets of a cartesian product. Environ: `TARSKI`,
 - [`MizarCCL/ORDINAL1.lean`](MizarCCL/ORDINAL1.lean) — ordinal numbers
 - [`MizarCCL/WELLORD1.lean`](MizarCCL/WELLORD1.lean) — well-ordering relations
 - [`MizarCCL/RELSET_1.lean`](MizarCCL/RELSET_1.lean) — relations defined on sets
+- [`MizarCCL/PARTFUN1.lean`](MizarCCL/PARTFUN1.lean) — partial functions
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

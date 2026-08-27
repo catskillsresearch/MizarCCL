@@ -36,7 +36,7 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `PARTFUN1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `MCART_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -433,3 +433,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   (choice from `id` / `restrict` / Separation). No `sorry`.
   `lake build` green. Challenge/Solution types still match. Next
   unused: `PARTFUN1`.
+
+### 2026-08-27 — PARTFUN1
+
+- `MizarCCL/PARTFUN1.lean`: partial functions as Function ∧
+  `Relation of X,Y`. Clip `<:f,X,Y:>`, totals, `PFuncs`,
+  tolerance, `TotFuncs`, `id` as a total relation of `X`,
+  `p/.i`. Numbered `th1`–`th80` (`th38` unlabeled inverse of
+  clip). Schemes `sch_LambdaC` / `sch_PartFuncEx` /
+  `sch_LambdaR` / `sch_LambdaC9`. Locals `lm1`–`lm4`. Import
+  is `GRFUNC_1`, `RELAT_2`, and `RELSET_1`.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`
+  (choice from `apply` / `clip` / `PFuncs` / `TotFuncs` /
+  Separation). No `sorry`. `lake build` green. Challenge/Solution
+  types still match. Next unused: `MCART_1`.
