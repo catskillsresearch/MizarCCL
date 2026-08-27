@@ -36,7 +36,9 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FUNCT_3`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `FUNCT_3` (sequential). Parallel frontier also
+  translating `WELLSET1` / `SYSREL`; `MULTOP_1` done. Palomar
+  Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -512,3 +514,13 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `FUNCT_3`.
+
+### 2026-08-27 — MULTOP_1 (parallel frontier)
+
+- `MizarCCL/MULTOP_1.lean`: three- and four-argument operations.
+  `apply3` / `apply4`, `TriOp` / `QuaOp`, `th1`–`th6`, schemes
+  FuncEx3D / TriOpEx / Lambda3D / TriOpLambda / FuncEx4D /
+  QuaOpEx / Lambda4D / QuaOpLambda. Import is `FUNCT_2` only.
+- Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
+  No `sorry`. `lake build` green. Challenge/Solution types still
+  match. Sequential next unused remains `FUNCT_3`.

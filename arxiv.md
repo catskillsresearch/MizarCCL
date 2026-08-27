@@ -580,7 +580,24 @@ products, and enumset/singleton subset redefines. Environ ends at
 | redefines | pair/triple/quad / enumset subsets | coherence |
 
 **Complete?** Yes. `#print axioms` ⊆
-`{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_3`.
+`{propext, Classical.choice, Quot.sound}`. Sequential next unused:
+`FUNCT_3` (parallel: `MULTOP_1` done).
+
+## 26. Three- and four-argument operations (`MULTOP_1`)
+
+`f.(a,b,c)` / `f.(a,b,c,d)`, ternary and quaternary ops on a set.
+Environ ends at `FUNCT_2` / `DOMAIN_1`. Import is `FUNCT_2` only.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1 / Def2 | `apply3` / `apply4` | apply on triples / quads |
+| `TriOp` / `QuaOp` | `isTriOp` / `isQuaOp` | |
+| `Th1`–`Th5` + unlabeled | `th1`–`th6` | equality / typing |
+| schemes | `sch_FuncEx3D` … `sch_QuaOpLambda` | 8 schemes |
+
+**Complete?** Yes. `#print axioms` ⊆
+`{propext, Classical.choice, Quot.sound}`. Sequential next unused:
+`FUNCT_3`.
 
 ## Lean Code
 
@@ -607,5 +624,6 @@ products, and enumset/singleton subset redefines. Environ ends at
 - [`MizarCCL/FUNCT_2.lean`](MizarCCL/FUNCT_2.lean) — functions from a set to a set
 - [`MizarCCL/BINOP_1.lean`](MizarCCL/BINOP_1.lean) — binary operations
 - [`MizarCCL/DOMAIN_1.lean`](MizarCCL/DOMAIN_1.lean) — domains and products
+- [`MizarCCL/MULTOP_1.lean`](MizarCCL/MULTOP_1.lean) — multi-argument operations
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
