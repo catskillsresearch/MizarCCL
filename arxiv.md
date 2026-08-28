@@ -735,7 +735,28 @@ slots.
 
 **Complete?** Yes. Full build and Challenge/Solution comparison pass;
 no `sorry`. Representative axiom checks are contained in
-`{propext, Classical.choice, Quot.sound}`. Next unused: `FINSET_1`.
+`{propext, Classical.choice, Quot.sound}`. `FINSET_1` follows below.
+
+## 35. Finite sets (`FINSET_1`)
+
+Finite and infinite sets, closure under set/relation constructions,
+finite induction, centered families, finite-yielding functions, and
+finite-membered families.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def6 | `isFinite` / `isFiniteYielding` / `isCentered` / `isFiniteMembered` plus redefinition theorems | all six definition blocks |
+| `FINSET_1:1`–`15` | `th1`–`th15` | all absolute theorem slots |
+| Lm1–Lm3 | `lm1`–`lm3` | finite singleton, union, and family-union lemmas |
+| 2 schemes | `sch_OLambdaC` / `sch_Finite` | conditional ordinal lambda and finite induction |
+| registrations | named closure and existence theorems | all 54 registration claims |
+
+The source has no canceled slots; `isInfinite` represents Mizar's
+antonym notation.
+
+**Complete?** Yes. Full build and Challenge/Solution comparison pass;
+no `sorry`. Representative axiom checks are contained in
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FINSUB_1`.
 
 ## Lean Code
 
@@ -770,6 +791,7 @@ no `sorry`. Representative axiom checks are contained in
 - [`MizarCCL/ORDINAL3.lean`](MizarCCL/ORDINAL3.lean) — ordinal arithmetic
 - [`MizarCCL/WELLSET1.lean`](MizarCCL/WELLSET1.lean) — Zermelo's theorem
 - [`MizarCCL/SYSREL.lean`](MizarCCL/SYSREL.lean) — binary relation properties
+- [`MizarCCL/FINSET_1.lean`](MizarCCL/FINSET_1.lean) — finite sets
 - [`MizarCCL/PARTFUN2.lean`](MizarCCL/PARTFUN2.lean) — partial functions between domains
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

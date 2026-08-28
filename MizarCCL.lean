@@ -29,6 +29,7 @@ import MizarCCL.ORDINAL3
 import MizarCCL.WELLSET1
 import MizarCCL.MULTOP_1
 import MizarCCL.SYSREL
+import MizarCCL.FINSET_1
 import MizarCCL.PARTFUN2
 
 /-

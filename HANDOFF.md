@@ -36,10 +36,10 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FINSET_1` (sequential). `ORDINAL2` / `ORDINAL3`,
-  `WELLSET1`, and `PARTFUN2` are done, as are `MULTOP_1` / `FUNCT_4` /
-  `FUNCT_3` / `SYSREL` / `FUNCOP_1`. Palomar Challenge/Solution
-  expose TARSKI.
+  Next unused: `FINSUB_1` (sequential). `ORDINAL2` / `ORDINAL3`,
+  `FINSET_1`, `WELLSET1`, and `PARTFUN2` are done, as are `MULTOP_1` /
+  `FUNCT_4` / `FUNCT_3` / `SYSREL` / `FUNCOP_1`. Palomar
+  Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -627,3 +627,18 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   Challenge/Solution type comparison, zero-placeholder scan, and
   representative axiom audits pass; axioms remain within
   `{propext, Classical.choice, Quot.sound}`. Next unused: `FINSET_1`.
+
+### 2026-08-28 — FINSET_1
+
+- `MizarCCL/FINSET_1.lean`: the finite/infinite attributes, closure
+  under set and relation constructions, finite induction, centered
+  families, finite-yielding relations/functions, and finite-membered
+  families.
+- Numbered `th1`–`th15` cover every absolute Mizar theorem slot.
+  Definitions `def1`–`def6`, lemmas `lm1`–`lm3`, schemes
+  `sch_OLambdaC` / `sch_Finite`, the antonym notation, and all 54
+  registration claims are represented. There are no canceled slots.
+- Root `MizarCCL.lean` imports `FINSET_1`. Full `lake build`,
+  Challenge/Solution type comparison, zero-placeholder scan, and
+  representative axiom audits pass; axioms remain within
+  `{propext, Classical.choice, Quot.sound}`. Next unused: `FINSUB_1`.
