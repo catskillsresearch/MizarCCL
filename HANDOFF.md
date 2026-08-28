@@ -36,10 +36,9 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `ORDINAL2` (sequential). Parallel frontier also
-  translating `WELLSET1` / `PARTFUN2`; `MULTOP_1` / `FUNCT_4` /
-  `FUNCT_3` / `SYSREL` / `FUNCOP_1` done. Palomar Challenge/Solution
-  expose TARSKI.
+  Next unused: `ORDINAL3` (sequential). `ORDINAL2`, `WELLSET1`, and
+  `PARTFUN2` are done, as are `MULTOP_1` / `FUNCT_4` / `FUNCT_3` /
+  `SYSREL` / `FUNCOP_1`. Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -588,3 +587,26 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   scan, and representative axiom checks including `th66` and `th84`;
   all pass with axioms within
   `{propext, Classical.choice, Quot.sound}`.
+
+### 2026-08-28 — ORDINAL2
+
+- `MizarCCL/ORDINAL2.lean`: ordinal sequences, sequence suprema and
+  infima, limits, ordinal addition/multiplication/exponentiation, and
+  transfinite recursion. Definitions `def1`–`def17`, numbered
+  `th1`–`th50`, all twenty schemes, `lm1`, and all ten registrations
+  cover the complete Mizar article; there are no canceled slots.
+- Mizar typing predicates are explicit hypotheses. Overloaded sequence
+  `sup` / `inf` are `sequenceSup` / `sequenceInf`; guarded `lim` is
+  totalized to the empty ordinal outside its defining guard.
+
+### 2026-08-28 — WELLSET1 and PARTFUN2
+
+- `MizarCCL/WELLSET1.lean`: `th1`–`th6`, `lm1`, and
+  `sch_RSeparation`; `th6` keeps Zermelo's theorem statement while
+  reusing the axiom-free `WELLORD2.th17` construction.
+- `MizarCCL/PARTFUN2.lean`: all `th1`–`th61`, five Mizar redefinitions,
+  and schemes `PartFuncExD`, `LambdaPFD`, and `UnPartFuncD`.
+- Root `MizarCCL.lean` imports all three modules. Full `lake build`,
+  Challenge/Solution type comparison, and zero-placeholder scans pass.
+  Representative axiom audits are within
+  `{propext, Classical.choice, Quot.sound}`. Next unused: `ORDINAL3`.

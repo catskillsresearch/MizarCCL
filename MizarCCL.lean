@@ -24,8 +24,11 @@ import MizarCCL.DOMAIN_1
 import MizarCCL.FUNCT_3
 import MizarCCL.FUNCOP_1
 import MizarCCL.FUNCT_4
+import MizarCCL.ORDINAL2
+import MizarCCL.WELLSET1
 import MizarCCL.MULTOP_1
 import MizarCCL.SYSREL
+import MizarCCL.PARTFUN2
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users

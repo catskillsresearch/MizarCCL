@@ -667,6 +667,57 @@ contained in `{propext, Classical.choice, Quot.sound}`. The numbered
 declarations align one-to-one with all 125 absolute Mizar theorem slots.
 Next unused: `ORDINAL2`.
 
+## 31. Sequences and arithmetic of ordinals (`ORDINAL2`)
+
+Ordinal sequences, suprema and infima, limits, ordinal addition,
+multiplication and exponentiation, and transfinite recursion.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def17 | `def1`–`def17` | sequence operations, limits, and ordinal arithmetic |
+| `ORDINAL2:1`–`50` | `th1`–`th50` | all absolute theorem slots |
+| 20 schemes | `sch_OrdinalInd` through `sch_LambdaRecUn` | induction and transfinite recursion |
+| registrations | named `*_isOrdinal`, `*_isNatural`, and sequence theorems | all ten registrations |
+
+Mizar typing predicates become explicit hypotheses. The overloaded
+sequence operations `sup` and `inf` are `sequenceSup` and
+`sequenceInf`; guarded `lim` defaults to the empty ordinal outside its
+guard.
+
+**Complete?** Yes. No canceled slots or `sorry`; verification and axiom
+checks pass.
+
+## 32. Zermelo's theorem (`WELLSET1`)
+
+Well-order extension and separation results culminating in Zermelo's
+well-ordering theorem.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| `WELLSET1:1`–`6` | `th1`–`th6` | all theorem slots |
+| Lm1 / RSeparation | `lm1` / `sch_RSeparation` | auxiliary lemma and scheme |
+
+The final theorem retains Mizar's statement while reusing the
+axiom-free `WELLORD2.th17` construction.
+
+**Complete?** Yes. No source definitions, registrations, canceled
+items, or `sorry`; verification and axiom checks pass.
+
+## 33. Partial functions between domains (`PARTFUN2`)
+
+Composition, restriction, constant partial functions, images, and
+pointwise criteria for partial functions.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| five redefinitions | `id_isPartFunc` / `inv_isPartFunc` / `restrictRng_isPartFunc` / `mapsTo_isPartFunc` / `def_constant` | identity, inverse, restriction, constant map, constant predicate |
+| `PARTFUN2:1`–`61` | `th1`–`th61` | all absolute theorem slots |
+| 3 schemes | `sch_PartFuncExD` / `sch_LambdaPFD` / `sch_UnPartFuncD` | all source schemes |
+
+**Complete?** Yes. No registrations, canceled items, or `sorry`;
+verification and axiom checks pass. Next sequential article:
+`ORDINAL3`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -696,6 +747,9 @@ Next unused: `ORDINAL2`.
 - [`MizarCCL/FUNCT_3.lean`](MizarCCL/FUNCT_3.lean) — operations on functions
 - [`MizarCCL/FUNCOP_1.lean`](MizarCCL/FUNCOP_1.lean) — ops applied to functions
 - [`MizarCCL/FUNCT_4.lean`](MizarCCL/FUNCT_4.lean) — function modification
+- [`MizarCCL/ORDINAL2.lean`](MizarCCL/ORDINAL2.lean) — ordinal sequences and arithmetic
+- [`MizarCCL/WELLSET1.lean`](MizarCCL/WELLSET1.lean) — Zermelo's theorem
 - [`MizarCCL/SYSREL.lean`](MizarCCL/SYSREL.lean) — binary relation properties
+- [`MizarCCL/PARTFUN2.lean`](MizarCCL/PARTFUN2.lean) — partial functions between domains
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
