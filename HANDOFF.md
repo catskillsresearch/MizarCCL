@@ -36,9 +36,10 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `ORDINAL3` (sequential). `ORDINAL2`, `WELLSET1`, and
-  `PARTFUN2` are done, as are `MULTOP_1` / `FUNCT_4` / `FUNCT_3` /
-  `SYSREL` / `FUNCOP_1`. Palomar Challenge/Solution expose TARSKI.
+  Next unused: `FINSET_1` (sequential). `ORDINAL2` / `ORDINAL3`,
+  `WELLSET1`, and `PARTFUN2` are done, as are `MULTOP_1` / `FUNCT_4` /
+  `FUNCT_3` / `SYSREL` / `FUNCOP_1`. Palomar Challenge/Solution
+  expose TARSKI.
 
 ## On finishing a work item
 
@@ -610,3 +611,19 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   Challenge/Solution type comparison, and zero-placeholder scans pass.
   Representative axiom audits are within
   `{propext, Classical.choice, Quot.sound}`. Next unused: `ORDINAL3`.
+
+### 2026-08-28 — ORDINAL3
+
+- `MizarCCL/ORDINAL3.lean`: ordinal arithmetic order laws,
+  pointwise ordinal-sequence addition/multiplication, subtraction,
+  Euclidean division and remainder, and natural-ordinal arithmetic.
+- Numbered `th1`–`th75` cover all absolute Mizar theorem slots.
+  Definitions `def1`–`def7` cover four sequence operations and
+  `ordinalSub` / `ordinalDiv` / `ordinalMod`; `lm1`, all four
+  registration claims, and both natural commutativity redefinitions
+  are represented. The source defines no schemes and has no canceled
+  slots.
+- Root `MizarCCL.lean` imports `ORDINAL3`. Full `lake build`,
+  Challenge/Solution type comparison, zero-placeholder scan, and
+  representative axiom audits pass; axioms remain within
+  `{propext, Classical.choice, Quot.sound}`. Next unused: `FINSET_1`.

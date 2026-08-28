@@ -715,8 +715,27 @@ pointwise criteria for partial functions.
 | 3 schemes | `sch_PartFuncExD` / `sch_LambdaPFD` / `sch_UnPartFuncD` | all source schemes |
 
 **Complete?** Yes. No registrations, canceled items, or `sorry`;
-verification and axiom checks pass. Next sequential article:
-`ORDINAL3`.
+verification and axiom checks pass. `ORDINAL3` follows below.
+
+## 34. Ordinal arithmetic (`ORDINAL3`)
+
+Order properties of ordinal addition and multiplication, pointwise
+operations on ordinal sequences, subtraction, Euclidean division and
+remainder, and natural-ordinal arithmetic.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def4 | `addLeftSequence` / `addRightSequence` / `mulLeftSequence` / `mulRightSequence` | pointwise sequence operations |
+| Def5–Def7 | `ordinalSub` / `ordinalDiv` / `ordinalMod` | subtraction, quotient, remainder |
+| `ORDINAL3:1`–`75` | `th1`–`th75` | all absolute theorem slots |
+| registrations / redefinitions | `union_isOrdinal` / `inter_isOrdinal` / `sub_natural` / `mul_natural` / `add_comm_natural` / `mul_comm_natural` | all source registrations and natural commutativity redefinitions |
+
+The source has one lemma (`lm1`), no local schemes, and no canceled
+slots.
+
+**Complete?** Yes. Full build and Challenge/Solution comparison pass;
+no `sorry`. Representative axiom checks are contained in
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FINSET_1`.
 
 ## Lean Code
 
@@ -748,6 +767,7 @@ verification and axiom checks pass. Next sequential article:
 - [`MizarCCL/FUNCOP_1.lean`](MizarCCL/FUNCOP_1.lean) — ops applied to functions
 - [`MizarCCL/FUNCT_4.lean`](MizarCCL/FUNCT_4.lean) — function modification
 - [`MizarCCL/ORDINAL2.lean`](MizarCCL/ORDINAL2.lean) — ordinal sequences and arithmetic
+- [`MizarCCL/ORDINAL3.lean`](MizarCCL/ORDINAL3.lean) — ordinal arithmetic
 - [`MizarCCL/WELLSET1.lean`](MizarCCL/WELLSET1.lean) — Zermelo's theorem
 - [`MizarCCL/SYSREL.lean`](MizarCCL/SYSREL.lean) — binary relation properties
 - [`MizarCCL/PARTFUN2.lean`](MizarCCL/PARTFUN2.lean) — partial functions between domains
