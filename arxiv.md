@@ -649,6 +649,24 @@ function-/relation-yielding maps. Environ ends at `FUNCT_3` /
 **Complete?** Yes. `#print axioms` ⊆
 `{propext, Classical.choice, Quot.sound}`. Next unused: `FUNCT_4`.
 
+## 30. Modification of a function by a function (`FUNCT_4`)
+
+Function override, domain-coordinate swap, paired function products,
+two-point maps, and replacement of a value throughout a range.
+Environ reduces to `FUNCOP_1` and `ORDINAL1`; both are imported.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def5 | `override` / `swapDom` / `productPair` / `pairMapsTo` / `rangeUpdate` | principal constructions |
+| `FUNCT_4:1`–`125` | `th1`–`th125` | all absolute theorem slots |
+| registrations | `override_*` / `pairMapsTo_*` / `dotArrow_isTrivial` | includes the Def4 redefinition as `pairMapsTo_isFunctionOf`; function, partial-function, yielding, domain/range, and compatibility closure |
+
+**Complete?** Yes. Full `lake build` and Challenge/Solution type
+comparison pass; no `sorry`. Representative `#print axioms` checks are
+contained in `{propext, Classical.choice, Quot.sound}`. The numbered
+declarations align one-to-one with all 125 absolute Mizar theorem slots.
+Next unused: `ORDINAL2`.
+
 ## Lean Code
 
 - [`MizarCCL/HIDDEN.lean`](MizarCCL/HIDDEN.lean) — `TarskiSet` and `∈`
@@ -677,6 +695,7 @@ function-/relation-yielding maps. Environ ends at `FUNCT_3` /
 - [`MizarCCL/MULTOP_1.lean`](MizarCCL/MULTOP_1.lean) — multi-argument operations
 - [`MizarCCL/FUNCT_3.lean`](MizarCCL/FUNCT_3.lean) — operations on functions
 - [`MizarCCL/FUNCOP_1.lean`](MizarCCL/FUNCOP_1.lean) — ops applied to functions
+- [`MizarCCL/FUNCT_4.lean`](MizarCCL/FUNCT_4.lean) — function modification
 - [`MizarCCL/SYSREL.lean`](MizarCCL/SYSREL.lean) — binary relation properties
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

@@ -36,8 +36,8 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FUNCT_4` (sequential). Parallel frontier also
-  translating `WELLSET1` / `ORDINAL2` / `PARTFUN2`; `MULTOP_1` /
+  Next unused: `ORDINAL2` (sequential). Parallel frontier also
+  translating `WELLSET1` / `PARTFUN2`; `MULTOP_1` / `FUNCT_4` /
   `FUNCT_3` / `SYSREL` / `FUNCOP_1` done. Palomar Challenge/Solution
   expose TARSKI.
 
@@ -559,3 +559,32 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Sampled `#print axioms` ⊆ `{propext, Classical.choice, Quot.sound}`.
   No `sorry`. `lake build` green. Challenge/Solution types still
   match. Next unused: `FUNCT_4` (also unlocks `ORDINAL2`, `PARTFUN2`).
+
+### 2026-08-28 — FUNCT_4
+
+- `MizarCCL/FUNCT_4.lean`: function override, domain swap, paired
+  function products, two-point maps, and range-value updates.
+  Definitions `override`, `swapDom`, `productPair`, `pairMapsTo`, and
+  `rangeUpdate`; numbered `th1`–`th125` cover all absolute Mizar
+  theorem slots. Late registrations preserve nonemptiness,
+  empty-yielding, partial-function bounds, function-yielding,
+  defined/valued/total, and compatibility properties.
+- Imports are `FUNCOP_1` and `ORDINAL1`. Root `MizarCCL.lean` now
+  imports `FUNCT_4`.
+- Representative `#print axioms` checks (definitions, `th39`, `th72`,
+  `th100`, `th104`, `th121`, `th125`) are exactly within
+  `{propext, Classical.choice, Quot.sound}`. No `sorry`; full
+  `lake build` green; Challenge/Solution types match.
+- Next unused: `ORDINAL2`. Incomplete parallel files remain
+  `WELLSET1` and `PARTFUN2`.
+
+### 2026-08-28 — FUNCT_4 audit follow-up
+
+- Corrected theorem indexing at `th66`–`th84`: the Def4 redefinition is
+  now `pairMapsTo_isFunctionOf`, each numbered theorem again matches its
+  absolute Mizar slot, and `th84` explicitly captures the two-point
+  override evaluation theorem.
+- Re-ran the full build, Challenge/Solution type comparison, zero-`sorry`
+  scan, and representative axiom checks including `th66` and `th84`;
+  all pass with axioms within
+  `{propext, Classical.choice, Quot.sound}`.
