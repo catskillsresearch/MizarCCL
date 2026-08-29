@@ -36,10 +36,10 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `FINSUB_1` (sequential). `ORDINAL2` / `ORDINAL3`,
-  `FINSET_1`, `WELLSET1`, and `PARTFUN2` are done, as are `MULTOP_1` /
-  `FUNCT_4` / `FUNCT_3` / `SYSREL` / `FUNCOP_1`. Palomar
-  Challenge/Solution expose TARSKI.
+  Next unused: `ORDERS_1` (sequential). `ORDINAL2` / `ORDINAL3`,
+  `FINSET_1` / `FINSUB_1`, `WELLSET1`, and `PARTFUN2` are done, as are
+  `MULTOP_1` / `FUNCT_4` / `FUNCT_3` / `SYSREL` / `FUNCOP_1`.
+  Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
 
@@ -642,3 +642,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   Challenge/Solution type comparison, zero-placeholder scan, and
   representative axiom audits pass; axioms remain within
   `{propext, Classical.choice, Quot.sound}`. Next unused: `FINSUB_1`.
+
+### 2026-08-28 — FINSUB_1
+
+- `MizarCCL/FINSUB_1.lean`: union/intersection/difference-closed and
+  pre-Boolean families, the finite-subset family `Fin`, and the
+  `Finite_Subset` mode.
+- Numbered `th1`–`th18` cover all absolute Mizar theorem slots.
+  Definitions `def1`–`def5`, four operation redefinitions, the mode,
+  and all six registration claims are represented. The source has no
+  lemmas, local schemes, or canceled slots.
+- Root `MizarCCL.lean` imports `FINSUB_1`. Full `lake build`,
+  Challenge/Solution type comparison, zero-placeholder scan, and
+  representative axiom audits pass; axioms remain within
+  `{propext, Classical.choice, Quot.sound}`. Next unused: `ORDERS_1`.

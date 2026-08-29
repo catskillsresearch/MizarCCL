@@ -756,7 +756,25 @@ antonym notation.
 
 **Complete?** Yes. Full build and Challenge/Solution comparison pass;
 no `sorry`. Representative axiom checks are contained in
-`{propext, Classical.choice, Quot.sound}`. Next unused: `FINSUB_1`.
+`{propext, Classical.choice, Quot.sound}`. `FINSUB_1` follows below.
+
+## 36. Boolean domains (`FINSUB_1`)
+
+Families closed under union, intersection, and difference; pre-Boolean
+families; and the family `Fin A` of finite subsets of `A`.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def5 | `isCupClosed` / `isCapClosed` / `isDiffClosed` / `isPreBoolean` / `Fin` | all attribute and constructor definitions |
+| `Finite_Subset of A` | `isFiniteSubsetOf` | Mizar mode represented as a predicate |
+| `FINSUB_1:1`–`18` | `th1`–`th18` | all absolute theorem slots |
+| registrations / redefinitions | named closure, existence, and operation theorems | all six registration claims and four redefinitions |
+
+The source has no lemmas, local schemes, or canceled slots.
+
+**Complete?** Yes. Full build and Challenge/Solution comparison pass;
+no `sorry`. Representative axiom checks are contained in
+`{propext, Classical.choice, Quot.sound}`. Next unused: `ORDERS_1`.
 
 ## Lean Code
 
@@ -792,6 +810,7 @@ no `sorry`. Representative axiom checks are contained in
 - [`MizarCCL/WELLSET1.lean`](MizarCCL/WELLSET1.lean) — Zermelo's theorem
 - [`MizarCCL/SYSREL.lean`](MizarCCL/SYSREL.lean) — binary relation properties
 - [`MizarCCL/FINSET_1.lean`](MizarCCL/FINSET_1.lean) — finite sets
+- [`MizarCCL/FINSUB_1.lean`](MizarCCL/FINSUB_1.lean) — Boolean domains
 - [`MizarCCL/PARTFUN2.lean`](MizarCCL/PARTFUN2.lean) — partial functions between domains
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs
