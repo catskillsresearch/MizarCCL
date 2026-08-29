@@ -1,7 +1,28 @@
 {
-  "challenge_module": "Challenge",
-  "solution_module": "Solution",
-  "theorem_names": [
+  "challenge": "Challenge",
+  "solution": "Solution",
+  "declarations": [
+    "TARSKI.th1",
+    "TARSKI.def1",
+    "TARSKI.def2",
+    "TARSKI.upair_comm",
+    "TARSKI.def3",
+    "TARSKI.subset_refl",
+    "TARSKI.def4",
+    "TARSKI.th2",
+    "TARSKI.sch1",
+    "TARSKI.def5",
+    "TARSKI.def6",
+    "TARSKI.th3",
+    "TARSKI.singleton",
+    "TARSKI.upair",
+    "TARSKI.subset",
+    "TARSKI.union",
+    "TARSKI.pair",
+    "TARSKI.are_equipotent",
+    "TARSKI.ulift"
+  ],
+  "theorems": [
     "TARSKI.th1",
     "TARSKI.def1",
     "TARSKI.def2",
@@ -15,7 +36,7 @@
     "TARSKI.def6",
     "TARSKI.th3"
   ],
-  "definition_names": [
+  "definitions": [
     "TARSKI.singleton",
     "TARSKI.upair",
     "TARSKI.subset",
@@ -24,5 +45,9 @@
     "TARSKI.are_equipotent",
     "TARSKI.ulift"
   ],
-  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ]
 }

@@ -159,9 +159,9 @@ limitations:
     no sorry outside Challenge.lean, no project-defined axiom, and
     no native_decide.
   - >-
-    Challenge.lean states the family but does not prove it; that is
-    the Comparator convention. Solution.lean re-exports
-    MizarCCL/TARSKI.lean.
+    Challenge.lean follows Palomar’s import rule: no project imports,
+    Init-only surface with inlined carriers; compared statements use
+    sorry. Solution.lean imports MizarCCL/TARSKI.lean for proofs.
 
 alignment:
   namespace: "TARSKI"

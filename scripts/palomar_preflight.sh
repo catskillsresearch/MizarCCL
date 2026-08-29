@@ -14,19 +14,104 @@ import json
 with open("comparator.json", encoding="utf-8") as f:
     cfg = json.load(f)
 
-required = ("challenge_module", "solution_module", "theorem_names",
-            "definition_names", "permitted_axioms")
-missing = [key for key in required if key not in cfg]
+def pick(cfg, *keys):
+    for key in keys:
+        if key in cfg:
+            return cfg[key]
+    return None
+
+challenge = pick(cfg, "challenge", "challenge_module")
+solution = pick(cfg, "solution", "solution_module")
+theorems = pick(cfg, "theorems", "theorem_names")
+definitions = pick(cfg, "definitions", "definition_names")
+axioms = pick(cfg, "axioms", "permitted_axioms")
+declarations = pick(cfg, "declarations")
+
+missing = []
+for key, val in [
+    ("challenge", challenge),
+    ("solution", solution),
+    ("theorems", theorems),
+    ("definitions", definitions),
+    ("axioms", axioms),
+]:
+    if val is None:
+        missing.append(key)
 if missing:
     raise SystemExit(f"Missing comparator keys: {', '.join(missing)}")
 
-names = cfg["theorem_names"] + cfg["definition_names"]
+if declarations is None:
+    declarations = theorems + definitions
+else:
+    expected = set(theorems + definitions)
+    got = set(declarations)
+    if expected != got:
+        raise SystemExit(
+            "declarations must equal theorems ∪ definitions "
+            f"(missing={sorted(expected - got)}, extra={sorted(got - expected)})"
+        )
+
+names = list(declarations)
 duplicates = sorted({name for name in names if names.count(name) > 1})
 if duplicates:
     raise SystemExit(f"Duplicate Comparator names: {', '.join(duplicates)}")
-print(f"OK: {len(cfg['theorem_names'])} theorem targets and "
-      f"{len(cfg['definition_names'])} definition targets.")
+print(
+    f"OK: challenge={challenge}, solution={solution}, "
+    f"{len(theorems)} theorems, {len(definitions)} definitions, "
+    f"{len(declarations)} declarations."
+)
 PY
+
+step "Challenge import discipline (Init / Mathlib only)"
+python3 - <<'PY'
+import re
+from pathlib import Path
+
+text = Path("Challenge.lean").read_text(encoding="utf-8")
+imports = re.findall(r"^import\s+(\S+)", text, re.MULTILINE)
+for imp in imports:
+    if imp.startswith("MizarCCL") or imp.startswith("Solution"):
+        raise SystemExit(f"Forbidden Challenge import: {imp}")
+    if not (imp.startswith("Init") or imp.startswith("Std")
+            or imp.startswith("Lean") or imp.startswith("Mathlib")):
+        raise SystemExit(
+            f"Challenge import not allowlisted (Init/Mathlib/Std/Lean): {imp}"
+        )
+print(f"OK: Challenge has {len(imports)} explicit import(s) (Init-only if zero).")
+PY
+
+step "Challenge surface size limits"
+python3 - <<'PY'
+from pathlib import Path
+
+path = Path("Challenge.lean")
+lines = path.read_text(encoding="utf-8").count("\n") + 1
+size = path.stat().st_size
+if lines >= 1000:
+    raise SystemExit(f"Challenge.lean too long: {lines} lines (limit 1000)")
+if size >= 100 * 1024:
+    raise SystemExit(f"Challenge.lean too large: {size} bytes (limit 100 KiB)")
+print(f"OK: Challenge.lean is {lines} lines, {size} bytes.")
+PY
+
+step "Exactly one Lake manifest at repository root"
+if [[ -f lakefile.toml && -f lakefile.lean ]]; then
+  echo "FAIL: both lakefile.toml and lakefile.lean present."
+  exit 1
+fi
+if [[ ! -f lakefile.toml && ! -f lakefile.lean ]]; then
+  echo "FAIL: no lakefile.toml or lakefile.lean at repository root."
+  exit 1
+fi
+if [[ ! -f lake-manifest.json ]]; then
+  echo "FAIL: lake-manifest.json is missing."
+  exit 1
+fi
+if [[ ! -f lean-toolchain ]]; then
+  echo "FAIL: lean-toolchain is missing."
+  exit 1
+fi
+echo "OK: Lake config, manifest, and toolchain present."
 
 step "Reject git submodules (Palomar cannot preserve them)"
 if [[ -e .gitmodules ]]; then
@@ -88,9 +173,11 @@ import sys
 
 with open("comparator.json", encoding="utf-8") as f:
     cfg = json.load(f)
+solution = cfg.get("solution", cfg.get("solution_module"))
+theorems = cfg.get("theorems", cfg.get("theorem_names"))
 with open(sys.argv[1], "w", encoding="utf-8") as out:
-    out.write(f"import {cfg['solution_module']}\n")
-    for name in cfg["theorem_names"]:
+    out.write(f"import {solution}\n")
+    for name in theorems:
         out.write(f"#print axioms {name}\n")
 PY
 lake env lean "$tmp/Axioms.lean" >"$tmp/axioms.txt"
@@ -101,7 +188,8 @@ import sys
 
 with open("comparator.json", encoding="utf-8") as f:
     cfg = json.load(f)
-allowed = set(cfg["permitted_axioms"])
+allowed = set(cfg.get("axioms", cfg.get("permitted_axioms")))
+theorems = cfg.get("theorems", cfg.get("theorem_names"))
 text = open(sys.argv[1], encoding="utf-8").read()
 reports = re.findall(
     r"^'(.+)' depends on axioms: \[([^\]]*)\]$", text, re.MULTILINE
@@ -110,7 +198,7 @@ axiom_free = re.findall(
     r"^'(.+)' does not depend on any axioms$", text, re.MULTILINE
 )
 reported = {name for name, _ in reports} | set(axiom_free)
-expected = set(cfg["theorem_names"])
+expected = set(theorems)
 if reported != expected:
     missing = sorted(expected - reported)
     extra = sorted(reported - expected)

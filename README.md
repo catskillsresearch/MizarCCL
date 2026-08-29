@@ -25,9 +25,9 @@ That Palomar extract is abandoned: a faithful translation needs the
 - Lean package: `MizarCCL` (`MizarCCL.lean` imports every translated
   article; first: `MizarCCL/TARSKI.lean`)
 
-Palomar surface for the first article: `Challenge.lean` /
-`Solution.lean` / `comparator.json` expose the major `TARSKI`
-theorems. Later: one key theorem per YELLOW*/WAYBEL* seed, after
+Palomar surface for the first article: `Challenge.lean` (Init-only,
+no `MizarCCL` imports) / `Solution.lean` (imports `MizarCCL.TARSKI`) /
+`comparator.json` expose the major `TARSKI` theorems. Later: one key theorem per YELLOW*/WAYBEL* seed, after
 that article’s used prefix is translated.
 
 ## Setup

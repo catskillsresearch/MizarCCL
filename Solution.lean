@@ -11,12 +11,14 @@ import MizarCCL.TARSKI
 /-!
 # Solutions to the Challenge
 
-Importing `MizarCCL.TARSKI` supplies every compared declaration from
-`Challenge.lean`, with the same module-qualified names `TARSKI.*` and
-no `sorry`. The proofs are the Lean 4 translation of Mizar article
-`TARSKI` (Andrzej Trybulec, *Tarski Grothendieck Set Theory*).
+Palomar **Solution** module: proofs for every declaration listed in
+`comparator.json`.
 
-Compared theorems audit to `{propext, Classical.choice, Quot.sound}`.
-Those axioms are listed in `comparator.json`. Choice appears only in
-regularity (`th2`) and Fraenkel (`sch1`).
+Unlike `Challenge.lean`, this file **may** import project libraries.
+It re-exports `MizarCCL.TARSKI`, which supplies the same
+module-qualified names (`TARSKI.*`) with no `sorry`.
+
+Compared theorems audit to `{propext, Classical.choice, Quot.sound}`
+(see `comparator.json` → `axioms`). Choice appears only in regularity
+(`th2`) and Fraenkel (`sch1`).
 -/

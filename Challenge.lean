@@ -10,14 +10,25 @@ Authors: Andrzej Trybulec (Mizar), Lars Warren Ericson (Lean 4).
 /-!
 # Tarski–Grothendieck set theory (Mizar `TARSKI`)
 
-Palomar Challenge: statements of the Lean 4 translation of Andrzej
+Palomar **Challenge** module: statement-only surface for Andrzej
 Trybulec, *Tarski Grothendieck Set Theory* (Mizar `TARSKI`).
-Compared `TARSKI.*` declarations are `sorry`; see `MizarCCL/TARSKI.lean`.
 
-This file is self-contained (Init only). Palomar compiles it with
-plain `lean` and no Lake search path, so it must not import
-`MizarCCL`. Shared carriers (`PreSet`, `TarskiSet`, `∈`) are copied
-verbatim from `MizarCCL/HIDDEN.lean` so Comparator constants match.
+## Palomar import rule (critical)
+
+`Challenge.lean` must **not** import project libraries (`MizarCCL.*`)
+or any dependency outside Lean core / allowlisted Mathlib. Palomar
+compiles this file with plain `lean` and rejects transitive imports that
+leave Init.
+
+This file therefore:
+
+* has **no** `import` lines (Init-only, implicit);
+* inlines the shared carriers (`PreSet`, `TarskiSet`, membership) so
+  `#check` / `#print` constants match `Solution.lean` exactly;
+* uses `sorry` only on compared `TARSKI.*` theorems and constructors.
+
+Proofs live in `Solution.lean`, which **may** import `MizarCCL.TARSKI`.
+See `comparator.json` for the compared declaration list.
 -/
 
 /-!
