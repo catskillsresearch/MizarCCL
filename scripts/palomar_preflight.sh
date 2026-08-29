@@ -156,13 +156,35 @@ step "Compare Challenge/Solution declaration types"
 PALOMAR_QUIET=1 bash scripts/compare_challenge_solution_types.sh
 
 step "Reject proof holes in Solution sources"
-if rg -n --glob '*.lean' \
-    '(^|:=|by)[[:space:]]+sorry([[:space:];]|$)|^[[:space:]]*sorry([[:space:];]|$)' \
-    MizarCCL/HIDDEN.lean MizarCCL/TARSKI.lean Solution.lean; then
-  echo "FAIL: Solution proof sources contain sorry."
-  exit 1
-fi
-echo "OK: Solution proof sources contain no sorry."
+python3 - <<'PY'
+import re
+from pathlib import Path
+
+# Match proof holes, not mentions in comments/docstrings.
+pattern = re.compile(
+    r"(^|:=|by)\s+sorry([\s;]|$)|^\s*sorry([\s;]|$)",
+    re.MULTILINE,
+)
+files = [
+    Path("MizarCCL/HIDDEN.lean"),
+    Path("MizarCCL/TARSKI.lean"),
+    Path("Solution.lean"),
+]
+hits = []
+for path in files:
+    if not path.is_file():
+        raise SystemExit(f"Missing Palomar proof source: {path}")
+    text = path.read_text(encoding="utf-8")
+    for match in pattern.finditer(text):
+        line = text.count("\n", 0, match.start()) + 1
+        hits.append(f"{path}:{line}")
+if hits:
+    print("FAIL: Solution proof sources contain sorry:")
+    for hit in hits:
+        print(f"  {hit}")
+    raise SystemExit(1)
+print("OK: Solution proof sources contain no sorry.")
+PY
 
 step "Check permitted theorem axioms"
 tmp="$(mktemp -d)"
