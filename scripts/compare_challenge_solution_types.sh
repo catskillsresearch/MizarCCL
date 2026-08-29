@@ -7,9 +7,7 @@ mapfile -t NAMES < <(python3 - <<'PY'
 import json
 with open("comparator.json", encoding="utf-8") as f:
     cfg = json.load(f)
-declarations = cfg.get("declarations")
-if declarations is None:
-    declarations = cfg.get("theorem_names", []) + cfg.get("definition_names", [])
+declarations = cfg.get("theorem_names", []) + cfg.get("definition_names", [])
 for name in declarations:
     print(name)
 PY

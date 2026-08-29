@@ -10,53 +10,72 @@ step() {
 step "Validate Comparator configuration"
 python3 - <<'PY'
 import json
+import re
 
 with open("comparator.json", encoding="utf-8") as f:
     cfg = json.load(f)
 
-def pick(cfg, *keys):
-    for key in keys:
-        if key in cfg:
-            return cfg[key]
-    return None
+allowed_keys = {
+    "challenge_module",
+    "solution_module",
+    "theorem_names",
+    "definition_names",
+    "permitted_axioms",
+    "enable_nanoda",
+}
+unknown = sorted(set(cfg) - allowed_keys)
+if unknown:
+    raise SystemExit(f"Unknown comparator.json keys: {', '.join(unknown)}")
 
-challenge = pick(cfg, "challenge", "challenge_module")
-solution = pick(cfg, "solution", "solution_module")
-theorems = pick(cfg, "theorems", "theorem_names")
-definitions = pick(cfg, "definitions", "definition_names")
-axioms = pick(cfg, "axioms", "permitted_axioms")
-declarations = pick(cfg, "declarations")
+for key in ("challenge_module", "solution_module", "theorem_names", "permitted_axioms"):
+    if key not in cfg:
+        raise SystemExit(f"Missing comparator.json key: {key}")
 
-missing = []
-for key, val in [
-    ("challenge", challenge),
-    ("solution", solution),
-    ("theorems", theorems),
-    ("definitions", definitions),
-    ("axioms", axioms),
-]:
-    if val is None:
-        missing.append(key)
-if missing:
-    raise SystemExit(f"Missing comparator keys: {', '.join(missing)}")
+challenge = cfg["challenge_module"]
+solution = cfg["solution_module"]
+theorems = cfg["theorem_names"]
+definitions = cfg.get("definition_names", [])
+axioms = cfg["permitted_axioms"]
 
-if declarations is None:
-    declarations = theorems + definitions
-else:
-    expected = set(theorems + definitions)
-    got = set(declarations)
-    if expected != got:
-        raise SystemExit(
-            "declarations must equal theorems ∪ definitions "
-            f"(missing={sorted(expected - got)}, extra={sorted(got - expected)})"
-        )
+if challenge == solution:
+    raise SystemExit("challenge_module and solution_module must differ")
 
-names = list(declarations)
-duplicates = sorted({name for name in names if names.count(name) > 1})
+module_part = re.compile(r"[A-Za-z_][A-Za-z0-9_']*")
+for key in ("challenge_module", "solution_module"):
+    name = cfg[key]
+    if not isinstance(name, str) or not name:
+        raise SystemExit(f"{key} must be a nonempty string")
+    if not all(module_part.fullmatch(part) for part in name.split(".")):
+        raise SystemExit(f"{key} is not a safe dotted Lean module name: {name!r}")
+
+if not isinstance(theorems, list) or not theorems or not all(
+    isinstance(name, str) and name for name in theorems
+):
+    raise SystemExit("theorem_names must be a nonempty array of nonempty strings")
+
+if definitions is not None:
+    if not isinstance(definitions, list) or not all(
+        isinstance(name, str) and name for name in definitions
+    ):
+        raise SystemExit("definition_names must be an array of nonempty strings")
+
+allowed_axioms = {"propext", "Quot.sound", "Classical.choice"}
+if not isinstance(axioms, list) or not all(isinstance(x, str) for x in axioms):
+    raise SystemExit("permitted_axioms must be an array of strings")
+extra = sorted(set(axioms) - allowed_axioms)
+if extra:
+    raise SystemExit(
+        "permitted_axioms exceeds Palomar allowlist "
+        f"(forbidden: {', '.join(extra)})"
+    )
+
+declarations = theorems + definitions
+duplicates = sorted({name for name in declarations if declarations.count(name) > 1})
 if duplicates:
     raise SystemExit(f"Duplicate Comparator names: {', '.join(duplicates)}")
+
 print(
-    f"OK: challenge={challenge}, solution={solution}, "
+    f"OK: challenge_module={challenge}, solution_module={solution}, "
     f"{len(theorems)} theorems, {len(definitions)} definitions, "
     f"{len(declarations)} declarations."
 )
@@ -195,10 +214,9 @@ import sys
 
 with open("comparator.json", encoding="utf-8") as f:
     cfg = json.load(f)
-solution = cfg.get("solution", cfg.get("solution_module"))
-theorems = cfg.get("theorems", cfg.get("theorem_names"))
+theorems = cfg["theorem_names"]
 with open(sys.argv[1], "w", encoding="utf-8") as out:
-    out.write(f"import {solution}\n")
+    out.write(f"import {cfg['solution_module']}\n")
     for name in theorems:
         out.write(f"#print axioms {name}\n")
 PY
@@ -210,8 +228,8 @@ import sys
 
 with open("comparator.json", encoding="utf-8") as f:
     cfg = json.load(f)
-allowed = set(cfg.get("axioms", cfg.get("permitted_axioms")))
-theorems = cfg.get("theorems", cfg.get("theorem_names"))
+allowed = set(cfg["permitted_axioms"])
+theorems = cfg["theorem_names"]
 text = open(sys.argv[1], encoding="utf-8").read()
 reports = re.findall(
     r"^'(.+)' depends on axioms: \[([^\]]*)\]$", text, re.MULTILINE

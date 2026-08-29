@@ -19,6 +19,6 @@ It re-exports `MizarCCL.TARSKI`, which supplies the same
 module-qualified names (`TARSKI.*`) with no `sorry`.
 
 Compared theorems audit to `{propext, Classical.choice, Quot.sound}`
-(see `comparator.json` → `axioms`). Choice appears only in regularity
+(see `comparator.json` → `permitted_axioms`). Choice appears only in regularity
 (`th2`) and Fraenkel (`sch1`).
 -/
