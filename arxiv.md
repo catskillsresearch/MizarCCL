@@ -774,7 +774,30 @@ The source has no lemmas, local schemes, or canceled slots.
 
 **Complete?** Yes. Full build and Challenge/Solution comparison pass;
 no `sorry`. Representative axiom checks are contained in
-`{propext, Classical.choice, Quot.sound}`. Next unused: `ORDERS_1`.
+`{propext, Classical.choice, Quot.sound}`. `ORDERS_1` follows below.
+
+## 37. Partially ordered sets (`ORDERS_1`)
+
+Choice functions on nonempty-membered families, quasi/partial/linear
+orders, Zorn's lemma, Hausdorff linear extension, and finite-image
+addenda.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def2 | `isChoiceFunctionOf` / `BOOL` | choice function; nonempty-subset family |
+| Def3–Def8 | `isOrderOf` / `isQuasiOrder` / `isPartialOrder` / `isLinearOrder` / `quasiOrders` / `partiallyOrders` / `linearlyOrders` | order attributes on a relation or a set |
+| Def9–Def14 | `hasUpperZornProperty` / `hasLowerZornProperty` / `isMaximalIn` / `isMinimalIn` / `isSuperiorOf` / `isInferiorOf` | Zorn hypotheses and extremal elements |
+| `ORDERS_1:1`–`88` | `th1`–`th88` | all absolute theorem slots, including Kuratowski–Zorn (`th63`) and Hausdorff (`th69`) |
+| Lm1–Lm17 | `lm1`–`lm17` | exported auxiliaries restated as `th70`–`th84` |
+| 2 schemes | `sch_ZornMax` / `sch_ZornMin` | predicate-form Zorn |
+
+Mizar typing predicates become explicit hypotheses (`isRelation`,
+`isFunction`). The choice-function constructor is `theChoiceFunction`.
+
+**Complete?** Yes. Full build and Challenge/Solution comparison pass;
+no `sorry`. Representative axiom checks (`th1`, `th63`, `th69`,
+`sch_ZornMax`, `th85`) are contained in
+`{propext, Classical.choice, Quot.sound}`. Next unused: `SETWISEO`.
 
 ## Lean Code
 
@@ -812,5 +835,6 @@ no `sorry`. Representative axiom checks are contained in
 - [`MizarCCL/FINSET_1.lean`](MizarCCL/FINSET_1.lean) — finite sets
 - [`MizarCCL/FINSUB_1.lean`](MizarCCL/FINSUB_1.lean) — Boolean domains
 - [`MizarCCL/PARTFUN2.lean`](MizarCCL/PARTFUN2.lean) — partial functions between domains
+- [`MizarCCL/ORDERS_1.lean`](MizarCCL/ORDERS_1.lean) — partially ordered sets
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

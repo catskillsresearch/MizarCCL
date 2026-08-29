@@ -36,9 +36,10 @@ is abandoned. Do not submit that kit.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `ORDERS_1` (sequential). `ORDINAL2` / `ORDINAL3`,
-  `FINSET_1` / `FINSUB_1`, `WELLSET1`, and `PARTFUN2` are done, as are
-  `MULTOP_1` / `FUNCT_4` / `FUNCT_3` / `SYSREL` / `FUNCOP_1`.
+  Next unused: `SETWISEO` (sequential). `ORDERS_1`, `ORDINAL2` /
+  `ORDINAL3`, `FINSET_1` / `FINSUB_1`, `WELLSET1`, and `PARTFUN2` are
+  done, as are `MULTOP_1` / `FUNCT_4` / `FUNCT_3` / `SYSREL` /
+  `FUNCOP_1`.
   Palomar Challenge/Solution expose TARSKI.
 
 ## On finishing a work item
@@ -656,3 +657,21 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   Challenge/Solution type comparison, zero-placeholder scan, and
   representative axiom audits pass; axioms remain within
   `{propext, Classical.choice, Quot.sound}`. Next unused: `ORDERS_1`.
+
+### 2026-08-29 — ORDERS_1
+
+- `MizarCCL/ORDERS_1.lean`: choice functions, order attributes,
+  Zorn's lemma (`th63` / `th64`), subset-inclusion maximality
+  (`th65`–`th68`), Hausdorff linear-extension (`th69`), the
+  `ZornMax` / `ZornMin` schemes, and the finite-image / order-type
+  addenda (`th85`–`th88`).
+- Numbered `th1`–`th88` cover all absolute Mizar theorem slots.
+  Definitions `def1`–`def14`, lemmas `lm1`–`lm17`, both schemes, and
+  the registration claims (empty and identity relations, converse
+  and restriction preservation, finite relations, RelIncl order
+  type) are represented. There are no canceled slots.
+- Root `MizarCCL.lean` imports `ORDERS_1`. Full `lake build`,
+  Challenge/Solution type comparison, zero-placeholder scan, and
+  representative axiom audits (`th1`, `th63`, `th69`, `sch_ZornMax`,
+  `th85`) pass; axioms remain within
+  `{propext, Classical.choice, Quot.sound}`. Next unused: `SETWISEO`.
