@@ -353,3 +353,83 @@ theorem th3 (N : TarskiSet.{u}) :
   sorry
 
 end TARSKI
+
+/-! ## Experimental SETWISEO capstone
+
+This additional compared statement is a local editorial experiment. It is
+Mizar `SETWISEO:59`: a map that preserves the empty set and binary unions
+commutes with finite indexed union.
+-/
+
+namespace XBOOLE_0
+
+noncomputable def emptySet : TarskiSet.{u} :=
+  sorry
+
+noncomputable instance : EmptyCollection TarskiSet.{u} where
+  emptyCollection := emptySet
+
+def unionSet (X Y : TarskiSet.{u}) : TarskiSet.{u} :=
+  sorry
+
+noncomputable instance : Union TarskiSet.{u} where
+  union := unionSet
+
+end XBOOLE_0
+
+namespace FUNCT_1
+
+def apply (f x : TarskiSet.{u}) : TarskiSet.{u} :=
+  sorry
+
+end FUNCT_1
+
+namespace FUNCT_2
+
+def isFunctionOf (f X Y : TarskiSet.{u}) : Prop :=
+  sorry
+
+end FUNCT_2
+
+namespace RELAT_1
+
+def comp (f g : TarskiSet.{u}) : TarskiSet.{u} :=
+  sorry
+
+end RELAT_1
+
+namespace FINSUB_1
+
+noncomputable def Fin (X : TarskiSet.{u}) : TarskiSet.{u} :=
+  sorry
+
+end FINSUB_1
+
+namespace SETWISEO
+
+noncomputable def FinUnion {X A B f : TarskiSet.{u}}
+    (_hX : X ≠ (∅ : TarskiSet.{u}))
+    (_hB : B ∈ FINSUB_1.Fin X)
+    (_hf : FUNCT_2.isFunctionOf f X (FINSUB_1.Fin A)) : TarskiSet.{u} :=
+  sorry
+
+end SETWISEO
+
+namespace PalomarExperiment
+
+/-- `SETWISEO:59`: finite-union homomorphisms commute with finite union. -/
+theorem setwiseo_th59 {X Y Z B f g : TarskiSet.{u}}
+    (hX : X ≠ (∅ : TarskiSet.{u}))
+    (hB : B ∈ FINSUB_1.Fin X)
+    (hf : FUNCT_2.isFunctionOf f X (FINSUB_1.Fin Y))
+    (hg : FUNCT_2.isFunctionOf g (FINSUB_1.Fin Y) (FINSUB_1.Fin Z))
+    (hcomp : FUNCT_2.isFunctionOf (RELAT_1.comp f g) X (FINSUB_1.Fin Z))
+    (h0 : FUNCT_1.apply g (∅ : TarskiSet.{u}) = (∅ : TarskiSet.{u}))
+    (hhom : ∀ x y, x ∈ FINSUB_1.Fin Y → y ∈ FINSUB_1.Fin Y →
+      FUNCT_1.apply g (x ∪ y) =
+        FUNCT_1.apply g x ∪ FUNCT_1.apply g y) :
+    FUNCT_1.apply g (SETWISEO.FinUnion hX hB hf) =
+      SETWISEO.FinUnion hX hB hcomp := by
+  sorry
+
+end PalomarExperiment

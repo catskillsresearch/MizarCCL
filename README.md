@@ -26,9 +26,11 @@ That Palomar extract is abandoned: a faithful translation needs the
   article; first: `MizarCCL/TARSKI.lean`)
 
 Palomar: **submission deferred** until all 368 queue articles are
-translated. The current `Challenge.lean` / `Solution.lean` /
-`comparator.json` are an interim **TARSKI scaffold** for local
-Comparator discipline only. The scaffold now compares
+translated. Until then, `Challenge.lean` / `Solution.lean` /
+`comparator.json` are an experimental local Comparator/editorial-audit
+surface and may change freely to test translated results. The current
+experiment compares the TARSKI scaffold plus `SETWISEO:59`, the
+finite-union homomorphism theorem. The TARSKI portion compares
 `TARSKI.ulift_eq_iff` and `TARSKI.ulift_mem_iff`, making its
 cross-universe lift an auditable equality and membership embedding
 rather than an unspecified map. The scaffold remains foundational

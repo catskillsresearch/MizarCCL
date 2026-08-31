@@ -18,8 +18,10 @@ source of truth.
   theorem in each seed file, and not per-article Palomar kits along the
   way.
 - **Until then:** `Challenge.lean` / `Solution.lean` / `comparator.json`
-  are an interim **TARSKI scaffold** for local Comparator discipline.
-  Do not expand them when finishing intermediate queue articles.
+  are an experimental local Comparator/editorial-audit surface. They may
+  be expanded or replaced at any time to test translated results and
+  Palomar relevance feedback; their contents do not determine the final
+  submission capstones.
   Full preflight runs vendored PalomarPolicy + `gpt-5.6-sol` editorial
   audit (`docs/PALOMAR_EDITORIAL_AUDIT.md`); use
   `--mechanical-only` for translation/CI. A green full preflight is still
@@ -40,10 +42,10 @@ After the item builds green, do all of the following before ending the turn:
    have zero `sorry`; run an axiom audit on representative theorems and
    confirm `⊆ {propext, Classical.choice, Quot.sound}` unless a new axiom
    is unavoidable (document it).
-2. For the **TARSKI scaffold only:** Challenge/Solution types match
-   (`bash scripts/compare_challenge_solution_types.sh`). Finishing a queue
-   article does **not** require updating Challenge, Solution, or
-   `comparator.json` unless explicitly in the capstone phase.
+2. If the experimental Palomar files were changed, Challenge/Solution
+   types match (`bash scripts/compare_challenge_solution_types.sh`).
+   Finishing a queue article does **not** require changing them, but they
+   may be changed freely for local Comparator/editorial experiments.
 3. Append a dated checkpoint to `HANDOFF.md` and update status lines.
 4. Update the corresponding section / catalog row in `arxiv.md`.
    In Markdown tables, **escape literal `|` as `\|`**.

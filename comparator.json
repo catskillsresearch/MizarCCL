@@ -15,7 +15,8 @@
     "TARSKI.def6",
     "TARSKI.ulift_eq_iff",
     "TARSKI.ulift_mem_iff",
-    "TARSKI.th3"
+    "TARSKI.th3",
+    "PalomarExperiment.setwiseo_th59"
   ],
   "definition_names": [
     "TARSKI.singleton",

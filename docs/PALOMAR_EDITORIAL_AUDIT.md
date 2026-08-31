@@ -52,13 +52,13 @@ git checkout -- vendor/palomar-policy vendor/PALOMAR_POLICY_PIN
 After a good audit that updated policy, commit the vendored snapshot and pin
 together so GitHub records which editorial contract was in effect.
 
-## Interim TARSKI scaffold expectation
+## Experimental pre-submission surface
 
-The current TARSKI Challenge/Solution kit is an interim development scaffold.
-`formalization.yaml` states it does **not** meet Palomar's research-interest
-floor. A full editorial audit will therefore likely fail on
-**literature_notability** until capstone theorems are selected after the 368-article
-queue is complete. That is expected, not a mechanical defect.
+Before the queue is complete, Challenge/Solution/comparator are an
+experimental surface and may be changed freely to test translated results
+against the Palomar editorial rubric. The current experiment adds
+`SETWISEO:59` to the TARSKI scaffold. A full editorial audit may still fail
+**literature_notability**: that is useful feedback, not a mechanical defect.
 
 Registry submission remains deferred per `HANDOFF.md` until the full closure
 and 58 seed capstones are ready.

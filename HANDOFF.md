@@ -43,12 +43,14 @@ files, and not per-prefix Palomar kits along the way.
 **Until then:**
 
 - Continue sequential 1–1 article translation only.
-- Keep the current TARSKI Challenge/Solution/comparator as a development
-  scaffold; do **not** treat `scripts/palomar_preflight.sh` green as
-  “submit now.”
+- Treat Challenge/Solution/comparator as an experimental local
+  Comparator/editorial-audit surface. They may contain any translated
+  results useful for testing Palomar relevance feedback and may be
+  expanded or replaced before the queue is complete.
+- Do **not** treat `scripts/palomar_preflight.sh` green as “submit now.”
 - Finishing a queue article does **not** require updating Challenge,
-  Solution, or `comparator.json` unless explicitly working on the
-  capstone phase after the queue is complete.
+  Solution, or `comparator.json`; changing them for experiments is
+  nevertheless allowed.
 
 ## Current status (2026-08-31)
 
@@ -69,10 +71,11 @@ files, and not per-prefix Palomar kits along the way.
   `ORDINAL3`, `FINSET_1` / `FINSUB_1`, `WELLSET1`, and `PARTFUN2` are
   done, as are `MULTOP_1` / `FUNCT_4` / `FUNCT_3` / `SYSREL` /
   `FUNCOP_1`.
-  Palomar Challenge/Solution/comparator: interim TARSKI scaffold only,
-  currently 14 compared theorems and 7 definitions, including
-  `ulift_eq_iff` / `ulift_mem_iff` (submission deferred; see Palomar
-  submission policy). Full preflight now includes vendored PalomarPolicy
+  Palomar Challenge/Solution/comparator: experimental local audit surface,
+  currently 15 compared theorems and 7 definitions: the TARSKI scaffold
+  plus `SETWISEO:59` (`PalomarExperiment.setwiseo_th59`). Submission is
+  deferred regardless of experimental contents; see Palomar submission
+  policy. Full preflight includes vendored PalomarPolicy
   sync + `gpt-5.6-sol` editorial audit (`docs/PALOMAR_EDITORIAL_AUDIT.md`);
   expect notability failure on the scaffold until capstones.
 
