@@ -34,10 +34,73 @@ Preflight is green only when synthesis outcome is **`neutral`**.
 bash scripts/palomar_preflight.sh --mechanical-only
 ```
 
-Skips policy sync and LLM audit. GitHub Actions uses this until the 58 capstone
+Skips policy sync and LLM audit. **Use this by default** while translating
+the 368-article queue. GitHub Actions uses this until the 58 capstone
 Comparator kit exists.
 
-## Policy sync and revert
+Interim infrastructure articles (TARSKI, SETWISEO, FUNCT_*, …) are not
+capstone candidates. Tweaking the Comparator narrative as each article
+lands will not clear Palomar's research-interest floor; defer full
+editorial audit until real YELLOW*/WAYBEL* seed capstones are selected.
+
+## Workflow: translation vs capstone packaging
+
+| Phase | Preflight | Comparator kit |
+| --- | --- | --- |
+| Queue translation (now) | `--mechanical-only` only | Optional experiments; do not update per article |
+| Capstone selection (after 368 green) | Full preflight on each seed kit | One headline theorem per `palomar_seeds` entry |
+| Pre-submission dry-run | One full audit before locking the first kit | All packaging checks green |
+
+Full editorial audit cost: about **six sequential LLM calls**
+(two `composer-2.5`, four `gpt-5.6-sol`), roughly **$1–1.50** and several
+minutes wall time per run. Running it on interim scaffolds mostly repeats
+predictable **literature_notability** rejections.
+
+## Capstone kit checklist
+
+Before running full preflight on a submission candidate, confirm:
+
+1. **Research interest** — the selected theorem is a seed headline from
+   YELLOW*/WAYBEL*, not queue infrastructure. Palomar indexes results that
+   could plausibly warrant a research paper or serious note; development
+   size and faithful translation alone do not qualify.
+2. **Definition pinning** — every material symbol in each compared theorem
+   type is either primitive, defined without `sorry` in Challenge.lean, or
+   listed in `comparator.json` → `definition_names` with its defining or
+   semantic law also compared. Opaque `sorry` stubs make the theorem
+   unauditable (`definition_fidelity` failure).
+3. **Metadata sync** — `formalization.yaml` `status.scope`, `limitations`,
+   `alignment`, and `main_results` match `comparator.json` and the actual
+   Challenge/Solution imports.
+4. **Sources** — each distinct compared result group has a `sources:` entry
+   (Mizar article location, authorship, relationship). Do not compare
+   SETWISEO (or any non-TARSKI) theorems while `sources:` lists TARSKI only.
+5. **Mechanical green** — `bash scripts/palomar_preflight.sh --mechanical-only`
+   passes, then `bash scripts/compare_challenge_solution_types.sh`.
+
+Deterministic packaging checks live in `scripts/palomar_editorial_checks.py`
+(scope/comparator sync, sorry-definition pinning, compared-source hints).
+They run during **full** preflight only and fail fast before the LLM audit.
+
+## Lessons from interim experiments (2026-08-31)
+
+Adding `SETWISEO:59` to the TARSKI scaffold confirmed:
+
+- **Notability cannot be narrated away** — the rubric rejected TARSKI +
+  a finite-union homomorphism lemma even when statement alignment was neutral.
+  Better prose on infrastructure theorems does not substitute for seed
+  capstone selection.
+- **Opaque dependencies fail definition fidelity** — `setwiseo_th59` used
+  seven `sorry`'d Challenge names (`FinUnion`, `Fin`, `apply`, …) omitted
+  from `definition_names`. Comparator accepted the theorem type without
+  pinning what “finite union” means.
+- **Metadata drift is mechanical** — `formalization.yaml` still described a
+  14-theorem TARSKI-only kit after `comparator.json` listed 15 entries.
+- **Value of one experiment** — packaging rules are now encoded in
+  `palomar_editorial_checks.py` and this doc. Repeat full audits only when
+  deliberately testing a capstone-shaped kit.
+
+## Experimental pre-submission surface
 
 - Pin file: `vendor/PALOMAR_POLICY_PIN`
 - Sync script: `scripts/palomar_policy_sync.py`
@@ -84,7 +147,7 @@ First run creates `.venv-editorial/` with `cursor-sdk` and `pyyaml`.
 | `vendor/palomar-policy/` | Vendored prompts, rubric, CONTRIBUTING, schemas |
 | `vendor/PALOMAR_POLICY_PIN` | Upstream PalomarPolicy commit SHA |
 | `scripts/palomar_policy_sync.py` | Upstream check + auto-update |
-| `scripts/palomar_editorial_checks.py` | Fast deterministic pre-checks |
+| `scripts/palomar_editorial_checks.py` | Fast deterministic pre-checks (scope sync, definition pinning, sources) |
 | `scripts/palomar_mechanical_report.py` | Local mechanical report JSON |
 | `scripts/palomar_editorial_audit.py` | LLM rubric orchestrator |
 | `scripts/palomar_editorial_audit.sh` | Venv wrapper for cursor-sdk |

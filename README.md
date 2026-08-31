@@ -38,7 +38,9 @@ and is not claimed to meet Palomar's research-interest threshold.
 At submission, Comparator will compare **one capstone theorem per
 seed** (58 YELLOW*/WAYBEL* files in `palomar_seeds` in
 `mizarccl_translation_order.yaml`) — not full seed exports and not
-per-prefix kits along the way.
+per-prefix kits along the way. Packaging rules and workflow:
+`docs/PALOMAR_EDITORIAL_AUDIT.md`. During translation use
+`bash scripts/palomar_preflight.sh --mechanical-only` only.
 
 ## Setup
 

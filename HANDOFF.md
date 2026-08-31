@@ -51,6 +51,18 @@ files, and not per-prefix Palomar kits along the way.
 - Finishing a queue article does **not** require updating Challenge,
   Solution, or `comparator.json`; changing them for experiments is
   nevertheless allowed.
+- **Default preflight during translation:** `--mechanical-only` only.
+  Full editorial audit (~six LLM calls, ~$1–1.50) is for capstone-kit
+  dry-runs, not routine queue progress.
+- **Capstone packaging** (when Comparator files change toward submission):
+  pin every material Challenge dependency in `definition_names`; keep
+  `formalization.yaml` aligned with `comparator.json`; add `sources:`
+  for each compared result group. See `docs/PALOMAR_EDITORIAL_AUDIT.md`
+  → Capstone kit checklist. Deterministic checks:
+  `scripts/palomar_editorial_checks.py`.
+- **Do not expect infrastructure theorems to pass notability.** Queue
+  articles through SETWISEO are library-building on the path to YELLOW*/
+  WAYBEL*; Palomar indexes seed headline results, not cumulative progress.
 
 ## Current status (2026-08-31)
 
@@ -777,3 +789,17 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   `FinSubFuncEx`, `def3`, `th16`, `th26`, `th30`, `def5`, `th53`,
   `th59`) pass; axioms remain within
   `{propext, Classical.choice, Quot.sound}`. Next unused: `FRAENKEL`.
+
+### 2026-08-31 — Palomar packaging lessons captured
+
+- Full editorial dry-run on experimental `SETWISEO:59` kit: synthesis
+  **rejected** (definition fidelity, literature notability, metadata drift).
+  Confirmed interim infrastructure cannot pass notability by narrative tweak;
+  defer full audit until YELLOW*/WAYBEL* seed capstones.
+- Extended `scripts/palomar_editorial_checks.py` with deterministic checks:
+  sorry-definition pinning, `formalization.yaml` scope vs `comparator.json`,
+  compared-theorem source hints (`THEOREM_SOURCE_HINTS`).
+- Documented workflow, capstone checklist, and SETWISEO experiment takeaways
+  in `docs/PALOMAR_EDITORIAL_AUDIT.md`; updated Palomar policy in
+  `HANDOFF.md`, `.cursor/rules/handoff-discipline.mdc`, and `README.md`.
+  Default during translation: `palomar_preflight.sh --mechanical-only`.

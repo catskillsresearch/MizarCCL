@@ -26,6 +26,12 @@ source of truth.
   audit (`docs/PALOMAR_EDITORIAL_AUDIT.md`); use
   `--mechanical-only` for translation/CI. A green full preflight is still
   **not** “submit now” until the queue and capstones are complete.
+- **Capstone packaging** when Comparator files move toward submission:
+  pin material Challenge dependencies in `comparator.json`
+  `definition_names`; sync `formalization.yaml` with compared declarations;
+  record `sources:` per result group (`docs/PALOMAR_EDITORIAL_AUDIT.md`).
+  `scripts/palomar_editorial_checks.py` enforces scope sync, sorry-definition
+  pinning, and compared-source hints before the LLM audit.
 
 See `HANDOFF.md` → Palomar submission policy for full detail.
 
@@ -46,6 +52,9 @@ After the item builds green, do all of the following before ending the turn:
    types match (`bash scripts/compare_challenge_solution_types.sh`).
    Finishing a queue article does **not** require changing them, but they
    may be changed freely for local Comparator/editorial experiments.
+   When moving Comparator toward capstone submission, follow
+   `docs/PALOMAR_EDITORIAL_AUDIT.md` (definition pinning, metadata sync,
+   sources) and run `python3 scripts/palomar_editorial_checks.py`.
 3. Append a dated checkpoint to `HANDOFF.md` and update status lines.
 4. Update the corresponding section / catalog row in `arxiv.md`.
    In Markdown tables, **escape literal `|` as `\|`**.
