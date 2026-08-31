@@ -301,6 +301,18 @@ step "Build local mechanical report"
 mkdir -p .cache/palomar-editorial
 python3 scripts/palomar_mechanical_report.py --out .cache/palomar-editorial/mechanical-report.json
 
+if [[ -z "${CURSOR_API_KEY:-}" ]]; then
+  for TOKENS in ../tokens_ssto.yaml tokens_ssto.yaml; do
+    if [[ -f "$TOKENS" ]]; then
+      CURSOR_API_KEY="$(grep -E '^CURSOR_API_KEY:' "$TOKENS" | head -1 | sed -E 's/^CURSOR_API_KEY:[[:space:]]*//')"
+      if [[ -n "$CURSOR_API_KEY" ]]; then
+        export CURSOR_API_KEY
+        break
+      fi
+    fi
+  done
+fi
+
 step "Palomar editorial audit (LLM, gpt-5.6-sol + composer-2.5)"
 bash scripts/palomar_editorial_audit.sh \
   --policy-dir vendor/palomar-policy \

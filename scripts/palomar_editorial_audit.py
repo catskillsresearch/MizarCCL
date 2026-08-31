@@ -73,23 +73,40 @@ def load_cursor_api_key() -> str:
         value = os.environ.get(name, "").strip()
         if value:
             return value
-    try:
-        import yaml
-    except ImportError:
-        yaml = None  # type: ignore[assignment]
-    if yaml is not None:
-        for path in TOKENS_CANDIDATES:
-            if not path.is_file():
-                continue
-            data = yaml.safe_load(path.read_text(encoding="utf-8"))
-            if isinstance(data, dict):
-                key = (data.get("CURSOR_API_KEY") or data.get("cursor_api_key") or "").strip()
-                if key:
-                    return key
+    for path in TOKENS_CANDIDATES:
+        key = _read_key_from_tokens_file(path)
+        if key:
+            return key
+    tried = ", ".join(str(p) for p in TOKENS_CANDIDATES)
     raise SystemExit(
         "FAIL: set CURSOR_API_KEY or add it to ../tokens_ssto.yaml for editorial audit.\n"
+        f"Looked for token files: {tried}\n"
         f"Primary model: {PRIMARY_MODEL}; economy model: {ECONOMY_MODEL}."
     )
+
+
+def _read_key_from_tokens_file(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    text = path.read_text(encoding="utf-8")
+    for pattern in (
+        r"(?m)^CURSOR_API_KEY:\s*(\S+)",
+        r"(?m)^cursor_api_key:\s*(\S+)",
+    ):
+        match = re.search(pattern, text)
+        if match:
+            return match.group(1).strip().strip("'\"")
+    try:
+        import yaml
+
+        data = yaml.safe_load(text)
+        if isinstance(data, dict):
+            key = (data.get("CURSOR_API_KEY") or data.get("cursor_api_key") or "").strip()
+            if key:
+                return key
+    except Exception:
+        pass
+    return None
 
 
 def model_for_step(step_id: str) -> str:
