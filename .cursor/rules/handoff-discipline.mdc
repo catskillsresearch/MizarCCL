@@ -20,7 +20,10 @@ source of truth.
 - **Until then:** `Challenge.lean` / `Solution.lean` / `comparator.json`
   are an interim **TARSKI scaffold** for local Comparator discipline.
   Do not expand them when finishing intermediate queue articles.
-  A green `scripts/palomar_preflight.sh` is **not** “submit now.”
+  Full preflight runs vendored PalomarPolicy + `gpt-5.6-sol` editorial
+  audit (`docs/PALOMAR_EDITORIAL_AUDIT.md`); use
+  `--mechanical-only` for translation/CI. A green full preflight is still
+  **not** “submit now” until the queue and capstones are complete.
 
 See `HANDOFF.md` → Palomar submission policy for full detail.
 

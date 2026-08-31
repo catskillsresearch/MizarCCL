@@ -21,6 +21,9 @@ is abandoned. Do not submit that kit.
 5. `Challenge.lean` / `Solution.lean` / `comparator.json` are an interim
    TARSKI scaffold for local Comparator discipline only. The old
    YELLOW_17 extract is gone; do not restore it.
+6. Palomar editorial audit: `docs/PALOMAR_EDITORIAL_AUDIT.md`.
+   Vendored policy under `vendor/palomar-policy/`; full preflight uses
+   `gpt-5.6-sol`. CI runs `--mechanical-only` until capstones exist.
 
 ## Palomar submission policy
 
@@ -69,7 +72,9 @@ files, and not per-prefix Palomar kits along the way.
   Palomar Challenge/Solution/comparator: interim TARSKI scaffold only,
   currently 14 compared theorems and 7 definitions, including
   `ulift_eq_iff` / `ulift_mem_iff` (submission deferred; see Palomar
-  submission policy).
+  submission policy). Full preflight now includes vendored PalomarPolicy
+  sync + `gpt-5.6-sol` editorial audit (`docs/PALOMAR_EDITORIAL_AUDIT.md`);
+  expect notability failure on the scaffold until capstones.
 
 ## On finishing a work item
 
@@ -733,3 +738,21 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
 - Full build, Challenge/Solution type comparison, zero-placeholder
   scan, and permitted-axiom checks pass. Both lift laws audit to
   `{propext, Quot.sound}`.
+
+### 2026-08-31 — Palomar editorial audit in preflight
+
+- Vendored [PalomarPolicy](https://github.com/PalomarRegistry/PalomarPolicy)
+  under `vendor/palomar-policy/` with pin `vendor/PALOMAR_POLICY_PIN`.
+  `scripts/palomar_policy_sync.py` checks upstream and auto-updates before
+  full preflight (revert via `git checkout -- vendor/palomar-policy
+  vendor/PALOMAR_POLICY_PIN`).
+- Added `scripts/palomar_editorial_checks.py`,
+  `scripts/palomar_mechanical_report.py`, and
+  `scripts/palomar_editorial_audit.py` via **Cursor SDK**
+  (`CURSOR_API_KEY` or `../tokens_ssto.yaml`). Substantive passes use
+  `gpt-5.6-sol`; classification/metadata use `composer-2.5`.
+- `scripts/palomar_preflight.sh`: full run = mechanical + editorial LLM
+  audit; `--mechanical-only` for CI/translation; `--no-policy-sync` for
+  offline reproducibility. Docs: `docs/PALOMAR_EDITORIAL_AUDIT.md`.
+- CI runs mechanical preflight only. Interim TARSKI scaffold still expected
+  to fail editorial notability until 58 capstones are selected.

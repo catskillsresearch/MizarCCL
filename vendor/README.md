@@ -32,3 +32,11 @@ git -C vendor/MML checkout "$(cat vendor/MML_PIN)"
 ```
 
 Do not add `vendor/MML` as a submodule.
+
+## PalomarPolicy snapshot
+
+Editorial audit prompts are vendored under `vendor/palomar-policy/` with pin
+`vendor/PALOMAR_POLICY_PIN` (from
+[PalomarRegistry/PalomarPolicy](https://github.com/PalomarRegistry/PalomarPolicy)).
+`scripts/palomar_policy_sync.py` refreshes from upstream before full preflight.
+See `docs/PALOMAR_EDITORIAL_AUDIT.md`.

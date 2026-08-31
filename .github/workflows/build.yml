@@ -24,3 +24,6 @@ jobs:
 
       - name: Build project
         run: lake build
+
+      - name: Mechanical Palomar preflight
+        run: bash scripts/palomar_preflight.sh --mechanical-only

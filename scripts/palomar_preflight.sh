@@ -1,8 +1,33 @@
 #!/usr/bin/env bash
-# Mechanical Comparator checks for the interim TARSKI scaffold.
-# A green result is not authorization to submit: see HANDOFF.md.
+# Palomar preflight: mechanical Comparator checks + editorial LLM audit.
+# Use --mechanical-only for CI / translation work without API calls.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+
+MECHANICAL_ONLY=0
+NO_POLICY_SYNC=0
+for arg in "$@"; do
+  case "$arg" in
+    --mechanical-only) MECHANICAL_ONLY=1 ;;
+    --no-policy-sync) NO_POLICY_SYNC=1 ;;
+    -h|--help)
+      cat <<'EOF'
+Usage: scripts/palomar_preflight.sh [--mechanical-only] [--no-policy-sync]
+
+  --mechanical-only   Skip PalomarPolicy sync and LLM editorial audit.
+  --no-policy-sync    Audit against committed vendor/palomar-policy only.
+
+Full preflight requires CURSOR_API_KEY (or ../tokens_ssto.yaml) and runs
+Cursor editorial review: gpt-5.6-sol for substantive passes, composer-2.5 for lighter checks.
+EOF
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $arg" >&2
+      exit 2
+      ;;
+  esac
+done
 
 step() {
   printf '\n== %s ==\n' "$1"
@@ -170,7 +195,7 @@ print(
 PY
 
 step "Build Lean project"
-lake build
+lake build 2>&1 | grep -vE 'LEAN_PATH|trace:' | tail -20
 
 step "Compare Challenge/Solution declaration types"
 PALOMAR_QUIET=1 bash scripts/compare_challenge_solution_types.sh
@@ -180,7 +205,6 @@ python3 - <<'PY'
 import re
 from pathlib import Path
 
-# Match proof holes, not mentions in comments/docstrings.
 pattern = re.compile(
     r"(^|:=|by)\s+sorry([\s;]|$)|^\s*sorry([\s;]|$)",
     re.MULTILINE,
@@ -254,5 +278,36 @@ PY
 
 step "Check patch formatting"
 git diff --check
-echo "OK: TARSKI scaffold preflight passed."
-echo "NOTE: Palomar submission remains deferred until all 368 articles and 58 seed capstones are complete."
+
+if [[ "$MECHANICAL_ONLY" -eq 1 ]]; then
+  echo ""
+  echo "OK: mechanical preflight passed (--mechanical-only; editorial audit skipped)."
+  echo "NOTE: full Palomar preflight also runs vendored-policy sync and Cursor editorial audit (gpt-5.6-sol + composer-2.5)."
+  exit 0
+fi
+
+SYNC_ARGS=(--root vendor/palomar-policy --pin vendor/PALOMAR_POLICY_PIN)
+if [[ "$NO_POLICY_SYNC" -eq 1 ]]; then
+  SYNC_ARGS+=(--no-sync)
+fi
+
+step "Sync PalomarPolicy to upstream latest"
+python3 scripts/palomar_policy_sync.py "${SYNC_ARGS[@]}"
+
+step "Palomar editorial pre-checks"
+python3 scripts/palomar_editorial_checks.py
+
+step "Build local mechanical report"
+mkdir -p .cache/palomar-editorial
+python3 scripts/palomar_mechanical_report.py --out .cache/palomar-editorial/mechanical-report.json
+
+step "Palomar editorial audit (LLM, gpt-5.6-sol + composer-2.5)"
+bash scripts/palomar_editorial_audit.sh \
+  --policy-dir vendor/palomar-policy \
+  --policy-pin "$(tr -d '[:space:]' < vendor/PALOMAR_POLICY_PIN)" \
+  --mechanical-report .cache/palomar-editorial/mechanical-report.json \
+  --out .cache/palomar-editorial/review-draft.json
+
+echo ""
+echo "OK: full Palomar preflight passed (mechanical + editorial neutral)."
+echo "NOTE: registry submission remains deferred until all 368 articles and 58 seed capstones are complete."

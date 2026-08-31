@@ -63,6 +63,25 @@ Rebuild the used-module queue:
 python3 scripts/mizarccl_translation_order.py
 ```
 
+## Palomar preflight
+
+Mechanical Comparator checks plus **Cursor SDK editorial audit** using
+vendored [PalomarPolicy](https://github.com/PalomarRegistry/PalomarPolicy)
+prompts. See `docs/PALOMAR_EDITORIAL_AUDIT.md`.
+
+```bash
+# CI / translation (no API key):
+bash scripts/palomar_preflight.sh --mechanical-only
+
+# Full gate (CURSOR_API_KEY or ../tokens_ssto.yaml):
+bash scripts/palomar_preflight.sh
+```
+
+Substantive editorial passes use **`gpt-5.6-sol`**; classification/metadata use
+**`composer-2.5`**. Policy sync auto-updates `vendor/palomar-policy/` from upstream.
+The interim TARSKI scaffold is expected to fail editorial notability until
+capstone theorems are selected.
+
 ## License
 
 The Lean package (`MizarCCL/`, Challenge, Solution) is **Apache-2.0**,
