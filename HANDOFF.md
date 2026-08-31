@@ -65,7 +65,7 @@ files, and not per-prefix Palomar kits along the way.
   `MizarCCL` (no Mathlib). Root `MizarCCL.lean` imports translated
   articles. First article: `TARSKI` (`MizarCCL/TARSKI.lean`), with
   `HIDDEN` defining `TarskiSet` (Aczel quotient; no `axiom`/`sorry`).
-  Next unused: `SETWISEO` (sequential). `ORDERS_1`, `ORDINAL2` /
+  Next unused: `FRAENKEL` (sequential). `SETWISEO`, `ORDERS_1`, `ORDINAL2` /
   `ORDINAL3`, `FINSET_1` / `FINSUB_1`, `WELLSET1`, and `PARTFUN2` are
   done, as are `MULTOP_1` / `FUNCT_4` / `FUNCT_3` / `SYSREL` /
   `FUNCOP_1`.
@@ -756,3 +756,21 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   offline reproducibility. Docs: `docs/PALOMAR_EDITORIAL_AUDIT.md`.
 - CI runs mechanical preflight only. Interim TARSKI scaffold still expected
   to fail editorial notability until 58 capstones are selected.
+
+### 2026-08-31 — SETWISEO
+
+- `MizarCCL/SETWISEO.lean`: finite-subset function construction and
+  induction, commutative-associative finite folds, image invariance,
+  distributivity and homomorphism laws, the finite-union semilattice,
+  and the singleton map.
+- Numbered `th1`, `th2`, and `th6`–`th59` cover all 56 noncanceled
+  absolute Mizar theorem slots; slots 3–5 are canceled. Definitions
+  `def1`–`def6`, lemmas `lm1`–`lm2`, `FinSubFuncEx`, and all three
+  `FinSubInd` schemes are represented, including the exact `Def3` /
+  `Th16` auxiliary-function characterizations.
+- Root `MizarCCL.lean` imports `SETWISEO`. Full `lake build`,
+  mechanical Palomar preflight, Challenge/Solution type comparison,
+  zero-placeholder scan, and representative axiom audits (`th1`,
+  `FinSubFuncEx`, `def3`, `th16`, `th26`, `th30`, `def5`, `th53`,
+  `th59`) pass; axioms remain within
+  `{propext, Classical.choice, Quot.sound}`. Next unused: `FRAENKEL`.

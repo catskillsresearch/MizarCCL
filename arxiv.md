@@ -822,7 +822,34 @@ Mizar typing predicates become explicit hypotheses (`isRelation`,
 **Complete?** Yes. Full build and Challenge/Solution comparison pass;
 no `sorry`. Representative axiom checks (`th1`, `th63`, `th69`,
 `sch_ZornMax`, `th85`) are contained in
-`{propext, Classical.choice, Quot.sound}`. Next unused: `SETWISEO`.
+`{propext, Classical.choice, Quot.sound}`. `SETWISEO` follows below.
+
+## 38. Semilattice operations on finite subsets (`SETWISEO`)
+
+Finite-subset induction and folds of commutative associative operations,
+including image invariance, distributivity and homomorphism laws, the
+finite-union semilattice, and the singleton map.
+
+| Mizar | Lean | Notes |
+| --- | --- | --- |
+| Def1–Def2 | `emptyFin` / `isHavingAUnity` / `unity` | typed empty finite subset and an operation with a unity |
+| Def3 | `setwiseFold` / `FoldWitness` / `def3` | finite setwise fold and the exact auxiliary-function characterization |
+| Def4–Def5 | `FinUnionOp` / `FinUnion` / `def4` / `def5` | union operation on `Fin A`; finite union as its fold specialization |
+| Def6 | `singletonMap` / `def6` | function sending each element to its singleton |
+| `SETWISEO:1`–`59` | `th1`, `th2`, `th6`–`th59` | all 56 noncanceled absolute theorem slots; slots 3–5 are canceled |
+| Lm1–Lm2 | `lm1` / `lm2` | finite images and codomain containment |
+| 4 schemes | `FinSubFuncEx` / `FinSubInd1` / `FinSubInd2` / `FinSubInd3` | finite-subset function construction and three induction forms |
+| registrations / redefinitions | named finite-subset closure and typing theorems | empty, singleton, pair, triple, union, difference, and image claims |
+
+The fold is implemented from a duplicate-free list presentation of a
+finite `TarskiSet`; commutativity, associativity, and idempotence prove
+independence from enumeration and repeated values. `def3` and `th16`
+recover Mizar's function-on-`Fin X` witness formulations.
+
+**Complete?** Yes. Full build and mechanical preflight pass; no `sorry`.
+Representative axiom checks (`th1`, `FinSubFuncEx`, `def3`, `th16`,
+`th26`, `th30`, `def5`, `th53`, `th59`) are contained in
+`{propext, Classical.choice, Quot.sound}`. Next unused: `FRAENKEL`.
 
 ## Lean Code
 
@@ -861,5 +888,6 @@ no `sorry`. Representative axiom checks (`th1`, `th63`, `th69`,
 - [`MizarCCL/FINSUB_1.lean`](MizarCCL/FINSUB_1.lean) — Boolean domains
 - [`MizarCCL/PARTFUN2.lean`](MizarCCL/PARTFUN2.lean) — partial functions between domains
 - [`MizarCCL/ORDERS_1.lean`](MizarCCL/ORDERS_1.lean) — partially ordered sets
+- [`MizarCCL/SETWISEO.lean`](MizarCCL/SETWISEO.lean) — semilattice operations on finite subsets
 - [`Challenge.lean`](Challenge.lean) — Palomar statements
 - [`Solution.lean`](Solution.lean) — re-export of the proofs

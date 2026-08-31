@@ -33,6 +33,7 @@ import MizarCCL.FINSET_1
 import MizarCCL.FINSUB_1
 import MizarCCL.PARTFUN2
 import MizarCCL.ORDERS_1
+import MizarCCL.SETWISEO
 
 /-
 Copyright (c) 1990-2012 Association of Mizar Users
