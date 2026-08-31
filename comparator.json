@@ -13,6 +13,8 @@
     "TARSKI.sch1",
     "TARSKI.def5",
     "TARSKI.def6",
+    "TARSKI.ulift_eq_iff",
+    "TARSKI.ulift_mem_iff",
     "TARSKI.th3"
   ],
   "definition_names": [

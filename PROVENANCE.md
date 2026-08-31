@@ -30,5 +30,13 @@ placed at `vendor/MML` (gitignored) to regenerate the queue.
 
 `MizarCCL/HIDDEN.lean` defines `TarskiSet` (Aczel quotient).
 `MizarCCL/TARSKI.lean` is the Lean translation of `tarski.miz`.
-`Challenge.lean` / `Solution.lean` are the Palomar surface for that
-article. No Mathlib.
+`Challenge.lean` / `Solution.lean` are an interim Palomar/Comparator
+scaffold for that article. The compared laws `TARSKI.ulift_eq_iff`
+and `TARSKI.ulift_mem_iff` characterize the universe lift as an
+equality-reflecting, membership-preserving embedding. No Mathlib.
+
+Registry submission is deferred until the entire 368-article
+YELLOW*/WAYBEL* closure is translated. The eventual submission will
+select one substantive capstone theorem from each of the 58 seed
+articles; the foundational TARSKI scaffold is not presented as the
+research-interest result family.

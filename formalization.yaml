@@ -2,13 +2,17 @@
 version: "v0.4"
 
 project:
-  name: "Tarski–Grothendieck set theory (Mizar TARSKI)"
+  name: "MizarCCL: the Mizar YELLOW/WAYBEL dependency closure in Lean"
   description: >-
-    Lean 4 translation of Andrzej Trybulec, Tarski Grothendieck Set
-    Theory (Mizar article TARSKI): extensionality, singleton and
-    unordered pair, inclusion, union, regularity, the Fraenkel scheme,
-    the Kuratowski pair, equipotence, and a universe-polymorphic form
-    of the Tarski–Grothendieck axiom. Account: view.pdf.
+    Ongoing 1–1 Lean 4 translation of the 368-article Mizar dependency
+    closure of the YELLOW*/WAYBEL* continuous-lattice family. The
+    current Comparator scaffold covers the foundational TARSKI article:
+    extensionality, set constructors, regularity, Fraenkel, equipotence,
+    and an explicitly weakened universe-polymorphic TG fragment whose
+    lift is characterized by compared equality and membership laws.
+    Registry submission is deferred until the full closure is complete,
+    when one capstone theorem per seed will be selected. Account:
+    view.pdf.
   authors:
     - "Lars Warren Ericson"
   license: "Apache-2.0"
@@ -24,12 +28,23 @@ classification:
 
 status:
   scope: >-
-    Complete for the compared family. Every Mizar-labelled theorem,
-    definition, and scheme in TARSKI is restated in Challenge.lean
-    and listed in comparator.json. The headline results are th1
-    (extensionality), th2 (regularity), sch1 (Fraenkel), and th3
-    (Tarski–Grothendieck, universe-polymorphic). Nothing in the
-    compared statements is imported from a prior Palomar entry.
+    Substantive development of the full YELLOW*/WAYBEL* used-module
+    closure (368 articles). Every Mizar-labelled item in each translated
+    article is proved in `MizarCCL/`; Palomar registry validation is
+    deferred until that queue is complete. The current Challenge.lean,
+    Solution.lean, and comparator.json cover TARSKI only as an interim
+    development scaffold. At submission, Comparator will compare one
+    capstone theorem per seed (58 palomar_seeds entries), to be chosen
+    after the queue is green. The TARSKI scaffold headline results are
+    th1 (extensionality), th2 (regularity), sch1 (Fraenkel),
+    ulift_eq_iff / ulift_mem_iff (an auditable membership embedding),
+    and th3 (the explicitly weakened, universe-polymorphic
+    Tarski–Grothendieck fragment). This foundational scaffold is not
+    presented as meeting Palomar's research-interest threshold; that
+    role is reserved for the eventual 58 capstones. `main_results`
+    below is a curated six-result subset of the 14 mechanically
+    compared scaffold theorems. Nothing in the compared statements is
+    imported from a prior Palomar entry.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Quot.sound", "Classical.choice"]
@@ -52,6 +67,18 @@ status:
       axioms: ["propext", "Quot.sound", "Classical.choice"]
       comparator_config: "comparator.json"
       literature_dependencies: []
+    - declaration: "TARSKI.ulift_eq_iff"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "TARSKI.ulift_mem_iff"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
     - declaration: "TARSKI.th3"
       file: "Solution.lean"
       sorry_count: 0
@@ -66,9 +93,12 @@ fidelity:
     equivalence), not as a synonym for Type and not as an axiom.
     Membership is defined. TARSKI:3 is universe-polymorphic: the
     collection of all TarskiSet.{u} is an element of TarskiSet.{u+1},
-    contains every lifted u-set, and is closed under subsets. Mizar
-    clauses (iii) (a power-set witness) and (iv) (inaccessibility of
-    a single sort) are not theorems of Type u and are not claimed.
+    contains every lifted u-set, and is closed under subsets. The
+    compared laws `ulift_eq_iff` and `ulift_mem_iff` establish that the
+    recursive lift reflects equality and preserves and reflects
+    membership; it cannot be a constant or otherwise unspecified map.
+    Mizar clauses (iii) (a power-set witness) and (iv) (inaccessibility
+    of a single sort) are not theorems of Type u and are not claimed.
 
 sources:
   - title: "Tarski Grothendieck Set Theory"
@@ -145,14 +175,28 @@ review:
     The author directed and reviewed the development as it was
     produced. No external or independent review has been performed.
 
-known_gaps: []
+known_gaps:
+  - >-
+    The 368-article translation is incomplete, so the 58 seed capstones
+    have not yet been selected and this scaffold is not a registry
+    submission candidate.
+  - >-
+    The Lean form of TARSKI:3 omits Mizar's single-sort power-set
+    witness and inaccessibility clauses (iii)–(iv); only the explicitly
+    characterized universe-polymorphic fragment is claimed.
 
 limitations:
   - >-
     TARSKI:3 is formalized over Lean universes. Clauses (i)–(ii) and
-    “every u-set is an element of M” are theorems. A power-set
-    witness (iii) and the equipotence form of (iv) need Type u to
-    be inaccessible, which Lean does not assume.
+    “every u-set is an element of M” are theorems, with the lift
+    constrained by compared equality and membership laws. A power-set
+    witness (iii) and the equipotence form of (iv) need Type u to be
+    inaccessible, which Lean does not assume.
+  - >-
+    The current TARSKI family is a foundational development scaffold,
+    not the eventual research-interest claim. Registry submission is
+    deferred until the 368-article closure is complete and one
+    substantive capstone has been selected from each of the 58 seeds.
   - >-
     Compared declarations may depend on propext, Quot.sound, and
     Classical.choice. Regularity and Fraenkel use choice. There is
@@ -208,6 +252,14 @@ alignment:
       status: proved
     - source: "Mizar TARSKI:def 6 — equipotence"
       lean: "def6"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
+      status: proved
+    - source: "Lean universe lift — equality embedding"
+      lean: "ulift_eq_iff"
+      module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
+      status: proved
+    - source: "Lean universe lift — membership preservation and reflection"
+      lean: "ulift_mem_iff"
       module: "Challenge (statement), Solution / MizarCCL.TARSKI (proof)"
       status: proved
     - source: "Mizar TARSKI:3 — Tarski–Grothendieck (i)–(ii), universe-polymorphic"

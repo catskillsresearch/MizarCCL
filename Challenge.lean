@@ -13,6 +13,13 @@ Authors: Andrzej Trybulec (Mizar), Lars Warren Ericson (Lean 4).
 Palomar **Challenge** module: statement-only surface for Andrzej
 Trybulec, *Tarski Grothendieck Set Theory* (Mizar `TARSKI`).
 
+This is an **interim development scaffold**, not the eventual Palomar
+research-interest submission. Submission is deferred until all 368
+YELLOW*/WAYBEL* dependency articles are translated; the final surface
+will select one substantive capstone from each of the 58 seed files.
+The present foundational surface is retained to exercise Comparator
+discipline and incorporates the audit laws requested during review.
+
 ## Palomar import rule (critical)
 
 `Challenge.lean` must **not** import project libraries (`MizarCCL.*`)
@@ -249,7 +256,25 @@ def pair (x y : TarskiSet.{u}) : TarskiSet.{u} :=
 def are_equipotent (X Y : TarskiSet.{u}) : Prop :=
   sorry
 
+/-- Structural universe lift for Aczel sets. On a representative
+`PreSet.mk α A`, the proof-side definition recursively reindexes each node
+by `ULift α`, then descends through the extensional quotient. The compared
+laws below expose its equality and membership semantics independently of
+that implementation. -/
 def ulift (x : TarskiSet.{u}) : TarskiSet.{u + 1} :=
+  sorry
+
+/-! ## Auditable universe lifting -/
+
+/-- `ulift` preserves and reflects equality, so it is an embedding rather
+than an arbitrary map between universe levels. -/
+theorem ulift_eq_iff (X Y : TarskiSet.{u}) :
+    ulift X = ulift Y ↔ X = Y := by
+  sorry
+
+/-- `ulift` preserves and reflects membership. -/
+theorem ulift_mem_iff (X Y : TarskiSet.{u}) :
+    ulift X ∈ ulift Y ↔ X ∈ Y := by
   sorry
 
 /-! ## TARSKI:1 — Extensionality -/
@@ -312,7 +337,13 @@ theorem def6 (X Y : TarskiSet.{u}) :
         ∀ x y z u, pair x y ∈ Z → pair z u ∈ Z → (x = z ↔ y = u) := by
   sorry
 
-/-! ## TARSKI:3 — Tarski–Grothendieck universes -/
+/-! ## TARSKI:3 — weakened universe-polymorphic fragment
+
+This does not claim Mizar's power-set witness or inaccessibility clauses.
+Together with `ulift_eq_iff` and `ulift_mem_iff`, it says that one
+higher-universe set contains faithful lifted copies of all lower-universe
+sets and is downward closed under subsets.
+-/
 
 theorem th3 (N : TarskiSet.{u}) :
     ∃ M : TarskiSet.{u + 1},

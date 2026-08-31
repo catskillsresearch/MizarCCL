@@ -25,10 +25,18 @@ That Palomar extract is abandoned: a faithful translation needs the
 - Lean package: `MizarCCL` (`MizarCCL.lean` imports every translated
   article; first: `MizarCCL/TARSKI.lean`)
 
-Palomar surface for the first article: `Challenge.lean` (Init-only,
-no `MizarCCL` imports) / `Solution.lean` (imports `MizarCCL.TARSKI`) /
-`comparator.json` expose the major `TARSKI` theorems. Later: one key theorem per YELLOW*/WAYBEL* seed, after
-that article’s used prefix is translated.
+Palomar: **submission deferred** until all 368 queue articles are
+translated. The current `Challenge.lean` / `Solution.lean` /
+`comparator.json` are an interim **TARSKI scaffold** for local
+Comparator discipline only. The scaffold now compares
+`TARSKI.ulift_eq_iff` and `TARSKI.ulift_mem_iff`, making its
+cross-universe lift an auditable equality and membership embedding
+rather than an unspecified map. The scaffold remains foundational
+and is not claimed to meet Palomar's research-interest threshold.
+At submission, Comparator will compare **one capstone theorem per
+seed** (58 YELLOW*/WAYBEL* files in `palomar_seeds` in
+`mizarccl_translation_order.yaml`) — not full seed exports and not
+per-prefix kits along the way.
 
 ## Setup
 

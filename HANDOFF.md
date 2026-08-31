@@ -16,12 +16,38 @@ is abandoned. Do not submit that kit.
    gitignored `vendor/MML`.
 3. Read `vendor/README.md` and `mizarccl_translation_order.yaml`.
 4. Translate the next unused article in `translation_order` 1–1
-   (not Mathlib-paraphrase). Palomar headlines come later: one key
-   theorem per YELLOW*/WAYBEL* seed.
-5. Palomar surface is now TARSKI (`Challenge.lean` / `Solution.lean`).
-   The old YELLOW_17 extract is gone; do not restore it.
+   (not Mathlib-paraphrase). See **Palomar submission policy** below;
+   do not expand Challenge/Solution per article during translation.
+5. `Challenge.lean` / `Solution.lean` / `comparator.json` are an interim
+   TARSKI scaffold for local Comparator discipline only. The old
+   YELLOW_17 extract is gone; do not restore it.
 
-## Current status (2026-08-27)
+## Palomar submission policy
+
+**Defer Palomar registry validation/submission** until the full
+used-module queue is translated:
+
+- All **368** articles in `mizarccl_translation_order.yaml` have 1–1
+  Lean modules under `MizarCCL/`, are imported from `MizarCCL.lean`,
+  and `lake build` is green with zero `sorry` in `MizarCCL/`.
+
+**At submission time**, Comparator compares **one capstone theorem per
+seed** — the biggest or most representative headline from each of the
+**58** YELLOW*/WAYBEL* seed files listed as `palomar_seeds` in the queue
+YAML (`yellow_*.miz` / `waybel_*.miz`). Not every theorem in those
+files, and not per-prefix Palomar kits along the way.
+
+**Until then:**
+
+- Continue sequential 1–1 article translation only.
+- Keep the current TARSKI Challenge/Solution/comparator as a development
+  scaffold; do **not** treat `scripts/palomar_preflight.sh` green as
+  “submit now.”
+- Finishing a queue article does **not** require updating Challenge,
+  Solution, or `comparator.json` unless explicitly working on the
+  capstone phase after the queue is complete.
+
+## Current status (2026-08-31)
 
 - Repo renamed: `catskillsresearch/yellow17` →
   `catskillsresearch/MizarCCL` (via a brief `LeanMizar` name).
@@ -40,7 +66,10 @@ is abandoned. Do not submit that kit.
   `ORDINAL3`, `FINSET_1` / `FINSUB_1`, `WELLSET1`, and `PARTFUN2` are
   done, as are `MULTOP_1` / `FUNCT_4` / `FUNCT_3` / `SYSREL` /
   `FUNCOP_1`.
-  Palomar Challenge/Solution expose TARSKI.
+  Palomar Challenge/Solution/comparator: interim TARSKI scaffold only,
+  currently 14 compared theorems and 7 definitions, including
+  `ulift_eq_iff` / `ulift_mem_iff` (submission deferred; see Palomar
+  submission policy).
 
 ## On finishing a work item
 
@@ -675,3 +704,32 @@ Tychonoff may use `Classical.choice`; call it out in the proof note.
   representative axiom audits (`th1`, `th63`, `th69`, `sch_ZornMax`,
   `th85`) pass; axioms remain within
   `{propext, Classical.choice, Quot.sound}`. Next unused: `SETWISEO`.
+
+### 2026-08-31 — Palomar deferral and capstone policy
+
+- Decision: **no Palomar registry submission** until all 368 queue
+  articles are translated and green in `MizarCCL/`.
+- Submission scope: **one capstone theorem per seed** (58 YELLOW*/
+  WAYBEL* files in `palomar_seeds`), not full seed exports or
+  intermediate per-article Palomar kits.
+- Documented in Resume Protocol, Palomar submission policy (above),
+  `.cursor/rules/handoff-discipline.mdc`, queue YAML header, README,
+  and `formalization.yaml` `status.scope`.
+- TARSKI Challenge/Solution/comparator remains an interim development
+  scaffold only.
+
+### 2026-08-31 — TARSKI lift audit strengthened after Palomar review
+
+- Palomar's first AI verification accepted the mechanics but correctly
+  noted that the compared type of `ulift` alone did not rule out a
+  constant or unspecified map.
+- Added sorry-free `TARSKI.ulift_eq_iff` and
+  `TARSKI.ulift_mem_iff`: lifting reflects equality and preserves and
+  reflects membership. Both are now in the interim Comparator surface.
+- Narrowed all Palomar-facing prose: `th3` is explicitly the weakened
+  universe-polymorphic (i)–(ii) fragment, not Mizar's inaccessible
+  single-sort clauses (iii)–(iv), and the TARSKI scaffold is not
+  claimed to clear the research-interest threshold.
+- Full build, Challenge/Solution type comparison, zero-placeholder
+  scan, and permitted-axiom checks pass. Both lift laws audit to
+  `{propext, Quot.sound}`.

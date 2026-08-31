@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Reproduce the repository-side mechanical checks needed before Palomar submission.
+# Mechanical Comparator checks for the interim TARSKI scaffold.
+# A green result is not authorization to submit: see HANDOFF.md.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -253,4 +254,5 @@ PY
 
 step "Check patch formatting"
 git diff --check
-echo "OK: Palomar preflight passed."
+echo "OK: TARSKI scaffold preflight passed."
+echo "NOTE: Palomar submission remains deferred until all 368 articles and 58 seed capstones are complete."

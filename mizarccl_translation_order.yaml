@@ -14,7 +14,8 @@
 # TARSKI is the axiomatic root and is not listed in mml.lar; it is
 # placed first. Remaining articles follow the pin’s mml.lar order.
 #
-# Palomar headlines: one key theorem per YELLOW*/WAYBEL* article.
+# Palomar submission: deferred until all used_count articles are translated.
+# Headlines at submission: one capstone theorem per palomar_seeds entry (58).
 # Translate every article in translation_order, not only the seeds.
 #
 source: vendor/mml

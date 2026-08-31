@@ -25,9 +25,10 @@ MODEL_CARDS: tuple[ModelCard, ...] = (
         cite_key="Cur26",
         tool_note=(
             "agent-assisted editing in the Cursor IDE: Lean 4 translation of "
-            "Mizar YELLOW_17, Palomar Challenge/Solution packaging, and this "
+            "the MizarCCL YELLOW/WAYBEL dependency closure, interim TARSKI "
+            "Comparator packaging, and this "
             "narrative (`arxiv.md`). Generated Lean was provisional until it "
-            "compiled under Lean / mathlib v4.33.0."
+            "compiled under Lean v4.33.0."
         ),
         reference=(
             "Anysphere, Inc. *Cursor: AI-native code editor and agent environment*. "
@@ -38,7 +39,8 @@ MODEL_CARDS: tuple[ModelCard, ...] = (
         label="Cursor Grok 4.6",
         cite_key="Grk26",
         tool_note=(
-            "primary agent (SpaceXAI / Cursor) for Yellow17.lean and the Palomar kit."
+            "primary agent (SpaceXAI / Cursor) for early MizarCCL translations "
+            "and the interim TARSKI Comparator scaffold."
         ),
         reference=(
             "xAI / SpaceXAI and Cursor. *Grok 4.6* conversational coding model, "
@@ -56,7 +58,7 @@ No large language model is listed as a co-author.
 <!-- /AI_MODEL_TOOL_BULLETS -->
 
 The development is at
-[`github.com/catskillsresearch/yellow17`](https://github.com/catskillsresearch/yellow17).
+[`github.com/catskillsresearch/MizarCCL`](https://github.com/catskillsresearch/MizarCCL).
 
 """
 

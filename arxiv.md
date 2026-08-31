@@ -13,8 +13,16 @@ is the axiomatic root of the MML: extensionality, singleton and
 unordered pair, inclusion, union, regularity, the Fraenkel scheme,
 the Kuratowski pair, equipotence, and the Tarski–Grothendieck
 universe axiom. The Lean development defines a model (`TarskiSet`)
-and proves those statements; it is sorry-free. Compared theorems
-audit to `{propext, Classical.choice, Quot.sound}`.
+and proves the ordinary TARSKI statements plus an explicitly weakened
+universe-polymorphic form of `TARSKI:3`; it is sorry-free. Compared
+laws characterize the cross-universe lift as an equality-reflecting,
+membership-preserving embedding. Compared theorems audit to
+`{propext, Classical.choice, Quot.sound}`.
+
+This TARSKI family is an interim Comparator scaffold, not the planned
+research-interest submission. That submission is deferred until the
+368-article YELLOW*/WAYBEL* closure is complete and will select one
+substantive capstone theorem from each of its 58 seeds.
 
 ---
 
@@ -31,13 +39,15 @@ equivalence. Membership is defined.
 
 The compared claim is a machine-checked Lean rendering of the
 Mizar-labelled items `TARSKI:1`–`TARSKI:3`, `TARSKI:def 1`–`def 6`,
-and `TARSKI:sch 1`. `TARSKI:3` is universe-polymorphic: the
-collection of all `TarskiSet.{u}` lives in `TarskiSet.{u+1}`. Mizar’s
-power-set witness (iii) and inaccessibility clause (iv) are not
-theorems of `Type u` and are **not** posted as a Lean `axiom`, so
-the compared surface stays free of `axiom` / `sorry` / `admit` for
-Palomar. Downstream theorems whose Mizar proofs need those clauses
-use alternate arguments and must document the variation (example:
+and `TARSKI:sch 1`, together with two Lean-specific audit laws for
+the universe lift. `TARSKI:3` is universe-polymorphic: the collection
+of all `TarskiSet.{u}` lives in `TarskiSet.{u+1}`. The compared laws
+`ulift_eq_iff` and `ulift_mem_iff` rule out a constant or unspecified
+map: lifting reflects equality and preserves and reflects membership.
+Mizar’s power-set witness (iii) and inaccessibility clause (iv) are
+not theorems of `Type u` and are **not** posted as a Lean `axiom`.
+Downstream theorems whose Mizar proofs need those clauses use
+alternate arguments and must document the variation (example:
 `WELLORD2.th17`).
 
 The Mizar source is vendored from
@@ -45,7 +55,8 @@ The Mizar source is vendored from
 as `vendor/mml/tarski.miz` (AMU dual license). The Lean package is
 Apache-2.0. Pin:
 `vendor/MML_PIN` = `047822c4d814630b28eec8ca6b455e9eb912d5ff`. This
-repository uses the same dual license.
+repository preserves the AMU dual license for vendored `.miz` files;
+the Lean translation and package files use Apache-2.0.
 
 ## 2. Representation
 
@@ -55,8 +66,14 @@ that relation. `TarskiSet.{u}` is the quotient. Lean notation
 `x ∈ X` is Mizar `x in X`. Inclusion `X ⊆ Y` is Mizar `X c= Y`.
 The constructors `{y}`, `{y,z}`, `union X`, and `[x,y]` are
 definitions on the quotient (singleton, unordered pair, union,
-Kuratowski pair). A lift `ulift` embeds `TarskiSet.{u}` into
-`TarskiSet.{u+1}`.
+Kuratowski pair). The recursively defined lift `ulift` embeds
+`TarskiSet.{u}` into `TarskiSet.{u+1}`:
+
+- `ulift X = ulift Y ↔ X = Y`;
+- `ulift X ∈ ulift Y ↔ X ∈ Y`.
+
+These laws are part of the compared surface, making the meaning of
+the universe-polymorphic statement independently auditable.
 
 ## 3. Mizar inventory
 
@@ -76,6 +93,7 @@ literal `|` is written `\|`.
 | `TARSKI:sch 1` | `sch1` | Fraenkel; uses `Classical.choice` |
 | `TARSKI:def 5` | `def5` / `pair` | `[x,y] = {{x,y},{x}}` |
 | `TARSKI:def 6` | `def6` / `are_equipotent` | Functional graph of a bijection |
+| Lean lift audit | `ulift_eq_iff` / `ulift_mem_iff` | equality embedding; membership preservation and reflection |
 | `TARSKI:3` | `th3` / `ulift` | Universe of all `u`-sets in `u+1`; subset-closed. Not Mizar (iii)–(iv) |
 
 **Complete?**
@@ -95,13 +113,20 @@ selection of a Fraenkel image). The remaining compared theorems
 use at most `{propext, Quot.sound}`. There is no project-defined
 `axiom` and no `sorry` outside `Challenge.lean`.
 
-## 4. Palomar statement of record
+## 4. Interim Palomar scaffold
 
 `Challenge.lean` restates every compared `TARSKI` theorem and
 constructor with `sorry`. `Solution.lean` imports
-`MizarCCL/TARSKI.lean`. `comparator.json` lists 12 theorems and
-7 definitions. Types must match under `pp.all` / `pp.explicit`
+`MizarCCL/TARSKI.lean`. `comparator.json` lists 14 theorems and
+7 definitions, including both lift laws. Types must match under
+`pp.all` / `pp.explicit`
 (`scripts/compare_challenge_solution_types.sh`).
+
+This foundational family is retained as a development scaffold, not
+as the eventual research-interest submission. Palomar registry
+submission is deferred until all 368 queue articles are complete.
+The final compared family will select one substantive capstone theorem
+from each of the 58 YELLOW*/WAYBEL* seeds.
 
 ## 5. Build
 

@@ -21,7 +21,10 @@ Mizar labels: `TARSKI:1`–`TARSKI:3`, `TARSKI:def 1`–`def 6`,
 
 `TARSKI:3` uses Lean universes: the collection of all `TarskiSet.{u}`
 is a universe object in `TarskiSet.{u+1}`. Mizar’s single sort `set`
-becomes this universe-polymorphic family.
+becomes this universe-polymorphic family. The recursive cross-universe
+map is not left abstract: `ulift_eq_iff` proves that it reflects
+equality, and `ulift_mem_iff` proves that it preserves and reflects
+membership.
 
 ## Palomar / axiom discipline (intentional variation)
 
@@ -34,9 +37,10 @@ Mizar’s full (iii)–(iv) here would require a Lean `axiom`.
 
 **Choice made in this file:** prove the parts of `TARSKI:3` that are
 theorems of the Aczel `TarskiSet` model (universe-polymorphic (i)–(ii)
-plus “every `u`-set appears via `ulift`”), and **do not** introduce a
-Lean `axiom` for Mizar (iii)–(iv). This is a minor, deliberate
-variation of the Mizar axiomatic packaging — not a mistranslation of
+plus “every `u`-set appears via the characterized embedding `ulift`”),
+and **do not** introduce a Lean `axiom` for Mizar (iii)–(iv). This is
+a deliberate weakening of the Mizar axiomatic packaging — not a
+mistranslation of
 `def 1`–`def 6`, extensionality, regularity, Fraenkel, or equipotence —
 taken so the development stays axiom-free for Palomar.
 
@@ -493,12 +497,59 @@ theorem uliftPre_equiv {p q : PreSet.{u}} (h : PreSet.Equiv p q) :
         obtain ⟨a, ha⟩ := h.2 b
         exact ⟨⟨a⟩, ih a ha⟩
 
+theorem uliftPre_equiv_iff {p q : PreSet.{u}} :
+    PreSet.Equiv (uliftPre p) (uliftPre q) ↔ PreSet.Equiv p q := by
+  constructor
+  · intro h
+    induction p generalizing q with
+    | mk α A ih =>
+      cases q with
+      | mk β B =>
+        constructor
+        · intro a
+          obtain ⟨⟨b⟩, hb⟩ := h.1 ⟨a⟩
+          exact ⟨b, ih a hb⟩
+        · intro b
+          obtain ⟨⟨a⟩, ha⟩ := h.2 ⟨b⟩
+          exact ⟨a, ih a ha⟩
+  · exact uliftPre_equiv
+
 def ulift (x : TarskiSet.{u}) : TarskiSet.{u + 1} :=
   Quotient.liftOn x (fun p => mk (uliftPre p)) fun _ _ h =>
     sound (uliftPre_equiv h)
 
 theorem ulift_mk (p : PreSet.{u}) : ulift (mk p) = mk (uliftPre p) :=
   rfl
+
+/-- Lifting reflects and preserves equality; in particular, `ulift` is an
+embedding rather than an unspecified map between universe levels. -/
+theorem ulift_eq_iff (X Y : TarskiSet.{u}) :
+    ulift X = ulift Y ↔ X = Y := by
+  refine inductionOn₂ (β := fun X Y => ulift X = ulift Y ↔ X = Y)
+    X Y fun p q => ?_
+  rw [ulift_mk, ulift_mk]
+  constructor
+  · intro h
+    exact sound (uliftPre_equiv_iff.mp (TarskiSet.exact h))
+  · exact congrArg ulift
+
+/-- Lifting preserves and reflects set membership. This is the auditable
+semantic characterization needed when reading the universe-polymorphic
+form of `TARSKI:3`. -/
+theorem ulift_mem_iff (X Y : TarskiSet.{u}) :
+    ulift X ∈ ulift Y ↔ X ∈ Y := by
+  refine inductionOn₂ (β := fun X Y => ulift X ∈ ulift Y ↔ X ∈ Y)
+    X Y fun p q => ?_
+  rw [ulift_mk, ulift_mk, mem_mk_iff, mem_mk_iff]
+  cases q with
+  | mk α A =>
+    constructor
+    · intro h
+      obtain ⟨⟨a⟩, ha⟩ := h
+      exact ⟨a, uliftPre_equiv_iff.mp ha⟩
+    · intro h
+      obtain ⟨a, ha⟩ := h
+      exact ⟨⟨a⟩, uliftPre_equiv ha⟩
 
 /-- The set of all `TarskiSet.{u}`, as an element of `TarskiSet.{u+1}`. -/
 def universeSet : TarskiSet.{u + 1} :=

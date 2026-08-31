@@ -1,5 +1,5 @@
 ---
-description: Resume and HANDOFF discipline for the YELLOW_17 Palomar package
+description: Resume and HANDOFF discipline for MizarCCL (full YELLOW/WAYBEL closure)
 alwaysApply: true
 ---
 
@@ -7,6 +7,22 @@ alwaysApply: true
 
 Durable state lives in files, not chat memory. Treat `HANDOFF.md` as the
 source of truth.
+
+## Palomar submission policy
+
+- **Defer** Palomar registry validation/submission until all **368**
+  queue articles are translated, imported from `MizarCCL.lean`, and
+  `lake build` is green with zero `sorry` in `MizarCCL/`.
+- **At submission:** one capstone theorem per **seed** (58 entries in
+  `palomar_seeds` in `mizarccl_translation_order.yaml`) — not every
+  theorem in each seed file, and not per-article Palomar kits along the
+  way.
+- **Until then:** `Challenge.lean` / `Solution.lean` / `comparator.json`
+  are an interim **TARSKI scaffold** for local Comparator discipline.
+  Do not expand them when finishing intermediate queue articles.
+  A green `scripts/palomar_preflight.sh` is **not** “submit now.”
+
+See `HANDOFF.md` → Palomar submission policy for full detail.
 
 ## On starting a session
 - Read `HANDOFF.md` first (it has a Resume Protocol listing what else to read).
@@ -17,12 +33,14 @@ source of truth.
 
 ## On finishing a work item
 After the item builds green, do all of the following before ending the turn:
-1. `lake build` is green and Solution sources have zero `sorry`; run an
-   axiom audit (`#print axioms <name>`) and confirm
-   `⊆ {propext, Classical.choice, Quot.sound}` unless a new axiom is
-   unavoidable (document it).
-2. Challenge/Solution types match
-   (`bash scripts/compare_challenge_solution_types.sh`).
+1. `lake build` is green; translated `MizarCCL/` sources for the article
+   have zero `sorry`; run an axiom audit on representative theorems and
+   confirm `⊆ {propext, Classical.choice, Quot.sound}` unless a new axiom
+   is unavoidable (document it).
+2. For the **TARSKI scaffold only:** Challenge/Solution types match
+   (`bash scripts/compare_challenge_solution_types.sh`). Finishing a queue
+   article does **not** require updating Challenge, Solution, or
+   `comparator.json` unless explicitly in the capstone phase.
 3. Append a dated checkpoint to `HANDOFF.md` and update status lines.
 4. Update the corresponding section / catalog row in `arxiv.md`.
    In Markdown tables, **escape literal `|` as `\|`**.
