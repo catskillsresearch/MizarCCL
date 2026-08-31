@@ -1,8 +1,0 @@
-{
-  "lean4.envPathExtensions": [
-    "${env:HOME}/.elan/bin"
-  ],
-  "files.watcherExclude": {
-    "**/.lake/**": true
-  }
-}

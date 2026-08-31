@@ -32,12 +32,11 @@ that article’s used prefix is translated.
 
 ## Setup
 
-Open the **repository root** in Cursor/VS Code: the folder that contains
-`lean-toolchain`, `lakefile.lean`, and `Challenge.lean`. Do **not** open the
-inner `MizarCCL/` library directory alone; the Lean extension only treats a
-folder as a project when it contains `lean-toolchain`.
-
-Alternatively, open `MizarCCL.code-workspace` from the repository root.
+Same layout as sibling Palomar repos (`scott1982`, etc.): `lean-toolchain` pins
+**v4.33.0** (shared elan cache under `~/.elan/toolchains/`), and `lakefile.toml`
+defines the Lake package. Open this repository root in Cursor/VS Code — the
+folder that contains `Challenge.lean` and `lean-toolchain`, not the inner
+`MizarCCL/` library directory.
 
 ```bash
 lake build
