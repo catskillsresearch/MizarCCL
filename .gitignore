@@ -14,6 +14,7 @@ __pycache__/
 
 # Local Palomar editorial audit artifacts (review drafts, mechanical reports)
 .cache/palomar-editorial/
+.cache/palomar-comparator/
 .venv-editorial/
 vendor/palomar-policy.sync-backup/
 

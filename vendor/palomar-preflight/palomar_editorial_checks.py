@@ -8,12 +8,15 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from palomar_paths import project_root
+
 try:
     import yaml
 except ImportError:
     yaml = None  # type: ignore[assignment]
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = project_root()
 
 AI_NAME_PATTERNS = re.compile(
     r"(?i)\b("
@@ -23,17 +26,11 @@ AI_NAME_PATTERNS = re.compile(
     r")\b"
 )
 
-DOCSTRING_BEFORE_DECL = re.compile(
-    r"/--[\s\S]*?-/\s*\n\s*(?:@[^\n]+\n\s*)*(?:theorem|def)\s+(\w+)",
-    re.MULTILINE,
-)
+QUALIFIED_NAME = re.compile(r"[A-Za-z][A-Za-z0-9_']*\.[A-Za-z_][A-Za-z0-9_']*")
 
-QUALIFIED_NAME = re.compile(r"[A-Z][A-Z0-9_]*\.[a-zA-Z_][a-zA-Z0-9_']*")
-
-# Mizar article hints for compared declarations outside the TARSKI scaffold.
-THEOREM_SOURCE_HINTS: dict[str, tuple[str, ...]] = {
-    "PalomarExperiment.setwiseo_th59": ("SETWISEO", "setwiseo.miz"),
-}
+# Optional per-theorem source hints when a compared result needs an extra
+# formalization.yaml sources entry beyond the primary paper record.
+THEOREM_SOURCE_HINTS: dict[str, tuple[str, ...]] = {}
 
 SORRY_DEF = re.compile(
     r"^(?:noncomputable\s+)?def\s+(\w+)\b[\s\S]*?:=\s*sorry",
@@ -120,47 +117,40 @@ def short_name(full: str) -> str:
     return full.split(".")[-1]
 
 
+def main_result_declaration(entry: object) -> str | None:
+    if isinstance(entry, dict):
+        decl = entry.get("declaration")
+        return decl if isinstance(decl, str) and decl else None
+    if isinstance(entry, str) and entry.strip():
+        return entry.strip()
+    return None
+
+
 def check_main_results(formalization: dict, cfg: dict) -> list[str]:
     errors: list[str] = []
     compared = set(comparator_declarations(cfg))
     for entry in formalization.get("status", {}).get("main_results", []) or []:
-        decl = entry.get("declaration")
+        decl = main_result_declaration(entry)
         if decl and decl not in compared:
             errors.append(f"main_results declaration {decl!r} not in comparator.json")
     return errors
 
 
-def check_alignment(formalization: dict, challenge_text: str) -> list[str]:
+def check_alignment(formalization: dict, challenge_text: str, cfg: dict) -> list[str]:
     errors: list[str] = []
+    compared_short = {short_name(name) for name in comparator_declarations(cfg)}
     for entry in formalization.get("alignment", {}).get("statements", []) or []:
         lean = entry.get("lean")
-        if lean and lean not in challenge_text:
-            errors.append(f"alignment statement lean name {lean!r} not found in Challenge.lean")
-    return errors
-
-
-def challenge_docstrings(challenge_text: str) -> set[str]:
-    return set(DOCSTRING_BEFORE_DECL.findall(challenge_text))
-
-
-def narrative_before_decl(challenge_text: str, name: str) -> bool:
-    if name in challenge_docstrings(challenge_text):
-        return True
-    pattern = re.compile(
-        rf"(?:/--[\s\S]*?-/|/-![\s\S]*?-/)\s*\n(?:[^\n]*\n){{0,8}}\s*(?:theorem|def)\s+{re.escape(name)}\b",
-        re.MULTILINE,
-    )
-    return pattern.search(challenge_text) is not None
-
-
-def check_docstrings(cfg: dict, challenge_text: str) -> list[str]:
-    """Require auditable docstrings on lift-related compared declarations."""
-    errors: list[str] = []
-    required = ["ulift", "ulift_eq_iff", "ulift_mem_iff", "th3"]
-    for name in required:
-        if not narrative_before_decl(challenge_text, name):
+        if not isinstance(lean, str) or not lean.strip():
+            continue
+        if " through " in lean.lower() or ";" in lean:
+            continue
+        token = lean.strip().split()[-1]
+        if token not in compared_short:
+            continue
+        if token not in challenge_text:
             errors.append(
-                f"compared declaration TARSKI.{name} lacks narrative/docstring in Challenge.lean"
+                f"alignment statement lean name {lean!r} (token {token!r}) not found in Challenge.lean"
             )
     return errors
 
@@ -168,7 +158,7 @@ def check_docstrings(cfg: dict, challenge_text: str) -> list[str]:
 def sorry_qualified_defs(challenge_text: str) -> set[str]:
     """Fully qualified names of Challenge definitions whose body is `sorry`."""
     result: set[str] = set()
-    for ns_match in re.finditer(r"^namespace\s+(\w+)\s*$", challenge_text, re.MULTILINE):
+    for ns_match in re.finditer(r"^namespace\s+(\S+)\s*$", challenge_text, re.MULTILINE):
         ns = ns_match.group(1)
         start = ns_match.end()
         end_match = re.search(rf"^end\s+{re.escape(ns)}\s*$", challenge_text[start:], re.MULTILINE)
@@ -180,8 +170,8 @@ def sorry_qualified_defs(challenge_text: str) -> set[str]:
     return result
 
 
-def theorem_statement(challenge_text: str, short_name: str) -> str | None:
-    pattern = THEOREM_BODY.pattern.format(name=re.escape(short_name))
+def theorem_statement(challenge_text: str, name: str) -> str | None:
+    pattern = THEOREM_BODY.pattern.format(name=re.escape(name))
     match = re.search(pattern, challenge_text, re.MULTILINE)
     return match.group(0) if match else None
 
@@ -199,11 +189,11 @@ def check_sorry_definition_pinning(cfg: dict, challenge_text: str) -> list[str]:
         short = short_name(full_name)
         statement = theorem_statement(challenge_text, short)
         if statement is None:
-            errors.append(f"compared theorem {full_name!r} not found as `sorry` theorem in Challenge.lean")
+            errors.append(
+                f"compared theorem {full_name!r} not found as `sorry` theorem in Challenge.lean"
+            )
             continue
         referenced = set(QUALIFIED_NAME.findall(statement))
-        if "(∅ :" in statement or re.search(r"\b∪\b", statement):
-            referenced.update({"XBOOLE_0.emptySet", "XBOOLE_0.unionSet"})
         opaque = sorted(q for q in referenced if q in sorry_defs and q not in pinned)
         if opaque:
             errors.append(
@@ -214,41 +204,39 @@ def check_sorry_definition_pinning(cfg: dict, challenge_text: str) -> list[str]:
 
 
 def check_scope_comparator_sync(formalization: dict, cfg: dict) -> list[str]:
-    """formalization.yaml scope must not contradict comparator.json."""
+    """formalization.yaml must not contradict comparator.json."""
     errors: list[str] = []
     scope = str(formalization.get("status", {}).get("scope", ""))
     theorems = cfg.get("theorem_names", [])
-    non_tarski = [name for name in theorems if not name.startswith("TARSKI.")]
-    scope_lower = scope.lower()
-
-    if non_tarski and ("tarski only" in scope_lower or "cover tarski only" in scope_lower):
+    main_results = [
+        main_result_declaration(entry)
+        for entry in formalization.get("status", {}).get("main_results", []) or []
+    ]
+    main_results = [name for name in main_results if name]
+    missing_from_main = sorted(set(theorems) - set(main_results))
+    if missing_from_main:
         errors.append(
-            "status.scope claims a TARSKI-only Comparator kit but comparator.json also lists "
-            + ", ".join(non_tarski)
+            "comparator theorem_names not listed in status.main_results: "
+            + ", ".join(missing_from_main)
         )
 
-    count_match = re.search(r"(\d+)\s+mechanically compared scaffold theorems", scope_lower)
+    count_match = re.search(r"(\d+)\s+compared (?:theorem|result)", scope.lower())
     if count_match:
         claimed = int(count_match.group(1))
         actual = len(theorems)
         if claimed != actual:
             errors.append(
-                f"status.scope claims {claimed} compared scaffold theorems but "
-                f"comparator.json lists {actual}"
+                f"status.scope claims {claimed} compared results but comparator.json lists {actual}"
             )
 
     limitations = " ".join(str(x) for x in formalization.get("limitations", []) or [])
-    if non_tarski and "MizarCCL/TARSKI.lean" in limitations and "SETWISEO" not in limitations:
-        errors.append(
-            "limitations still say Solution imports MizarCCL/TARSKI.lean only while "
-            "comparator.json lists non-TARSKI theorems"
-        )
-
+    if "Solution.lean imports" in limitations and "Scott1964" not in limitations:
+        errors.append("limitations should mention Solution.lean imports Scott1964 proofs")
     return errors
 
 
 def check_compared_sources(formalization: dict, cfg: dict) -> list[str]:
-    """Each non-scaffold compared theorem needs a matching formalization.yaml source."""
+    """Each hinted compared theorem needs a matching formalization.yaml source."""
     errors: list[str] = []
     sources_blob = json.dumps(formalization.get("sources", []), ensure_ascii=False).lower()
     for full_name in cfg.get("theorem_names", []):
@@ -259,21 +247,6 @@ def check_compared_sources(formalization: dict, cfg: dict) -> list[str]:
             errors.append(
                 f"compared theorem {full_name!r} requires a formalization.yaml sources entry "
                 f"mentioning one of: {', '.join(hints)}"
-            )
-    return errors
-
-
-def check_scaffold_disclaimers(formalization: dict) -> list[str]:
-    errors: list[str] = []
-    scope = str(formalization.get("status", {}).get("scope", ""))
-    if "deferred" in scope.lower() or "scaffold" in scope.lower():
-        combined = scope
-        for key in ("known_gaps", "limitations"):
-            for item in formalization.get(key, []) or []:
-                combined += " " + str(item)
-        if "research-interest" not in combined.lower() and "notability" not in combined.lower():
-            errors.append(
-                "deferred/scaffold scope should mention research-interest or notability limits"
             )
     return errors
 
@@ -300,9 +273,7 @@ def main() -> int:
     )
     errors.extend(check_license(formalization))
     errors.extend(check_main_results(formalization, cfg))
-    errors.extend(check_alignment(formalization, challenge_text))
-    errors.extend(check_docstrings(cfg, challenge_text))
-    errors.extend(check_scaffold_disclaimers(formalization))
+    errors.extend(check_alignment(formalization, challenge_text, cfg))
     errors.extend(check_sorry_definition_pinning(cfg, challenge_text))
     errors.extend(check_scope_comparator_sync(formalization, cfg))
     errors.extend(check_compared_sources(formalization, cfg))

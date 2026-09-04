@@ -76,7 +76,7 @@ Before running full preflight on a submission candidate, confirm:
    (Mizar article location, authorship, relationship). Do not compare
    SETWISEO (or any non-TARSKI) theorems while `sources:` lists TARSKI only.
 5. **Mechanical green** — `bash scripts/palomar_preflight.sh --mechanical-only`
-   passes, then `bash scripts/compare_challenge_solution_types.sh`.
+   passes, then `bash vendor/palomar-preflight/compare_challenge_solution_types.sh`.
 
 Deterministic packaging checks live in `scripts/palomar_editorial_checks.py`
 (scope/comparator sync, sorry-definition pinning, compared-source hints).
@@ -146,9 +146,6 @@ First run creates `.venv-editorial/` with `cursor-sdk` and `pyyaml`.
 |------|------|
 | `vendor/palomar-policy/` | Vendored prompts, rubric, CONTRIBUTING, schemas |
 | `vendor/PALOMAR_POLICY_PIN` | Upstream PalomarPolicy commit SHA |
-| `scripts/palomar_policy_sync.py` | Upstream check + auto-update |
-| `scripts/palomar_editorial_checks.py` | Fast deterministic pre-checks (scope sync, definition pinning, sources) |
-| `scripts/palomar_mechanical_report.py` | Local mechanical report JSON |
-| `scripts/palomar_editorial_audit.py` | LLM rubric orchestrator |
-| `scripts/palomar_editorial_audit.sh` | Venv wrapper for cursor-sdk |
-| `scripts/palomar_preflight.sh` | Mechanical + editorial gate |
+| `vendor/palomar-preflight/` | Vendored local preflight toolkit (not a submodule) |
+| `vendor/PALOMAR_PREFLIGHT_PIN` | palomar-preflight commit SHA |
+| `scripts/palomar_preflight.sh` | Project wrapper: mechanical + editorial gate |
